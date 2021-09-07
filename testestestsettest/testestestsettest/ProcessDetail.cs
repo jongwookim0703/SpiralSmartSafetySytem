@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace testestestsettest
 {
-    public partial class ProcessSafety : Form
+    public partial class ProcessDetail : Form
     {
-        public ProcessSafety()
-        {//edfd
+        public ProcessDetail()
+        {
             InitializeComponent();
         }
     }
