@@ -1,7 +1,7 @@
 ﻿
 namespace testestestsettest
 {
-    partial class MainForm
+    partial class MainPage
     {
         /// <summary>
         /// Required designer variable.

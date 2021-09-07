@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace testestestsettest
 {
-    public partial class MainForm : Form
+    public partial class MainPage : Form
     {
-        public MainForm()
+        public MainPage()
         {
             InitializeComponent();
         }
