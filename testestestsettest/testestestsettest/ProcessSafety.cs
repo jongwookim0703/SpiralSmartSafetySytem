@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace testestestsettest
 {
-    public partial class Form1 : Form
+    public partial class ProcessSafety : Form
     {
-        public Form1()
+        public ProcessSafety()
         {
             InitializeComponent();
         }
-
     }
 }
