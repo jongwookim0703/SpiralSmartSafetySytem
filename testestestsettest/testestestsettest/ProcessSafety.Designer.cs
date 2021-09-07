@@ -34,10 +34,10 @@ namespace testestestsettest
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.btnDetail = new System.Windows.Forms.ToolStripButton();
+            this.btnRun = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.btnStop = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,6 +49,8 @@ namespace testestestsettest
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.vlc4 = new LibVLCSharp.WinForms.VideoView();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -56,13 +58,16 @@ namespace testestestsettest
             this.txtRunning4 = new System.Windows.Forms.TextBox();
             this.txtTemp4 = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.vlc3 = new LibVLCSharp.WinForms.VideoView();
+            this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtAppro3 = new System.Windows.Forms.TextBox();
             this.txtRunning3 = new System.Windows.Forms.TextBox();
             this.txtTemp3 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.vlc2 = new LibVLCSharp.WinForms.VideoView();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -71,6 +76,7 @@ namespace testestestsettest
             this.txtRunning2 = new System.Windows.Forms.TextBox();
             this.txtTemp2 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.vlc1 = new LibVLCSharp.WinForms.VideoView();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -78,12 +84,6 @@ namespace testestestsettest
             this.txtAppro1 = new System.Windows.Forms.TextBox();
             this.txtRunning1 = new System.Windows.Forms.TextBox();
             this.txtTemp1 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.videoView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.videoView2)).BeginInit();
@@ -114,10 +114,10 @@ namespace testestestsettest
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.toolStripButton1,
-            this.toolStripLabel2,
+            this.btnDetail,
+            this.btnRun,
             this.toolStripButton2,
-            this.toolStripLabel3,
+            this.btnStop,
             this.toolStripButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -131,21 +131,21 @@ namespace testestestsettest
             this.toolStripLabel1.Size = new System.Drawing.Size(69, 28);
             this.toolStripLabel1.Text = "상세보기";
             // 
-            // toolStripButton1
+            // btnDetail
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 28);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.btnDetail.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDetail.Image = ((System.Drawing.Image)(resources.GetObject("btnDetail.Image")));
+            this.btnDetail.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(29, 28);
+            this.btnDetail.Text = "toolStripButton1";
             // 
-            // toolStripLabel2
+            // btnRun
             // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(39, 28);
-            this.toolStripLabel2.Text = "가동";
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(39, 28);
+            this.btnRun.Text = "가동";
             // 
             // toolStripButton2
             // 
@@ -157,11 +157,11 @@ namespace testestestsettest
             this.toolStripButton2.Size = new System.Drawing.Size(29, 28);
             this.toolStripButton2.Text = "toolStripButton2";
             // 
-            // toolStripLabel3
+            // btnStop
             // 
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(39, 28);
-            this.toolStripLabel3.Text = "중단";
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(39, 28);
+            this.btnStop.Text = "중단";
             // 
             // toolStripButton3
             // 
@@ -268,6 +268,26 @@ namespace testestestsettest
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "프로세스4";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label19.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(391, 41);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(144, 22);
+            this.label19.TabIndex = 11;
+            this.label19.Text = "process4 summary";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(360, 80);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 20);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "temp";
+            // 
             // vlc4
             // 
             this.vlc4.BackColor = System.Drawing.Color.Black;
@@ -334,6 +354,17 @@ namespace testestestsettest
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "프로세스3";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label18.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(391, 41);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(144, 22);
+            this.label18.TabIndex = 10;
+            this.label18.Text = "process3 summary";
+            // 
             // vlc3
             // 
             this.vlc3.BackColor = System.Drawing.Color.Black;
@@ -343,6 +374,15 @@ namespace testestestsettest
             this.vlc3.Size = new System.Drawing.Size(268, 175);
             this.vlc3.TabIndex = 7;
             this.vlc3.Text = "videoView7";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(360, 80);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 20);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "temp";
             // 
             // label10
             // 
@@ -399,6 +439,17 @@ namespace testestestsettest
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "프로세스2";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label17.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(391, 40);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(144, 22);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "process2 summary";
             // 
             // vlc2
             // 
@@ -475,6 +526,17 @@ namespace testestestsettest
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "프로세스1";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label16.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(391, 40);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(144, 22);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "process1 summary";
+            // 
             // vlc1
             // 
             this.vlc1.BackColor = System.Drawing.Color.Black;
@@ -533,68 +595,6 @@ namespace testestestsettest
             this.txtTemp1.Size = new System.Drawing.Size(125, 27);
             this.txtTemp1.TabIndex = 1;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(360, 80);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 20);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "temp";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(360, 80);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 20);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "temp";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label16.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(391, 40);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(144, 22);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "process1 summary";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label17.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(391, 40);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(144, 22);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "process2 summary";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label18.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(391, 41);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(144, 22);
-            this.label18.TabIndex = 10;
-            this.label18.Text = "process3 summary";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label19.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label19.Location = new System.Drawing.Point(391, 41);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(144, 22);
-            this.label19.TabIndex = 11;
-            this.label19.Text = "process4 summary";
-            // 
             // ProcessSafety
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -639,10 +639,10 @@ namespace testestestsettest
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripButton btnDetail;
+        private System.Windows.Forms.ToolStripLabel btnRun;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripLabel btnStop;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private LibVLCSharp.WinForms.VideoView videoView1;
         private LibVLCSharp.WinForms.VideoView videoView3;
