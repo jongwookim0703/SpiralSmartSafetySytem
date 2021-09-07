@@ -18,6 +18,7 @@ namespace testestestsettest
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LogIn());
+            //Çª½¬µÇ¶ó~!
         }
     }
 }
