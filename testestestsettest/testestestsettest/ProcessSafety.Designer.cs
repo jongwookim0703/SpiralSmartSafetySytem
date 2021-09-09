@@ -93,8 +93,10 @@ namespace testestestsettest
             this.panel5 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.videoView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.videoView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.videoView3)).BeginInit();
@@ -114,6 +116,7 @@ namespace testestestsettest
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -694,7 +697,7 @@ namespace testestestsettest
             this.panel4.Controls.Add(this.panel3);
             this.panel4.Controls.Add(this.panel1);
             this.panel4.Controls.Add(this.panel2);
-            this.panel4.Location = new System.Drawing.Point(31, 549);
+            this.panel4.Location = new System.Drawing.Point(31, 565);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(386, 91);
             this.panel4.TabIndex = 13;
@@ -732,6 +735,21 @@ namespace testestestsettest
             this.panel10.Size = new System.Drawing.Size(302, 82);
             this.panel10.TabIndex = 16;
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.BackgroundImage = global::testestestsettest.Properties.Resources.하늘;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(203, 30);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(94, 29);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "중단";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
@@ -746,8 +764,9 @@ namespace testestestsettest
             this.button2.Text = "가동";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // panel11
             // 
+<<<<<<< HEAD
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -759,12 +778,33 @@ namespace testestestsettest
             this.button3.TabIndex = 2;
             this.button3.Text = "중단";
             this.button3.UseVisualStyleBackColor = false;
+=======
+            this.panel11.BackgroundImage = global::testestestsettest.Properties.Resources.포카리;
+            this.panel11.Controls.Add(this.label21);
+            this.panel11.Location = new System.Drawing.Point(473, 565);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(306, 82);
+            this.panel11.TabIndex = 17;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("맑은 고딕", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label21.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label21.Location = new System.Drawing.Point(34, 20);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(227, 45);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Process Safety";
+>>>>>>> 6fe4f22da8a6f9185b7c1142529912ad333634d5
             // 
             // ProcessSafety
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1167, 694);
+            this.Controls.Add(this.panel11);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.groupBox1);
@@ -800,6 +840,8 @@ namespace testestestsettest
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel10.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -871,5 +913,7 @@ namespace testestestsettest
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Label label21;
     }
 }
