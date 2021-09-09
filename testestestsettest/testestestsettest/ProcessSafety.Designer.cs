@@ -766,7 +766,7 @@ namespace testestestsettest
             // 
             // panel11
             // 
-<<<<<<< HEAD
+
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -778,8 +778,7 @@ namespace testestestsettest
             this.button3.TabIndex = 2;
             this.button3.Text = "중단";
             this.button3.UseVisualStyleBackColor = false;
-=======
-            this.panel11.BackgroundImage = global::testestestsettest.Properties.Resources.포카리;
+
             this.panel11.Controls.Add(this.label21);
             this.panel11.Location = new System.Drawing.Point(473, 565);
             this.panel11.Name = "panel11";
@@ -796,7 +795,7 @@ namespace testestestsettest
             this.label21.Size = new System.Drawing.Size(227, 45);
             this.label21.TabIndex = 0;
             this.label21.Text = "Process Safety";
->>>>>>> 6fe4f22da8a6f9185b7c1142529912ad333634d5
+
             // 
             // ProcessSafety
             // 
