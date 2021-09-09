@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace testestestsettest
             InitializeComponent();
             //체크박스를 그룹박스에 고정
             this.chkPro1.Location = new Point(this.groupBox2.Location.X + 13, this.groupBox2.Location.Y - 1);
-            this.chkPro2.Location = new Point(this.groupBox3.Location.X + 13, this.groupBox3.Location.Y - 1);
+            this.chkPro2.Location = new Point(this.groupBox3.Location.X + 23, this.groupBox3.Location.Y - 1);
             this.chkPro3.Location = new Point(this.groupBox4.Location.X + 13, this.groupBox4.Location.Y - 1);
             this.chkPro4.Location = new Point(this.groupBox5.Location.X + 13, this.groupBox5.Location.Y - 1);
         }
@@ -37,6 +38,11 @@ namespace testestestsettest
         private void chkPro4_CheckedChanged(object sender, EventArgs e)
         {
             this.groupBox5.Enabled = this.chkPro4.Checked;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("상세보기로 이동합니다");
         }
     }
 }

@@ -29,12 +29,6 @@ namespace testestestsettest
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.grid = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -62,15 +56,11 @@ namespace testestestsettest
             this.videoView2 = new LibVLCSharp.WinForms.VideoView();
             this.videoView3 = new LibVLCSharp.WinForms.VideoView();
             this.videoView4 = new LibVLCSharp.WinForms.VideoView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.videoView5 = new LibVLCSharp.WinForms.VideoView();
             this.videoView7 = new LibVLCSharp.WinForms.VideoView();
             this.videoView8 = new LibVLCSharp.WinForms.VideoView();
             this.videoView9 = new LibVLCSharp.WinForms.VideoView();
             this.videoView10 = new LibVLCSharp.WinForms.VideoView();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -93,60 +83,11 @@ namespace testestestsettest
             ((System.ComponentModel.ISupportInitialize)(this.videoView10)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 24);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1113, 89);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(274, 39);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 20);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "label4";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "현재 공정상태";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(205, 39);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "label3";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(138, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.grid);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 113);
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1113, 163);
             this.groupBox2.TabIndex = 1;
@@ -171,9 +112,9 @@ namespace testestestsettest
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Controls.Add(this.groupBox6);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 276);
+            this.groupBox3.Location = new System.Drawing.Point(0, 163);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1113, 350);
+            this.groupBox3.Size = new System.Drawing.Size(1113, 342);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             // 
@@ -186,7 +127,7 @@ namespace testestestsettest
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox7.Location = new System.Drawing.Point(836, 23);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(274, 324);
+            this.groupBox7.Size = new System.Drawing.Size(274, 316);
             this.groupBox7.TabIndex = 9;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "프로세스4";
@@ -199,6 +140,7 @@ namespace testestestsettest
             this.btn_process4.TabIndex = 8;
             this.btn_process4.Text = "상세화면";
             this.btn_process4.UseVisualStyleBackColor = true;
+            this.btn_process4.Click += new System.EventHandler(this.btn_process4_Click);
             // 
             // label11
             // 
@@ -238,7 +180,7 @@ namespace testestestsettest
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox5.Location = new System.Drawing.Point(555, 23);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(281, 324);
+            this.groupBox5.Size = new System.Drawing.Size(281, 316);
             this.groupBox5.TabIndex = 8;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "프로세스3";
@@ -251,6 +193,7 @@ namespace testestestsettest
             this.btn_process3.TabIndex = 8;
             this.btn_process3.Text = "상세화면";
             this.btn_process3.UseVisualStyleBackColor = true;
+            this.btn_process3.Click += new System.EventHandler(this.btn_process3_Click);
             // 
             // label9
             // 
@@ -290,7 +233,7 @@ namespace testestestsettest
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox4.Location = new System.Drawing.Point(277, 23);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(278, 324);
+            this.groupBox4.Size = new System.Drawing.Size(278, 316);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "프로세스2";
@@ -303,6 +246,7 @@ namespace testestestsettest
             this.btn_process2.TabIndex = 8;
             this.btn_process2.Text = "상세화면";
             this.btn_process2.UseVisualStyleBackColor = true;
+            this.btn_process2.Click += new System.EventHandler(this.btn_process2_Click);
             // 
             // label7
             // 
@@ -342,7 +286,7 @@ namespace testestestsettest
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox6.Location = new System.Drawing.Point(3, 23);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(274, 324);
+            this.groupBox6.Size = new System.Drawing.Size(274, 316);
             this.groupBox6.TabIndex = 6;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "프로세스1";
@@ -355,6 +299,7 @@ namespace testestestsettest
             this.btn_process1.TabIndex = 8;
             this.btn_process1.Text = "상세화면";
             this.btn_process1.UseVisualStyleBackColor = true;
+            this.btn_process1.Click += new System.EventHandler(this.btn_process1_Click);
             // 
             // label5
             // 
@@ -421,24 +366,6 @@ namespace testestestsettest
             this.videoView4.Size = new System.Drawing.Size(94, 84);
             this.videoView4.TabIndex = 3;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1113, 24);
-            this.menuStrip1.TabIndex = 6;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 604);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1113, 22);
-            this.statusStrip1.TabIndex = 7;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
             // videoView5
             // 
             this.videoView5.BackColor = System.Drawing.Color.Black;
@@ -484,21 +411,16 @@ namespace testestestsettest
             this.videoView10.Size = new System.Drawing.Size(94, 84);
             this.videoView10.TabIndex = 2;
             // 
-            // MainPage
+            // FirstPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 626);
-            this.Controls.Add(this.statusStrip1);
+            this.ClientSize = new System.Drawing.Size(1113, 505);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "MainPage";
-            this.Text = "MainForm";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Name = "FirstPage";
+            this.Text = "FirstPage";
+            this.Load += new System.EventHandler(this.FirstPage_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -524,26 +446,17 @@ namespace testestestsettest
             ((System.ComponentModel.ISupportInitialize)(this.videoView9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.videoView10)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView grid;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label2;
         private LibVLCSharp.WinForms.VideoView videoView1;
         private LibVLCSharp.WinForms.VideoView videoView2;
         private LibVLCSharp.WinForms.VideoView videoView3;
         private LibVLCSharp.WinForms.VideoView videoView4;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private LibVLCSharp.WinForms.VideoView videoView10;
         private LibVLCSharp.WinForms.VideoView videoView9;
         private LibVLCSharp.WinForms.VideoView videoView8;
@@ -569,6 +482,5 @@ namespace testestestsettest
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private LibVLCSharp.WinForms.VideoView vlc2;
-        private System.Windows.Forms.Timer timer1;
     }
 }
