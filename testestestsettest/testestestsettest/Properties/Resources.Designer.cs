@@ -94,8 +94,9 @@ namespace testestestsettest.Properties {
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
         internal static System.Drawing.Bitmap 포카리 {
+        internal static System.Drawing.Bitmap backGround_clearblue_ {
             get {
-                object obj = ResourceManager.GetObject("포카리", resourceCulture);
+                object obj = ResourceManager.GetObject("backGround(clearblue)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +104,9 @@ namespace testestestsettest.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap 하늘 {
+        internal static System.Drawing.Bitmap button_clearblue_ {
             get {
-                object obj = ResourceManager.GetObject("하늘", resourceCulture);
+                object obj = ResourceManager.GetObject("button(clearblue)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +114,59 @@ namespace testestestsettest.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap 현재공정 {
+        internal static System.Drawing.Bitmap green {
             get {
-                object obj = ResourceManager.GetObject("현재공정", resourceCulture);
+                object obj = ResourceManager.GetObject("green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap panel_darkblue_ {
+            get {
+                object obj = ResourceManager.GetObject("panel(darkblue)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap panel_darkblue_modified_ {
+            get {
+                object obj = ResourceManager.GetObject("panel(darkblue modified)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap panel_gray_ {
+            get {
+                object obj = ResourceManager.GetObject("짱구", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 캡처 {
+            get {
+                object obj = ResourceManager.GetObject("캡처", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 쿠킹 {
+            get {
+                object obj = ResourceManager.GetObject("쿠킹", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

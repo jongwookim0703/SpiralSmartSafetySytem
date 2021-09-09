@@ -16,5 +16,20 @@ namespace testestestsettest
         {
             InitializeComponent();
         }
+
+        private void btn_detail1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_stop1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_work1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
