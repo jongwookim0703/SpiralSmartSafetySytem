@@ -46,9 +46,9 @@ namespace testestestsettest
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vlc1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -57,9 +57,9 @@ namespace testestestsettest
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // grid
@@ -198,6 +198,7 @@ namespace testestestsettest
             this.cbo_proces1.Size = new System.Drawing.Size(146, 23);
             this.cbo_proces1.TabIndex = 10;
             this.cbo_proces1.Text = "프로세스1";
+            this.cbo_proces1.SelectedIndexChanged += new System.EventHandler(this.cbo_proces1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -240,13 +241,13 @@ namespace testestestsettest
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
-            // panel5
+            // panel7
             // 
-            this.panel5.Controls.Add(this.btn_detail1);
-            this.panel5.Location = new System.Drawing.Point(6, 21);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(75, 35);
-            this.panel5.TabIndex = 9;
+            this.panel7.Controls.Add(this.btn_work1);
+            this.panel7.Location = new System.Drawing.Point(170, 21);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(76, 36);
+            this.panel7.TabIndex = 9;
             // 
             // panel6
             // 
@@ -256,13 +257,13 @@ namespace testestestsettest
             this.panel6.Size = new System.Drawing.Size(65, 36);
             this.panel6.TabIndex = 9;
             // 
-            // panel7
+            // panel5
             // 
-            this.panel7.Controls.Add(this.btn_work1);
-            this.panel7.Location = new System.Drawing.Point(170, 21);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(76, 36);
-            this.panel7.TabIndex = 9;
+            this.panel5.Controls.Add(this.btn_detail1);
+            this.panel5.Location = new System.Drawing.Point(6, 21);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(75, 35);
+            this.panel5.TabIndex = 9;
             // 
             // ProcessDetail
             // 
@@ -288,9 +289,9 @@ namespace testestestsettest
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

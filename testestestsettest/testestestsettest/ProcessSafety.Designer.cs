@@ -551,6 +551,7 @@ namespace testestestsettest
             this.groupBox2.Size = new System.Drawing.Size(555, 224);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.chkPro1_CheckedChanged);
             // 
             // chkPro1
             // 
@@ -724,6 +725,7 @@ namespace testestestsettest
             this.button1.TabIndex = 0;
             this.button1.Text = "상세보기";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel10
             // 
@@ -765,6 +767,7 @@ namespace testestestsettest
             this.button2.UseVisualStyleBackColor = false;
             // 
             // panel11
+<<<<<<< HEAD
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -776,6 +779,9 @@ namespace testestestsettest
             this.button3.TabIndex = 2;
             this.button3.Text = "중단";
             this.button3.UseVisualStyleBackColor = false;
+=======
+            // 
+>>>>>>> 96c587165bb662eee4158903e2a0f5faedc46a67
             this.panel11.Controls.Add(this.label21);
             this.panel11.Location = new System.Drawing.Point(473, 565);
             this.panel11.Name = "panel11";
@@ -787,7 +793,7 @@ namespace testestestsettest
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("맑은 고딕", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label21.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label21.Location = new System.Drawing.Point(34, 20);
+            this.label21.Location = new System.Drawing.Point(34, 18);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(227, 45);
             this.label21.TabIndex = 0;
