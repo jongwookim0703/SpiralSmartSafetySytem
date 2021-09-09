@@ -681,7 +681,6 @@ namespace testestestsettest
             // 
             // panel3
             // 
-            this.panel3.BackgroundImage = global::testestestsettest.Properties.Resources.KakaoTalk_20210908_153305527;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel3.Controls.Add(this.label3);
             this.panel3.Location = new System.Drawing.Point(317, 16);
@@ -702,7 +701,6 @@ namespace testestestsettest
             // 
             // panel5
             // 
-            this.panel5.BackgroundImage = global::testestestsettest.Properties.Resources.현재공정;
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panel5.Controls.Add(this.label20);
             this.panel5.Location = new System.Drawing.Point(22, 16);
@@ -713,7 +711,6 @@ namespace testestestsettest
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = global::testestestsettest.Properties.Resources.하늘;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -727,7 +724,6 @@ namespace testestestsettest
             // 
             // panel10
             // 
-            this.panel10.BackgroundImage = global::testestestsettest.Properties.Resources.포카리;
             this.panel10.Controls.Add(this.button3);
             this.panel10.Controls.Add(this.button2);
             this.panel10.Controls.Add(this.button1);
@@ -739,7 +735,6 @@ namespace testestestsettest
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = global::testestestsettest.Properties.Resources.하늘;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -754,7 +749,6 @@ namespace testestestsettest
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.BackgroundImage = global::testestestsettest.Properties.Resources.하늘;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);

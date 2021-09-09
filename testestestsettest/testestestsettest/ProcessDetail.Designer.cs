@@ -74,7 +74,6 @@ namespace testestestsettest
             // btn_detail1
             // 
             this.btn_detail1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_detail1.BackgroundImage = global::testestestsettest.Properties.Resources.button_clearblue_;
             this.btn_detail1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_detail1.Location = new System.Drawing.Point(2, 1);
             this.btn_detail1.Name = "btn_detail1";
@@ -87,7 +86,6 @@ namespace testestestsettest
             // btn_stop1
             // 
             this.btn_stop1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_stop1.BackgroundImage = global::testestestsettest.Properties.Resources.button_clearblue_;
             this.btn_stop1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_stop1.Location = new System.Drawing.Point(0, 0);
             this.btn_stop1.Name = "btn_stop1";
@@ -100,7 +98,6 @@ namespace testestestsettest
             // btn_work1
             // 
             this.btn_work1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_work1.BackgroundImage = global::testestestsettest.Properties.Resources.button_clearblue_;
             this.btn_work1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_work1.Location = new System.Drawing.Point(0, 0);
             this.btn_work1.Name = "btn_work1";
@@ -137,7 +134,6 @@ namespace testestestsettest
             // 
             // panel3
             // 
-            this.panel3.BackgroundImage = global::testestestsettest.Properties.Resources.yellow;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel3.Controls.Add(this.label3);
             this.panel3.Location = new System.Drawing.Point(504, 35);
@@ -157,7 +153,6 @@ namespace testestestsettest
             // 
             // panel2
             // 
-            this.panel2.BackgroundImage = global::testestestsettest.Properties.Resources.red;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel2.Controls.Add(this.label5);
             this.panel2.Location = new System.Drawing.Point(544, 35);
@@ -247,7 +242,6 @@ namespace testestestsettest
             // 
             // panel5
             // 
-            this.panel5.BackgroundImage = global::testestestsettest.Properties.Resources.backGround_clearblue_;
             this.panel5.Controls.Add(this.btn_detail1);
             this.panel5.Location = new System.Drawing.Point(6, 21);
             this.panel5.Name = "panel5";
