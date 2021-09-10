@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace testestestsettest
 {
-    class Common
+    public class Common
     {
         public static string LogInId = string.Empty;
         public static string LogInName = string.Empty;
         public static string DbPath = "Data Source=hangaramit.iptime.org; Initial Catalog=SpiralDB;User ID=spa;Password=spiral_0904";
     }
 }
+

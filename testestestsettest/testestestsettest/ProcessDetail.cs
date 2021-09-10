@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Transactions;
 using System.Data.SqlClient;
+using testestestsettest.Models;
+using System.Diagnostics;
 
 namespace testestestsettest
 {
@@ -21,7 +23,6 @@ namespace testestestsettest
         // 데이터베이스 명령전달
 
         // 접속 주소
-        private string strConn = "Data Source=61.105.9.203; Initial Catalog=AppDev;User ID=spa;Password=spiral_0904";
         public ProcessDetail()
         {
             InitializeComponent();
@@ -33,7 +34,7 @@ namespace testestestsettest
             {
                 //Sql 커넥션
                 //Sql 커넥션에 등록 및 객체 선언
-                Connect = new SqlConnection(strConn);
+                Connect = new SqlConnection(Common.DbPath);
                 Connect.Open();
 
                 if (Connect.State != System.Data.ConnectionState.Open)
@@ -64,7 +65,6 @@ namespace testestestsettest
                 grid.Columns["CHECKDATE"].HeaderText = "재확인시간";
                 grid.Columns["MAKER"].HeaderText     = "담당자";
 
-
                 // 그리드 뷰의 폭 지정
                 grid.Columns[0].Width = 150;
                 grid.Columns[1].Width = 150;
@@ -75,7 +75,6 @@ namespace testestestsettest
                 grid.Columns[6].Width = 150;
                 grid.Columns[7].Width = 150;
                 grid.Columns[8].Width = 150;
-
 
                 //컬럼의 수정 여부를 지정 한다
                 grid.Columns["NO"].ReadOnly        = true;    //기본키라 수정하면 안됌, 단 신규로 추가될때는 해야함
@@ -120,7 +119,7 @@ namespace testestestsettest
                 SqlCommand cmd = new SqlCommand();
                 SqlTransaction Tran;   //승인을 할지 거절을 할지 권한을 가지겟다
 
-                Connect = new SqlConnection(strConn);
+                Connect = new SqlConnection(Common.DbPath);
                 Connect.Open();
 
                 Tran = Connect.BeginTransaction("TestTran");
@@ -173,7 +172,7 @@ namespace testestestsettest
                 SqlCommand cmd = new SqlCommand();
                 SqlTransaction Tran;   //승인을 할지 거절을 할지 권한을 가지겟다
 
-                Connect = new SqlConnection(strConn);
+                Connect = new SqlConnection(Common.DbPath);
                 Connect.Open();
 
                 Tran = Connect.BeginTransaction("TestTran");
@@ -211,11 +210,12 @@ namespace testestestsettest
 
         private void cbo_proces1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            Debug.WriteLine("TEST");
+            /*try
             {
-                //콤보박스 품목 상세 데이터 조회 및 추가
+                //콤보박스에서 선택된 프로세스의 조회
                 // 접속 정보 커넥션에 등록 및 객체 선언
-                Connect = new SqlConnection(strConn);
+                Connect = new SqlConnection(Common.DbPath);
                 Connect.Open();
 
                 if (Connect.State != System.Data.ConnectionState.Open)
@@ -231,6 +231,7 @@ namespace testestestsettest
                 cbo_proces1.DisplayMember = "NO";                 // 눈으로 보여줄 항목
                 cbo_proces1.DisplayMember = "PROCESSNO";          // 눈으로 보여줄 항목
                 cbo_proces1.DisplayMember = "PROCESSNAME";        // 눈으로 보여줄 항목
+
                 cbo_proces1.DisplayMember = "ONOFFFLAG";          // 눈으로 보여줄 항목
                 cbo_proces1.DisplayMember = "APPROACHWARN";       // 눈으로 보여줄 항목
                 cbo_proces1.DisplayMember = "FIREWARN";           // 눈으로 보여줄 항목
@@ -253,7 +254,102 @@ namespace testestestsettest
             finally
             {
                 Connect.Close();              //DB 연결 끊어주기
+            }*/
+        }
+
+        private void btn_plan_Click(object sender, EventArgs e)
+        {
+            // 1. 입력 검증 - 숫자가 아닌값이 들어오면 팅겨냄
+            try
+            {
+                var pstarttime = DateTime.Parse(txt_start.Text);
+                DateTime pendtime = DateTime.Parse(txt_end.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("계획 입력시간이 틀렸습니다.");
+                return;
+            }            
+
+            SetDataToDb();
+        }
+
+        private BindingList<Tb_Process> Processes;
+
+        private void ProcessDetail_Load(object sender, EventArgs e)
+        {
+            InitControlsFromDb();
+        }
+
+        #region DB처리 영역 
+        private void SetDataToDb()
+        {
+            // 1-1. 콤보박스 값 가져오기
+            Tb_Process temp = cbo_proces1.SelectedItem as Tb_Process;
+
+            // 2. 디비 입력
+            using (SqlConnection conn = new SqlConnection(Common.DbPath))
+            {
+                conn.Open();
+
+                SqlTransaction trans = conn.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("USP_PROCESSWORKrec_INS", conn);
+                cmd.Transaction = trans;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@PROCESSNO", temp.ProcessNo);
+                cmd.Parameters.AddWithValue("@PROCESSNAME", temp.ProcessName);
+                cmd.Parameters.AddWithValue("@MAKER", "SYSTEM");
+                cmd.Parameters.AddWithValue("@PSTARTTIME", txt_start.Text);
+                cmd.Parameters.AddWithValue("@PENDTIME", txt_end.Text);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    // 성공
+                    trans.Commit();
+                    MessageBox.Show("입력성공했습니다");
+                }
+                else
+                {
+                    // 실패 
+                    trans.Rollback();
+                    MessageBox.Show("입력실패했습니다");
+                }
             }
         }
+
+        private void InitControlsFromDb()
+        {
+            Processes = new BindingList<Tb_Process>();
+
+            // DB에서 프로세스 가져와서 콤보박스 바인딩
+            using (SqlConnection conn = new SqlConnection(Common.DbPath))
+            {
+                conn.Open();
+
+                var selquery = @"SELECT PROCESSNO
+                                      , PROCESSNAME
+                                   FROM TB_PROCESS";
+
+                SqlCommand cmd = new SqlCommand(selquery, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Processes.Add(new Tb_Process
+                    {
+                        ProcessNo = (int)reader["PROCESSNO"],
+                        ProcessName = reader["PROCESSNAME"].ToString()
+                    });
+                }
+            }
+
+            // Combobox에 바인딩
+            cbo_proces1.DataSource = Processes;
+            cbo_proces1.ValueMember = "PROCESSNO";
+            cbo_proces1.DisplayMember = "PROCESSNAME";
+            cbo_proces1.SelectedIndex = 0;
+        }
+
+        #endregion
     }
 }

@@ -17,8 +17,8 @@ namespace testestestsettest
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new ProcessDetail());
             //Application.Run(new LogIn());
-            Application.Run(new MainPage());
         }
     }
 }
