@@ -13,7 +13,7 @@ namespace testestestsettest
 {
     public partial class UserResgister : Form
     {
-        public UserResgister()
+        /*public UserResgister()
         {
             InitializeComponent();
             serialPort1.Open();
@@ -44,7 +44,7 @@ namespace testestestsettest
                     cboPosition.Text = "";
                 }
             }
-        }
+        }*/
 
         Dictionary<int, inforegister> inforegister_info = new Dictionary<int, inforegister>();
         private void button2_Click_1(object sender, EventArgs e)

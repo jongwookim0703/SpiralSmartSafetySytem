@@ -19,7 +19,7 @@ namespace testestestsettest
         {
             InitializeComponent();
 
-            //login form 호출
+            /*//login form 호출
             LogIn Login = new LogIn();
             Login.ShowDialog();
 
@@ -29,7 +29,7 @@ namespace testestestsettest
                 Application.ExitThread();
                 Application.Exit();
                 System.Environment.Exit(0);
-            }
+            }*/
 
         }
         
@@ -57,38 +57,15 @@ namespace testestestsettest
             myTabControl1.SelectedTab.Dispose();
         }
 
-        public partial class MDIForm : TabPage
-        {
-            //추가할 내용 없음
-        }
-
-        //main 안에 class선언시 main에 종속된 함수로 보게 된다.
-        public partial class MyTabControl : TabControl //tabcontrol에 대한 파생class생성 //사용자 정의 control
-        {
-            public void AddForm(Form NewForm)
-            {
-                if (NewForm == null) return;    //인자로 받은 form 없는 경우 실행 중지
-
-                NewForm.TopLevel = false;       //인자로 받은 form이 최상위 개체x 선언 == false
-                MDIForm page = new MDIForm();   //tab page object 생성 
-                page.Controls.Add(NewForm);     //page에 form add
-                page.Text = NewForm.Text;       //form에서 지정한 명칭으로 tab page 설정
-                page.Name = NewForm.Name;       //form에서 설정한 이름으로 tab page 설정
-                base.TabPages.Add(page);        //tab control에 page add
-                NewForm.Show();                 //인자로 받은 form show
-                base.SelectedTab = page;        //현재 선택된 페이지를 호출한 폼의 페이지로 설정
-            }
-        }
-
         private void tssFirstPage_Click(object sender, EventArgs e)
         {
-            Button TempBtn = new Button();
-            TempBtn = (Button)sender;
+            ToolStripMenuItem TempTss = new ToolStripMenuItem();
+            TempTss = (ToolStripMenuItem)sender;
 
-            string FormName = TempBtn.Tag.ToString();
+            string FormName = TempTss.Tag.ToString();
 
-            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "FirstPage.DLL"); // 호텔 예약하기 폼이 들어가야함. 
-            Type typeForm = assemb.GetType("FirstPage." + FormName.ToString(), true); // 여기도 호텔 예약하기 폼의 네임스페이스가 들어가야함. 
+            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
+            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
             Form ShowForm = (Form)Activator.CreateInstance(typeForm);
 
             for (int i = 0; i < myTabControl1.TabPages.Count; i++)
@@ -99,18 +76,72 @@ namespace testestestsettest
                     return;
                 }
             }
-            if (FormName.ToString() == "FM_RESV" || FormName.ToString() == "FM_CHECK")
+            
+            myTabControl1.AddForm(ShowForm);
+        }
+
+        private void MainPage_Load(object sender, EventArgs e)
+        {
+            /*this.stnDetail.Location = new Point(1575, 40);
+            this.tsbClose.Location = new Point(1500, 40);*/
+
+            string FormName = "FirstPage";
+
+            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // 호텔 예약하기 폼이 들어가야함. 
+            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // 여기도 호텔 예약하기 폼의 네임스페이스가 들어가야함. 
+            Form ShowForm = (Form)Activator.CreateInstance(typeForm);
+
+            for (int i = 0; i < myTabControl1.TabPages.Count; i++)
             {
-                if (auth != "C")
+                if (myTabControl1.TabPages[i].Name == FormName.ToString())
                 {
-                    MessageBox.Show("고객만 열람할수 있습니다.");
+                    myTabControl1.SelectedTab = myTabControl1.TabPages[i];
                     return;
                 }
             }
-            
-            //myTabControl1.AddForm(ShowForm);
+
+            myTabControl1.AddForm(ShowForm);
         }
 
+        private void stnDetail_Click(object sender, EventArgs e)
+        {
+            string FormName = "ProcessSafety";
+
+            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
+            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
+            Form ShowForm = (Form)Activator.CreateInstance(typeForm);
+
+            for (int i = 0; i < myTabControl1.TabPages.Count; i++)
+            {
+                if (myTabControl1.TabPages[i].Name == FormName.ToString())
+                {
+                    myTabControl1.SelectedTab = myTabControl1.TabPages[i];
+                    return;
+                }
+            }
+
+            myTabControl1.AddForm(ShowForm);
+        }
+
+        private void tssProcess1_Click(object sender, EventArgs e)
+        {
+            string FormName = "ProcessDetail";
+
+            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
+            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
+            Form ShowForm = (Form)Activator.CreateInstance(typeForm);
+
+            for (int i = 0; i < myTabControl1.TabPages.Count; i++)
+            {
+                if (myTabControl1.TabPages[i].Name == FormName.ToString())
+                {
+                    myTabControl1.SelectedTab = myTabControl1.TabPages[i];
+                    return;
+                }
+            }
+
+            myTabControl1.AddForm(ShowForm);
+        }
     }
 
     public partial class MDIForm : TabPage

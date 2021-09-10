@@ -22,15 +22,15 @@ namespace testestestsettest
 
         private void btn_process1_Click(object sender, EventArgs e)
         {
-            Button TempBtn = new Button();
-            TempBtn = (Button)sender;
-
-            string FormName = TempBtn.Tag.ToString();
+            /*MyTabControl myTabControl1 = new MyTabControl();
+            string FormName = "ProcessDetail";
 
             Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "ProcessDetail.DLL"); // 호텔 예약하기 폼이 들어가야함. 
             Type typeForm = assemb.GetType("ProcessDetail." + FormName.ToString(), true); // 여기도 호텔 예약하기 폼의 네임스페이스가 들어가야함. 
-            Form ShowForm = (Form)Activator.CreateInstance(typeForm);
+            Form ShowForm = (Form)Activator.CreateInstance(typeForm);*/
 
+            Form ShowForm = new ProcessDetail();
+            ShowForm.Show();
             /*for (int i = 0; i < myTabControl1.TabPages.Count; i++)
             {
                 if (myTabControl1.TabPages[i].Name == FormName.ToString())
@@ -38,7 +38,9 @@ namespace testestestsettest
                     myTabControl1.SelectedTab = myTabControl1.TabPages[i];
                     return;
                 }
-            }*/
+            }
+            myTabControl1.AddForm(ShowForm);*/
+
             
         }
 
@@ -63,7 +65,7 @@ namespace testestestsettest
 
         private void FirstPage_Load(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 //콤보박스 품목 상세 데이터 조회 및 추가
                 Connect = new SqlConnection(strConn); // 접속 정보 커넥션에 등록 및 객체 선언
@@ -101,7 +103,12 @@ namespace testestestsettest
             finally
             {
                 Connect.Close();
-            }
+            }*/
+        }
+
+        private void lb_process1_TextChanged(object sender, EventArgs e)
+        {
+            //db에서 받아오기
         }
     }
 }

@@ -43,20 +43,19 @@ namespace testestestsettest
             this.tssTimer = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.stbClose = new System.Windows.Forms.ToolStripButton();
             this.stbExit = new System.Windows.Forms.ToolStripButton();
-            this.tssRed = new System.Windows.Forms.ToolStripLabel();
-            this.tssYellow = new System.Windows.Forms.ToolStripLabel();
-            this.tssGreen = new System.Windows.Forms.ToolStripLabel();
+            this.stbClose = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
+            this.tssGreen = new System.Windows.Forms.ToolStripLabel();
+            this.tssYellow = new System.Windows.Forms.ToolStripLabel();
+            this.tssRed = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.myTabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tssEnv = new System.Windows.Forms.ToolStripLabel();
+            this.stnDetail = new System.Windows.Forms.ToolStripButton();
+            this.myTabControl1 = new testestestsettest.MyTabControl();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.myTabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -78,6 +77,7 @@ namespace testestestsettest
             // 
             this.tssFirstPage.Name = "tssFirstPage";
             this.tssFirstPage.Size = new System.Drawing.Size(123, 24);
+            this.tssFirstPage.Tag = "FirstPage";
             this.tssFirstPage.Text = "전체 공정 관리";
             this.tssFirstPage.Click += new System.EventHandler(this.tssFirstPage_Click);
             // 
@@ -86,6 +86,7 @@ namespace testestestsettest
             this.tssProcess1.Name = "tssProcess1";
             this.tssProcess1.Size = new System.Drawing.Size(91, 24);
             this.tssProcess1.Text = "프로세스1";
+            this.tssProcess1.Click += new System.EventHandler(this.tssProcess1_Click);
             // 
             // tssProcess2
             // 
@@ -132,7 +133,8 @@ namespace testestestsettest
             // tssTimer
             // 
             this.tssTimer.Name = "tssTimer";
-            this.tssTimer.Size = new System.Drawing.Size(0, 20);
+            this.tssTimer.Size = new System.Drawing.Size(1044, 20);
+            this.tssTimer.Spring = true;
             // 
             // timer1
             // 
@@ -144,31 +146,24 @@ namespace testestestsettest
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stbClose,
             this.stbExit,
-            this.tssRed,
-            this.tssYellow,
-            this.tssGreen,
+            this.stbClose,
             this.toolStripLabel4,
-            this.toolStripSeparator1});
+            this.tssGreen,
+            this.tssYellow,
+            this.tssRed,
+            this.toolStripSeparator1,
+            this.tssEnv,
+            this.stnDetail});
             this.toolStrip1.Location = new System.Drawing.Point(0, 28);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1113, 27);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // stbClose
-            // 
-            this.stbClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.stbClose.Image = ((System.Drawing.Image)(resources.GetObject("stbClose.Image")));
-            this.stbClose.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.stbClose.Name = "stbClose";
-            this.stbClose.Size = new System.Drawing.Size(29, 24);
-            this.stbClose.Text = "close";
-            this.stbClose.Click += new System.EventHandler(this.stbClose_Click);
-            // 
             // stbExit
             // 
+            this.stbExit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.stbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.stbExit.Image = ((System.Drawing.Image)(resources.GetObject("stbExit.Image")));
             this.stbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -179,70 +174,70 @@ namespace testestestsettest
             this.stbExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.stbExit.Click += new System.EventHandler(this.stbExit_Click);
             // 
-            // tssRed
+            // stbClose
             // 
-            this.tssRed.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tssRed.Name = "tssRed";
-            this.tssRed.Size = new System.Drawing.Size(17, 24);
-            this.tssRed.Text = "0";
-            // 
-            // tssYellow
-            // 
-            this.tssYellow.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tssYellow.Name = "tssYellow";
-            this.tssYellow.Size = new System.Drawing.Size(17, 24);
-            this.tssYellow.Text = "0";
-            // 
-            // tssGreen
-            // 
-            this.tssGreen.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tssGreen.Name = "tssGreen";
-            this.tssGreen.Size = new System.Drawing.Size(17, 24);
-            this.tssGreen.Text = "0";
+            this.stbClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.stbClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.stbClose.Image = ((System.Drawing.Image)(resources.GetObject("stbClose.Image")));
+            this.stbClose.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.stbClose.Name = "stbClose";
+            this.stbClose.Size = new System.Drawing.Size(29, 24);
+            this.stbClose.Text = "close";
+            this.stbClose.Click += new System.EventHandler(this.stbClose_Click);
             // 
             // toolStripLabel4
             // 
-            this.toolStripLabel4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLabel4.Name = "toolStripLabel4";
             this.toolStripLabel4.Size = new System.Drawing.Size(109, 24);
             this.toolStripLabel4.Text = "현재 공정 상태";
             // 
+            // tssGreen
+            // 
+            this.tssGreen.Name = "tssGreen";
+            this.tssGreen.Size = new System.Drawing.Size(17, 24);
+            this.tssGreen.Text = "4";
+            // 
+            // tssYellow
+            // 
+            this.tssYellow.Name = "tssYellow";
+            this.tssYellow.Size = new System.Drawing.Size(17, 24);
+            this.tssYellow.Text = "0";
+            // 
+            // tssRed
+            // 
+            this.tssRed.Name = "tssRed";
+            this.tssRed.Size = new System.Drawing.Size(17, 24);
+            this.tssRed.Text = "0";
+            // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
+            // tssEnv
+            // 
+            this.tssEnv.Name = "tssEnv";
+            this.tssEnv.Size = new System.Drawing.Size(109, 24);
+            this.tssEnv.Text = "공기 순환 상태";
+            // 
+            // stnDetail
+            // 
+            this.stnDetail.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.stnDetail.Image = ((System.Drawing.Image)(resources.GetObject("stnDetail.Image")));
+            this.stnDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.stnDetail.Name = "stnDetail";
+            this.stnDetail.Size = new System.Drawing.Size(29, 24);
+            this.stnDetail.Text = "toolStripButton1";
+            this.stnDetail.Click += new System.EventHandler(this.stnDetail_Click);
+            // 
             // myTabControl1
             // 
-            this.myTabControl1.Controls.Add(this.tabPage1);
-            this.myTabControl1.Controls.Add(this.tabPage2);
             this.myTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.myTabControl1.Location = new System.Drawing.Point(0, 55);
             this.myTabControl1.Name = "myTabControl1";
             this.myTabControl1.SelectedIndex = 0;
             this.myTabControl1.Size = new System.Drawing.Size(1113, 545);
-            this.myTabControl1.TabIndex = 11;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1105, 512);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(242, 92);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.myTabControl1.TabIndex = 13;
             // 
             // MainPage
             // 
@@ -257,13 +252,13 @@ namespace testestestsettest
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainPage";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainPage_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.myTabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,8 +284,8 @@ namespace testestestsettest
         private System.Windows.Forms.ToolStripMenuItem tssProcess3;
         private System.Windows.Forms.ToolStripMenuItem tssProcess4;
         private System.Windows.Forms.ToolStripButton stbClose;
-        private System.Windows.Forms.TabControl myTabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private testestestsettest.MyTabControl myTabControl1;
+        private System.Windows.Forms.ToolStripLabel tssEnv;
+        private System.Windows.Forms.ToolStripButton stnDetail;
     }
 }
