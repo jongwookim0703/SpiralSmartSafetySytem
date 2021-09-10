@@ -18,6 +18,7 @@ namespace testestestsettest
             InitializeComponent();
             serialPort1.Open();
         }
+        private string strConn = "Data Source=61.105.9.203; Initial Catalog=AppDev;User ID=spa;Password=spiral_0904";
 
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
