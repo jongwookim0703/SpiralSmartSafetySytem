@@ -46,9 +46,14 @@ namespace testestestsettest
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_start = new System.Windows.Forms.TextBox();
+            this.txt_end = new System.Windows.Forms.TextBox();
+            this.btn_plan = new System.Windows.Forms.Button();
+            this.chk_re1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vlc1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -57,25 +62,24 @@ namespace testestestsettest
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // grid
             // 
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Location = new System.Drawing.Point(633, 89);
+            this.grid.Location = new System.Drawing.Point(633, 148);
             this.grid.Name = "grid";
             this.grid.RowTemplate.Height = 25;
-            this.grid.Size = new System.Drawing.Size(155, 286);
+            this.grid.Size = new System.Drawing.Size(155, 227);
             this.grid.TabIndex = 1;
             // 
             // btn_detail1
             // 
             this.btn_detail1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_detail1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_detail1.Location = new System.Drawing.Point(2, 1);
+            this.btn_detail1.Location = new System.Drawing.Point(33, 403);
             this.btn_detail1.Name = "btn_detail1";
             this.btn_detail1.Size = new System.Drawing.Size(72, 34);
             this.btn_detail1.TabIndex = 4;
@@ -89,7 +93,7 @@ namespace testestestsettest
             this.btn_stop1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_stop1.Location = new System.Drawing.Point(0, 0);
             this.btn_stop1.Name = "btn_stop1";
-            this.btn_stop1.Size = new System.Drawing.Size(65, 35);
+            this.btn_stop1.Size = new System.Drawing.Size(71, 35);
             this.btn_stop1.TabIndex = 4;
             this.btn_stop1.Text = "중단";
             this.btn_stop1.UseVisualStyleBackColor = false;
@@ -99,7 +103,7 @@ namespace testestestsettest
             // 
             this.btn_work1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_work1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_work1.Location = new System.Drawing.Point(0, 0);
+            this.btn_work1.Location = new System.Drawing.Point(101, 20);
             this.btn_work1.Name = "btn_work1";
             this.btn_work1.Size = new System.Drawing.Size(75, 35);
             this.btn_work1.TabIndex = 4;
@@ -110,10 +114,10 @@ namespace testestestsettest
             // vlc1
             // 
             this.vlc1.BackColor = System.Drawing.Color.Black;
-            this.vlc1.Location = new System.Drawing.Point(33, 89);
+            this.vlc1.Location = new System.Drawing.Point(33, 148);
             this.vlc1.MediaPlayer = null;
             this.vlc1.Name = "vlc1";
-            this.vlc1.Size = new System.Drawing.Size(583, 286);
+            this.vlc1.Size = new System.Drawing.Size(583, 227);
             this.vlc1.TabIndex = 5;
             this.vlc1.Text = "videoView1";
             // 
@@ -231,51 +235,104 @@ namespace testestestsettest
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.panel7);
+            this.groupBox2.Controls.Add(this.btn_work1);
+            this.groupBox2.Controls.Add(this.chk_re1);
             this.groupBox2.Controls.Add(this.panel6);
-            this.groupBox2.Controls.Add(this.panel5);
-            this.groupBox2.Location = new System.Drawing.Point(536, 386);
+            this.groupBox2.Location = new System.Drawing.Point(520, 381);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(252, 63);
+            this.groupBox2.Size = new System.Drawing.Size(268, 63);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.btn_work1);
-            this.panel7.Location = new System.Drawing.Point(170, 21);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(76, 36);
-            this.panel7.TabIndex = 9;
-            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.btn_stop1);
-            this.panel6.Location = new System.Drawing.Point(94, 22);
+            this.panel6.Location = new System.Drawing.Point(182, 21);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(65, 36);
+            this.panel6.Size = new System.Drawing.Size(71, 36);
             this.panel6.TabIndex = 9;
             // 
-            // panel5
+            // groupBox3
             // 
-            this.panel5.Controls.Add(this.btn_detail1);
-            this.panel5.Location = new System.Drawing.Point(6, 21);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(75, 35);
-            this.panel5.TabIndex = 9;
+            this.groupBox3.Controls.Add(this.btn_plan);
+            this.groupBox3.Controls.Add(this.txt_end);
+            this.groupBox3.Controls.Add(this.txt_start);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Location = new System.Drawing.Point(33, 89);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(755, 53);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "groupBox3";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 23);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(115, 15);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "계획 가동 시작 시간";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(280, 23);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(115, 15);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "계획 가동 마감 시간";
+            // 
+            // txt_start
+            // 
+            this.txt_start.Location = new System.Drawing.Point(128, 20);
+            this.txt_start.Name = "txt_start";
+            this.txt_start.Size = new System.Drawing.Size(137, 23);
+            this.txt_start.TabIndex = 2;
+            // 
+            // txt_end
+            // 
+            this.txt_end.Location = new System.Drawing.Point(401, 20);
+            this.txt_end.Name = "txt_end";
+            this.txt_end.Size = new System.Drawing.Size(129, 23);
+            this.txt_end.TabIndex = 3;
+            // 
+            // btn_plan
+            // 
+            this.btn_plan.Location = new System.Drawing.Point(648, 23);
+            this.btn_plan.Name = "btn_plan";
+            this.btn_plan.Size = new System.Drawing.Size(100, 23);
+            this.btn_plan.TabIndex = 4;
+            this.btn_plan.Text = "계획 등록";
+            this.btn_plan.UseVisualStyleBackColor = true;
+            this.btn_plan.Click += new System.EventHandler(this.btn_plan_Click);
+            // 
+            // chk_re1
+            // 
+            this.chk_re1.AutoSize = true;
+            this.chk_re1.Location = new System.Drawing.Point(11, 30);
+            this.chk_re1.Name = "chk_re1";
+            this.chk_re1.Size = new System.Drawing.Size(90, 19);
+            this.chk_re1.TabIndex = 11;
+            this.chk_re1.Text = "재가동 옵션";
+            this.chk_re1.UseVisualStyleBackColor = true;
             // 
             // ProcessDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 481);
+            this.Controls.Add(this.btn_detail1);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.vlc1);
             this.Controls.Add(this.grid);
             this.Name = "ProcessDetail";
             this.Text = "ProcessDetail";
+            this.Load += new System.EventHandler(this.ProcessDetail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vlc1)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -289,9 +346,10 @@ namespace testestestsettest
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.panel6.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -314,8 +372,13 @@ namespace testestestsettest
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.CheckBox chk_re1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btn_plan;
+        private System.Windows.Forms.TextBox txt_end;
+        private System.Windows.Forms.TextBox txt_start;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }

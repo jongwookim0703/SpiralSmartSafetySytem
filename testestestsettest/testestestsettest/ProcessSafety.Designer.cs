@@ -767,7 +767,7 @@ namespace testestestsettest
             this.button2.UseVisualStyleBackColor = false;
             // 
             // panel11
-<<<<<<< HEAD
+
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -779,9 +779,7 @@ namespace testestestsettest
             this.button3.TabIndex = 2;
             this.button3.Text = "중단";
             this.button3.UseVisualStyleBackColor = false;
-=======
-            // 
->>>>>>> 96c587165bb662eee4158903e2a0f5faedc46a67
+
             this.panel11.Controls.Add(this.label21);
             this.panel11.Location = new System.Drawing.Point(473, 565);
             this.panel11.Name = "panel11";

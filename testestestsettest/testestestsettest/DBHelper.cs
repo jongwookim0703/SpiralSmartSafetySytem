@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.Common;
 
-namespace SP_PJT_3
+namespace testestestsettest
 {
     public class DBHelper
     {
