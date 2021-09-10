@@ -765,6 +765,11 @@ namespace testestestsettest
             this.button2.TabIndex = 1;
             this.button2.Text = "가동";
             this.button2.UseVisualStyleBackColor = false;
+<<<<<<< HEAD
+=======
+            // 
+            // panel11
+>>>>>>> bf376d400cd14848d83698ff7db4e7c0fe249c6e
 
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -778,7 +783,10 @@ namespace testestestsettest
             this.button3.Text = "중단";
             this.button3.UseVisualStyleBackColor = false;
 
+<<<<<<< HEAD
            
+=======
+>>>>>>> bf376d400cd14848d83698ff7db4e7c0fe249c6e
             this.panel11.Controls.Add(this.label21);
             this.panel11.Location = new System.Drawing.Point(473, 565);
             this.panel11.Name = "panel11";

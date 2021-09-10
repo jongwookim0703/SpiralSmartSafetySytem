@@ -23,9 +23,17 @@ namespace testestestsettest
             InitializeComponent();
             this.Tag = "FAIL";
         }
+<<<<<<< HEAD
         private int PwFailCount = 0;
 
 
+=======
+
+        private int PwFailCount = 0;
+
+
+
+>>>>>>> bf376d400cd14848d83698ff7db4e7c0fe249c6e
         private void btnLogin_Click(object sender, EventArgs e)
         {
             try

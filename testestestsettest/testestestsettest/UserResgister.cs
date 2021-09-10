@@ -13,39 +13,47 @@ namespace testestestsettest
 {
     public partial class UserResgister : Form
     {
+<<<<<<< HEAD
         public UserResgister()
         {
             InitializeComponent();
             serialPort1.Open();
         }
         private string strConn = "Data Source=61.105.9.203; Initial Catalog=AppDev;User ID=spa;Password=spiral_0904";
+=======
+        //public UserResgister()
+        //{
+        //    InitializeComponent();
+        //    serialPort1.Open();
+        //}
+>>>>>>> bf376d400cd14848d83698ff7db4e7c0fe249c6e
 
-        private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
-        {
-            if (serialPort1.IsOpen)
-            {
-                byte[] recv = new byte[1];
-                serialPort1.Read(recv, 0, 1);
+        //private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        //{
+        //    if (serialPort1.IsOpen)
+        //    {
+        //        byte[] recv = new byte[1];
+        //        serialPort1.Read(recv, 0, 1);
 
-                txtFinger.Text = recv[0].ToString();
-                if (inforegister_info.ContainsKey((int)recv[0]))
-                {
-                    //등록된 정보가 있을경우
-                    txtID.Text              = inforegister_info[recv[0]].id;
-                    txtPassword.Text = inforegister_info[recv[0]].password;
-                    txtName.Text       = inforegister_info[recv[0]].name;
-                    cboPosition.Text  = inforegister_info[recv[0]].position;
+        //        txtFinger.Text = recv[0].ToString();
+        //        if (inforegister_info.ContainsKey((int)recv[0]))
+        //        {
+        //            //등록된 정보가 있을경우
+        //            txtID.Text              = inforegister_info[recv[0]].id;
+        //            txtPassword.Text = inforegister_info[recv[0]].password;
+        //            txtName.Text       = inforegister_info[recv[0]].name;
+        //            cboPosition.Text  = inforegister_info[recv[0]].position;
 
-                }
-                else
-                {
-                    txtID.Text = "";
-                    txtPassword.Text = "";
-                    txtName.Text = "";
-                    cboPosition.Text = "";
-                }
-            }
-        }
+        //        }
+        //        else
+        //        {
+        //            txtID.Text = "";
+        //            txtPassword.Text = "";
+        //            txtName.Text = "";
+        //            cboPosition.Text = "";
+        //        }
+        //    }
+        //}
 
         Dictionary<int, inforegister> inforegister_info = new Dictionary<int, inforegister>();
         private void button2_Click_1(object sender, EventArgs e)
