@@ -12,5 +12,6 @@ namespace testestestsettest.Models
 
         public string ProcessName { get; set; }
 
+        public string Maker { get; set; }
     }
 }
