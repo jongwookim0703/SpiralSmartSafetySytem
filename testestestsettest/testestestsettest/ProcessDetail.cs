@@ -11,15 +11,19 @@ using System.Transactions;
 using System.Data.SqlClient;
 using testestestsettest.Models;
 using System.Diagnostics;
+using System.Reflection;
+using System.IO;
 
 namespace testestestsettest
 {
     public partial class ProcessDetail : Form
     {
         // 접속 정보 객체 명명
-        private System.Data.SqlClient.SqlConnection Connect = null; 
+        private SqlConnection Connect = null;
+
+        private string RtspUrl = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
         // 데이터베이스 관리권한
-        
+
         // 데이터베이스 명령전달
 
         // 접속 주소
@@ -211,6 +215,7 @@ namespace testestestsettest
         private void cbo_proces1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Debug.WriteLine("TEST");
+            vlcControl.Play(new Uri(RtspUrl));
             /*try
             {
                 //콤보박스에서 선택된 프로세스의 조회
@@ -278,7 +283,7 @@ namespace testestestsettest
 
         private void ProcessDetail_Load(object sender, EventArgs e)
         {
-            InitControlsFromDb();
+            InitControlsFromDb();            
         }
 
         #region DB처리 영역 
@@ -351,5 +356,13 @@ namespace testestestsettest
         }
 
         #endregion
+
+        private void vlcControl_VlcLibDirectoryNeeded(object sender, Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs e)
+        {
+            var currentAssembly = Assembly.GetEntryAssembly();
+            var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
+
+            e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
+        }
     }
 }

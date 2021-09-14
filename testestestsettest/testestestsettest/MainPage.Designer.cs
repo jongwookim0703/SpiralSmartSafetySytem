@@ -30,7 +30,6 @@ namespace testestestsettest
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tssFirstPage = new System.Windows.Forms.ToolStripMenuItem();
             this.tssProcess1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,20 +41,19 @@ namespace testestestsettest
             this.tssUserName = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssTimer = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.stbExit = new System.Windows.Forms.ToolStripButton();
-            this.stbClose = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
-            this.tssGreen = new System.Windows.Forms.ToolStripLabel();
-            this.tssYellow = new System.Windows.Forms.ToolStripLabel();
-            this.tssRed = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tssEnv = new System.Windows.Forms.ToolStripLabel();
-            this.stnDetail = new System.Windows.Forms.ToolStripButton();
             this.myTabControl1 = new testestestsettest.MyTabControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnDetail = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -93,18 +91,21 @@ namespace testestestsettest
             this.tssProcess2.Name = "tssProcess2";
             this.tssProcess2.Size = new System.Drawing.Size(91, 24);
             this.tssProcess2.Text = "프로세스2";
+            this.tssProcess2.Click += new System.EventHandler(this.tssProcess2_Click);
             // 
             // tssProcess3
             // 
             this.tssProcess3.Name = "tssProcess3";
             this.tssProcess3.Size = new System.Drawing.Size(91, 24);
             this.tssProcess3.Text = "프로세스3";
+            this.tssProcess3.Click += new System.EventHandler(this.tssProcess3_Click);
             // 
             // tssProcess4
             // 
             this.tssProcess4.Name = "tssProcess4";
             this.tssProcess4.Size = new System.Drawing.Size(91, 24);
             this.tssProcess4.Text = "프로세스4";
+            this.tssProcess4.Click += new System.EventHandler(this.tssProcess4_Click);
             // 
             // statusStrip1
             // 
@@ -142,110 +143,113 @@ namespace testestestsettest
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stbExit,
-            this.stbClose,
-            this.toolStripLabel4,
-            this.tssGreen,
-            this.tssYellow,
-            this.tssRed,
-            this.toolStripSeparator1,
-            this.tssEnv,
-            this.stnDetail});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1113, 27);
-            this.toolStrip1.TabIndex = 8;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // stbExit
-            // 
-            this.stbExit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.stbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.stbExit.Image = ((System.Drawing.Image)(resources.GetObject("stbExit.Image")));
-            this.stbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.stbExit.Name = "stbExit";
-            this.stbExit.Size = new System.Drawing.Size(29, 24);
-            this.stbExit.Text = "exit";
-            this.stbExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.stbExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.stbExit.Click += new System.EventHandler(this.stbExit_Click);
-            // 
-            // stbClose
-            // 
-            this.stbClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.stbClose.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.stbClose.Image = ((System.Drawing.Image)(resources.GetObject("stbClose.Image")));
-            this.stbClose.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.stbClose.Name = "stbClose";
-            this.stbClose.Size = new System.Drawing.Size(29, 24);
-            this.stbClose.Text = "close";
-            this.stbClose.Click += new System.EventHandler(this.stbClose_Click);
-            // 
-            // toolStripLabel4
-            // 
-            this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(109, 24);
-            this.toolStripLabel4.Text = "현재 공정 상태";
-            // 
-            // tssGreen
-            // 
-            this.tssGreen.Name = "tssGreen";
-            this.tssGreen.Size = new System.Drawing.Size(17, 24);
-            this.tssGreen.Text = "4";
-            // 
-            // tssYellow
-            // 
-            this.tssYellow.Name = "tssYellow";
-            this.tssYellow.Size = new System.Drawing.Size(17, 24);
-            this.tssYellow.Text = "0";
-            // 
-            // tssRed
-            // 
-            this.tssRed.Name = "tssRed";
-            this.tssRed.Size = new System.Drawing.Size(17, 24);
-            this.tssRed.Text = "0";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
-            // 
-            // tssEnv
-            // 
-            this.tssEnv.Name = "tssEnv";
-            this.tssEnv.Size = new System.Drawing.Size(109, 24);
-            this.tssEnv.Text = "공기 순환 상태";
-            // 
-            // stnDetail
-            // 
-            this.stnDetail.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.stnDetail.Image = ((System.Drawing.Image)(resources.GetObject("stnDetail.Image")));
-            this.stnDetail.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.stnDetail.Name = "stnDetail";
-            this.stnDetail.Size = new System.Drawing.Size(29, 24);
-            this.stnDetail.Text = "toolStripButton1";
-            this.stnDetail.Click += new System.EventHandler(this.stnDetail_Click);
-            // 
             // myTabControl1
             // 
             this.myTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.myTabControl1.Location = new System.Drawing.Point(0, 55);
+            this.myTabControl1.Location = new System.Drawing.Point(0, 28);
             this.myTabControl1.Name = "myTabControl1";
             this.myTabControl1.SelectedIndex = 0;
-            this.myTabControl1.Size = new System.Drawing.Size(1113, 545);
+            this.myTabControl1.Size = new System.Drawing.Size(1113, 572);
             this.myTabControl1.TabIndex = 13;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Controls.Add(this.btnBack);
+            this.panel1.Controls.Add(this.btnDetail);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 28);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1113, 62);
+            this.panel1.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(33, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(109, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "현재 공정 상태";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(149, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "label2";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(203, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "label3";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(257, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 20);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "label4";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(507, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 20);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "label5";
+            // 
+            // btnDetail
+            // 
+            this.btnDetail.Location = new System.Drawing.Point(563, 16);
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(29, 29);
+            this.btnDetail.TabIndex = 5;
+            this.btnDetail.Text = "button1";
+            this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(895, 16);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(94, 29);
+            this.btnBack.TabIndex = 6;
+            this.btnBack.Text = "button2";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(1007, 16);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(94, 29);
+            this.btnExit.TabIndex = 7;
+            this.btnExit.Text = "button3";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1113, 626);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.myTabControl1);
-            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
@@ -257,8 +261,8 @@ namespace testestestsettest
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,24 +272,23 @@ namespace testestestsettest
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tssTimer;
-        private System.Windows.Forms.ToolStripButton stbExit;
-        private System.Windows.Forms.ToolStripLabel tssRed;
-        private System.Windows.Forms.ToolStripLabel tssYellow;
-        private System.Windows.Forms.ToolStripLabel tssGreen;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel tssUserName;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel4;
         private System.Windows.Forms.ToolStripMenuItem tssFirstPage;
         private System.Windows.Forms.ToolStripMenuItem tssProcess1;
         private System.Windows.Forms.ToolStripMenuItem tssProcess2;
         private System.Windows.Forms.ToolStripMenuItem tssProcess3;
         private System.Windows.Forms.ToolStripMenuItem tssProcess4;
-        private System.Windows.Forms.ToolStripButton stbClose;
         private testestestsettest.MyTabControl myTabControl1;
-        private System.Windows.Forms.ToolStripLabel tssEnv;
-        private System.Windows.Forms.ToolStripButton stnDetail;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnDetail;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
