@@ -15,6 +15,27 @@ namespace testestestsettest
 {
     public partial class MainPage : Form
     {
+        static MainPage obj;
+
+        public static MainPage Instance
+        {
+            get
+            {
+                if (obj == null)
+                {
+                    obj = new MainPage();
+                }
+
+                return obj;
+            }
+        }
+
+        public MyTabControl tabContainer
+        {
+            get { return myTabControl1; }
+            set { myTabControl1 = value; }
+        }
+
         public MainPage()
         {
             InitializeComponent();
@@ -43,20 +64,6 @@ namespace testestestsettest
             tssTimer.Text = DateTime.Now.ToString();//breaktime 걸면 1초마다 break 발생
         }
 
-        private void stbExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void stbClose_Click(object sender, EventArgs e)
-        {
-            //열려있는 화면이 있는지 확인
-            if (myTabControl1.TabPages.Count == 0) return;
-
-            //선택된 tab page 닫기
-            myTabControl1.SelectedTab.Dispose();
-        }
-
         private void tssFirstPage_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem TempTss = new ToolStripMenuItem();
@@ -82,14 +89,14 @@ namespace testestestsettest
 
         private void MainPage_Load(object sender, EventArgs e)
         {
-            /*this.stnDetail.Location = new Point(1575, 40);
-            this.tsbClose.Location = new Point(1500, 40);*/
+            obj = this;
 
             string FormName = "FirstPage";
 
-            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // 호텔 예약하기 폼이 들어가야함. 
-            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // 여기도 호텔 예약하기 폼의 네임스페이스가 들어가야함. 
+            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL");
+            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true);
             Form ShowForm = (Form)Activator.CreateInstance(typeForm);
+
 
             for (int i = 0; i < myTabControl1.TabPages.Count; i++)
             {
@@ -103,9 +110,11 @@ namespace testestestsettest
             myTabControl1.AddForm(ShowForm);
         }
 
-        private void stnDetail_Click(object sender, EventArgs e)
+        private void tssProcess1_Click(object sender, EventArgs e)
         {
-            string FormName = "ProcessSafety";
+            obj = this;
+
+            string FormName = "ProcessDetail";
 
             Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
             Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
@@ -123,9 +132,87 @@ namespace testestestsettest
             myTabControl1.AddForm(ShowForm);
         }
 
-        private void tssProcess1_Click(object sender, EventArgs e)
+        private void tssProcess2_Click(object sender, EventArgs e)
         {
+            obj = this;
+
             string FormName = "ProcessDetail";
+
+            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
+            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
+            Form ShowForm = (Form)Activator.CreateInstance(typeForm);
+
+            for (int i = 0; i < myTabControl1.TabPages.Count; i++)
+            {
+                if (myTabControl1.TabPages[i].Name == FormName.ToString())
+                {
+                    myTabControl1.SelectedTab = myTabControl1.TabPages[i];
+                    return;
+                }
+            }
+
+            myTabControl1.AddForm(ShowForm);
+        }
+
+        private void tssProcess3_Click(object sender, EventArgs e)
+        {
+            obj = this;
+
+            string FormName = "ProcessDetail";
+
+            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
+            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
+            Form ShowForm = (Form)Activator.CreateInstance(typeForm);
+
+            for (int i = 0; i < myTabControl1.TabPages.Count; i++)
+            {
+                if (myTabControl1.TabPages[i].Name == FormName.ToString())
+                {
+                    myTabControl1.SelectedTab = myTabControl1.TabPages[i];
+                    return;
+                }
+            }
+
+            myTabControl1.AddForm(ShowForm);
+        }
+
+        private void tssProcess4_Click(object sender, EventArgs e)
+        {
+            obj = this;
+
+            string FormName = "ProcessDetail";
+
+            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
+            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
+            Form ShowForm = (Form)Activator.CreateInstance(typeForm);
+
+            for (int i = 0; i < myTabControl1.TabPages.Count; i++)
+            {
+                if (myTabControl1.TabPages[i].Name == FormName.ToString())
+                {
+                    myTabControl1.SelectedTab = myTabControl1.TabPages[i];
+                    return;
+                }
+            }
+
+            myTabControl1.AddForm(ShowForm);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            obj = this;
+
+            string FormName = "ProcessSafety";
 
             Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
             Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
@@ -153,6 +240,8 @@ namespace testestestsettest
         {
             if (NewForm == null) return;
             NewForm.TopLevel = false;
+            NewForm.Dock = DockStyle.Fill;
+            NewForm.FormBorderStyle = FormBorderStyle.None;
             MDIForm page = new MDIForm();
             page.Controls.Clear();
             page.Controls.Add(NewForm);
