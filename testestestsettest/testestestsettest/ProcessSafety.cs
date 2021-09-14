@@ -1,5 +1,4 @@
-﻿using OpenCvSharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,14 +24,8 @@ namespace testestestsettest
             //serialPort1.Open();
         }
 
-        private VideoCapture video;
-        private Thread thread;
         private void ProcessSafety_Load(object sender, EventArgs e)
         {
-            video = new VideoCapture(0);
-            thread = new Thread(new ThreadStart(videoThread));
-            thread.Start();
-
             //try
             //{
             //    //Sql 커넥션
@@ -92,17 +85,6 @@ namespace testestestsettest
             //{
             //    Connect.Close();    //DB 연결 끊어주기
             //}
-        }
-
-        private void videoThread()
-        {
-            Mat mat = new Mat();
-            while(true)
-            {
-                video.Read(mat);
-                OpenCvSharp.Extensions.BitmapConverter.ToBitmap(mat);
-
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
