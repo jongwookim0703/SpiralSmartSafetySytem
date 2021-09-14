@@ -26,15 +26,13 @@ namespace testestestsettest
 
         private int PwFailCount = 0;
 
-
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
 
                 // 1. 데이터 베이스 접속 경로 설정
-                string strConn = "Data Source=hangaramit.iptime.org; Initial Catalog=AppDev;User ID=spa;Password=spiral_0904";  
+                string strConn = "Data Source=hangaramit.iptime.org; Initial Catalog=SpiralDB;User ID=spa;Password=spiral_0904";
                 Connect = new SqlConnection(strConn);
 
 
@@ -46,7 +44,7 @@ namespace testestestsettest
                 string sPassWord = txtPassword.Text;
 
                 // 기존의 비밀 번호 찾기.
-                SqlDataAdapter Adapter = new SqlDataAdapter("SELECT PW,USERNAME FROM TB_USER_KYJ WHERE USERID = '" + sLogInId + "'", Connect);
+                SqlDataAdapter Adapter = new SqlDataAdapter("SELECT PWD,ID FROM TB_USER WHERE ID = '" + sLogInId + "'", Connect);
                 DataTable DtTemp = new DataTable();
 
                 Adapter.Fill(DtTemp);
@@ -77,7 +75,7 @@ namespace testestestsettest
                 }
                 else
                 {
-                    this.Tag = DtTemp.Rows[0]["USERNAME"].ToString(); // 유저 명을 메인화면으로 보냄
+                    this.Tag = DtTemp.Rows[0]["ID"].ToString(); // 유저 명을 메인화면으로 보냄
                     this.Close();
                 }
             }
@@ -99,5 +97,12 @@ namespace testestestsettest
                 btnLogin_Click(null, null);
             }
         }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            UserResgister UserResgister = new UserResgister();
+            UserResgister.ShowDialog();
+        }
     }
 }
+
