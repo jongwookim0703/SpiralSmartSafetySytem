@@ -36,51 +36,25 @@ namespace testestestsettest
             this.btn_process4 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.vlc4 = new LibVLCSharp.WinForms.VideoView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btn_process3 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.vlc3 = new LibVLCSharp.WinForms.VideoView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btn_process2 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.vlc2 = new LibVLCSharp.WinForms.VideoView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btn_process1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.vlc1 = new LibVLCSharp.WinForms.VideoView();
-            this.videoView1 = new LibVLCSharp.WinForms.VideoView();
-            this.videoView2 = new LibVLCSharp.WinForms.VideoView();
-            this.videoView3 = new LibVLCSharp.WinForms.VideoView();
-            this.videoView4 = new LibVLCSharp.WinForms.VideoView();
-            this.videoView5 = new LibVLCSharp.WinForms.VideoView();
-            this.videoView7 = new LibVLCSharp.WinForms.VideoView();
-            this.videoView8 = new LibVLCSharp.WinForms.VideoView();
-            this.videoView9 = new LibVLCSharp.WinForms.VideoView();
-            this.videoView10 = new LibVLCSharp.WinForms.VideoView();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vlc4)).BeginInit();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vlc3)).BeginInit();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vlc2)).BeginInit();
             this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vlc1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView10)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -123,7 +97,6 @@ namespace testestestsettest
             this.groupBox7.Controls.Add(this.btn_process4);
             this.groupBox7.Controls.Add(this.label11);
             this.groupBox7.Controls.Add(this.label12);
-            this.groupBox7.Controls.Add(this.vlc4);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox7.Location = new System.Drawing.Point(836, 23);
             this.groupBox7.Name = "groupBox7";
@@ -161,22 +134,11 @@ namespace testestestsettest
             this.label12.Text = "label12";
             this.label12.UseCompatibleTextRendering = true;
             // 
-            // vlc4
-            // 
-            this.vlc4.BackColor = System.Drawing.Color.Black;
-            this.vlc4.Location = new System.Drawing.Point(21, 74);
-            this.vlc4.MediaPlayer = null;
-            this.vlc4.Name = "vlc4";
-            this.vlc4.Size = new System.Drawing.Size(234, 183);
-            this.vlc4.TabIndex = 2;
-            this.vlc4.Text = "videoView13";
-            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.btn_process3);
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.label10);
-            this.groupBox5.Controls.Add(this.vlc3);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox5.Location = new System.Drawing.Point(555, 23);
             this.groupBox5.Name = "groupBox5";
@@ -214,22 +176,11 @@ namespace testestestsettest
             this.label10.Text = "label10";
             this.label10.UseCompatibleTextRendering = true;
             // 
-            // vlc3
-            // 
-            this.vlc3.BackColor = System.Drawing.Color.Black;
-            this.vlc3.Location = new System.Drawing.Point(23, 74);
-            this.vlc3.MediaPlayer = null;
-            this.vlc3.Name = "vlc3";
-            this.vlc3.Size = new System.Drawing.Size(234, 183);
-            this.vlc3.TabIndex = 2;
-            this.vlc3.Text = "videoView12";
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btn_process2);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.vlc2);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox4.Location = new System.Drawing.Point(277, 23);
             this.groupBox4.Name = "groupBox4";
@@ -267,22 +218,11 @@ namespace testestestsettest
             this.label8.Text = "label8";
             this.label8.UseCompatibleTextRendering = true;
             // 
-            // vlc2
-            // 
-            this.vlc2.BackColor = System.Drawing.Color.Black;
-            this.vlc2.Location = new System.Drawing.Point(20, 74);
-            this.vlc2.MediaPlayer = null;
-            this.vlc2.Name = "vlc2";
-            this.vlc2.Size = new System.Drawing.Size(234, 183);
-            this.vlc2.TabIndex = 2;
-            this.vlc2.Text = "videoView11";
-            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btn_process1);
             this.groupBox6.Controls.Add(this.label5);
             this.groupBox6.Controls.Add(this.label6);
-            this.groupBox6.Controls.Add(this.vlc1);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox6.Location = new System.Drawing.Point(3, 23);
             this.groupBox6.Name = "groupBox6";
@@ -320,97 +260,6 @@ namespace testestestsettest
             this.label6.Text = "label6";
             this.label6.UseCompatibleTextRendering = true;
             // 
-            // vlc1
-            // 
-            this.vlc1.BackColor = System.Drawing.Color.Black;
-            this.vlc1.Location = new System.Drawing.Point(18, 74);
-            this.vlc1.MediaPlayer = null;
-            this.vlc1.Name = "vlc1";
-            this.vlc1.Size = new System.Drawing.Size(234, 183);
-            this.vlc1.TabIndex = 2;
-            this.vlc1.Text = "videoView6";
-            // 
-            // videoView1
-            // 
-            this.videoView1.BackColor = System.Drawing.Color.Black;
-            this.videoView1.Location = new System.Drawing.Point(37, 79);
-            this.videoView1.MediaPlayer = null;
-            this.videoView1.Name = "videoView1";
-            this.videoView1.Size = new System.Drawing.Size(94, 84);
-            this.videoView1.TabIndex = 2;
-            // 
-            // videoView2
-            // 
-            this.videoView2.BackColor = System.Drawing.Color.Black;
-            this.videoView2.Location = new System.Drawing.Point(64, 48);
-            this.videoView2.MediaPlayer = null;
-            this.videoView2.Name = "videoView2";
-            this.videoView2.Size = new System.Drawing.Size(94, 84);
-            this.videoView2.TabIndex = 3;
-            // 
-            // videoView3
-            // 
-            this.videoView3.BackColor = System.Drawing.Color.Black;
-            this.videoView3.Location = new System.Drawing.Point(56, 48);
-            this.videoView3.MediaPlayer = null;
-            this.videoView3.Name = "videoView3";
-            this.videoView3.Size = new System.Drawing.Size(94, 84);
-            this.videoView3.TabIndex = 3;
-            // 
-            // videoView4
-            // 
-            this.videoView4.BackColor = System.Drawing.Color.Black;
-            this.videoView4.Location = new System.Drawing.Point(53, 48);
-            this.videoView4.MediaPlayer = null;
-            this.videoView4.Name = "videoView4";
-            this.videoView4.Size = new System.Drawing.Size(94, 84);
-            this.videoView4.TabIndex = 3;
-            // 
-            // videoView5
-            // 
-            this.videoView5.BackColor = System.Drawing.Color.Black;
-            this.videoView5.Location = new System.Drawing.Point(37, 79);
-            this.videoView5.MediaPlayer = null;
-            this.videoView5.Name = "videoView5";
-            this.videoView5.Size = new System.Drawing.Size(94, 84);
-            this.videoView5.TabIndex = 2;
-            // 
-            // videoView7
-            // 
-            this.videoView7.BackColor = System.Drawing.Color.Black;
-            this.videoView7.Location = new System.Drawing.Point(63, 79);
-            this.videoView7.MediaPlayer = null;
-            this.videoView7.Name = "videoView7";
-            this.videoView7.Size = new System.Drawing.Size(94, 84);
-            this.videoView7.TabIndex = 2;
-            // 
-            // videoView8
-            // 
-            this.videoView8.BackColor = System.Drawing.Color.Black;
-            this.videoView8.Location = new System.Drawing.Point(54, 65);
-            this.videoView8.MediaPlayer = null;
-            this.videoView8.Name = "videoView8";
-            this.videoView8.Size = new System.Drawing.Size(94, 84);
-            this.videoView8.TabIndex = 2;
-            // 
-            // videoView9
-            // 
-            this.videoView9.BackColor = System.Drawing.Color.Black;
-            this.videoView9.Location = new System.Drawing.Point(54, 65);
-            this.videoView9.MediaPlayer = null;
-            this.videoView9.Name = "videoView9";
-            this.videoView9.Size = new System.Drawing.Size(94, 84);
-            this.videoView9.TabIndex = 2;
-            // 
-            // videoView10
-            // 
-            this.videoView10.BackColor = System.Drawing.Color.Black;
-            this.videoView10.Location = new System.Drawing.Point(54, 65);
-            this.videoView10.MediaPlayer = null;
-            this.videoView10.Name = "videoView10";
-            this.videoView10.Size = new System.Drawing.Size(94, 84);
-            this.videoView10.TabIndex = 2;
-            // 
             // FirstPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -426,25 +275,12 @@ namespace testestestsettest
             this.groupBox3.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vlc4)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vlc3)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vlc2)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vlc1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoView10)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -453,34 +289,21 @@ namespace testestestsettest
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView grid;
         private System.Windows.Forms.GroupBox groupBox3;
-        private LibVLCSharp.WinForms.VideoView videoView1;
-        private LibVLCSharp.WinForms.VideoView videoView2;
-        private LibVLCSharp.WinForms.VideoView videoView3;
-        private LibVLCSharp.WinForms.VideoView videoView4;
-        private LibVLCSharp.WinForms.VideoView videoView10;
-        private LibVLCSharp.WinForms.VideoView videoView9;
-        private LibVLCSharp.WinForms.VideoView videoView8;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button btn_process1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private LibVLCSharp.WinForms.VideoView vlc1;
-        private LibVLCSharp.WinForms.VideoView videoView5;
-        private LibVLCSharp.WinForms.VideoView videoView7;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button btn_process4;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private LibVLCSharp.WinForms.VideoView vlc4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btn_process3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private LibVLCSharp.WinForms.VideoView vlc3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btn_process2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private LibVLCSharp.WinForms.VideoView vlc2;
     }
 }

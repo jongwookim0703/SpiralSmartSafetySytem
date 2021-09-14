@@ -33,7 +33,6 @@ namespace testestestsettest
             this.btn_detail1 = new System.Windows.Forms.Button();
             this.btn_stop1 = new System.Windows.Forms.Button();
             this.btn_work1 = new System.Windows.Forms.Button();
-            this.vlc1 = new LibVLCSharp.WinForms.VideoView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,16 +45,16 @@ namespace testestestsettest
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chk_re1 = new System.Windows.Forms.CheckBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txt_start = new System.Windows.Forms.TextBox();
-            this.txt_end = new System.Windows.Forms.TextBox();
             this.btn_plan = new System.Windows.Forms.Button();
-            this.chk_re1 = new System.Windows.Forms.CheckBox();
+            this.txt_end = new System.Windows.Forms.TextBox();
+            this.txt_start = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.vlcControl = new Vlc.DotNet.Forms.VlcControl();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vlc1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -64,6 +63,7 @@ namespace testestestsettest
             this.groupBox2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vlcControl)).BeginInit();
             this.SuspendLayout();
             // 
             // grid
@@ -110,16 +110,6 @@ namespace testestestsettest
             this.btn_work1.Text = "가동";
             this.btn_work1.UseVisualStyleBackColor = false;
             this.btn_work1.Click += new System.EventHandler(this.btn_work1_Click);
-            // 
-            // vlc1
-            // 
-            this.vlc1.BackColor = System.Drawing.Color.Black;
-            this.vlc1.Location = new System.Drawing.Point(33, 148);
-            this.vlc1.MediaPlayer = null;
-            this.vlc1.Name = "vlc1";
-            this.vlc1.Size = new System.Drawing.Size(583, 227);
-            this.vlc1.TabIndex = 5;
-            this.vlc1.Text = "videoView1";
             // 
             // groupBox1
             // 
@@ -245,6 +235,16 @@ namespace testestestsettest
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
+            // chk_re1
+            // 
+            this.chk_re1.AutoSize = true;
+            this.chk_re1.Location = new System.Drawing.Point(11, 30);
+            this.chk_re1.Name = "chk_re1";
+            this.chk_re1.Size = new System.Drawing.Size(90, 19);
+            this.chk_re1.TabIndex = 11;
+            this.chk_re1.Text = "재가동 옵션";
+            this.chk_re1.UseVisualStyleBackColor = true;
+            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.btn_stop1);
@@ -267,38 +267,6 @@ namespace testestestsettest
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 23);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(115, 15);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "계획 가동 시작 시간";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(280, 23);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(115, 15);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "계획 가동 마감 시간";
-            // 
-            // txt_start
-            // 
-            this.txt_start.Location = new System.Drawing.Point(128, 20);
-            this.txt_start.Name = "txt_start";
-            this.txt_start.Size = new System.Drawing.Size(137, 23);
-            this.txt_start.TabIndex = 2;
-            // 
-            // txt_end
-            // 
-            this.txt_end.Location = new System.Drawing.Point(401, 20);
-            this.txt_end.Name = "txt_end";
-            this.txt_end.Size = new System.Drawing.Size(129, 23);
-            this.txt_end.TabIndex = 3;
-            // 
             // btn_plan
             // 
             this.btn_plan.Location = new System.Drawing.Point(648, 23);
@@ -309,32 +277,66 @@ namespace testestestsettest
             this.btn_plan.UseVisualStyleBackColor = true;
             this.btn_plan.Click += new System.EventHandler(this.btn_plan_Click);
             // 
-            // chk_re1
+            // txt_end
             // 
-            this.chk_re1.AutoSize = true;
-            this.chk_re1.Location = new System.Drawing.Point(11, 30);
-            this.chk_re1.Name = "chk_re1";
-            this.chk_re1.Size = new System.Drawing.Size(90, 19);
-            this.chk_re1.TabIndex = 11;
-            this.chk_re1.Text = "재가동 옵션";
-            this.chk_re1.UseVisualStyleBackColor = true;
+            this.txt_end.Location = new System.Drawing.Point(401, 20);
+            this.txt_end.Name = "txt_end";
+            this.txt_end.Size = new System.Drawing.Size(129, 23);
+            this.txt_end.TabIndex = 3;
+            // 
+            // txt_start
+            // 
+            this.txt_start.Location = new System.Drawing.Point(128, 20);
+            this.txt_start.Name = "txt_start";
+            this.txt_start.Size = new System.Drawing.Size(137, 23);
+            this.txt_start.TabIndex = 2;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(280, 23);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(115, 15);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "계획 가동 마감 시간";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 23);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(115, 15);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "계획 가동 시작 시간";
+            // 
+            // vlcControl
+            // 
+            this.vlcControl.BackColor = System.Drawing.Color.Black;
+            this.vlcControl.Location = new System.Drawing.Point(33, 148);
+            this.vlcControl.Name = "vlcControl";
+            this.vlcControl.Size = new System.Drawing.Size(594, 227);
+            this.vlcControl.Spu = -1;
+            this.vlcControl.TabIndex = 10;
+            this.vlcControl.Text = "vlcControl1";
+            this.vlcControl.VlcLibDirectory = null;
+            this.vlcControl.VlcMediaplayerOptions = null;
+            this.vlcControl.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlcControl_VlcLibDirectoryNeeded);
             // 
             // ProcessDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 481);
+            this.Controls.Add(this.vlcControl);
             this.Controls.Add(this.btn_detail1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.vlc1);
             this.Controls.Add(this.grid);
             this.Name = "ProcessDetail";
             this.Text = "ProcessDetail";
             this.Load += new System.EventHandler(this.ProcessDetail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vlc1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -350,6 +352,7 @@ namespace testestestsettest
             this.panel6.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vlcControl)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -359,7 +362,6 @@ namespace testestestsettest
         private System.Windows.Forms.Button btn_detail1;
         private System.Windows.Forms.Button btn_stop1;
         private System.Windows.Forms.Button btn_work1;
-        private LibVLCSharp.WinForms.VideoView vlc1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cbo_proces1;
@@ -380,5 +382,6 @@ namespace testestestsettest
         private System.Windows.Forms.TextBox txt_start;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private Vlc.DotNet.Forms.VlcControl vlcControl;
     }
 }
