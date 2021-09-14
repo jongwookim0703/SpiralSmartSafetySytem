@@ -39,6 +39,7 @@ namespace testestestsettest
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.vlcp1 = new LibVLCSharp.WinForms.VideoView();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -57,7 +58,7 @@ namespace testestestsettest
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.vlc2 = new LibVLCSharp.WinForms.VideoView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.vlc1 = new LibVLCSharp.WinForms.VideoView();
+            this.vlc1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnSpec = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -71,6 +72,7 @@ namespace testestestsettest
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vlcp1)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -156,11 +158,22 @@ namespace testestestsettest
             // 
             // panel11
             // 
+            this.panel11.Controls.Add(this.vlcp1);
             this.panel11.Controls.Add(this.label21);
             this.panel11.Location = new System.Drawing.Point(78, 142);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(306, 82);
             this.panel11.TabIndex = 17;
+            // 
+            // vlcp1
+            // 
+            this.vlcp1.BackColor = System.Drawing.Color.Black;
+            this.vlcp1.Location = new System.Drawing.Point(-125, -14);
+            this.vlcp1.MediaPlayer = null;
+            this.vlcp1.Name = "vlcp1";
+            this.vlcp1.Size = new System.Drawing.Size(268, 175);
+            this.vlcp1.TabIndex = 7;
+            this.vlcp1.Text = "videoView5";
             // 
             // label21
             // 
@@ -338,13 +351,12 @@ namespace testestestsettest
             // 
             // vlc1
             // 
-            this.vlc1.BackColor = System.Drawing.Color.Black;
-            this.vlc1.Location = new System.Drawing.Point(19, 26);
-            this.vlc1.MediaPlayer = null;
+            this.vlc1.Location = new System.Drawing.Point(0, 30);
             this.vlc1.Name = "vlc1";
-            this.vlc1.Size = new System.Drawing.Size(268, 175);
-            this.vlc1.TabIndex = 7;
-            this.vlc1.Text = "videoView5";
+            this.vlc1.Size = new System.Drawing.Size(296, 175);
+            this.vlc1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.vlc1.TabIndex = 8;
+            this.vlc1.TabStop = false;
             // 
             // menuStrip1
             // 
@@ -443,6 +455,7 @@ namespace testestestsettest
             this.panel1.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vlcp1)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).EndInit();
@@ -476,7 +489,7 @@ namespace testestestsettest
         private System.Windows.Forms.GroupBox groupBox3;
         private LibVLCSharp.WinForms.VideoView vlc2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private LibVLCSharp.WinForms.VideoView vlc1;
+        private LibVLCSharp.WinForms.VideoView vlcp1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button btnSpec;
         private System.Windows.Forms.Panel panel10;
@@ -496,5 +509,6 @@ namespace testestestsettest
         private System.Windows.Forms.CheckBox chkReconf;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox vlc1;
     }
 }

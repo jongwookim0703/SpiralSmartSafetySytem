@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenCvSharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,68 +25,86 @@ namespace testestestsettest
             //serialPort1.Open();
         }
 
+        private VideoCapture video;
+        private Thread thread;
         private void ProcessSafety_Load(object sender, EventArgs e)
         {
-            try
+            video = new VideoCapture(0);
+            thread = new Thread(new ThreadStart(videoThread));
+            thread.Start();
+
+            //try
+            //{
+            //    //Sql 커넥션
+            //    //Sql 커넥션에 등록 및 객체 선언
+            //    Connect = new SqlConnection(Common.DbPath);
+            //    Connect.Open();
+
+            //    if (Connect.State != System.Data.ConnectionState.Open)
+            //    {
+            //        MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
+            //        return;
+            //    }
+
+            //    SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT NO,CO2,GAS,LIGHT,FLAME,MAKEDATE,CHECKFLAG,CHECKDATE,MAKER FROM TB_ENVIROMENTSTATE", Connect);
+            //    DataTable dtTemp = new DataTable();
+            //    adapter.Fill(dtTemp);
+
+            //    if (dtTemp.Rows.Count == 0)
+            //    {
+            //        grid1.DataSource = null;
+            //        return;
+            //    }
+            //    grid1.DataSource = dtTemp;   //데이터 그리드 뷰에 데이터 테이블 등록
+
+            //    //그리드뷰의 헤더 명칭 선언
+            //    grid1.Columns["NO"].HeaderText = "no";
+            //    grid1.Columns["CO2"].HeaderText = "이산화탄소";
+            //    grid1.Columns["GAS"].HeaderText = "가스누출";
+            //    grid1.Columns["LIGHT"].HeaderText = "조도";
+            //    grid1.Columns["FLAME"].HeaderText = "불꽃";
+            //    grid1.Columns["MAKEDATE"].HeaderText = "발생시간";
+
+
+            //    // 그리드 뷰의 폭 지정
+            //    grid1.Columns[0].Width = 150;
+            //    grid1.Columns[1].Width = 150;
+            //    grid1.Columns[2].Width = 150;
+            //    grid1.Columns[3].Width = 150;
+            //    grid1.Columns[4].Width = 150;
+            //    grid1.Columns[5].Width = 150;
+
+
+            //    //컬럼의 수정 여부를 지정 한다
+            //    grid1.Columns["NO"].ReadOnly = true;    //기본키라 수정하면 안됌, 단 신규로 추가될때는 해야함
+            //    grid1.Columns["CO2"].ReadOnly = true;
+            //    grid1.Columns["GAS"].ReadOnly = true;
+            //    grid1.Columns["LIGHT"].ReadOnly = true;
+            //    grid1.Columns["FLAME"].ReadOnly = true;
+            //    grid1.Columns["MAKEDATE"].ReadOnly = true;
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
+            //finally
+            //{
+            //    Connect.Close();    //DB 연결 끊어주기
+            //}
+        }
+
+        private void videoThread()
+        {
+            Mat mat = new Mat();
+            while(true)
             {
-                //Sql 커넥션
-                //Sql 커넥션에 등록 및 객체 선언
-                Connect = new SqlConnection(Common.DbPath);
-                Connect.Open();
+                video.Read(mat);
+                OpenCvSharp.Extensions.BitmapConverter.ToBitmap(mat);
 
-                if (Connect.State != System.Data.ConnectionState.Open)
-                {
-                    MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
-                    return;
-                }
-
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT NO,CO2,GAS,LIGHT,FLAME,MAKEDATE,CHECKFLAG,CHECKDATE,MAKER FROM TB_ENVIROMENTSTATE", Connect);
-                DataTable dtTemp = new DataTable();
-                adapter.Fill(dtTemp);
-
-                if (dtTemp.Rows.Count == 0)
-                {
-                    grid1.DataSource = null;
-                    return;
-                }
-                grid1.DataSource = dtTemp;   //데이터 그리드 뷰에 데이터 테이블 등록
-
-                //그리드뷰의 헤더 명칭 선언
-                grid1.Columns["NO"].HeaderText = "no";
-                grid1.Columns["CO2"].HeaderText = "이산화탄소";
-                grid1.Columns["GAS"].HeaderText = "가스누출";
-                grid1.Columns["LIGHT"].HeaderText = "조도";
-                grid1.Columns["FLAME"].HeaderText = "불꽃";
-                grid1.Columns["MAKEDATE"].HeaderText = "발생시간";
-
-
-                // 그리드 뷰의 폭 지정
-                grid1.Columns[0].Width = 150;
-                grid1.Columns[1].Width = 150;
-                grid1.Columns[2].Width = 150;
-                grid1.Columns[3].Width = 150;
-                grid1.Columns[4].Width = 150;
-                grid1.Columns[5].Width = 150;
-
-
-                //컬럼의 수정 여부를 지정 한다
-                grid1.Columns["NO"].ReadOnly = true;    //기본키라 수정하면 안됌, 단 신규로 추가될때는 해야함
-                grid1.Columns["CO2"].ReadOnly = true;
-                grid1.Columns["GAS"].ReadOnly = true;
-                grid1.Columns["LIGHT"].ReadOnly = true;
-                grid1.Columns["FLAME"].ReadOnly = true;
-                grid1.Columns["MAKEDATE"].ReadOnly = true;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                Connect.Close();    //DB 연결 끊어주기
             }
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("상세보기로 이동합니다");
