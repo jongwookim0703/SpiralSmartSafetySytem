@@ -36,6 +36,12 @@ namespace testestestsettest
             set { myTabControl1 = value; }
         }
 
+        public Button BTNButton
+        {
+            get { return btnBack; }
+            set { btnBack = value; }
+        }
+
         public MainPage()
         {
             InitializeComponent();
@@ -89,6 +95,7 @@ namespace testestestsettest
 
         private void MainPage_Load(object sender, EventArgs e)
         {
+            btnBack.Visible = false;
             obj = this;
 
             string FormName = "FirstPage";
@@ -205,7 +212,8 @@ namespace testestestsettest
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-
+            tabContainer.Controls["FirstPage"].BringToFront();
+            btnBack.Visible = false;
         }
 
         private void btnDetail_Click(object sender, EventArgs e)

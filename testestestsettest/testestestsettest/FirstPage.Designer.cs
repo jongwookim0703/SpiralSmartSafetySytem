@@ -44,14 +44,14 @@ namespace testestestsettest
             this.vlc3 = new LibVLCSharp.WinForms.VideoView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btn_process2 = new System.Windows.Forms.Button();
-            this.lb_process2 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.vlc2 = new LibVLCSharp.WinForms.VideoView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btn_process1 = new System.Windows.Forms.Button();
             this.lb_process1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.vlc1 = new LibVLCSharp.WinForms.VideoView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lb_process2 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -230,25 +230,6 @@ namespace testestestsettest
             this.btn_process2.UseVisualStyleBackColor = true;
             this.btn_process2.Click += new System.EventHandler(this.btn_process2_Click);
             // 
-            // lb_process2
-            // 
-            this.lb_process2.AutoSize = true;
-            this.lb_process2.Location = new System.Drawing.Point(107, 37);
-            this.lb_process2.Name = "lb_process2";
-            this.lb_process2.Size = new System.Drawing.Size(50, 20);
-            this.lb_process2.TabIndex = 6;
-            this.lb_process2.Text = "label7";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(36, 37);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 25);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "label8";
-            this.label8.UseCompatibleTextRendering = true;
-            // 
             // vlc2
             // 
             this.vlc2.BackColor = System.Drawing.Color.Black;
@@ -286,7 +267,7 @@ namespace testestestsettest
             // lb_process1
             // 
             this.lb_process1.AutoSize = true;
-            this.lb_process1.Location = new System.Drawing.Point(105, 37);
+            this.lb_process1.Location = new System.Drawing.Point(92, 37);
             this.lb_process1.Name = "lb_process1";
             this.lb_process1.Size = new System.Drawing.Size(50, 20);
             this.lb_process1.TabIndex = 6;
@@ -296,7 +277,7 @@ namespace testestestsettest
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 37);
+            this.label6.Location = new System.Drawing.Point(21, 37);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 25);
             this.label6.TabIndex = 5;
@@ -312,6 +293,25 @@ namespace testestestsettest
             this.vlc1.Size = new System.Drawing.Size(234, 183);
             this.vlc1.TabIndex = 2;
             this.vlc1.Text = "videoView6";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(36, 37);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 25);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "label8";
+            this.label8.UseCompatibleTextRendering = true;
+            // 
+            // lb_process2
+            // 
+            this.lb_process2.AutoSize = true;
+            this.lb_process2.Location = new System.Drawing.Point(105, 37);
+            this.lb_process2.Name = "lb_process2";
+            this.lb_process2.Size = new System.Drawing.Size(50, 20);
+            this.lb_process2.TabIndex = 6;
+            this.lb_process2.Text = "label7";
             // 
             // FirstPage
             // 
@@ -364,8 +364,8 @@ namespace testestestsettest
         private LibVLCSharp.WinForms.VideoView vlc3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btn_process2;
+        private LibVLCSharp.WinForms.VideoView vlc2;
         private System.Windows.Forms.Label lb_process2;
         private System.Windows.Forms.Label label8;
-        private LibVLCSharp.WinForms.VideoView vlc2;
     }
 }
