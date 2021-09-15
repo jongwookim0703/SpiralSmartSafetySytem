@@ -41,20 +41,28 @@ namespace testestestsettest
             this.lb_process3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.vlc2 = new Vlc.DotNet.Forms.VlcControl();
             this.btn_process2 = new System.Windows.Forms.Button();
+            this.lb_process2 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.vlc1 = new Vlc.DotNet.Forms.VlcControl();
             this.btn_process1 = new System.Windows.Forms.Button();
             this.lb_process1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lb_process2 = new System.Windows.Forms.Label();
+            this.vlc3 = new Vlc.DotNet.Forms.VlcControl();
+            this.vlc4 = new Vlc.DotNet.Forms.VlcControl();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vlc2)).BeginInit();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vlc1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vlc3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vlc4)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -94,6 +102,7 @@ namespace testestestsettest
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.vlc4);
             this.groupBox7.Controls.Add(this.btn_process4);
             this.groupBox7.Controls.Add(this.lb_process4);
             this.groupBox7.Controls.Add(this.label12);
@@ -136,6 +145,7 @@ namespace testestestsettest
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.vlc3);
             this.groupBox5.Controls.Add(this.btn_process3);
             this.groupBox5.Controls.Add(this.lb_process3);
             this.groupBox5.Controls.Add(this.label10);
@@ -178,6 +188,7 @@ namespace testestestsettest
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.vlc2);
             this.groupBox4.Controls.Add(this.btn_process2);
             this.groupBox4.Controls.Add(this.lb_process2);
             this.groupBox4.Controls.Add(this.label8);
@@ -189,6 +200,19 @@ namespace testestestsettest
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "프로세스2";
             // 
+            // vlc2
+            // 
+            this.vlc2.BackColor = System.Drawing.Color.Black;
+            this.vlc2.Location = new System.Drawing.Point(21, 65);
+            this.vlc2.Name = "vlc2";
+            this.vlc2.Size = new System.Drawing.Size(232, 181);
+            this.vlc2.Spu = -1;
+            this.vlc2.TabIndex = 9;
+            this.vlc2.Text = "vlcControl1";
+            this.vlc2.VlcLibDirectory = null;
+            this.vlc2.VlcMediaplayerOptions = null;
+            this.vlc2.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc2_VlcLibDirectoryNeeded);
+            // 
             // btn_process2
             // 
             this.btn_process2.Location = new System.Drawing.Point(84, 263);
@@ -199,8 +223,28 @@ namespace testestestsettest
             this.btn_process2.UseVisualStyleBackColor = true;
             this.btn_process2.Click += new System.EventHandler(this.btn_process2_Click);
             // 
+            // lb_process2
+            // 
+            this.lb_process2.AutoSize = true;
+            this.lb_process2.Location = new System.Drawing.Point(105, 37);
+            this.lb_process2.Name = "lb_process2";
+            this.lb_process2.Size = new System.Drawing.Size(50, 20);
+            this.lb_process2.TabIndex = 6;
+            this.lb_process2.Text = "label7";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(36, 37);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 25);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "label8";
+            this.label8.UseCompatibleTextRendering = true;
+            // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.vlc1);
             this.groupBox6.Controls.Add(this.btn_process1);
             this.groupBox6.Controls.Add(this.lb_process1);
             this.groupBox6.Controls.Add(this.label6);
@@ -211,6 +255,19 @@ namespace testestestsettest
             this.groupBox6.TabIndex = 6;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "프로세스1";
+            // 
+            // vlc1
+            // 
+            this.vlc1.BackColor = System.Drawing.Color.Black;
+            this.vlc1.Location = new System.Drawing.Point(21, 65);
+            this.vlc1.Name = "vlc1";
+            this.vlc1.Size = new System.Drawing.Size(229, 181);
+            this.vlc1.Spu = -1;
+            this.vlc1.TabIndex = 9;
+            this.vlc1.Text = "vlcControl1";
+            this.vlc1.VlcLibDirectory = null;
+            this.vlc1.VlcMediaplayerOptions = null;
+            this.vlc1.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc1_VlcLibDirectoryNeeded);
             // 
             // btn_process1
             // 
@@ -242,24 +299,31 @@ namespace testestestsettest
             this.label6.Text = "label6";
             this.label6.UseCompatibleTextRendering = true;
             // 
-            // label8
+            // vlc3
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(36, 37);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 25);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "label8";
-            this.label8.UseCompatibleTextRendering = true;
+            this.vlc3.BackColor = System.Drawing.Color.Black;
+            this.vlc3.Location = new System.Drawing.Point(24, 68);
+            this.vlc3.Name = "vlc3";
+            this.vlc3.Size = new System.Drawing.Size(232, 181);
+            this.vlc3.Spu = -1;
+            this.vlc3.TabIndex = 10;
+            this.vlc3.Text = "vlcControl1";
+            this.vlc3.VlcLibDirectory = null;
+            this.vlc3.VlcMediaplayerOptions = null;
+            this.vlc3.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc3_VlcLibDirectoryNeeded);
             // 
-            // lb_process2
+            // vlc4
             // 
-            this.lb_process2.AutoSize = true;
-            this.lb_process2.Location = new System.Drawing.Point(105, 37);
-            this.lb_process2.Name = "lb_process2";
-            this.lb_process2.Size = new System.Drawing.Size(50, 20);
-            this.lb_process2.TabIndex = 6;
-            this.lb_process2.Text = "label7";
+            this.vlc4.BackColor = System.Drawing.Color.Black;
+            this.vlc4.Location = new System.Drawing.Point(21, 68);
+            this.vlc4.Name = "vlc4";
+            this.vlc4.Size = new System.Drawing.Size(232, 181);
+            this.vlc4.Spu = -1;
+            this.vlc4.TabIndex = 10;
+            this.vlc4.Text = "vlcControl1";
+            this.vlc4.VlcLibDirectory = null;
+            this.vlc4.VlcMediaplayerOptions = null;
+            this.vlc4.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc4_VlcLibDirectoryNeeded);
             // 
             // FirstPage
             // 
@@ -271,7 +335,9 @@ namespace testestestsettest
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FirstPage";
             this.Text = "FirstPage";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FirstPage_Load);
+            this.VisibleChanged += new System.EventHandler(this.FirstPage_VisibleChanged);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -281,8 +347,12 @@ namespace testestestsettest
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vlc2)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vlc1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vlc3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vlc4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -307,5 +377,9 @@ namespace testestestsettest
         private System.Windows.Forms.Button btn_process2;
         private System.Windows.Forms.Label lb_process2;
         private System.Windows.Forms.Label label8;
+        private Vlc.DotNet.Forms.VlcControl vlc1;
+        private Vlc.DotNet.Forms.VlcControl vlc2;
+        private Vlc.DotNet.Forms.VlcControl vlc4;
+        private Vlc.DotNet.Forms.VlcControl vlc3;
     }
 }

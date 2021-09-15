@@ -38,8 +38,8 @@ namespace testestestsettest
 
         public Button BTNButton
         {
-            get { return btnBack; }
-            set { btnBack = value; }
+            get { return btnClose; }
+            set { btnClose = value; }
         }
 
         public MainPage()
@@ -95,7 +95,7 @@ namespace testestestsettest
 
         private void MainPage_Load(object sender, EventArgs e)
         {
-            btnBack.Visible = false;
+            btnClose.Visible = false;
             obj = this;
 
             string FormName = "FirstPage";
@@ -212,8 +212,7 @@ namespace testestestsettest
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            tabContainer.Controls["FirstPage"].BringToFront();
-            btnBack.Visible = false;
+            
         }
 
         private void btnDetail_Click(object sender, EventArgs e)
@@ -236,6 +235,16 @@ namespace testestestsettest
             }
 
             myTabControl1.AddForm(ShowForm);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            //열려있는 화면이 있는지 확인
+            if (myTabControl1.TabPages.Count == 0) return;
+            //선택된 tab page 닫기
+            myTabControl1.SelectedTab.Dispose();
+
+            btnClose.Visible = false;
         }
     }
 
