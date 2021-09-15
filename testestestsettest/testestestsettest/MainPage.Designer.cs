@@ -39,13 +39,14 @@ namespace testestestsettest
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssUserName = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tssTimer = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssTimer = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.myTabControl1 = new testestestsettest.MyTabControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnDetail = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@ namespace testestestsettest
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -137,17 +137,23 @@ namespace testestestsettest
             this.tssUserName.Name = "tssUserName";
             this.tssUserName.Size = new System.Drawing.Size(0, 20);
             // 
-            // tssTimer
-            // 
-            this.tssTimer.Name = "tssTimer";
-            this.tssTimer.Size = new System.Drawing.Size(335, 20);
-            this.tssTimer.Spring = true;
-            // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(335, 20);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(348, 20);
             this.toolStripStatusLabel2.Spring = true;
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(348, 20);
+            this.toolStripStatusLabel3.Spring = true;
+            // 
+            // tssTimer
+            // 
+            this.tssTimer.Name = "tssTimer";
+            this.tssTimer.Size = new System.Drawing.Size(348, 20);
+            this.tssTimer.Spring = true;
             // 
             // timer1
             // 
@@ -167,7 +173,7 @@ namespace testestestsettest
             // panel1
             // 
             this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Controls.Add(this.btnBack);
+            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnDetail);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
@@ -190,15 +196,15 @@ namespace testestestsettest
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnBack
+            // btnClose
             // 
-            this.btnBack.Location = new System.Drawing.Point(895, 3);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(94, 29);
-            this.btnBack.TabIndex = 6;
-            this.btnBack.Text = "button2";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnClose.Location = new System.Drawing.Point(895, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(94, 29);
+            this.btnClose.TabIndex = 6;
+            this.btnClose.Text = "button2";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnDetail
             // 
@@ -265,12 +271,6 @@ namespace testestestsettest
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(335, 20);
-            this.toolStripStatusLabel3.Spring = true;
-            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -284,6 +284,7 @@ namespace testestestsettest
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainPage";
             this.Text = "MainForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainPage_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -312,7 +313,7 @@ namespace testestestsettest
         private testestestsettest.MyTabControl myTabControl1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnDetail;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
