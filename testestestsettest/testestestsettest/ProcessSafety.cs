@@ -19,7 +19,8 @@ namespace testestestsettest
     {
         private System.Data.SqlClient.SqlConnection Connect = null;
         private string strConn = "Data Source=61.105.9.203; Initial Catalog=AppDev;User ID=spa;Password=spiral_0904";
-        private string RtspUrl = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
+        private string RtspUrl1 = "http://192.168.0.2:8091";
+        private string RtspUrl2 = "http://192.168.0.2:8092";
 
         Assembly? CurrentAssembly;
         string? CurrentDirectory;
@@ -35,65 +36,58 @@ namespace testestestsettest
 
         private void ProcessSafety_Load(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    //Sql 커넥션
-            //    //Sql 커넥션에 등록 및 객체 선언
-            //    Connect = new SqlConnection(Common.DbPath);
-            //    Connect.Open();
+            // ProcessNo, HAZARDNAME, HAZARDSTATE, MAKEDATE FROM TB_HAZARD
+            try
+            {
+                //Sql 커넥션
+                //Sql 커넥션에 등록 및 객체 선언
+                Connect = new SqlConnection(Common.DbPath);
+                Connect.Open();
 
-            //    if (Connect.State != System.Data.ConnectionState.Open)
-            //    {
-            //        MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
-            //        return;
-            //    }
+                if (Connect.State != System.Data.ConnectionState.Open)
+                {
+                    MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
+                    return;
+                }
 
-            //    SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT NO,CO2,GAS,LIGHT,FLAME,MAKEDATE,CHECKFLAG,CHECKDATE,MAKER FROM TB_ENVIROMENTSTATE", Connect);
-            //    DataTable dtTemp = new DataTable();
-            //    adapter.Fill(dtTemp);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT PROCESSNAME,HAZARDNAME,HAZARDSTATE,MAKEDATE FROM TB_HAZARD", Connect);
+                DataTable dtTemp = new DataTable();
+                adapter.Fill(dtTemp);
 
-            //    if (dtTemp.Rows.Count == 0)
-            //    {
-            //        grid1.DataSource = null;
-            //        return;
-            //    }
-            //    grid1.DataSource = dtTemp;   //데이터 그리드 뷰에 데이터 테이블 등록
+                if (dtTemp.Rows.Count == 0)
+                {
+                    grid1.DataSource = null;
+                    return;
+                }
+                grid1.DataSource = dtTemp;   //데이터 그리드 뷰에 데이터 테이블 등록
 
-            //    //그리드뷰의 헤더 명칭 선언
-            //    grid1.Columns["NO"].HeaderText = "no";
-            //    grid1.Columns["CO2"].HeaderText = "이산화탄소";
-            //    grid1.Columns["GAS"].HeaderText = "가스누출";
-            //    grid1.Columns["LIGHT"].HeaderText = "조도";
-            //    grid1.Columns["FLAME"].HeaderText = "불꽃";
-            //    grid1.Columns["MAKEDATE"].HeaderText = "발생시간";
+                //그리드뷰의 헤더 명칭 선언
+                grid1.Columns["PROCESSNAME"].HeaderText = "NO";
+                grid1.Columns["HAZARDNAME"].HeaderText = "위험";
+                grid1.Columns["HAZARDSTATE"].HeaderText = "위험상태";
+                grid1.Columns["MAKEDATE"].HeaderText = "발생시간";
 
-
-            //    // 그리드 뷰의 폭 지정
-            //    grid1.Columns[0].Width = 150;
-            //    grid1.Columns[1].Width = 150;
-            //    grid1.Columns[2].Width = 150;
-            //    grid1.Columns[3].Width = 150;
-            //    grid1.Columns[4].Width = 150;
-            //    grid1.Columns[5].Width = 150;
+                // 그리드 뷰의 폭 지정
+                grid1.Columns[0].Width = 70;
+                grid1.Columns[1].Width = 70;
+                grid1.Columns[2].Width = 70;
+                grid1.Columns[3].Width = 100;
 
 
-            //    //컬럼의 수정 여부를 지정 한다
-            //    grid1.Columns["NO"].ReadOnly = true;    //기본키라 수정하면 안됌, 단 신규로 추가될때는 해야함
-            //    grid1.Columns["CO2"].ReadOnly = true;
-            //    grid1.Columns["GAS"].ReadOnly = true;
-            //    grid1.Columns["LIGHT"].ReadOnly = true;
-            //    grid1.Columns["FLAME"].ReadOnly = true;
-            //    grid1.Columns["MAKEDATE"].ReadOnly = true;
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
-            //finally
-            //{
-            //    Connect.Close();    //DB 연결 끊어주기
-            //}
+                //컬럼의 수정 여부를 지정 한다
+                grid1.Columns["PROCESSNAME"].ReadOnly = true;    //기본키라 수정하면 안됌, 단 신규로 추가될때는 해야함
+                grid1.Columns["HAZARDNAME"].ReadOnly = true;
+                grid1.Columns["HAZARDSTATE"].ReadOnly = true;
+                grid1.Columns["MAKEDATE"].ReadOnly = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                Connect.Close();    //DB 연결 끊어주기
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -230,10 +224,10 @@ namespace testestestsettest
 
         private void ProcessSafety_VisibleChanged(object sender, EventArgs e)
         {
-            vlc1.Play(new Uri(RtspUrl));
-            vlc2.Play(new Uri(RtspUrl));
-            vlc3.Play(new Uri(RtspUrl));
-            vlc4.Play(new Uri(RtspUrl));
+            vlc1.Play(new Uri(RtspUrl1));
+            vlc2.Play(new Uri(RtspUrl2));
+            //vlc3.Play(new Uri(RtspUrl));
+            //vlc4.Play(new Uri(RtspUrl));
         }
 
         // 라즈베리파이 센서연결 참고
