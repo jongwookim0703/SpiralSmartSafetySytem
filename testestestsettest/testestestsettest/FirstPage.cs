@@ -29,6 +29,9 @@ namespace testestestsettest
         private void btn_process1_Click(object sender, EventArgs e)
         {
             vlc1.Stop();
+            vlc2.Stop();
+            vlc3.Stop();
+            vlc4.Stop();
 
             if (!MainPage.Instance.tabContainer.Controls.ContainsKey("ProcessDetail"))
             {
@@ -56,6 +59,11 @@ namespace testestestsettest
 
         private void btn_process2_Click(object sender, EventArgs e)
         {
+            vlc1.Stop();
+            vlc2.Stop();
+            vlc3.Stop();
+            vlc4.Stop();
+
             if (!MainPage.Instance.tabContainer.Controls.ContainsKey("ProcessDetail"))
             {
                 string FormName = "ProcessDetail";
@@ -76,10 +84,17 @@ namespace testestestsettest
 
 
             }
+            MainPage.Instance.BTNButton.Visible = true;
+
         }
 
         private void btn_process3_Click(object sender, EventArgs e)
         {
+            vlc1.Stop();
+            vlc2.Stop();
+            vlc3.Stop();
+            vlc4.Stop();
+
             if (!MainPage.Instance.tabContainer.Controls.ContainsKey("ProcessDetail"))
             {
                 string FormName = "ProcessDetail";
@@ -104,6 +119,11 @@ namespace testestestsettest
 
         private void btn_process4_Click(object sender, EventArgs e)
         {
+            vlc1.Stop();
+            vlc2.Stop();
+            vlc3.Stop();
+            vlc4.Stop();
+
             if (!MainPage.Instance.tabContainer.Controls.ContainsKey("ProcessDetail"))
             {
                 string FormName = "ProcessDetail";
