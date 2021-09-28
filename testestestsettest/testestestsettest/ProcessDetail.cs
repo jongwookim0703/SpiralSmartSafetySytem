@@ -47,7 +47,7 @@ namespace testestestsettest
                     return;
                 }
 
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT NO,CO2,GAS,LIGHT,FLAME,MAKEDATE,CHECKFLAG,CHECKDATE,MAKER FROM TB_ENVIROMENTSTATE", Connect);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT NO,PROCESSNO,PROCESSNAME,MAKER,PSTARTTIME,PENDTIME,STARTTIME,ENDTIME,HAZARDNO FROM TB_PROCESSWORKrec", Connect);
                 DataTable dtTemp = new DataTable();
                 adapter.Fill(dtTemp);
 
@@ -59,15 +59,15 @@ namespace testestestsettest
                 grid.DataSource = dtTemp;   //데이터 그리드 뷰에 데이터 테이블 등록
 
                 //그리드뷰의 헤더 명칭 선언
-                grid.Columns["NO"].HeaderText        = "no";
-                grid.Columns["CO2"].HeaderText       = "이산화탄소";
-                grid.Columns["GAS"].HeaderText       = "가스누출";
-                grid.Columns["LIGHT"].HeaderText     = "조도";
-                grid.Columns["FLAME"].HeaderText     = "불꽃";
-                grid.Columns["MAKEDATE"].HeaderText  = "발생시간"; 
-                grid.Columns["CHECKFLAG"].HeaderText = "재확인여부";
-                grid.Columns["CHECKDATE"].HeaderText = "재확인시간";
-                grid.Columns["MAKER"].HeaderText     = "담당자";
+                grid.Columns["NO"].HeaderText            = "no";
+                grid.Columns["PROCESSNO"].HeaderText     = "프로세스 no";
+                grid.Columns["PROCESSNAME"].HeaderText   = "프로세스 이름";
+                grid.Columns["MAKER"].HeaderText         = "프로세스 담당자";
+                grid.Columns["PSTARTTIME"].HeaderText    = "계획가동 시작시간";
+                grid.Columns["PENDTIME"].HeaderText      = "계획가동 마감시간"; 
+                grid.Columns["STARTTIME"].HeaderText     = "가동시작시간";
+                grid.Columns["ENDTIME"].HeaderText       = "가동끝난시간";
+                grid.Columns["HAZARDNO"].HeaderText      = "위험관리이력NO";
 
                 // 그리드 뷰의 폭 지정
                 grid.Columns[0].Width = 150;
@@ -81,15 +81,17 @@ namespace testestestsettest
                 grid.Columns[8].Width = 150;
 
                 //컬럼의 수정 여부를 지정 한다
-                grid.Columns["NO"].ReadOnly        = true;    //기본키라 수정하면 안됌, 단 신규로 추가될때는 해야함
-                grid.Columns["CO2"].ReadOnly       = true;
-                grid.Columns["GAS"].ReadOnly       = true;
-                grid.Columns["LIGHT"].ReadOnly     = true;
-                grid.Columns["FLAME"].ReadOnly     = true;
-                grid.Columns["MAKEDATE"].ReadOnly  = true;
-                grid.Columns["CHECKFLAG"].ReadOnly = true;
-                grid.Columns["CHECKDATE"].ReadOnly = true;
-                grid.Columns["MAKER"].ReadOnly     = true;
+                grid.Columns["NO"].ReadOnly             = true;    //기본키라 수정하면 안됌, 단 신규로 추가될때는 해야함
+                grid.Columns["PROCESSNO"].ReadOnly      = true;
+                grid.Columns["PROCESSNAME"].ReadOnly    = true;
+                grid.Columns["MAKER"].ReadOnly          = true;
+                grid.Columns["PSTARTTIME"].ReadOnly     = true;
+                grid.Columns["PENDTIME"].ReadOnly       = true;
+                grid.Columns["STARTTIME"].ReadOnly      = true;
+                grid.Columns["ENDTIME"].ReadOnly        = true;
+                grid.Columns["HAZARDNO"].ReadOnly       = true;
+
+
 
             }
             catch (Exception ex)
