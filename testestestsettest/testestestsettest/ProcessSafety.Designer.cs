@@ -228,6 +228,7 @@ namespace testestestsettest
             this.vlc4.Text = "vlcControl3";
             this.vlc4.VlcLibDirectory = null;
             this.vlc4.VlcMediaplayerOptions = null;
+            this.vlc4.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc4_VlcLibDirectoryNeeded);
             // 
             // groupBox4
             // 
@@ -249,6 +250,7 @@ namespace testestestsettest
             this.vlc3.Text = "vlcControl2";
             this.vlc3.VlcLibDirectory = null;
             this.vlc3.VlcMediaplayerOptions = null;
+            this.vlc3.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc3_VlcLibDirectoryNeeded);
             // 
             // groupBox3
             // 
@@ -267,9 +269,10 @@ namespace testestestsettest
             this.vlc2.Size = new System.Drawing.Size(384, 184);
             this.vlc2.Spu = -1;
             this.vlc2.TabIndex = 1;
-            this.vlc2.Text = "vlcControl1";
+            this.vlc2.Text = "vlcControl2";
             this.vlc2.VlcLibDirectory = null;
             this.vlc2.VlcMediaplayerOptions = null;
+            this.vlc2.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc2_VlcLibDirectoryNeeded);
             // 
             // groupBox2
             // 
@@ -291,6 +294,7 @@ namespace testestestsettest
             this.vlc1.Text = "vlcControl1";
             this.vlc1.VlcLibDirectory = null;
             this.vlc1.VlcMediaplayerOptions = null;
+            this.vlc1.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc1_VlcLibDirectoryNeeded);
             // 
             // menuStrip1
             // 
@@ -379,6 +383,7 @@ namespace testestestsettest
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ProcessSafety";
             this.Text = "ProcessSafety";
+            this.VisibleChanged += new System.EventHandler(this.ProcessSafety_VisibleChanged);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

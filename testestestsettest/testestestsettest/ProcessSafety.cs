@@ -4,12 +4,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Vlc.DotNet.Forms;
 
 namespace testestestsettest
 {
@@ -17,9 +19,16 @@ namespace testestestsettest
     {
         private System.Data.SqlClient.SqlConnection Connect = null;
         private string strConn = "Data Source=61.105.9.203; Initial Catalog=AppDev;User ID=spa;Password=spiral_0904";
+        private string RtspUrl = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
+
+        Assembly? CurrentAssembly;
+        string? CurrentDirectory;
 
         public ProcessSafety()
         {
+            CurrentAssembly = Assembly.GetEntryAssembly();
+            CurrentDirectory = new FileInfo(CurrentAssembly.Location).DirectoryName;
+
             InitializeComponent();
             //serialPort1.Open();
         }
@@ -195,6 +204,36 @@ namespace testestestsettest
             {
                 Connect.Close();
             }
+        }
+
+        
+
+        private void vlc1_VlcLibDirectoryNeeded(object sender, VlcLibDirectoryNeededEventArgs e)
+        {
+            e.VlcLibDirectory = new DirectoryInfo(Path.Combine(CurrentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
+        }
+
+        private void vlc2_VlcLibDirectoryNeeded(object sender, VlcLibDirectoryNeededEventArgs e)
+        {
+            e.VlcLibDirectory = new DirectoryInfo(Path.Combine(CurrentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
+        }
+
+        private void vlc3_VlcLibDirectoryNeeded(object sender, VlcLibDirectoryNeededEventArgs e)
+        {
+            e.VlcLibDirectory = new DirectoryInfo(Path.Combine(CurrentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
+        }
+
+        private void vlc4_VlcLibDirectoryNeeded(object sender, VlcLibDirectoryNeededEventArgs e)
+        {
+            e.VlcLibDirectory = new DirectoryInfo(Path.Combine(CurrentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
+        }
+
+        private void ProcessSafety_VisibleChanged(object sender, EventArgs e)
+        {
+            vlc1.Play(new Uri(RtspUrl));
+            vlc2.Play(new Uri(RtspUrl));
+            vlc3.Play(new Uri(RtspUrl));
+            vlc4.Play(new Uri(RtspUrl));
         }
 
         // 라즈베리파이 센서연결 참고
