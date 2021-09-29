@@ -102,11 +102,9 @@ namespace testestestsettest
             {
                 Connect.Close();    //DB 연결 끊어주기
             }
-        {
 
         }
 
-    }
         private void btn_stop1_Click(object sender, EventArgs e) //추후 DB.Helper 사용하게 되는 경우 해당하는 형태로 코드변경을 검토하여야함.
         {
             //<생각정리>
@@ -216,8 +214,7 @@ namespace testestestsettest
 
         private void cbo_proces1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Debug.WriteLine("TEST");
-            vlcControl.Play(new Uri(RtspUrl));
+            #region 주석
             /*try
             {
                 //콤보박스에서 선택된 프로세스의 조회
@@ -262,6 +259,94 @@ namespace testestestsettest
             {
                 Connect.Close();              //DB 연결 끊어주기
             }*/
+
+            #endregion 
+
+            try
+            {
+                Debug.WriteLine("TEST");
+                vlcControl.Play(new Uri(RtspUrl));
+
+                Debug.WriteLine(cbo_proces1.SelectedIndex);
+                Debug.WriteLine((cbo_proces1.SelectedItem as Tb_Process).ProcessNo);
+
+                var CurrProcess = (cbo_proces1.SelectedItem as Tb_Process);
+                var ProcessNo = CurrProcess.ProcessNo;
+
+                LblProcessName.Text = CurrProcess.ProcessName;
+
+                //Sql 커넥션
+                //Sql 커넥션에 등록 및 객체 선언
+                Connect = new SqlConnection(Common.DbPath);
+                Connect.Open();
+
+                if (Connect.State != System.Data.ConnectionState.Open)
+                {
+                    MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
+                    return;
+                }
+
+                var selQuery = @"SELECT DISTINCT
+                                        NO,PROCESSNO,PROCESSNAME,MAKER,PSTARTTIME,PENDTIME,STARTTIME,ENDTIME,HAZARDNO
+                                   FROM TB_PROCESSWORKrec
+                                  WHERE PROCESSNO = @PROCESSNO ";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(selQuery, Connect);
+                adapter.SelectCommand.Parameters.AddWithValue("@PROCESSNO", ProcessNo);
+                DataTable dtTemp = new DataTable();
+                adapter.Fill(dtTemp);
+
+                if (dtTemp.Rows.Count == 0)
+                {
+                    grid.DataSource = null;
+                    return;
+                }
+                grid.DataSource = dtTemp;   //데이터 그리드 뷰에 데이터 테이블 등록
+
+                //그리드뷰의 헤더 명칭 선언
+                grid.Columns["NO"].HeaderText = "no";
+                grid.Columns["PROCESSNO"].HeaderText = "프로세스 no";
+                grid.Columns["PROCESSNAME"].HeaderText = "프로세스 이름";
+                grid.Columns["MAKER"].HeaderText = "프로세스 담당자";
+                grid.Columns["PSTARTTIME"].HeaderText = "계획가동 시작시간";
+                grid.Columns["PENDTIME"].HeaderText = "계획가동 마감시간";
+                grid.Columns["STARTTIME"].HeaderText = "가동시작시간";
+                grid.Columns["ENDTIME"].HeaderText = "가동끝난시간";
+                grid.Columns["HAZARDNO"].HeaderText = "위험관리이력NO";
+
+                // 그리드 뷰의 폭 지정
+                grid.Columns[0].Width = 150;
+                grid.Columns[1].Width = 150;
+                grid.Columns[2].Width = 150;
+                grid.Columns[3].Width = 150;
+                grid.Columns[4].Width = 150;
+                grid.Columns[5].Width = 150;
+                grid.Columns[6].Width = 150;
+                grid.Columns[7].Width = 150;
+                grid.Columns[8].Width = 150;
+
+                //컬럼의 수정 여부를 지정 한다
+                grid.Columns["NO"].ReadOnly = true;    //기본키라 수정하면 안됌, 단 신규로 추가될때는 해야함
+                grid.Columns["PROCESSNO"].ReadOnly = true;
+                grid.Columns["PROCESSNAME"].ReadOnly = true;
+                grid.Columns["MAKER"].ReadOnly = true;
+                grid.Columns["PSTARTTIME"].ReadOnly = true;
+                grid.Columns["PENDTIME"].ReadOnly = true;
+                grid.Columns["STARTTIME"].ReadOnly = true;
+                grid.Columns["ENDTIME"].ReadOnly = true;
+                grid.Columns["HAZARDNO"].ReadOnly = true;
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                Connect.Close();    //DB 연결 끊어주기
+            }
         }
 
         private void btn_plan_Click(object sender, EventArgs e)

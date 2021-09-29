@@ -41,7 +41,7 @@ namespace testestestsettest
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.cbo_proces1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblProcessName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -117,7 +117,7 @@ namespace testestestsettest
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.cbo_proces1);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.LblProcessName);
             this.groupBox1.Controls.Add(this.panel4);
             this.groupBox1.Location = new System.Drawing.Point(33, 22);
             this.groupBox1.Name = "groupBox1";
@@ -194,14 +194,14 @@ namespace testestestsettest
             this.cbo_proces1.Text = "프로세스1";
             this.cbo_proces1.SelectedIndexChanged += new System.EventHandler(this.cbo_proces1_SelectedIndexChanged);
             // 
-            // label1
+            // LblProcessName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(263, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "프로세스1";
+            this.LblProcessName.AutoSize = true;
+            this.LblProcessName.Location = new System.Drawing.Point(263, 27);
+            this.LblProcessName.Name = "LblProcessName";
+            this.LblProcessName.Size = new System.Drawing.Size(62, 15);
+            this.LblProcessName.TabIndex = 4;
+            this.LblProcessName.Text = "프로세스1";
             // 
             // panel4
             // 
@@ -366,7 +366,7 @@ namespace testestestsettest
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cbo_proces1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblProcessName;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
