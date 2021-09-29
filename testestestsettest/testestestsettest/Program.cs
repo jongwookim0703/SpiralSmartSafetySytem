@@ -18,7 +18,7 @@ namespace testestestsettest
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LogIn());
-            Application.Run(new ProcessDetail());
+            Application.Run(new ProcessSafety());
         }
     }
 }
