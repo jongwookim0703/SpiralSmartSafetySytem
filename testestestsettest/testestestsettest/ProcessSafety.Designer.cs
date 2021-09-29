@@ -181,9 +181,9 @@ namespace testestestsettest
             // panel11
             // 
             this.panel11.Controls.Add(this.label21);
-            this.panel11.Location = new System.Drawing.Point(3, 173);
+            this.panel11.Location = new System.Drawing.Point(3, 163);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(303, 79);
+            this.panel11.Size = new System.Drawing.Size(303, 65);
             this.panel11.TabIndex = 17;
             // 
             // label21
@@ -191,7 +191,7 @@ namespace testestestsettest
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("맑은 고딕", 19F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label21.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label21.Location = new System.Drawing.Point(41, 15);
+            this.label21.Location = new System.Drawing.Point(41, 6);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(227, 45);
             this.label21.TabIndex = 0;
@@ -201,11 +201,11 @@ namespace testestestsettest
             // 
             this.grid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grid1.Location = new System.Drawing.Point(0, 268);
+            this.grid1.Location = new System.Drawing.Point(0, 234);
             this.grid1.Name = "grid1";
             this.grid1.RowHeadersWidth = 51;
             this.grid1.RowTemplate.Height = 29;
-            this.grid1.Size = new System.Drawing.Size(309, 181);
+            this.grid1.Size = new System.Drawing.Size(309, 215);
             this.grid1.TabIndex = 0;
             // 
             // groupBox5
@@ -383,6 +383,7 @@ namespace testestestsettest
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ProcessSafety";
             this.Text = "ProcessSafety";
+            this.Load += new System.EventHandler(this.ProcessSafety_Load);
             this.VisibleChanged += new System.EventHandler(this.ProcessSafety_VisibleChanged);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
