@@ -68,9 +68,9 @@ namespace testestestsettest
                 grid1.Columns["MAKEDATE"].HeaderText = "발생시간";
 
                 // 그리드 뷰의 폭 지정
-                grid1.Columns[0].Width = 70;
+                grid1.Columns[0].Width = 80;
                 grid1.Columns[1].Width = 70;
-                grid1.Columns[2].Width = 70;
+                grid1.Columns[2].Width = 50;
                 grid1.Columns[3].Width = 100;
 
 
@@ -92,9 +92,35 @@ namespace testestestsettest
 
         private void button1_Click(object sender, EventArgs e)
         {
+            vlc1.Stop();
+            vlc2.Stop();
+            vlc3.Stop();
+            vlc4.Stop();
+
             MessageBox.Show("상세보기로 이동합니다");
-            ProcessDetail processDetail = new ProcessDetail();
-            processDetail.ShowDialog();
+            //ProcessDetail processDetail = new ProcessDetail();
+            //processDetail.ShowDialog();
+            if (!MainPage.Instance.tabContainer.Controls.ContainsKey("ProcessDetail"))
+            {
+                //MainPage.Instance
+                string FormName = "ProcessDetail";
+
+                Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL");
+                Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true);
+                Form ShowForm = (Form)Activator.CreateInstance(typeForm);
+
+                for (int i = 0; i < MainPage.Instance.tabContainer.TabPages.Count; i++)
+                {
+                    if (MainPage.Instance.tabContainer.TabPages[i].Name == FormName.ToString())
+                    {
+                        MainPage.Instance.tabContainer.SelectedTab = MainPage.Instance.tabContainer.TabPages[i];
+                        return;
+                    }
+                }
+                MainPage.Instance.tabContainer.AddForm(ShowForm);
+
+            }
+            MainPage.Instance.BTNButton.Visible = true;
         }
 
         // btn 가동 버튼은 visible false로 수정하기 
