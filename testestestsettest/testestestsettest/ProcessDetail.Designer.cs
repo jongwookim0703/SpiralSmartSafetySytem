@@ -69,10 +69,10 @@ namespace testestestsettest
             // grid
             // 
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Location = new System.Drawing.Point(633, 148);
+            this.grid.Location = new System.Drawing.Point(572, 148);
             this.grid.Name = "grid";
             this.grid.RowTemplate.Height = 25;
-            this.grid.Size = new System.Drawing.Size(155, 227);
+            this.grid.Size = new System.Drawing.Size(216, 227);
             this.grid.TabIndex = 1;
             // 
             // btn_detail1
@@ -314,7 +314,7 @@ namespace testestestsettest
             this.vlcControl.BackColor = System.Drawing.Color.Black;
             this.vlcControl.Location = new System.Drawing.Point(33, 148);
             this.vlcControl.Name = "vlcControl";
-            this.vlcControl.Size = new System.Drawing.Size(594, 227);
+            this.vlcControl.Size = new System.Drawing.Size(533, 227);
             this.vlcControl.Spu = -1;
             this.vlcControl.TabIndex = 10;
             this.vlcControl.Text = "vlcControl1";
