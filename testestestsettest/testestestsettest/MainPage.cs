@@ -9,13 +9,19 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+//using Windows.Devices.Gpio;
 
 namespace testestestsettest
 {
     public partial class MainPage : Form
     {
         static MainPage obj;
+
+        #region raspberry
+        /*GpioController gpio = GpioController.GetDefault();
+        GpioPin pin = gpio.OpenPin(18);*/
+
+        #endregion raspberry
 
         public static MainPage Instance
         {
@@ -45,6 +51,7 @@ namespace testestestsettest
         public MainPage()
         {
             InitializeComponent();
+
 
             /*//login form 호출
             LogIn Login = new LogIn();
@@ -95,7 +102,6 @@ namespace testestestsettest
 
         private void MainPage_Load(object sender, EventArgs e)
         {
-            btnClose.Visible = false;
             obj = this;
 
             string FormName = "FirstPage";
@@ -119,6 +125,11 @@ namespace testestestsettest
 
         private void tssProcess1_Click(object sender, EventArgs e)
         {
+            FirstPage.Instance.Video1.Stop();
+            FirstPage.Instance.Video2.Stop();
+            FirstPage.Instance.Video3.Stop();
+            FirstPage.Instance.Video4.Stop();
+
             obj = this;
 
             string FormName = "ProcessDetail";
@@ -141,6 +152,11 @@ namespace testestestsettest
 
         private void tssProcess2_Click(object sender, EventArgs e)
         {
+            FirstPage.Instance.Video1.Stop();
+            FirstPage.Instance.Video2.Stop();
+            FirstPage.Instance.Video3.Stop();
+            FirstPage.Instance.Video4.Stop();
+
             obj = this;
 
             string FormName = "ProcessDetail";
@@ -163,6 +179,11 @@ namespace testestestsettest
 
         private void tssProcess3_Click(object sender, EventArgs e)
         {
+            FirstPage.Instance.Video1.Stop();
+            FirstPage.Instance.Video2.Stop();
+            FirstPage.Instance.Video3.Stop();
+            FirstPage.Instance.Video4.Stop();
+
             obj = this;
 
             string FormName = "ProcessDetail";
@@ -185,6 +206,11 @@ namespace testestestsettest
 
         private void tssProcess4_Click(object sender, EventArgs e)
         {
+            FirstPage.Instance.Video1.Stop();
+            FirstPage.Instance.Video2.Stop();
+            FirstPage.Instance.Video3.Stop();
+            FirstPage.Instance.Video4.Stop();
+
             obj = this;
 
             string FormName = "ProcessDetail";
@@ -208,11 +234,6 @@ namespace testestestsettest
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void btnDetail_Click(object sender, EventArgs e)
@@ -243,9 +264,22 @@ namespace testestestsettest
             if (myTabControl1.TabPages.Count == 0) return;
             //선택된 tab page 닫기
             myTabControl1.SelectedTab.Dispose();
-
-            btnClose.Visible = false;
         }
+
+        private void label2_TextChanged(object sender, EventArgs e)
+        {
+            /*Boolean led = pin.Read();
+
+            if (led = true)
+            {
+                label2.Text = "1";
+            }
+            else
+            {
+                label2.Text = "0";
+            }*/
+        }
+
     }
 
     public partial class MDIForm : TabPage

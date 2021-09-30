@@ -13,6 +13,7 @@ using testestestsettest.Models;
 using System.Diagnostics;
 using System.Reflection;
 using System.IO;
+using System.Linq.Expressions;
 
 namespace testestestsettest
 {
@@ -286,10 +287,29 @@ namespace testestestsettest
                     return;
                 }
 
-                var selQuery = @"SELECT DISTINCT
-                                        NO,PROCESSNO,PROCESSNAME,MAKER,PSTARTTIME,PENDTIME,STARTTIME,ENDTIME,HAZARDNO
-                                   FROM TB_PROCESSWORKrec
-                                  WHERE PROCESSNO = @PROCESSNO ";
+                var selQuery = @"SELECT 1 AS ID, 'NO' AS TITLE, CONVERT(VARCHAR(10), NO) AS VAL
+                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
+                                  UNION 
+                                 SELECT 2 AS ID, 'PROCESSNO' AS TITLE, CONVERT(VARCHAR(10), PROCESSNO) AS VAL
+                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
+                                  UNION
+                                 SELECT 3 AS ID, 'MAKER' AS TITLE, MAKER AS VAL
+                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
+                                  UNION
+                                 SELECT 4 AS ID, 'PSTARTTIME' AS TITLE, CONVERT(VARCHAR(10), PSTARTTIME, 120) AS VAL
+                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
+                                  UNION
+                                 SELECT 5 AS ID, 'PENDTIME' AS TITLE, CONVERT(VARCHAR(10), PENDTIME, 120) AS VAL
+                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
+                                  UNION
+                                 SELECT 6 AS ID, 'STARTTIME' AS TITLE, CONVERT(VARCHAR(10), STARTTIME, 120) AS VAL
+                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
+                                  UNION
+                                 SELECT 7 AS ID, 'ENDTIME' AS TITLE, CONVERT(VARCHAR(10), ENDTIME, 120) AS VAL
+                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
+                                  UNION
+                                 SELECT 8 AS ID, 'HAZARDNO' AS TITLE, CONVERT(VARCHAR(10), HAZARDNO, 120) AS VAL
+                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(selQuery, Connect);
                 adapter.SelectCommand.Parameters.AddWithValue("@PROCESSNO", ProcessNo);
@@ -303,38 +323,7 @@ namespace testestestsettest
                 }
                 grid.DataSource = dtTemp;   //데이터 그리드 뷰에 데이터 테이블 등록
 
-                //그리드뷰의 헤더 명칭 선언
-                grid.Columns["NO"].HeaderText = "no";
-                grid.Columns["PROCESSNO"].HeaderText = "프로세스 no";
-                grid.Columns["PROCESSNAME"].HeaderText = "프로세스 이름";
-                grid.Columns["MAKER"].HeaderText = "프로세스 담당자";
-                grid.Columns["PSTARTTIME"].HeaderText = "계획가동 시작시간";
-                grid.Columns["PENDTIME"].HeaderText = "계획가동 마감시간";
-                grid.Columns["STARTTIME"].HeaderText = "가동시작시간";
-                grid.Columns["ENDTIME"].HeaderText = "가동끝난시간";
-                grid.Columns["HAZARDNO"].HeaderText = "위험관리이력NO";
 
-                // 그리드 뷰의 폭 지정
-                grid.Columns[0].Width = 150;
-                grid.Columns[1].Width = 150;
-                grid.Columns[2].Width = 150;
-                grid.Columns[3].Width = 150;
-                grid.Columns[4].Width = 150;
-                grid.Columns[5].Width = 150;
-                grid.Columns[6].Width = 150;
-                grid.Columns[7].Width = 150;
-                grid.Columns[8].Width = 150;
-
-                //컬럼의 수정 여부를 지정 한다
-                grid.Columns["NO"].ReadOnly = true;    //기본키라 수정하면 안됌, 단 신규로 추가될때는 해야함
-                grid.Columns["PROCESSNO"].ReadOnly = true;
-                grid.Columns["PROCESSNAME"].ReadOnly = true;
-                grid.Columns["MAKER"].ReadOnly = true;
-                grid.Columns["PSTARTTIME"].ReadOnly = true;
-                grid.Columns["PENDTIME"].ReadOnly = true;
-                grid.Columns["STARTTIME"].ReadOnly = true;
-                grid.Columns["ENDTIME"].ReadOnly = true;
-                grid.Columns["HAZARDNO"].ReadOnly = true;
 
 
 
