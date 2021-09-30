@@ -13,38 +13,37 @@ namespace testestestsettest
 {
     public partial class UserResgister : Form
     {
-        //public UserResgister()
-        //{
-        //    InitializeComponent();
-        //    serialPort1.Open();
-        //}
+        public UserResgister()
+        {
+            InitializeComponent();
+            //    serialPort1.Open();
+        }
 
-        //private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
-        //{
-        //    if (serialPort1.IsOpen)
-        //    {
-        //        byte[] recv = new byte[1];
-        //        serialPort1.Read(recv, 0, 1);
+            //private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+            //{
+            //    if (serialPort1.IsOpen)
+            //    {
+            //        byte[] recv = new byte[1];
+            //        serialPort1.Read(recv, 0, 1);
 
-        //        txtFinger.Text = recv[0].ToString();
-        //        if (inforegister_info.ContainsKey((int)recv[0]))
-        //        {
-        //            //등록된 정보가 있을경우
-        //            txtID.Text              = inforegister_info[recv[0]].id;
-        //            txtPassword.Text = inforegister_info[recv[0]].password;
-        //            txtName.Text       = inforegister_info[recv[0]].name;
-        //            cboPosition.Text  = inforegister_info[recv[0]].position;
+            //        txtFinger.Text = recv[0].ToString();
+            //        if (inforegister_info.ContainsKey((int)recv[0]))
+            //        {
+            //            //등록된 정보가 있을경우
+            //            txtID.Text              = inforegister_info[recv[0]].id;
+            //            txtPassword.Text = inforegister_info[recv[0]].password;
+            //            txtName.Text       = inforegister_info[recv[0]].name;
+            //            cboPosition.Text  = inforegister_info[recv[0]].position;
 
-        //        }
-        //        else
-        //        {
-        //            txtID.Text = "";
-        //            txtPassword.Text = "";
-        //            txtName.Text = "";
-        //            cboPosition.Text = "";
-        //        }
-        //    }
-        //}
+            //        }
+            //        else
+            //        {
+            //            txtID.Text = "";
+            //            txtPassword.Text = "";
+            //            txtName.Text = "";
+            //            cboPosition.Text = "";
+            //        }
+ 
 
         Dictionary<int, inforegister> inforegister_info = new Dictionary<int, inforegister>();
         private void button2_Click_1(object sender, EventArgs e)
@@ -114,6 +113,22 @@ namespace testestestsettest
             {
                 inforegister_info.Remove(fingerid);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e) //등록
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e) //삭제
+        {
+
+        }
+         
+
+        private void button1_Click(object sender, EventArgs e) //지문 센서 확인버튼
+        {
+
         }
     }
 

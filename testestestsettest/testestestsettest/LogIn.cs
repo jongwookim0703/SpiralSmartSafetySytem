@@ -39,14 +39,12 @@ namespace testestestsettest
                 // 2. 데이터 베이스 연결 상태 확인.
                 Connect.Open();
                 if (Connect.State != System.Data.ConnectionState.Open) MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
-
                 string sLogInId = txtID.Text;
                 string sPassWord = txtPassword.Text;
 
                 // 기존의 비밀 번호 찾기.
-                SqlDataAdapter Adapter = new SqlDataAdapter("SELECT PWD,ID FROM TB_USER WHERE ID = '" + sLogInId + "'", Connect);
+                SqlDataAdapter Adapter = new SqlDataAdapter("SELECT PWD, ID FROM TB_USER WHERE ID = '" + sLogInId + "'", Connect);
                 DataTable DtTemp = new DataTable();
-
                 Adapter.Fill(DtTemp);
 
                 // ID 존재 여부 확인.
@@ -59,7 +57,7 @@ namespace testestestsettest
                 }
 
                 // 기존 비밀 번호 비교 
-                else if (sPassWord != DtTemp.Rows[0]["PW"].ToString())
+                else if (sPassWord != DtTemp.Rows[0]["PWD"].ToString())
                 {
 
                     txtPassword.Text = "";
@@ -92,7 +90,7 @@ namespace testestestsettest
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter) 
             {
                 btnLogin_Click(null, null);
             }
@@ -100,8 +98,8 @@ namespace testestestsettest
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            UserResgister UserResgister = new UserResgister();
-            UserResgister.ShowDialog();
+            UserResgister userResgister = new UserResgister();
+            userResgister.ShowDialog();
         }
     }
 }
