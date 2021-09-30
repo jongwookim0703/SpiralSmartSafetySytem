@@ -192,7 +192,7 @@ namespace testestestsettest
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(94, 29);
             this.btnExit.TabIndex = 7;
-            this.btnExit.Text = "button3";
+            this.btnExit.Text = "exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -202,7 +202,7 @@ namespace testestestsettest
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(94, 29);
             this.btnClose.TabIndex = 6;
-            this.btnClose.Text = "button2";
+            this.btnClose.Text = "close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -251,6 +251,7 @@ namespace testestestsettest
             this.label2.Size = new System.Drawing.Size(50, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "label2";
+            this.label2.TextChanged += new System.EventHandler(this.label2_TextChanged);
             // 
             // label1
             // 
