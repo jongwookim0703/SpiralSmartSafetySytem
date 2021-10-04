@@ -286,7 +286,7 @@ namespace testestestsettest
                     MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
                     return;
                 }
-
+                //select querry 변경
                 var selQuery = @"SELECT 1 AS ID, 'NO' AS TITLE, CONVERT(VARCHAR(10), NO) AS VAL
                                    FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
                                   UNION 
