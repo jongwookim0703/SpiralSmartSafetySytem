@@ -71,14 +71,14 @@ namespace testestestsettest
                 grid1.Columns[0].Width = 80;
                 grid1.Columns[1].Width = 70;
                 grid1.Columns[2].Width = 50;
-                grid1.Columns[3].Width = 100;
+                grid1.Columns[3].Width = 140;
 
 
                 //컬럼의 수정 여부를 지정 한다
                 grid1.Columns["PROCESSNAME"].ReadOnly = true;    //기본키라 수정하면 안됌, 단 신규로 추가될때는 해야함
                 grid1.Columns["HAZARDNAME"].ReadOnly = true;
                 grid1.Columns["HAZARDSTATE"].ReadOnly = true;
-                grid1.Columns["MAKEDATE"].ReadOnly = true;
+                grid1.Columns["MAKEDATE"].ReadOnly = false;
             }
             catch (Exception ex)
             {
@@ -289,6 +289,33 @@ namespace testestestsettest
         //            }
 
         //            public double GetDistance()
+        //            {
+        //                ManualResetEvent mre = new ManualResetEvent(false);
+        //                mre.WaitOne(500);
+
+        //                //Send pulse
+        //                this.TriggerPin.Write(GpioPinValue.High);
+        //                mre.WaitOne(TimeSpan.FromMilliseconds(0.01));
+        //                this.TriggerPin.Write(GpioPinValue.Low);
+
+        //                //Recieve pusle
+        //                while (this.EchoPin.Read() == GpioPinValue.Low)
+        //                {
+        //                }
+        //                DateTime start = DateTime.Now;
+
+        //                while (this.EchoPin.Read() == GpioPinValue.High)
+        //                {
+        //                }
+        //                DateTime stop = DateTime.Now;
+
+        //                //Calculating distance
+        //                double timeBetween = (stop - start).TotalSeconds;
+        //                double distance = timeBetween * 17000;
+
+        //                return distance;
+        //            }
+        //public double GetDistance()
         //            {
         //                ManualResetEvent mre = new ManualResetEvent(false);
         //                mre.WaitOne(500);
