@@ -48,6 +48,7 @@ namespace testestestsettest
             set { btnClose = value; }
         }
 
+        
         public MainPage()
         {
             InitializeComponent();
@@ -75,6 +76,7 @@ namespace testestestsettest
         private void timer1_Tick(object sender, EventArgs e)
         {
             tssTimer.Text = DateTime.Now.ToString();//breaktime 걸면 1초마다 break 발생
+            FirstPage.Instance.Gridbinding();
         }
 
         private void tssFirstPage_Click(object sender, EventArgs e)
