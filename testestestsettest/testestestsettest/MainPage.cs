@@ -76,7 +76,7 @@ namespace testestestsettest
         private void timer1_Tick(object sender, EventArgs e)
         {
             tssTimer.Text = DateTime.Now.ToString();//breaktime 걸면 1초마다 break 발생
-            FirstPage.Instance.Gridbinding();
+            //FirstPage.Instance.Gridbinding();
         }
 
         private void tssFirstPage_Click(object sender, EventArgs e)
@@ -216,6 +216,7 @@ namespace testestestsettest
             obj = this;
 
             string FormName = "ProcessDetail";
+            int cboNum = 1;
 
             Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
             Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
@@ -231,6 +232,7 @@ namespace testestestsettest
             }
 
             myTabControl1.AddForm(ShowForm);
+            //ProcessDetail.Instance.cboIndexChange(cboNum);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -258,6 +260,7 @@ namespace testestestsettest
             }
 
             myTabControl1.AddForm(ShowForm);
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -304,5 +307,7 @@ namespace testestestsettest
             NewForm.Show();
             base.SelectedTab = page;
         }
+
+        
     }
 }
