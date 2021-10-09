@@ -22,7 +22,10 @@ namespace testestestsettest
         // 접속 정보 객체 명명
         private SqlConnection Connect = null;
 
-        private string RtspUrl = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
+        private string RtspUrl1 = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
+        private string RtspUrl2 = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
+        private string RtspUrl3 = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
+        private string RtspUrl4 = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
         // 데이터베이스 관리권한
 
         // 데이터베이스 명령전달
@@ -35,78 +38,33 @@ namespace testestestsettest
 
         private void btn_detail1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //Sql 커넥션
-                //Sql 커넥션에 등록 및 객체 선언
-                Connect = new SqlConnection(Common.DbPath);
-                Connect.Open();
 
-                if (Connect.State != System.Data.ConnectionState.Open)
+            MessageBox.Show("상세보기로 이동합니다");
+
+            if (!MainPage.Instance.tabContainer.Controls.ContainsKey("Record"))
+            {
+                //MainPage.Instance
+                string FormName = "Record";
+
+                Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL");
+                Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true);
+                Form ShowForm = (Form)Activator.CreateInstance(typeForm);
+
+                for (int i = 0; i < MainPage.Instance.tabContainer.TabPages.Count; i++)
                 {
-                    MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
-                    return;
+                    if (MainPage.Instance.tabContainer.TabPages[i].Name == FormName.ToString())
+                    {
+                        MainPage.Instance.tabContainer.SelectedTab = MainPage.Instance.tabContainer.TabPages[i];
+                        return;
+                    }
                 }
-
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT NO,PROCESSNO,PROCESSNAME,MAKER,PSTARTTIME,PENDTIME,STARTTIME,ENDTIME,HAZARDNO FROM TB_PROCESSWORKrec", Connect);
-                DataTable dtTemp = new DataTable();
-                adapter.Fill(dtTemp);
-
-                if (dtTemp.Rows.Count == 0)
-                {
-                    grid.DataSource = null;
-                    return;
-                }
-                grid.DataSource = dtTemp;   //데이터 그리드 뷰에 데이터 테이블 등록
-
-                //그리드뷰의 헤더 명칭 선언
-                grid.Columns["NO"].HeaderText            = "no";
-                grid.Columns["PROCESSNO"].HeaderText     = "프로세스 no";
-                grid.Columns["PROCESSNAME"].HeaderText   = "프로세스 이름";
-                grid.Columns["MAKER"].HeaderText         = "프로세스 담당자";
-                grid.Columns["PSTARTTIME"].HeaderText    = "계획가동 시작시간";
-                grid.Columns["PENDTIME"].HeaderText      = "계획가동 마감시간"; 
-                grid.Columns["STARTTIME"].HeaderText     = "가동시작시간";
-                grid.Columns["ENDTIME"].HeaderText       = "가동끝난시간";
-                grid.Columns["HAZARDNO"].HeaderText      = "위험관리이력NO";
-
-                // 그리드 뷰의 폭 지정
-                grid.Columns[0].Width = 150;
-                grid.Columns[1].Width = 150;
-                grid.Columns[2].Width = 150;
-                grid.Columns[3].Width = 150;
-                grid.Columns[4].Width = 150;
-                grid.Columns[5].Width = 150;
-                grid.Columns[6].Width = 150;
-                grid.Columns[7].Width = 150;
-                grid.Columns[8].Width = 150;
-
-                //컬럼의 수정 여부를 지정 한다
-                grid.Columns["NO"].ReadOnly             = true;    //기본키라 수정하면 안됌, 단 신규로 추가될때는 해야함
-                grid.Columns["PROCESSNO"].ReadOnly      = true;
-                grid.Columns["PROCESSNAME"].ReadOnly    = true;
-                grid.Columns["MAKER"].ReadOnly          = true;
-                grid.Columns["PSTARTTIME"].ReadOnly     = true;
-                grid.Columns["PENDTIME"].ReadOnly       = true;
-                grid.Columns["STARTTIME"].ReadOnly      = true;
-                grid.Columns["ENDTIME"].ReadOnly        = true;
-                grid.Columns["HAZARDNO"].ReadOnly       = true;
-
-
+                MainPage.Instance.tabContainer.AddForm(ShowForm);
 
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                Connect.Close();    //DB 연결 끊어주기
-            }
-
+            MainPage.Instance.BTNButton.Visible = true;
         }
 
-        private void btn_stop1_Click(object sender, EventArgs e) //추후 DB.Helper 사용하게 되는 경우 해당하는 형태로 코드변경을 검토하여야함.
+        private void btn_stop1_Click(object sender, EventArgs e)
         {
             //<생각정리>
             //C#의 프로그램상에서 정지버튼을 클릭함 => DB에서 신호를 보냄(sql로 요청함)              => DB의 설비이력에 정지시간 및 이력이 등록됨(Stored procedure에서 update 구문을 작성함)
@@ -114,11 +72,11 @@ namespace testestestsettest
             try
             {
                 if (grid.Rows.Count == 0) return;
-                string nores = grid.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
+                string nores = grid.CurrentRow.Cells["OPERATEFLAG"].Value.ToString();
                 if (MessageBox.Show("설비를 정지 하시겠습니까?", "정지", MessageBoxButtons.YesNo)
                     == DialogResult.No) return;
 
-                string Num = grid.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
+                string Num = grid.CurrentRow.Cells["OPERATEFLAG"].Value.ToString();
 
 
                 SqlCommand cmd = new SqlCommand();
@@ -265,8 +223,15 @@ namespace testestestsettest
 
             try
             {
+                
+
                 Debug.WriteLine("TEST");
-                vlcControl.Play(new Uri(RtspUrl));
+
+                vlcControl.Play(new Uri(RtspUrl1));
+                vlcControl.Play(new Uri(RtspUrl2));
+                vlcControl.Play(new Uri(RtspUrl3));
+                vlcControl.Play(new Uri(RtspUrl4));
+
 
                 Debug.WriteLine(cbo_proces1.SelectedIndex);
                 Debug.WriteLine((cbo_proces1.SelectedItem as Tb_Process).ProcessNo);
