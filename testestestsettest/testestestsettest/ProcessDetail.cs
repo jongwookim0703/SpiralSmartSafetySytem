@@ -440,5 +440,10 @@ namespace testestestsettest
 
             e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
         }
+
+        private void ProcessDetail_Shown(object sender, EventArgs e)
+        {
+            cbo_proces1.SelectedIndex = cbo_proces1.FindString($"프로세스{Common.ProcessNo}");
+        }
     }
 }

@@ -97,6 +97,9 @@ namespace testestestsettest
             vlc3.Stop();
             vlc4.Stop();
 
+            Button temp = sender as Button;
+            Common.ProcessNo = int.Parse(temp.Tag.ToString()); //프로세스 넘버 결정
+
             MessageBox.Show("상세보기로 이동합니다");
             //ProcessDetail processDetail = new ProcessDetail();
             //processDetail.ShowDialog();
@@ -120,7 +123,6 @@ namespace testestestsettest
                 MainPage.Instance.tabContainer.AddForm(ShowForm);
 
             }
-            MainPage.Instance.BTNButton.Visible = true;
         }
 
         // btn 가동 버튼은 visible false로 수정하기 

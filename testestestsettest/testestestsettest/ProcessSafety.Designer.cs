@@ -46,15 +46,18 @@ namespace testestestsettest
             this.label21 = new System.Windows.Forms.Label();
             this.grid1 = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnDetail4 = new System.Windows.Forms.Button();
             this.vlc4 = new Vlc.DotNet.Forms.VlcControl();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.vlc3 = new Vlc.DotNet.Forms.VlcControl();
+            this.btnDetail3 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnDetail2 = new System.Windows.Forms.Button();
             this.vlc2 = new Vlc.DotNet.Forms.VlcControl();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.vlc1 = new Vlc.DotNet.Forms.VlcControl();
+            this.btnDetail1 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.btnSpec = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.chkReconf = new System.Windows.Forms.CheckBox();
             this.btnStop = new System.Windows.Forms.Button();
@@ -93,7 +96,7 @@ namespace testestestsettest
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1167, 508);
+            this.groupBox1.Size = new System.Drawing.Size(1167, 557);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             // 
@@ -111,13 +114,13 @@ namespace testestestsettest
             this.panel1.Controls.Add(this.grid1);
             this.panel1.Location = new System.Drawing.Point(846, 39);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(309, 449);
+            this.panel1.Size = new System.Drawing.Size(309, 512);
             this.panel1.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(204, 97);
+            this.label4.Location = new System.Drawing.Point(206, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 20);
             this.label4.TabIndex = 25;
@@ -135,7 +138,7 @@ namespace testestestsettest
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(204, 27);
+            this.label2.Location = new System.Drawing.Point(209, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 20);
             this.label2.TabIndex = 23;
@@ -181,7 +184,7 @@ namespace testestestsettest
             // panel11
             // 
             this.panel11.Controls.Add(this.label21);
-            this.panel11.Location = new System.Drawing.Point(3, 163);
+            this.panel11.Location = new System.Drawing.Point(3, 178);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(303, 65);
             this.panel11.TabIndex = 17;
@@ -201,30 +204,48 @@ namespace testestestsettest
             // 
             this.grid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grid1.Location = new System.Drawing.Point(0, 234);
+            this.grid1.Location = new System.Drawing.Point(0, 254);
             this.grid1.Name = "grid1";
             this.grid1.RowHeadersWidth = 51;
             this.grid1.RowTemplate.Height = 29;
-            this.grid1.Size = new System.Drawing.Size(309, 215);
+            this.grid1.Size = new System.Drawing.Size(309, 258);
             this.grid1.TabIndex = 0;
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnDetail4);
             this.groupBox5.Controls.Add(this.vlc4);
-            this.groupBox5.Location = new System.Drawing.Point(435, 264);
+            this.groupBox5.Location = new System.Drawing.Point(435, 291);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(405, 224);
+            this.groupBox5.Size = new System.Drawing.Size(405, 266);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
+            // 
+            // btnDetail4
+            // 
+            this.btnDetail4.BackColor = System.Drawing.Color.Transparent;
+            this.btnDetail4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDetail4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetail4.Font = new System.Drawing.Font("맑은 고딕", 5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDetail4.ForeColor = System.Drawing.Color.Black;
+            this.btnDetail4.Location = new System.Drawing.Point(183, 244);
+            this.btnDetail4.Name = "btnDetail4";
+            this.btnDetail4.Size = new System.Drawing.Size(50, 20);
+            this.btnDetail4.TabIndex = 3;
+            this.btnDetail4.Tag = "4";
+            this.btnDetail4.Text = "detail";
+            this.btnDetail4.UseVisualStyleBackColor = false;
+            this.btnDetail4.Click += new System.EventHandler(this.button1_Click);
             // 
             // vlc4
             // 
             this.vlc4.BackColor = System.Drawing.Color.Black;
             this.vlc4.Location = new System.Drawing.Point(6, 26);
             this.vlc4.Name = "vlc4";
-            this.vlc4.Size = new System.Drawing.Size(384, 184);
+            this.vlc4.Size = new System.Drawing.Size(384, 216);
             this.vlc4.Spu = -1;
             this.vlc4.TabIndex = 3;
+            this.vlc4.Tag = "4";
             this.vlc4.Text = "vlcControl3";
             this.vlc4.VlcLibDirectory = null;
             this.vlc4.VlcMediaplayerOptions = null;
@@ -233,9 +254,10 @@ namespace testestestsettest
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.vlc3);
-            this.groupBox4.Location = new System.Drawing.Point(12, 264);
+            this.groupBox4.Controls.Add(this.btnDetail3);
+            this.groupBox4.Location = new System.Drawing.Point(12, 291);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(405, 224);
+            this.groupBox4.Size = new System.Drawing.Size(405, 266);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             // 
@@ -244,31 +266,66 @@ namespace testestestsettest
             this.vlc3.BackColor = System.Drawing.Color.Black;
             this.vlc3.Location = new System.Drawing.Point(6, 26);
             this.vlc3.Name = "vlc3";
-            this.vlc3.Size = new System.Drawing.Size(384, 184);
+            this.vlc3.Size = new System.Drawing.Size(384, 216);
             this.vlc3.Spu = -1;
             this.vlc3.TabIndex = 2;
+            this.vlc3.Tag = "3";
             this.vlc3.Text = "vlcControl2";
             this.vlc3.VlcLibDirectory = null;
             this.vlc3.VlcMediaplayerOptions = null;
             this.vlc3.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc3_VlcLibDirectoryNeeded);
             // 
+            // btnDetail3
+            // 
+            this.btnDetail3.BackColor = System.Drawing.Color.Transparent;
+            this.btnDetail3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDetail3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetail3.Font = new System.Drawing.Font("맑은 고딕", 5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDetail3.ForeColor = System.Drawing.Color.Black;
+            this.btnDetail3.Location = new System.Drawing.Point(165, 244);
+            this.btnDetail3.Name = "btnDetail3";
+            this.btnDetail3.Size = new System.Drawing.Size(50, 20);
+            this.btnDetail3.TabIndex = 2;
+            this.btnDetail3.Tag = "3";
+            this.btnDetail3.Text = "detail";
+            this.btnDetail3.UseVisualStyleBackColor = false;
+            this.btnDetail3.Click += new System.EventHandler(this.button1_Click);
+            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnDetail2);
             this.groupBox3.Controls.Add(this.vlc2);
             this.groupBox3.Location = new System.Drawing.Point(435, 26);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(405, 224);
+            this.groupBox3.Size = new System.Drawing.Size(405, 272);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
+            // 
+            // btnDetail2
+            // 
+            this.btnDetail2.BackColor = System.Drawing.Color.Transparent;
+            this.btnDetail2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDetail2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetail2.Font = new System.Drawing.Font("맑은 고딕", 5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDetail2.ForeColor = System.Drawing.Color.Black;
+            this.btnDetail2.Location = new System.Drawing.Point(183, 244);
+            this.btnDetail2.Name = "btnDetail2";
+            this.btnDetail2.Size = new System.Drawing.Size(50, 20);
+            this.btnDetail2.TabIndex = 1;
+            this.btnDetail2.Tag = "2";
+            this.btnDetail2.Text = "detail";
+            this.btnDetail2.UseVisualStyleBackColor = false;
+            this.btnDetail2.Click += new System.EventHandler(this.button1_Click);
             // 
             // vlc2
             // 
             this.vlc2.BackColor = System.Drawing.Color.Black;
             this.vlc2.Location = new System.Drawing.Point(6, 26);
             this.vlc2.Name = "vlc2";
-            this.vlc2.Size = new System.Drawing.Size(384, 184);
+            this.vlc2.Size = new System.Drawing.Size(384, 216);
             this.vlc2.Spu = -1;
             this.vlc2.TabIndex = 1;
+            this.vlc2.Tag = "2";
             this.vlc2.Text = "vlcControl2";
             this.vlc2.VlcLibDirectory = null;
             this.vlc2.VlcMediaplayerOptions = null;
@@ -277,9 +334,10 @@ namespace testestestsettest
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.vlc1);
+            this.groupBox2.Controls.Add(this.btnDetail1);
             this.groupBox2.Location = new System.Drawing.Point(12, 26);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(405, 224);
+            this.groupBox2.Size = new System.Drawing.Size(405, 272);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
@@ -288,13 +346,30 @@ namespace testestestsettest
             this.vlc1.BackColor = System.Drawing.Color.Black;
             this.vlc1.Location = new System.Drawing.Point(6, 26);
             this.vlc1.Name = "vlc1";
-            this.vlc1.Size = new System.Drawing.Size(384, 184);
+            this.vlc1.Size = new System.Drawing.Size(384, 216);
             this.vlc1.Spu = -1;
             this.vlc1.TabIndex = 0;
+            this.vlc1.Tag = "1";
             this.vlc1.Text = "vlcControl1";
             this.vlc1.VlcLibDirectory = null;
             this.vlc1.VlcMediaplayerOptions = null;
             this.vlc1.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc1_VlcLibDirectoryNeeded);
+            // 
+            // btnDetail1
+            // 
+            this.btnDetail1.BackColor = System.Drawing.Color.Transparent;
+            this.btnDetail1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDetail1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetail1.Font = new System.Drawing.Font("맑은 고딕", 5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDetail1.ForeColor = System.Drawing.Color.Black;
+            this.btnDetail1.Location = new System.Drawing.Point(165, 244);
+            this.btnDetail1.Name = "btnDetail1";
+            this.btnDetail1.Size = new System.Drawing.Size(50, 20);
+            this.btnDetail1.TabIndex = 0;
+            this.btnDetail1.Tag = "1";
+            this.btnDetail1.Text = "detail";
+            this.btnDetail1.UseVisualStyleBackColor = false;
+            this.btnDetail1.Click += new System.EventHandler(this.button1_Click);
             // 
             // menuStrip1
             // 
@@ -305,27 +380,12 @@ namespace testestestsettest
             this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // btnSpec
-            // 
-            this.btnSpec.BackColor = System.Drawing.Color.Transparent;
-            this.btnSpec.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSpec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSpec.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSpec.ForeColor = System.Drawing.Color.Black;
-            this.btnSpec.Location = new System.Drawing.Point(18, 595);
-            this.btnSpec.Name = "btnSpec";
-            this.btnSpec.Size = new System.Drawing.Size(94, 29);
-            this.btnSpec.TabIndex = 0;
-            this.btnSpec.Text = "상세보기";
-            this.btnSpec.UseVisualStyleBackColor = false;
-            this.btnSpec.Click += new System.EventHandler(this.button1_Click);
-            // 
             // panel10
             // 
             this.panel10.Controls.Add(this.chkReconf);
             this.panel10.Controls.Add(this.btnStop);
             this.panel10.Controls.Add(this.btnRun);
-            this.panel10.Location = new System.Drawing.Point(842, 565);
+            this.panel10.Location = new System.Drawing.Point(846, 587);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(302, 82);
             this.panel10.TabIndex = 16;
@@ -376,7 +436,6 @@ namespace testestestsettest
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1167, 694);
             this.Controls.Add(this.panel10);
-            this.Controls.Add(this.btnSpec);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -415,7 +474,7 @@ namespace testestestsettest
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Button btnSpec;
+        private System.Windows.Forms.Button btnDetail1;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnRun;
@@ -436,5 +495,8 @@ namespace testestestsettest
         private System.Windows.Forms.TextBox txtGas;
         private System.Windows.Forms.TextBox txtCo2;
         private System.Windows.Forms.DataGridView grid1;
+        private System.Windows.Forms.Button btnDetail4;
+        private System.Windows.Forms.Button btnDetail3;
+        private System.Windows.Forms.Button btnDetail2;
     }
 }

@@ -190,7 +190,7 @@ namespace testestestsettest
 
         private void FirstPage_Load(object sender, EventArgs e)
         {
-            Gridbinding();
+            //Gridbinding();
         }
 
         private void lb_process1_TextChanged(object sender, EventArgs e)
