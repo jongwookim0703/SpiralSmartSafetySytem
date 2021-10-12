@@ -55,10 +55,10 @@ namespace testestestsettest
             set { vlc4 = value; }
         }
 
-        private string RtspUrl1 = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
-        private string RtspUrl2 = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
-        private string RtspUrl3 = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
-        private string RtspUrl4 = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
+        private string RtspUrl1 = "https://www.youtube.com/watch?v=Nh27WsNdymo&list=PLotqbLTnmf4L8knQeE4Ylw92jJc0Md2AR&index=36&t=713s";
+        private string RtspUrl2 = "https://www.youtube.com/watch?v=Nh27WsNdymo&list=PLotqbLTnmf4L8knQeE4Ylw92jJc0Md2AR&index=36&t=713s";
+        private string RtspUrl3 = "https://www.youtube.com/watch?v=Nh27WsNdymo&list=PLotqbLTnmf4L8knQeE4Ylw92jJc0Md2AR&index=36&t=713s";
+        private string RtspUrl4 = "https://www.youtube.com/watch?v=Nh27WsNdymo&list=PLotqbLTnmf4L8knQeE4Ylw92jJc0Md2AR&index=36&t=713s";
 
         public FirstPage()
         {
@@ -66,12 +66,15 @@ namespace testestestsettest
 
         }
 
-        private void btn_process1_Click(object sender, EventArgs e)
+        private void btn_process_Click(object sender, EventArgs e)
         {
             vlc1.Stop();
             vlc2.Stop();
             vlc3.Stop();
             vlc4.Stop();
+
+            Button temp = sender as Button;
+            Common.ProcessNo = int.Parse(temp.Tag.ToString());
 
             if (!MainPage.Instance.tabContainer.Controls.ContainsKey("ProcessDetail"))
             {
@@ -86,102 +89,17 @@ namespace testestestsettest
                 {
                     if (MainPage.Instance.tabContainer.TabPages[i].Name == FormName.ToString())
                     {
-                        MainPage.Instance.tabContainer.SelectedTab = MainPage.Instance.tabContainer.TabPages[i];
+                        MainPage.Instance.tabContainer.TabPages[i].Dispose();
+                        MainPage.Instance.tabContainer.AddForm(ShowForm);
                         return;
                     }
+                    
                 }
                 MainPage.Instance.tabContainer.AddForm(ShowForm);
 
 
             }
             MainPage.Instance.BTNButton.Visible = true;
-        }
-
-        private void btn_process2_Click(object sender, EventArgs e)
-        {
-            vlc1.Stop();
-            vlc2.Stop();
-            vlc3.Stop();
-            vlc4.Stop();
-
-            if (!MainPage.Instance.tabContainer.Controls.ContainsKey("ProcessDetail"))
-            {
-                string FormName = "ProcessDetail";
-
-                Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL");
-                Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true);
-                Form ShowForm = (Form)Activator.CreateInstance(typeForm);
-
-                for (int i = 0; i < MainPage.Instance.tabContainer.TabPages.Count; i++)
-                {
-                    if (MainPage.Instance.tabContainer.TabPages[i].Name == FormName.ToString())
-                    {
-                        MainPage.Instance.tabContainer.SelectedTab = MainPage.Instance.tabContainer.TabPages[i];
-                        return;
-                    }
-                }
-                MainPage.Instance.tabContainer.AddForm(ShowForm);
-
-
-            }
-            MainPage.Instance.BTNButton.Visible = true;
-
-        }
-
-        private void btn_process3_Click(object sender, EventArgs e)
-        {
-            vlc1.Stop();
-            vlc2.Stop();
-            vlc3.Stop();
-            vlc4.Stop();
-
-            if (!MainPage.Instance.tabContainer.Controls.ContainsKey("ProcessDetail"))
-            {
-                string FormName = "ProcessDetail";
-
-                Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL");
-                Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true);
-                Form ShowForm = (Form)Activator.CreateInstance(typeForm);
-
-                for (int i = 0; i < MainPage.Instance.tabContainer.TabPages.Count; i++)
-                {
-                    if (MainPage.Instance.tabContainer.TabPages[i].Name == FormName.ToString())
-                    {
-                        MainPage.Instance.tabContainer.SelectedTab = MainPage.Instance.tabContainer.TabPages[i];
-                        return;
-                    }
-                }
-                MainPage.Instance.tabContainer.AddForm(ShowForm);
-
-
-            }
-        }
-
-        private void btn_process4_Click(object sender, EventArgs e)
-        {
-            vlc1.Stop();
-            vlc2.Stop();
-            vlc3.Stop();
-            vlc4.Stop();
-
-            if (!MainPage.Instance.tabContainer.Controls.ContainsKey("ProcessDetail"))
-            {
-                string FormName = "ProcessDetail";
-
-                Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL");
-                Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true);
-                Form ShowForm = (Form)Activator.CreateInstance(typeForm);
-
-                for (int i = 0; i < MainPage.Instance.tabContainer.TabPages.Count; i++)
-                {
-                    if (MainPage.Instance.tabContainer.TabPages[i].Name == FormName.ToString())
-                    {
-                        MainPage.Instance.tabContainer.SelectedTab = MainPage.Instance.tabContainer.TabPages[i];
-                        return;
-                    }
-                }
-                MainPage.Instance.tabContainer.AddForm(ShowForm);
-            }
         }
 
         private SqlConnection Connect = null; // 접속 정보 객체 명명

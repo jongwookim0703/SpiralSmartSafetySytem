@@ -43,7 +43,6 @@ namespace testestestsettest
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssTimer = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.myTabControl1 = new testestestsettest.MyTabControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -54,6 +53,7 @@ namespace testestestsettest
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.myTabControl1 = new testestestsettest.MyTabControl();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -71,14 +71,15 @@ namespace testestestsettest
             this.tssProcess4});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1113, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(866, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // tssFirstPage
             // 
             this.tssFirstPage.Name = "tssFirstPage";
-            this.tssFirstPage.Size = new System.Drawing.Size(123, 24);
+            this.tssFirstPage.Size = new System.Drawing.Size(99, 20);
             this.tssFirstPage.Tag = "FirstPage";
             this.tssFirstPage.Text = "전체 공정 관리";
             this.tssFirstPage.Click += new System.EventHandler(this.tssFirstPage_Click);
@@ -86,30 +87,34 @@ namespace testestestsettest
             // tssProcess1
             // 
             this.tssProcess1.Name = "tssProcess1";
-            this.tssProcess1.Size = new System.Drawing.Size(91, 24);
+            this.tssProcess1.Size = new System.Drawing.Size(74, 20);
+            this.tssProcess1.Tag = "1";
             this.tssProcess1.Text = "프로세스1";
-            this.tssProcess1.Click += new System.EventHandler(this.tssProcess1_Click);
+            this.tssProcess1.Click += new System.EventHandler(this.tssProcess_Click);
             // 
             // tssProcess2
             // 
             this.tssProcess2.Name = "tssProcess2";
-            this.tssProcess2.Size = new System.Drawing.Size(91, 24);
+            this.tssProcess2.Size = new System.Drawing.Size(74, 20);
+            this.tssProcess2.Tag = "2";
             this.tssProcess2.Text = "프로세스2";
-            this.tssProcess2.Click += new System.EventHandler(this.tssProcess2_Click);
+            this.tssProcess2.Click += new System.EventHandler(this.tssProcess_Click);
             // 
             // tssProcess3
             // 
             this.tssProcess3.Name = "tssProcess3";
-            this.tssProcess3.Size = new System.Drawing.Size(91, 24);
+            this.tssProcess3.Size = new System.Drawing.Size(74, 20);
+            this.tssProcess3.Tag = "3";
             this.tssProcess3.Text = "프로세스3";
-            this.tssProcess3.Click += new System.EventHandler(this.tssProcess3_Click);
+            this.tssProcess3.Click += new System.EventHandler(this.tssProcess_Click);
             // 
             // tssProcess4
             // 
             this.tssProcess4.Name = "tssProcess4";
-            this.tssProcess4.Size = new System.Drawing.Size(91, 24);
+            this.tssProcess4.Size = new System.Drawing.Size(74, 20);
+            this.tssProcess4.Tag = "4";
             this.tssProcess4.Text = "프로세스4";
-            this.tssProcess4.Click += new System.EventHandler(this.tssProcess4_Click);
+            this.tssProcess4.Click += new System.EventHandler(this.tssProcess_Click);
             // 
             // statusStrip1
             // 
@@ -120,39 +125,40 @@ namespace testestestsettest
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.tssTimer});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 600);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 448);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1113, 26);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 11, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(866, 22);
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(54, 20);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(43, 17);
             this.toolStripStatusLabel1.Text = "관리자";
             // 
             // tssUserName
             // 
             this.tssUserName.Name = "tssUserName";
-            this.tssUserName.Size = new System.Drawing.Size(0, 20);
+            this.tssUserName.Size = new System.Drawing.Size(0, 17);
             // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(348, 20);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(270, 17);
             this.toolStripStatusLabel2.Spring = true;
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(348, 20);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(270, 17);
             this.toolStripStatusLabel3.Spring = true;
             // 
             // tssTimer
             // 
             this.tssTimer.Name = "tssTimer";
-            this.tssTimer.Size = new System.Drawing.Size(348, 20);
+            this.tssTimer.Size = new System.Drawing.Size(270, 17);
             this.tssTimer.Spring = true;
             // 
             // timer1
@@ -160,15 +166,6 @@ namespace testestestsettest
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // myTabControl1
-            // 
-            this.myTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.myTabControl1.Location = new System.Drawing.Point(3, 23);
-            this.myTabControl1.Name = "myTabControl1";
-            this.myTabControl1.SelectedIndex = 0;
-            this.myTabControl1.Size = new System.Drawing.Size(1107, 510);
-            this.myTabControl1.TabIndex = 13;
             // 
             // panel1
             // 
@@ -181,16 +178,18 @@ namespace testestestsettest
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 28);
+            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1113, 36);
+            this.panel1.Size = new System.Drawing.Size(866, 27);
             this.panel1.TabIndex = 15;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(1007, 3);
+            this.btnExit.Location = new System.Drawing.Point(783, 2);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(94, 29);
+            this.btnExit.Size = new System.Drawing.Size(73, 22);
             this.btnExit.TabIndex = 7;
             this.btnExit.Text = "exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -198,9 +197,10 @@ namespace testestestsettest
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(895, 3);
+            this.btnClose.Location = new System.Drawing.Point(696, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(94, 29);
+            this.btnClose.Size = new System.Drawing.Size(73, 22);
             this.btnClose.TabIndex = 6;
             this.btnClose.Text = "close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -208,9 +208,10 @@ namespace testestestsettest
             // 
             // btnDetail
             // 
-            this.btnDetail.Location = new System.Drawing.Point(585, 3);
+            this.btnDetail.Location = new System.Drawing.Point(455, 2);
+            this.btnDetail.Margin = new System.Windows.Forms.Padding(2);
             this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Size = new System.Drawing.Size(29, 29);
+            this.btnDetail.Size = new System.Drawing.Size(23, 22);
             this.btnDetail.TabIndex = 5;
             this.btnDetail.Text = "button1";
             this.btnDetail.UseVisualStyleBackColor = true;
@@ -219,46 +220,50 @@ namespace testestestsettest
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(470, 7);
+            this.label5.Location = new System.Drawing.Point(366, 5);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 20);
+            this.label5.Size = new System.Drawing.Size(87, 15);
             this.label5.TabIndex = 4;
             this.label5.Text = "공기 순환 상태";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(237, 10);
+            this.label4.Location = new System.Drawing.Point(184, 8);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 20);
+            this.label4.Size = new System.Drawing.Size(39, 15);
             this.label4.TabIndex = 3;
             this.label4.Text = "label4";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(183, 10);
+            this.label3.Location = new System.Drawing.Point(142, 8);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 20);
+            this.label3.Size = new System.Drawing.Size(39, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "label3";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(129, 10);
+            this.label2.Location = new System.Drawing.Point(100, 8);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 20);
+            this.label2.Size = new System.Drawing.Size(39, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "label2";
-            this.label2.TextChanged += new System.EventHandler(this.label2_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 10);
+            this.label1.Location = new System.Drawing.Point(10, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 20);
+            this.label1.Size = new System.Drawing.Size(87, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "현재 공정 상태";
             // 
@@ -266,26 +271,37 @@ namespace testestestsettest
             // 
             this.groupBox1.Controls.Add(this.myTabControl1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 64);
+            this.groupBox1.Location = new System.Drawing.Point(0, 51);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1113, 536);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(866, 397);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             // 
+            // myTabControl1
+            // 
+            this.myTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.myTabControl1.Location = new System.Drawing.Point(2, 18);
+            this.myTabControl1.Name = "myTabControl1";
+            this.myTabControl1.SelectedIndex = 0;
+            this.myTabControl1.Size = new System.Drawing.Size(862, 377);
+            this.myTabControl1.TabIndex = 19;
+            // 
             // MainPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 626);
+            this.ClientSize = new System.Drawing.Size(866, 470);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainPage";
             this.Text = "MainForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainPage_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

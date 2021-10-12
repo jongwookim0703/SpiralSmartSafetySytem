@@ -9,7 +9,12 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using Windows.Devices.Gpio;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Net;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
+using System.Diagnostics;
 
 namespace testestestsettest
 {
@@ -17,11 +22,10 @@ namespace testestestsettest
     {
         static MainPage obj;
 
-        #region raspberry
-        /*GpioController gpio = GpioController.GetDefault();
-        GpioPin pin = gpio.OpenPin(18);*/
-
-        #endregion raspberry
+        //Mqtt 라즈베리파이
+        MqttClient client;
+        private float open_temp, close_temp;
+        private bool opened;
 
         public static MainPage Instance
         {
@@ -97,6 +101,10 @@ namespace testestestsettest
                     myTabControl1.SelectedTab = myTabControl1.TabPages[i];
                     return;
                 }
+                else
+                {
+                    myTabControl1.TabPages[i].Dispose();
+                }
             }
             
             myTabControl1.AddForm(ShowForm);
@@ -112,7 +120,6 @@ namespace testestestsettest
             Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true);
             Form ShowForm = (Form)Activator.CreateInstance(typeForm);
 
-
             for (int i = 0; i < myTabControl1.TabPages.Count; i++)
             {
                 if (myTabControl1.TabPages[i].Name == FormName.ToString())
@@ -120,17 +127,29 @@ namespace testestestsettest
                     myTabControl1.SelectedTab = myTabControl1.TabPages[i];
                     return;
                 }
+
             }
 
             myTabControl1.AddForm(ShowForm);
+
+            try
+            {
+                IPAddress hostIP;
+                hostIP = IPAddress.Parse("192.168.0.6");
+                client = new MqttClient(hostIP);
+
+                client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
-        private void tssProcess1_Click(object sender, EventArgs e)
+        private void tssProcess_Click(object sender, EventArgs e)
         {
-            FirstPage.Instance.Video1.Stop();
-            FirstPage.Instance.Video2.Stop();
-            FirstPage.Instance.Video3.Stop();
-            FirstPage.Instance.Video4.Stop();
+            ToolStripMenuItem temp = sender as ToolStripMenuItem;
+            Common.ProcessNo = int.Parse(temp.Tag.ToString());
 
             obj = this;
 
@@ -144,95 +163,15 @@ namespace testestestsettest
             {
                 if (myTabControl1.TabPages[i].Name == FormName.ToString())
                 {
-                    myTabControl1.SelectedTab = myTabControl1.TabPages[i];
+                    myTabControl1.TabPages[i].Dispose();
+                    myTabControl1.AddForm(ShowForm);
                     return;
                 }
+                
             }
 
             myTabControl1.AddForm(ShowForm);
-        }
-
-        private void tssProcess2_Click(object sender, EventArgs e)
-        {
-            FirstPage.Instance.Video1.Stop();
-            FirstPage.Instance.Video2.Stop();
-            FirstPage.Instance.Video3.Stop();
-            FirstPage.Instance.Video4.Stop();
-
-            obj = this;
-
-            string FormName = "ProcessDetail";
-
-            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
-            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
-            Form ShowForm = (Form)Activator.CreateInstance(typeForm);
-
-            for (int i = 0; i < myTabControl1.TabPages.Count; i++)
-            {
-                if (myTabControl1.TabPages[i].Name == FormName.ToString())
-                {
-                    myTabControl1.SelectedTab = myTabControl1.TabPages[i];
-                    return;
-                }
-            }
-
-            myTabControl1.AddForm(ShowForm);
-        }
-
-        private void tssProcess3_Click(object sender, EventArgs e)
-        {
-            FirstPage.Instance.Video1.Stop();
-            FirstPage.Instance.Video2.Stop();
-            FirstPage.Instance.Video3.Stop();
-            FirstPage.Instance.Video4.Stop();
-
-            obj = this;
-
-            string FormName = "ProcessDetail";
-
-            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
-            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
-            Form ShowForm = (Form)Activator.CreateInstance(typeForm);
-
-            for (int i = 0; i < myTabControl1.TabPages.Count; i++)
-            {
-                if (myTabControl1.TabPages[i].Name == FormName.ToString())
-                {
-                    myTabControl1.SelectedTab = myTabControl1.TabPages[i];
-                    return;
-                }
-            }
-
-            myTabControl1.AddForm(ShowForm);
-        }
-
-        private void tssProcess4_Click(object sender, EventArgs e)
-        {
-            FirstPage.Instance.Video1.Stop();
-            FirstPage.Instance.Video2.Stop();
-            FirstPage.Instance.Video3.Stop();
-            FirstPage.Instance.Video4.Stop();
-
-            obj = this;
-
-            string FormName = "ProcessDetail";
-            int cboNum = 1;
-
-            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
-            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
-            Form ShowForm = (Form)Activator.CreateInstance(typeForm);
-
-            for (int i = 0; i < myTabControl1.TabPages.Count; i++)
-            {
-                if (myTabControl1.TabPages[i].Name == FormName.ToString())
-                {
-                    myTabControl1.SelectedTab = myTabControl1.TabPages[i];
-                    return;
-                }
-            }
-
-            myTabControl1.AddForm(ShowForm);
-            //ProcessDetail.Instance.cboIndexChange(cboNum);
+            
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -257,6 +196,10 @@ namespace testestestsettest
                     myTabControl1.SelectedTab = myTabControl1.TabPages[i];
                     return;
                 }
+                else
+                {
+                    myTabControl1.TabPages[i].Dispose();
+                }
             }
 
             myTabControl1.AddForm(ShowForm);
@@ -271,20 +214,66 @@ namespace testestestsettest
             myTabControl1.SelectedTab.Dispose();
         }
 
-        private void label2_TextChanged(object sender, EventArgs e)
+        #region Mqtt
+        private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
-            /*Boolean led = pin.Read();
-
-            if (led = true)
+            try
             {
-                label2.Text = "1";
+                var message = Encoding.UTF8.GetString(e.Message);
+                InsertData(message);        // 메시지가 발생할 경우 DB에 저장
+                SendToBroker(message);      // 알람이 발생시 디바이스로 재전송
             }
-            else
+            catch (Exception ex)
             {
-                label2.Text = "0";
-            }*/
+                MessageBox.Show("[ERROR] " + ex.Message);
+            }
         }
 
+        private void InsertData(string message)
+        {
+            var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
+            //currentDatas["dev_id"], currentDatas["time"],
+        }
+
+        private void SendToBroker(string message)
+        {
+            var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
+
+            var dev_id = currentDatas["dev_id"];
+            var currTemp = float.Parse(currentDatas["temp"]);
+            Debug.WriteLine(currTemp);
+
+            JObject json = new JObject();
+            if (currTemp >= open_temp)
+            {
+                if (opened == false)
+                {
+                    json.Add("dev_id", dev_id);
+                    json.Add("state", "ON");
+                    string strJson = JsonConvert.SerializeObject(json);
+                    client.Publish("", Encoding.Default.GetBytes(strJson));
+                    Debug.WriteLine(json);
+
+                    opened = true;
+                }
+
+            }
+            else if (currTemp <= close_temp)
+            {
+                if (opened)
+                {
+                    json.Add("dev_id", dev_id);
+                    json.Add("state", "OFF");
+                    string strJson = JsonConvert.SerializeObject(json);
+                    client.Publish("", Encoding.Default.GetBytes(strJson));
+                    Debug.WriteLine(json);
+
+                    opened = false;
+                }
+
+            }
+        }
+        #endregion Mqtt
     }
 
     public partial class MDIForm : TabPage
