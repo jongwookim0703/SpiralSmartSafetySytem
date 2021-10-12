@@ -231,6 +231,7 @@ namespace testestestsettest
                 vlcControl.Play(new Uri(RtspUrl2));
                 vlcControl.Play(new Uri(RtspUrl3));
                 vlcControl.Play(new Uri(RtspUrl4));
+                //TEST FAIL
 
 
                 Debug.WriteLine(cbo_proces1.SelectedIndex);
