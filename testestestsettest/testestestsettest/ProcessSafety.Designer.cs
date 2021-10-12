@@ -30,7 +30,6 @@ namespace testestestsettest
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -57,7 +56,6 @@ namespace testestestsettest
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.vlc1 = new Vlc.DotNet.Forms.VlcControl();
             this.btnDetail1 = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.panel10 = new System.Windows.Forms.Panel();
             this.chkReconf = new System.Windows.Forms.CheckBox();
             this.btnStop = new System.Windows.Forms.Button();
@@ -77,15 +75,6 @@ namespace testestestsettest
             this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 672);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1167, 22);
-            this.statusStrip1.TabIndex = 8;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.panel1);
@@ -94,9 +83,9 @@ namespace testestestsettest
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 24);
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1167, 557);
+            this.groupBox1.Size = new System.Drawing.Size(1167, 581);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             // 
@@ -114,7 +103,7 @@ namespace testestestsettest
             this.panel1.Controls.Add(this.grid1);
             this.panel1.Location = new System.Drawing.Point(846, 39);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(309, 512);
+            this.panel1.Size = new System.Drawing.Size(309, 536);
             this.panel1.TabIndex = 10;
             // 
             // label4
@@ -204,7 +193,7 @@ namespace testestestsettest
             // 
             this.grid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grid1.Location = new System.Drawing.Point(0, 254);
+            this.grid1.Location = new System.Drawing.Point(0, 278);
             this.grid1.Name = "grid1";
             this.grid1.RowHeadersWidth = 51;
             this.grid1.RowTemplate.Height = 29;
@@ -215,9 +204,9 @@ namespace testestestsettest
             // 
             this.groupBox5.Controls.Add(this.btnDetail4);
             this.groupBox5.Controls.Add(this.vlc4);
-            this.groupBox5.Location = new System.Drawing.Point(435, 291);
+            this.groupBox5.Location = new System.Drawing.Point(435, 304);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(405, 266);
+            this.groupBox5.Size = new System.Drawing.Size(405, 273);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             // 
@@ -255,9 +244,9 @@ namespace testestestsettest
             // 
             this.groupBox4.Controls.Add(this.vlc3);
             this.groupBox4.Controls.Add(this.btnDetail3);
-            this.groupBox4.Location = new System.Drawing.Point(12, 291);
+            this.groupBox4.Location = new System.Drawing.Point(12, 304);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(405, 266);
+            this.groupBox4.Size = new System.Drawing.Size(405, 273);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             // 
@@ -297,7 +286,7 @@ namespace testestestsettest
             this.groupBox3.Controls.Add(this.vlc2);
             this.groupBox3.Location = new System.Drawing.Point(435, 26);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(405, 272);
+            this.groupBox3.Size = new System.Drawing.Size(405, 273);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             // 
@@ -337,7 +326,7 @@ namespace testestestsettest
             this.groupBox2.Controls.Add(this.btnDetail1);
             this.groupBox2.Location = new System.Drawing.Point(12, 26);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(405, 272);
+            this.groupBox2.Size = new System.Drawing.Size(405, 273);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
@@ -370,15 +359,6 @@ namespace testestestsettest
             this.btnDetail1.Text = "detail";
             this.btnDetail1.UseVisualStyleBackColor = false;
             this.btnDetail1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1167, 24);
-            this.menuStrip1.TabIndex = 14;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // panel10
             // 
@@ -437,9 +417,6 @@ namespace testestestsettest
             this.ClientSize = new System.Drawing.Size(1167, 694);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "ProcessSafety";
             this.Text = "ProcessSafety";
             this.Load += new System.EventHandler(this.ProcessSafety_Load);
@@ -461,19 +438,16 @@ namespace testestestsettest
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button btnDetail1;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button btnStop;
