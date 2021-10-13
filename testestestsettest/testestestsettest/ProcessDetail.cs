@@ -272,7 +272,7 @@ namespace testestestsettest
                     var selQuery1 = @"SELECT PSTARTTIME, PENDTIME FROM TB_PLANrec 
 	                                          WHERE PROCESSNO = @PROCESSNO 
 		                                      ORDER BY PROCESSNAME";
-                    var selQuery2 = @"SELECT STARTTIME, ENDTIME, HAZARDNO FROM TB_PROCESSWORKrec 
+                    var selQuery2 = @"SELECT NO, STARTTIME, ENDTIME, HAZARDNO FROM TB_PROCESSWORKrec 
 	                                          WHERE PROCESSNO = @PROCESSNO 
 		                                      ORDER BY PROCESSNAME";
 
