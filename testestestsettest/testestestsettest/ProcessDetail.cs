@@ -22,10 +22,10 @@ namespace testestestsettest
         // 접속 정보 객체 명명
         private SqlConnection Connect = null;
 
-        private string RtspUrl1 = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
-        private string RtspUrl2 = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
-        private string RtspUrl3 = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
-        private string RtspUrl4 = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
+        private string RtspUrl1 = "http://archive.org/download/SampleMpeg4_201307/sample_mpeg4.mp4";
+        private string RtspUrl2 = "http://assets.appcelerator.com.s3.amazonaws.com/video/media.m4v";
+        private string RtspUrl3 = "http://archive.org/download/SampleMpeg4_201307/sample_mpeg4.mp4";
+        private string RtspUrl4 = "http://assets.appcelerator.com.s3.amazonaws.com/video/media.m4v";
         // 데이터베이스 관리권한
 
         // 데이터베이스 명령전달
@@ -71,12 +71,12 @@ namespace testestestsettest
 
             try
             {
-                if (grid.Rows.Count == 0) return;
-                string nores = grid.CurrentRow.Cells["OPERATEFLAG"].Value.ToString();
+                if (grid1.Rows.Count == 0) return;
+                string nores = grid1.CurrentRow.Cells["OPERATEFLAG"].Value.ToString();
                 if (MessageBox.Show("설비를 정지 하시겠습니까?", "정지", MessageBoxButtons.YesNo)
                     == DialogResult.No) return;
 
-                string Num = grid.CurrentRow.Cells["OPERATEFLAG"].Value.ToString();
+                string Num = grid1.CurrentRow.Cells["OPERATEFLAG"].Value.ToString();
 
 
                 SqlCommand cmd = new SqlCommand();
@@ -124,12 +124,12 @@ namespace testestestsettest
             //C#의 프로그램상에서 가동버튼을 클릭함 => DB에서 신호를 보냄(sql로 요청함)              => DB의 설비이력에 정지시간 및 이력이 등록됨(Stored procedure에서 update 구문을 작성함) (테이블 설계상 이게 맞을거 같은데?)
             try
             {
-                if (grid.Rows.Count == 0) return;
-                string nores = grid.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
+                if (grid1.Rows.Count == 0) return;
+                string nores = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
                 if (MessageBox.Show("설비를 가동 하시겠습니까?", "가동", MessageBoxButtons.YesNo)
                     == DialogResult.Yes) return;
 
-                string Num = grid.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
+                string Num = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
 
 
                 SqlCommand cmd = new SqlCommand();
@@ -223,76 +223,87 @@ namespace testestestsettest
 
             try
             {
-                
-
                 Debug.WriteLine("TEST");
-
-                vlcControl.Play(new Uri(RtspUrl1));
-                vlcControl.Play(new Uri(RtspUrl2));
-                vlcControl.Play(new Uri(RtspUrl3));
-                vlcControl.Play(new Uri(RtspUrl4));
                 //TEST FAIL
 
-
                 Debug.WriteLine(cbo_proces1.SelectedIndex);
-                Debug.WriteLine((cbo_proces1.SelectedItem as Tb_Process).ProcessNo);
-
-                var CurrProcess = (cbo_proces1.SelectedItem as Tb_Process);
-                var ProcessNo = CurrProcess.ProcessNo;
-
-                LblProcessName.Text = CurrProcess.ProcessName;
-
-                //Sql 커넥션
-                //Sql 커넥션에 등록 및 객체 선언
-                Connect = new SqlConnection(Common.DbPath);
-                Connect.Open();
-
-                if (Connect.State != System.Data.ConnectionState.Open)
+                if (cbo_proces1.SelectedItem != null)
                 {
-                    MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
-                    return;
+                    Debug.WriteLine((cbo_proces1.SelectedItem as Tb_Process).ProcessNo);
+
+                    var CurrProcess = (cbo_proces1.SelectedItem as Tb_Process);
+                    var ProcessNo = CurrProcess.ProcessNo;
+
+                    var RtspUrl = string.Empty;
+
+                    switch (ProcessNo)
+                    {
+                        case 1:
+                            RtspUrl = RtspUrl1;
+                            break;
+                        case 2:
+                            RtspUrl = RtspUrl2;
+                            break;
+                        case 3:
+                            RtspUrl = RtspUrl3;
+                            break;
+                        case 4:
+                            RtspUrl = RtspUrl4;
+                            break;
+                        default:
+                            RtspUrl = RtspUrl1;
+                            break;
+                    }
+
+                    vlcControl.Play(new Uri(RtspUrl));
+                    LblProcessName.Text = CurrProcess.ProcessName;
+
+                    //Sql 커넥션
+                    //Sql 커넥션에 등록 및 객체 선언
+                    Connect = new SqlConnection(Common.DbPath);
+                    Connect.Open();//DB열었음
+
+                    if (Connect.State != System.Data.ConnectionState.Open)
+                    {
+                        MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
+                        return;
+                    }
+                    //SELECT QUARRY로 GRID에 띄울 쿼리문을 작성한다.(2개)
+                    var selQuery1 = @"SELECT PSTARTTIME, PENDTIME FROM TB_PLANrec 
+	                                          WHERE PROCESSNO = @PROCESSNO 
+		                                      ORDER BY PROCESSNAME";
+                    var selQuery2 = @"SELECT NO, STARTTIME, ENDTIME, HAZARDNO FROM TB_PROCESSWORKrec 
+	                                          WHERE PROCESSNO = @PROCESSNO 
+		                                      ORDER BY PROCESSNAME";
+
+                    SqlDataAdapter adapter1 = new SqlDataAdapter(selQuery1, Connect);
+                    SqlDataAdapter adapter2 = new SqlDataAdapter(selQuery2, Connect);
+
+                    adapter1.SelectCommand.Parameters.AddWithValue("@PROCESSNO", ProcessNo);
+                    DataTable dtTemp1 = new DataTable();
+                    adapter1.Fill(dtTemp1);
+
+                    if (dtTemp1.Rows.Count == 0)
+                    {
+                        grid1.DataSource = null;
+                        return;
+                    }
+                    grid1.DataSource = dtTemp1;   //데이터 그리드 뷰에 데이터 테이블 등록
+
+
+                    adapter2.SelectCommand.Parameters.AddWithValue("@PROCESSNO", ProcessNo);
+                    DataTable dtTemp2 = new DataTable();
+                    adapter2.Fill(dtTemp2);
+
+                    if (dtTemp2.Rows.Count == 0)
+                    {
+                        grid2.DataSource = null;
+                        return;
+                    }
+                    grid2.DataSource = dtTemp2;
+
+
                 }
-                //select querry 변경예정
-                var selQuery = @"SELECT 1 AS ID, 'NO' AS TITLE, CONVERT(VARCHAR(10), NO) AS VAL
-                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
-                                  UNION 
-                                 SELECT 2 AS ID, 'PROCESSNO' AS TITLE, CONVERT(VARCHAR(10), PROCESSNO) AS VAL
-                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
-                                  UNION
-                                 SELECT 3 AS ID, 'MAKER' AS TITLE, MAKER AS VAL
-                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
-                                  UNION
-                                 SELECT 4 AS ID, 'PSTARTTIME' AS TITLE, CONVERT(VARCHAR(10), PSTARTTIME, 120) AS VAL
-                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
-                                  UNION
-                                 SELECT 5 AS ID, 'PENDTIME' AS TITLE, CONVERT(VARCHAR(10), PENDTIME, 120) AS VAL
-                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
-                                  UNION
-                                 SELECT 6 AS ID, 'STARTTIME' AS TITLE, CONVERT(VARCHAR(10), STARTTIME, 120) AS VAL
-                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
-                                  UNION
-                                 SELECT 7 AS ID, 'ENDTIME' AS TITLE, CONVERT(VARCHAR(10), ENDTIME, 120) AS VAL
-                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO
-                                  UNION
-                                 SELECT 8 AS ID, 'HAZARDNO' AS TITLE, CONVERT(VARCHAR(10), HAZARDNO, 120) AS VAL
-                                   FROM TB_PROCESSWORKrec WHERE PROCESSNO = @PROCESSNO";
-
-                SqlDataAdapter adapter = new SqlDataAdapter(selQuery, Connect);
-                adapter.SelectCommand.Parameters.AddWithValue("@PROCESSNO", ProcessNo);
-                DataTable dtTemp = new DataTable();
-                adapter.Fill(dtTemp);
-
-                if (dtTemp.Rows.Count == 0)
-                {
-                    grid.DataSource = null;
-                    return;
-                }
-                grid.DataSource = dtTemp;   //데이터 그리드 뷰에 데이터 테이블 등록
-
-
-
-
-
             }
             catch (Exception ex)
             {
@@ -340,7 +351,7 @@ namespace testestestsettest
                 conn.Open();
 
                 SqlTransaction trans = conn.BeginTransaction();
-                SqlCommand cmd = new SqlCommand("USP_PROCESSWORKrec_INS", conn);
+                SqlCommand cmd = new SqlCommand("USP_PLANrec_INS", conn);
                 cmd.Transaction = trans;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@PROCESSNO", temp.ProcessNo);
