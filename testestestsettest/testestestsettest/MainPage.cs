@@ -24,8 +24,7 @@ namespace testestestsettest
 
         //Mqtt 라즈베리파이
         MqttClient client;
-        private float open_temp, close_temp;
-        private bool opened;
+        delegate void UpdateLabelCallback(string message);
 
         public static MainPage Instance
         {
@@ -132,13 +131,17 @@ namespace testestestsettest
 
             myTabControl1.AddForm(ShowForm);
 
+            //mqtt 연결
             try
             {
                 IPAddress hostIP;
-                hostIP = IPAddress.Parse("192.168.0.6");
-                client = new MqttClient(hostIP);
 
+                hostIP = IPAddress.Parse("192.168.0.10");
+                client = new MqttClient(hostIP);
                 client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
+
+                client.Connect("192.168.0.10");//서버 통신 할 라즈베리파이 ip
+                client.Subscribe(new string[] { "common" },new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
             }
             catch (Exception ex)
             {
@@ -220,8 +223,7 @@ namespace testestestsettest
             try
             {
                 var message = Encoding.UTF8.GetString(e.Message);
-                InsertData(message);        // 메시지가 발생할 경우 DB에 저장
-                SendToBroker(message);      // 알람이 발생시 디바이스로 재전송
+                UpdateLabel(message);        // 메세지 발생시 값 변경
             }
             catch (Exception ex)
             {
@@ -229,50 +231,23 @@ namespace testestestsettest
             }
         }
 
-        private void InsertData(string message)
+        private void UpdateLabel(string message)
         {
-            var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
-            //currentDatas["dev_id"], currentDatas["time"],
-        }
-
-        private void SendToBroker(string message)
-        {
-            var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
-
-            var dev_id = currentDatas["dev_id"];
-            var currTemp = float.Parse(currentDatas["temp"]);
-            Debug.WriteLine(currTemp);
-
-            JObject json = new JObject();
-            if (currTemp >= open_temp)
+            var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴
+            var currled1 = currentDatas["led12"]; 
+            //string currled1 = [currentDatas["led12"], currentDatas["led12"], currentDatas["led12"], currentDatas["led12"]];
+            if (panel1.InvokeRequired)
             {
-                if (opened == false)
-                {
-                    json.Add("dev_id", dev_id);
-                    json.Add("state", "ON");
-                    string strJson = JsonConvert.SerializeObject(json);
-                    client.Publish("", Encoding.Default.GetBytes(strJson));
-                    Debug.WriteLine(json);
-
-                    opened = true;
-                }
-
+                UpdateLabelCallback lb = new UpdateLabelCallback(UpdateLabel);
+                this.Invoke(lb, new object[] { message });
             }
-            else if (currTemp <= close_temp)
+            else
             {
-                if (opened)
-                {
-                    json.Add("dev_id", dev_id);
-                    json.Add("state", "OFF");
-                    string strJson = JsonConvert.SerializeObject(json);
-                    client.Publish("", Encoding.Default.GetBytes(strJson));
-                    Debug.WriteLine(json);
-
-                    opened = false;
-                }
-
+                this.label2.Text = currled1.ToString();
+                //this.label2.Text = currled1[0].ToString();
             }
         }
+
         #endregion Mqtt
     }
 

@@ -170,40 +170,10 @@ namespace testestestsettest
                     MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
                     return;
                 }
+                //select querry 변경예정
+                var selQuery = @"";
 
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT A.PROCESSNAME                                         AS PROCESSNAME"
-                                                               + ", B.MAKER                                               AS MAKER      "
-                                                               + ", B.PROCESSTIME                                         AS PROCESSTIME"
-                                                               + ", C.SUMTIME                                             AS SUMTIME    "
-                                                               + ", CONCAT(100 - (100 * C.SUMTIME / B.PROCESSTIME), '%')  AS STOPRATE   "
-                                                               + ", D.CHECKTIME                                           AS CHECKTIME  "
-                                                               + ", E.CHECKER                                             AS CHECKER    "
-                                                               + ", E.HAZARDNO                                            AS HAZARDNO   "
-                                                           + "FROM TB_PROCESS AS A LEFT JOIN"
-                                                                  + "(SELECT PROCESSNO, PROCESSNAME, MAKER, DATEDIFF(MI, PSTARTTIME, PENDTIME) AS PROCESSTIME                 "
-                                                                  + " FROM TB_PROCESSWORKrec                                                                                  "
-                                                                  + " WHERE CONVERT(DATE, PSTARTTIME) = CONVERT(DATE, GETDATE())) AS B ON A.PROCESSNO = B.PROCESSNO           "
-                                                                  + "     LEFT JOIN                                                                                           "
-                                                                  + "(SELECT PROCESSNO, SUM(DATEDIFF(MI, STARTTIME, ENDTIME)) AS SUMTIME                                      "
-                                                                  + " FROM TB_PROCESSWORKrec                                                                                  "
-                                                                  + " GROUP BY PROCESSNO) AS C ON B.PROCESSNO = C.PROCESSNO                                                   "
-                                                                  + "     LEFT JOIN                                                                                           "
-                                                                  + "(SELECT  PROCESSNO,                                                                                      "
-                                                                  + "         CASE WHEN MAX(ENDTIME) IS NULL THEN NULL                                                        "
-                                                                  + "              WHEN MAX(STARTTIME) < MAX(ENDTIME) THEN CONCAT(CONVERT(CHAR(8), MAX(ENDTIME), 8), ' - ')   "
-                                                                  + "              ELSE CONCAT(CONVERT(CHAR(8), MAX(ENDTIME), 8), ' - ', CONVERT(CHAR(8), MAX(STARTTIME), 8)) "
-                                                                  + "         END AS CHECKTIME                                                                                "
-                                                                  + " FROM TB_PROCESSWORKrec                                                                                  "
-                                                                  + " WHERE PSTARTTIME IS NULL AND CONVERT(DATE, STARTTIME) = CONVERT(DATE, GETDATE())                        "
-                                                                  + " GROUP BY PROCESSNO) AS D ON C.PROCESSNO = D.PROCESSNO                                                   "
-                                                                  + "     LEFT JOIN                                                                                           "
-                                                                  + "(SELECT Rec.PROCESSNO, H.HAZARDNO, Rec.MAKER AS CHECKER                                                  "
-                                                                  + " FROM   TB_PROCESSWORKrec AS Rec INNER JOIN                                                              "
-                                                                  + "                 (SELECT MAX(NO) AS HAZARDNO, PROCESSNO                                                  "
-                                                                  + "                  FROM TB_HAZARD                                                                         "
-                                                                  + "                  WHERE CONVERT(DATE, MAKEDATE) = CONVERT(DATE, GETDATE())                               "
-                                                                  + "                  GROUP BY PROCESSNO                                                                     "
-                                                                  + "                 ) AS H ON Rec.HAZARDNO = H.HAZARDNO) AS E ON D.PROCESSNO = E.PROCESSNO", Connect);
+                SqlDataAdapter adapter = new SqlDataAdapter(selQuery, Connect);
                 DataTable dtTemp = new DataTable();
                 adapter.Fill(dtTemp);
 
