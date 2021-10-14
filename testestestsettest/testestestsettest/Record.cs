@@ -28,6 +28,7 @@ namespace testestestsettest
 
             try
             {
+                #region Maingrid
                 Connect = new SqlConnection(strConn);
                 Connect.Open();
 
@@ -37,30 +38,40 @@ namespace testestestsettest
                     return;
                 }
 
-                #region Maingrid
+                SqlCommand cmd3 = new SqlCommand("USP_RECORD_Main", Connect);
+                cmd3.CommandType = CommandType.StoredProcedure;
 
-                SqlCommand cmd = new SqlCommand("USP_RECORD", Connect);
-                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd3);
+                DataTable dtTemp3 = new DataTable();
+                adapter.Fill(dtTemp3);
 
-                
-               cmd.Parameters.AddWithValue("@PROCESSNAME", " ");
-               cmd.Parameters.AddWithValue("@STARTTIME", "2021 - 10 - 31 ");
-               cmd.Parameters.AddWithValue("@ENDTIME", "2021-10-30 ");
-               cmd.Parameters.AddWithValue("@HAZARAD", " ");
-
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable dtTemp = new DataTable();
-                adapter.Fill(dtTemp);
-
-                if (dtTemp.Rows.Count == 0)
+                if (dtTemp3.Rows.Count == 0)
                 {
                     grid.DataSource = null;
+                    MessageBox.Show("조건에 일치하는 데이터가 없습니다.");
                     return;
                 }
 
-                else
-                {
-                    Connect = new SqlConnection(strConn);
+                grid.DataSource = dtTemp3;
+
+                grid.Columns["기록시간"].HeaderText = "기록시간";
+                grid.Columns["프로세스"].HeaderText = "프로세스";
+                grid.Columns["NO"].HeaderText = "NO";
+                grid.Columns["프로세스 NO"].HeaderText = "프로세스 NO";
+                grid.Columns["중단여부"].HeaderText = "중단여부";
+                grid.Columns["위험"].HeaderText = "위험";
+                grid.Columns["위험상태"].HeaderText = "위험상태";
+                grid.Columns["계획가동시간"].HeaderText = "계획가동시간";
+                grid.Columns["가동시간"].HeaderText = "가동시간";
+                grid.Columns["중단율"].HeaderText = "중단율";
+                grid.Columns["점검시간"].HeaderText = "점검시간";
+                grid.Columns["담당자"].HeaderText = "담당자";
+
+
+                #endregion
+
+                #region grid1
+                Connect = new SqlConnection(strConn);
                     Connect.Open();
 
                     if (Connect.State != System.Data.ConnectionState.Open)
@@ -68,9 +79,6 @@ namespace testestestsettest
                         MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
                         return;
                     }
-                    #endregion
-
-                #region grid1
 
                     SqlCommand cmd1 = new SqlCommand("USP_ProcessRank", Connect);
                     cmd1.CommandType = CommandType.StoredProcedure;
@@ -85,13 +93,30 @@ namespace testestestsettest
                         MessageBox.Show("조건에 일치하는 데이터가 없습니다.");
                         return;
                     }
-                    grid1.DataSource = dtTemp1;
+                        grid1.DataSource = dtTemp1;
                         grid1.Columns["프로세스"].HeaderText = "프로세스";
-                        grid1.Columns["누적가동시간"].HeaderText = "누적가동시간";
+                        //grid1.Columns["누적가동시간"].HeaderText = "누적가동시간";
                         grid1.Columns["점검시간"].HeaderText = "점검시간";
-                #endregion
+                    #endregion
 
-                #region grid2
+                    #region grid2
+                    Connect = new SqlConnection(strConn);
+                    Connect.Open();
+
+                    if (Connect.State != System.Data.ConnectionState.Open)
+                    {
+                        MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
+                        return;
+                    }
+
+                    Connect = new SqlConnection(strConn);
+                    Connect.Open();
+
+                    if (Connect.State != System.Data.ConnectionState.Open)
+                    {
+                        MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
+                        return;
+                    }
 
                     SqlCommand cmd2 = new SqlCommand("USP_HazardRank", Connect);
                     cmd2.CommandType = CommandType.StoredProcedure;
@@ -108,15 +133,15 @@ namespace testestestsettest
                     }
 
                     grid2.DataSource = dtTemp2;
-                    for (int j = 0; j > dtTemp1.Rows.Count; j++)
-                    {
+                    
+
                         grid2.Columns["중단여부"].HeaderText = "중단여부";
                         grid2.Columns["위험"].HeaderText = "위험";
                         grid2.Columns["위험상태"].HeaderText = "위험상태";
                         grid2.Columns["점검시간"].HeaderText = "점검시간";
-                    }
+
                     #endregion
-                }
+
 
             }
             catch (Exception ex)
@@ -211,4 +236,5 @@ namespace testestestsettest
             cboProcess.SelectedIndex = comboBox1.SelectedIndex = 0;
         }
     }
+
 }

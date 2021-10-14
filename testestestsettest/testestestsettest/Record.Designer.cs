@@ -243,6 +243,7 @@ namespace testestestsettest
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(149, 23);
             this.dateTimePicker2.TabIndex = 1;
+            this.dateTimePicker2.Value = new System.DateTime(2021, 10, 1, 0, 0, 0, 0);
             // 
             // dateTimePicker1
             // 
@@ -250,6 +251,7 @@ namespace testestestsettest
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(149, 23);
             this.dateTimePicker1.TabIndex = 0;
+            this.dateTimePicker1.Value = new System.DateTime(2021, 10, 31, 0, 0, 0, 0);
             // 
             // Record
             // 
