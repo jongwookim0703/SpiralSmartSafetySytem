@@ -12,9 +12,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vlc.DotNet.Forms;
+using Newtonsoft.Json;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
+using System.Net;
+
+
 
 namespace testestestsettest
 {
+
     public partial class ProcessSafety : Form
     {
         private System.Data.SqlClient.SqlConnection Connect = null;
@@ -24,6 +31,12 @@ namespace testestestsettest
 
         Assembly? CurrentAssembly;
         string? CurrentDirectory;
+
+        //MQtt 라즈베리파이
+        MqttClient client;
+        string clientId;
+        delegate void UpdateDataCallback(string message);
+
 
         public ProcessSafety()
         {
@@ -50,7 +63,7 @@ namespace testestestsettest
                     return;
                 }
 
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT PROCESSNAME,HAZARDNAME,HAZARDSTATE,MAKEDATE FROM TB_HAZARD", Connect);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT NO,CO,GAS,MAKEDATE FROM TB_ENVIRONMENT", Connect);
                 DataTable dtTemp = new DataTable();
                 adapter.Fill(dtTemp);
 
@@ -62,22 +75,22 @@ namespace testestestsettest
                 grid1.DataSource = dtTemp;   //데이터 그리드 뷰에 데이터 테이블 등록
 
                 //그리드뷰의 헤더 명칭 선언
-                grid1.Columns["PROCESSNAME"].HeaderText = "NO";
-                grid1.Columns["HAZARDNAME"].HeaderText = "위험";
-                grid1.Columns["HAZARDSTATE"].HeaderText = "위험상태";
+                grid1.Columns["NO"].HeaderText = "NO";
+                grid1.Columns["CO"].HeaderText = "CO";
+                grid1.Columns["GAS"].HeaderText = "GAS";
                 grid1.Columns["MAKEDATE"].HeaderText = "발생시간";
 
                 // 그리드 뷰의 폭 지정
-                grid1.Columns[0].Width = 80;
-                grid1.Columns[1].Width = 70;
+                grid1.Columns[0].Width = 40;
+                grid1.Columns[1].Width = 50;
                 grid1.Columns[2].Width = 50;
                 grid1.Columns[3].Width = 140;
 
 
                 //컬럼의 수정 여부를 지정 한다
-                grid1.Columns["PROCESSNAME"].ReadOnly = true;    //기본키라 수정하면 안됌, 단 신규로 추가될때는 해야함
-                grid1.Columns["HAZARDNAME"].ReadOnly = true;
-                grid1.Columns["HAZARDSTATE"].ReadOnly = true;
+                grid1.Columns["NO"].ReadOnly = true;    //기본키라 수정하면 안됌, 단 신규로 추가될때는 해야함
+                grid1.Columns["CO"].ReadOnly = true;
+                grid1.Columns["GAS"].ReadOnly = true;
                 grid1.Columns["MAKEDATE"].ReadOnly = false;
             }
             catch (Exception ex)
@@ -87,6 +100,59 @@ namespace testestestsettest
             finally
             {
                 Connect.Close();    //DB 연결 끊어주기
+            }
+
+            //mqtt 연결
+            try
+            {
+                IPAddress hostIP;
+
+                hostIP = IPAddress.Parse("192.168.0.10");
+                client = new MqttClient(hostIP);
+                client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
+
+                client.Connect("192.168.0.18");//라즈베리파이 ip
+                client.Subscribe(new string[] { "common" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        private void UpdateText(string message)
+        {
+            //5_1 수신한 message를 json parsing
+            var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴 
+            var < 변수명 > = currentDatas["led12"];
+
+            //5_2 크로스 쓰레드 문제를 해결하기 위한 해법
+            if (this.InvokeRequired)
+            {
+                UpdateDataCallback b = new UpdateDataCallback(UpdateText);
+                this.Invoke(b, new object[] { message });
+            }
+            else
+            {
+                //받아온 값을 적용시킬 코드 작성
+                this.txtCO.Text = currled1.ToString();
+                this.txtGas.Text = currled1.ToString();
+            }
+
+
+        }
+
+        private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+        {
+            try
+            {
+                var message = Encoding.UTF8.GetString(e.Message);
+                UpdateText(message);        // 메세지 발생시 값 변경
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("[ERROR] " + ex.Message);
             }
         }
 
@@ -120,8 +186,8 @@ namespace testestestsettest
                         return;
                     }
                 }
-                MainPage.Instance.tabContainer.AddForm(ShowForm);
 
+                MainPage.Instance.tabContainer.AddForm(ShowForm);
             }
         }
 
