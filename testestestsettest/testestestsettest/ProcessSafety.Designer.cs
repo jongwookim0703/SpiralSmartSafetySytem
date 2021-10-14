@@ -36,24 +36,24 @@ namespace testestestsettest
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGas = new System.Windows.Forms.TextBox();
-            this.txtCo2 = new System.Windows.Forms.TextBox();
+            this.txtCO = new System.Windows.Forms.TextBox();
             this.grid1 = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.btnDetail4 = new System.Windows.Forms.Button();
             this.vlc4 = new Vlc.DotNet.Forms.VlcControl();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.vlc3 = new Vlc.DotNet.Forms.VlcControl();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnDetail3 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnDetail2 = new System.Windows.Forms.Button();
             this.vlc2 = new Vlc.DotNet.Forms.VlcControl();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.vlc1 = new Vlc.DotNet.Forms.VlcControl();
             this.btnDetail1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).BeginInit();
@@ -87,7 +87,7 @@ namespace testestestsettest
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtGas);
-            this.panel1.Controls.Add(this.txtCo2);
+            this.panel1.Controls.Add(this.txtCO);
             this.panel1.Controls.Add(this.grid1);
             this.panel1.Location = new System.Drawing.Point(846, 39);
             this.panel1.Name = "panel1";
@@ -106,11 +106,11 @@ namespace testestestsettest
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 27);
+            this.label1.Location = new System.Drawing.Point(65, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 20);
+            this.label1.Size = new System.Drawing.Size(31, 20);
             this.label1.TabIndex = 22;
-            this.label1.Text = "co2";
+            this.label1.Text = "CO";
             // 
             // txtGas
             // 
@@ -119,12 +119,12 @@ namespace testestestsettest
             this.txtGas.Size = new System.Drawing.Size(99, 27);
             this.txtGas.TabIndex = 19;
             // 
-            // txtCo2
+            // txtCO
             // 
-            this.txtCo2.Location = new System.Drawing.Point(27, 50);
-            this.txtCo2.Name = "txtCo2";
-            this.txtCo2.Size = new System.Drawing.Size(99, 27);
-            this.txtCo2.TabIndex = 18;
+            this.txtCO.Location = new System.Drawing.Point(36, 50);
+            this.txtCO.Name = "txtCO";
+            this.txtCO.Size = new System.Drawing.Size(99, 27);
+            this.txtCO.TabIndex = 18;
             // 
             // grid1
             // 
@@ -147,6 +147,15 @@ namespace testestestsettest
             this.groupBox5.Size = new System.Drawing.Size(405, 273);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(169, -2);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(77, 20);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "프로세스4";
             // 
             // btnDetail4
             // 
@@ -178,6 +187,15 @@ namespace testestestsettest
             this.vlc4.VlcMediaplayerOptions = null;
             this.vlc4.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc4_VlcLibDirectoryNeeded);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(604, 23);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 20);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "프로세스2";
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.vlc3);
@@ -202,6 +220,15 @@ namespace testestestsettest
             this.vlc3.VlcLibDirectory = null;
             this.vlc3.VlcMediaplayerOptions = null;
             this.vlc3.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc3_VlcLibDirectoryNeeded);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(154, -2);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 20);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "프로세스3";
             // 
             // btnDetail3
             // 
@@ -270,6 +297,15 @@ namespace testestestsettest
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(154, -3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 20);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "프로세스1";
+            // 
             // vlc1
             // 
             this.vlc1.BackColor = System.Drawing.Color.Black;
@@ -299,42 +335,6 @@ namespace testestestsettest
             this.btnDetail1.Text = "detail";
             this.btnDetail1.UseVisualStyleBackColor = false;
             this.btnDetail1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(154, -3);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 20);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "프로세스1";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(604, 23);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 20);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "프로세스2";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(154, -2);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 20);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "프로세스3";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(169, -2);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 20);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "프로세스4";
             // 
             // ProcessSafety
             // 
@@ -383,7 +383,7 @@ namespace testestestsettest
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtGas;
-        private System.Windows.Forms.TextBox txtCo2;
+        private System.Windows.Forms.TextBox txtCO;
         private System.Windows.Forms.DataGridView grid1;
         private System.Windows.Forms.Button btnDetail4;
         private System.Windows.Forms.Button btnDetail3;
