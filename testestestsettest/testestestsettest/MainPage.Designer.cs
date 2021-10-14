@@ -31,11 +31,16 @@ namespace testestestsettest
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tssMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tssFirstPage = new System.Windows.Forms.ToolStripMenuItem();
             this.tssProcess1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tssProcess2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tssProcess3 = new System.Windows.Forms.ToolStripMenuItem();
             this.tssProcess4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tssMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tssSafety = new System.Windows.Forms.ToolStripMenuItem();
+            this.tssMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tssRecord = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssUserName = new System.Windows.Forms.ToolStripStatusLabel();
@@ -46,7 +51,7 @@ namespace testestestsettest
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnDetail = new System.Windows.Forms.Button();
+            this.btnSafety = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -64,11 +69,9 @@ namespace testestestsettest
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tssFirstPage,
-            this.tssProcess1,
-            this.tssProcess2,
-            this.tssProcess3,
-            this.tssProcess4});
+            this.tssMenuItem1,
+            this.tssMenuItem2,
+            this.tssMenuItem3});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
@@ -76,18 +79,30 @@ namespace testestestsettest
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // tssMenuItem1
+            // 
+            this.tssMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tssFirstPage,
+            this.tssProcess1,
+            this.tssProcess2,
+            this.tssProcess3,
+            this.tssProcess4});
+            this.tssMenuItem1.Name = "tssMenuItem1";
+            this.tssMenuItem1.Size = new System.Drawing.Size(123, 24);
+            this.tssMenuItem1.Text = "전체 공정 관리";
+            // 
             // tssFirstPage
             // 
             this.tssFirstPage.Name = "tssFirstPage";
-            this.tssFirstPage.Size = new System.Drawing.Size(123, 24);
+            this.tssFirstPage.Size = new System.Drawing.Size(160, 26);
             this.tssFirstPage.Tag = "FirstPage";
-            this.tssFirstPage.Text = "전체 공정 관리";
-            this.tssFirstPage.Click += new System.EventHandler(this.tssFirstPage_Click);
+            this.tssFirstPage.Text = "메인화면";
+            this.tssFirstPage.Click += new System.EventHandler(this.tssPage_Click);
             // 
             // tssProcess1
             // 
             this.tssProcess1.Name = "tssProcess1";
-            this.tssProcess1.Size = new System.Drawing.Size(91, 24);
+            this.tssProcess1.Size = new System.Drawing.Size(160, 26);
             this.tssProcess1.Tag = "1";
             this.tssProcess1.Text = "프로세스1";
             this.tssProcess1.Click += new System.EventHandler(this.tssProcess_Click);
@@ -95,7 +110,7 @@ namespace testestestsettest
             // tssProcess2
             // 
             this.tssProcess2.Name = "tssProcess2";
-            this.tssProcess2.Size = new System.Drawing.Size(91, 24);
+            this.tssProcess2.Size = new System.Drawing.Size(160, 26);
             this.tssProcess2.Tag = "2";
             this.tssProcess2.Text = "프로세스2";
             this.tssProcess2.Click += new System.EventHandler(this.tssProcess_Click);
@@ -103,7 +118,7 @@ namespace testestestsettest
             // tssProcess3
             // 
             this.tssProcess3.Name = "tssProcess3";
-            this.tssProcess3.Size = new System.Drawing.Size(91, 24);
+            this.tssProcess3.Size = new System.Drawing.Size(160, 26);
             this.tssProcess3.Tag = "3";
             this.tssProcess3.Text = "프로세스3";
             this.tssProcess3.Click += new System.EventHandler(this.tssProcess_Click);
@@ -111,10 +126,42 @@ namespace testestestsettest
             // tssProcess4
             // 
             this.tssProcess4.Name = "tssProcess4";
-            this.tssProcess4.Size = new System.Drawing.Size(91, 24);
+            this.tssProcess4.Size = new System.Drawing.Size(160, 26);
             this.tssProcess4.Tag = "4";
             this.tssProcess4.Text = "프로세스4";
             this.tssProcess4.Click += new System.EventHandler(this.tssProcess_Click);
+            // 
+            // tssMenuItem2
+            // 
+            this.tssMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tssSafety});
+            this.tssMenuItem2.Name = "tssMenuItem2";
+            this.tssMenuItem2.Size = new System.Drawing.Size(83, 24);
+            this.tssMenuItem2.Text = "환경관리";
+            // 
+            // tssSafety
+            // 
+            this.tssSafety.Name = "tssSafety";
+            this.tssSafety.Size = new System.Drawing.Size(182, 26);
+            this.tssSafety.Tag = "ProcessSafety";
+            this.tssSafety.Text = "환경모니터링";
+            this.tssSafety.Click += new System.EventHandler(this.tssPage_Click);
+            // 
+            // tssMenuItem3
+            // 
+            this.tssMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tssRecord});
+            this.tssMenuItem3.Name = "tssMenuItem3";
+            this.tssMenuItem3.Size = new System.Drawing.Size(83, 24);
+            this.tssMenuItem3.Text = "이력관리";
+            // 
+            // tssRecord
+            // 
+            this.tssRecord.Name = "tssRecord";
+            this.tssRecord.Size = new System.Drawing.Size(152, 26);
+            this.tssRecord.Tag = "Record";
+            this.tssRecord.Text = "가동이력";
+            this.tssRecord.Click += new System.EventHandler(this.tssPage_Click);
             // 
             // statusStrip1
             // 
@@ -125,7 +172,7 @@ namespace testestestsettest
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.tssTimer});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 601);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 628);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1113, 26);
             this.statusStrip1.TabIndex = 7;
@@ -170,7 +217,7 @@ namespace testestestsettest
             // 
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Controls.Add(this.btnDetail);
+            this.panel1.Controls.Add(this.btnSafety);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
@@ -202,15 +249,16 @@ namespace testestestsettest
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnDetail
+            // btnSafety
             // 
-            this.btnDetail.Location = new System.Drawing.Point(585, 3);
-            this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Size = new System.Drawing.Size(30, 29);
-            this.btnDetail.TabIndex = 5;
-            this.btnDetail.Text = "button1";
-            this.btnDetail.UseVisualStyleBackColor = true;
-            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
+            this.btnSafety.Location = new System.Drawing.Point(585, 3);
+            this.btnSafety.Name = "btnSafety";
+            this.btnSafety.Size = new System.Drawing.Size(30, 29);
+            this.btnSafety.TabIndex = 5;
+            this.btnSafety.Tag = "ProcessSafety";
+            this.btnSafety.Text = "button1";
+            this.btnSafety.UseVisualStyleBackColor = true;
+            this.btnSafety.Click += new System.EventHandler(this.btnSafety_Click);
             // 
             // label5
             // 
@@ -263,7 +311,7 @@ namespace testestestsettest
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 66);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1113, 535);
+            this.groupBox1.Size = new System.Drawing.Size(1113, 562);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             // 
@@ -271,17 +319,17 @@ namespace testestestsettest
             // 
             this.myTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.myTabControl1.Location = new System.Drawing.Point(3, 23);
-            this.myTabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.myTabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.myTabControl1.Name = "myTabControl1";
             this.myTabControl1.SelectedIndex = 0;
-            this.myTabControl1.Size = new System.Drawing.Size(1107, 509);
+            this.myTabControl1.Size = new System.Drawing.Size(1107, 536);
             this.myTabControl1.TabIndex = 19;
             // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 627);
+            this.ClientSize = new System.Drawing.Size(1113, 654);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
@@ -310,16 +358,14 @@ namespace testestestsettest
         private System.Windows.Forms.ToolStripStatusLabel tssTimer;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel tssUserName;
-        private System.Windows.Forms.ToolStripMenuItem tssFirstPage;
-        private System.Windows.Forms.ToolStripMenuItem tssProcess1;
-        private System.Windows.Forms.ToolStripMenuItem tssProcess2;
-        private System.Windows.Forms.ToolStripMenuItem tssProcess3;
-        private System.Windows.Forms.ToolStripMenuItem tssProcess4;
+        private System.Windows.Forms.ToolStripMenuItem tssMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tssMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem tssMenuItem3;
         private testestestsettest.MyTabControl myTabControl1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnDetail;
+        private System.Windows.Forms.Button btnSafety;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -328,5 +374,12 @@ namespace testestestsettest
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripMenuItem tssProcess1;
+        private System.Windows.Forms.ToolStripMenuItem tssProcess2;
+        private System.Windows.Forms.ToolStripMenuItem tssProcess3;
+        private System.Windows.Forms.ToolStripMenuItem tssProcess4;
+        private System.Windows.Forms.ToolStripMenuItem tssFirstPage;
+        private System.Windows.Forms.ToolStripMenuItem tssSafety;
+        private System.Windows.Forms.ToolStripMenuItem tssRecord;
     }
 }
