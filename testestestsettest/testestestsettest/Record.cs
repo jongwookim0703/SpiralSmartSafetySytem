@@ -56,8 +56,6 @@ namespace testestestsettest
 
                 grid.Columns["기록시간"].HeaderText = "기록시간";
                 grid.Columns["프로세스"].HeaderText = "프로세스";
-                grid.Columns["NO"].HeaderText = "NO";
-                grid.Columns["프로세스 NO"].HeaderText = "프로세스 NO";
                 grid.Columns["중단여부"].HeaderText = "중단여부";
                 grid.Columns["위험"].HeaderText = "위험";
                 grid.Columns["위험상태"].HeaderText = "위험상태";
@@ -69,16 +67,14 @@ namespace testestestsettest
 
                 grid.Columns[0].Width = 80;
                 grid.Columns[1].Width = 80;
-                grid.Columns[2].Width = 60;
-                grid.Columns[3].Width = 105;
+                grid.Columns[2].Width = 80;
+                grid.Columns[3].Width = 60;
                 grid.Columns[4].Width = 80;
-                grid.Columns[5].Width = 60;
+                grid.Columns[5].Width = 105;
                 grid.Columns[6].Width = 80;
-                grid.Columns[7].Width = 105;
+                grid.Columns[7].Width = 80;
                 grid.Columns[8].Width = 80;
                 grid.Columns[9].Width = 80;
-                grid.Columns[10].Width = 80;
-                grid.Columns[11].Width = 80;
 
                 #endregion
 
@@ -126,15 +122,17 @@ namespace testestestsettest
                 }
 
                 grid2.DataSource = dtTemp2;
-                
-                grid2.Columns["중단여부"].HeaderText = "중단여부";
+
                 grid2.Columns["위험"].HeaderText = "위험";
                 grid2.Columns["위험상태"].HeaderText = "위험상태";
                 grid2.Columns["점검시간"].HeaderText = "점검시간";
 
+                grid1.Columns[0].Width = 60;
+                grid1.Columns[1].Width = 80;
+                grid1.Columns[2].Width = 80;
+
+
                 #endregion
-
-
             }
             catch (Exception ex)
             {
@@ -171,15 +169,18 @@ namespace testestestsettest
                 var endDate = dateTimePicker1.Value.ToString("yyyy-MM-dd");
                 var hazard = (comboBox1.SelectedItem as string).Split(' ')[0];
 
+                procesName.Split(' ');
+                hazard.Split(' ');
+
                 #region Main Grid
 
                 SqlCommand cmd = new SqlCommand("USP_RECORD", Connect);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@PROCESSNAME", procesName);
+                cmd.Parameters.AddWithValue("@PROCESSNAME", procesName[0]);
                 cmd.Parameters.AddWithValue("@STARTTIME", startDate);
                 cmd.Parameters.AddWithValue("@ENDTIME", endDate);
-                cmd.Parameters.AddWithValue("@HAZARAD", hazard);
+                cmd.Parameters.AddWithValue("@HAZARAD", hazard[0]);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dtTemp = new DataTable();
@@ -196,8 +197,6 @@ namespace testestestsettest
 
                 grid.Columns["기록시간"].HeaderText = "기록시간";
                 grid.Columns["프로세스"].HeaderText = "프로세스";
-                grid.Columns["NO"].HeaderText = "NO";
-                grid.Columns["프로세스 NO"].HeaderText = "프로세스 NO";
                 grid.Columns["중단여부"].HeaderText = "중단여부";
                 grid.Columns["위험"].HeaderText = "위험";
                 grid.Columns["위험상태"].HeaderText = "위험상태";
@@ -206,9 +205,20 @@ namespace testestestsettest
                 grid.Columns["중단율"].HeaderText = "중단율";
                 grid.Columns["점검시간"].HeaderText = "점검시간";
                 grid.Columns["담당자"].HeaderText = "담당자";
+
+                grid.Columns[0].Width = 80;
+                grid.Columns[1].Width = 80;
+                grid.Columns[2].Width = 80;
+                grid.Columns[3].Width = 60;
+                grid.Columns[4].Width = 80;
+                grid.Columns[5].Width = 105;
+                grid.Columns[6].Width = 80;
+                grid.Columns[7].Width = 80;
+                grid.Columns[8].Width = 80;
+                grid.Columns[9].Width = 80;
                 #endregion
 
-              
+
             }
 
 
