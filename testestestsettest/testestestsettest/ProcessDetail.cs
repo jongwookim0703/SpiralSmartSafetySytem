@@ -66,108 +66,136 @@ namespace testestestsettest
 
         private void btn_stop1_Click(object sender, EventArgs e)
         {
-            //<생각정리>
-            //C#의 프로그램상에서 정지버튼을 클릭함 => DB에서 신호를 보냄(sql로 요청함)              => DB의 설비이력에 정지시간 및 이력이 등록됨(Stored procedure에서 update 구문을 작성함)
-
             try
             {
-                if (grid1.Rows.Count == 0) return;
-                string nores = grid1.CurrentRow.Cells["OPERATEFLAG"].Value.ToString();
-                if (MessageBox.Show("설비를 정지 하시겠습니까?", "정지", MessageBoxButtons.YesNo)
-                    == DialogResult.No) return;
+                #region Flag 처리
+                //Flag(가동 중인 경우 가동이 다시 눌리지 않도록 작성하기 위함)
+                //if (grid1.Rows.Count == 0) return;
+                //string nores = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
+                //if (MessageBox.Show("설비를 가동 하시겠습니까?", "가동", MessageBoxButtons.YesNo)
+                //    == DialogResult.Yes) return;
+                //string Num = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
+                //if (nores == "가동")
+                //{
+                //    Tran.Commit();
+                //    MessageBox.Show("설비가 가동 되었습니다.");
+                //}
+                //else
+                //{
+                //    MessageBox.Show("설비를 가동할 수 없습니다.");
+                //}
+                #endregion
 
-                string Num = grid1.CurrentRow.Cells["OPERATEFLAG"].Value.ToString();
-
-
-                SqlCommand cmd = new SqlCommand();
-                SqlTransaction Tran;   //승인을 할지 거절을 할지 권한을 가지겟다
-
-                Connect = new SqlConnection(Common.DbPath);
-                Connect.Open();
-
-                Tran = Connect.BeginTransaction("TestTran");
-                cmd.Transaction = Tran;
-                cmd.Connection = Connect;
-
-                //주석 사유 : TRANSACTION으로 걸려야 할 값 및 삽입되어야 할 값에 대해서 DB.Helper 안쓴버전으로 입력하였으나, 추가검토가 필요함.  
-                //cmd.CommandText = "INSERT INTO TB_WARNINGMANAGE(custID, resDate,  resState,  roomNum ,NoShow) " +
-                //                          "VALUES('" + Common.LogInId + "','" + Date + "','" + "Y" + "','" + Num + "','" + "N" + "')" +
-                //                  "INSERT INTO TB_ENVIROMENTSTATE(MAKEDATE,CHECKFLAG,CHECKDATE) " +
-                //                          "VALUES('" + Num + "','" + Date + "')";
-                cmd.ExecuteNonQuery();
-
-                // 성공 시 DB COMMIT
-
-                if (nores == "정지가능")
+                if (cbo_proces1.SelectedItem == null)
                 {
-                    Tran.Commit();
-                    MessageBox.Show("정지되었습니다.");
+                    MessageBox.Show("프로세스를 먼저 선택하세요.");
+                    return;
                 }
-                else
+
+                var currProc = (cbo_proces1.SelectedItem as Tb_Process);
+                var processNo = currProc.ProcessNo;
+                var processName = currProc.ProcessName;
+                var endtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+
+                using (SqlConnection conn = new SqlConnection(Common.DbPath))
                 {
-                    MessageBox.Show("정지할 수 없습니다..");
+                    conn.Open(); // DB 오픈
+
+                    {
+                        var insQuery1 = @"UPDATE TB_PROCESSWORKrec SET ENDTIME = @endtime
+                                           where CONVERT(DATE,STARTTIME) = convert(date,GETDATE()) and endtime is null";
+                        SqlCommand cmd1 = new SqlCommand(insQuery1, conn);
+
+
+                        cmd1.Parameters.AddWithValue("@PROCESSNO", processNo);
+                        cmd1.Parameters.AddWithValue("@PROCESSNAME", processName);
+                        cmd1.Parameters.AddWithValue("@ENDTIME", endtime);
+
+                        var result1 = cmd1.ExecuteNonQuery(); // 실행 성공 1, 실패 0
+
+                        if (result1 > 0)
+                        {
+                            MessageBox.Show("프로세스 정지 하였습니다.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("프로세스 정지 실패했습니다. 관리자에게 문의하세요.");
+                        }
+                    }
+
                 }
+
             }
             catch (Exception ex)
             {
-
-            }
-            finally
-            {
-                Connect.Close();
+                MessageBox.Show($"예외발생 : {ex.Message}");
             }
         }
 
         private void btn_work1_Click(object sender, EventArgs e)
         {
-            //<생각정리>
-            //C#의 프로그램상에서 가동버튼을 클릭함 => DB에서 신호를 보냄(sql로 요청함)              => DB의 설비이력에 정지시간 및 이력이 등록됨(Stored procedure에서 update 구문을 작성함) (테이블 설계상 이게 맞을거 같은데?)
             try
             {
-                if (grid1.Rows.Count == 0) return;
-                string nores = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
-                if (MessageBox.Show("설비를 가동 하시겠습니까?", "가동", MessageBoxButtons.YesNo)
-                    == DialogResult.Yes) return;
+                #region Flag 처리
+                //Flag(가동 중인 경우 가동이 다시 눌리지 않도록 작성하기 위함)
+                //if (grid1.Rows.Count == 0) return;
+                //string nores = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
+                //if (MessageBox.Show("설비를 가동 하시겠습니까?", "가동", MessageBoxButtons.YesNo)
+                //    == DialogResult.Yes) return;
+                //string Num = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
+                //if (nores == "가동")
+                //{
+                //    Tran.Commit();
+                //    MessageBox.Show("설비가 가동 되었습니다.");
+                //}
+                //else
+                //{
+                //    MessageBox.Show("설비를 가동할 수 없습니다.");
+                //}
+                #endregion
 
-                string Num = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
-
-
-                SqlCommand cmd = new SqlCommand();
-                SqlTransaction Tran;   //승인을 할지 거절을 할지 권한을 가지겟다
-
-                Connect = new SqlConnection(Common.DbPath);
-                Connect.Open();
-
-                Tran = Connect.BeginTransaction("TestTran");
-                cmd.Transaction = Tran;
-                cmd.Connection = Connect;
-
-                //주석 사유 : 정지버튼과 동일한 사유
-                //cmd.CommandText = "INSERT INTO TB_WARNINGMANAGE(custID, resDate,  resState,  roomNum ,NoShow) " +
-                //                          "VALUES('" + Common.LogInId + "','" + Date + "','" + "Y" + "','" + Num + "','" + "N" + "')" +
-                //                  "INSERT INTO TB_ENVIROMENTSTATE(MAKEDATE,CHECKFLAG,CHECKDATE) " +
-                //                          "VALUES('" + Num + "','" + Date + "')";
-                cmd.ExecuteNonQuery();
-
-                // 성공 시 DB COMMIT
-
-                if (nores == "가동")
+                if (cbo_proces1.SelectedItem == null)
                 {
-                    Tran.Commit();
-                    MessageBox.Show("설비가 가동 되었습니다.");
+                    MessageBox.Show("프로세스를 먼저 선택하세요.");
+                    return;
                 }
-                else
+
+                var currProc = (cbo_proces1.SelectedItem as Tb_Process);
+                var processNo = currProc.ProcessNo;
+                var processName = currProc.ProcessName;
+                var startTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                using (SqlConnection conn = new SqlConnection(Common.DbPath))
                 {
-                    MessageBox.Show("설비를 가동할 수 없습니다.");
+                    conn.Open(); // DB 오픈
+
+                    var insQuery = @"INSERT INTO TB_PROCESSWORKrec (PROCESSNO,  PROCESSNAME,  STARTTIME)
+                                     VALUES (@PROCESSNO, @PROCESSNAME, @STARTTIME) ";
+                    SqlCommand cmd = new SqlCommand(insQuery, conn);
+
+
+                    cmd.Parameters.AddWithValue("@PROCESSNO", processNo);
+                    cmd.Parameters.AddWithValue("@PROCESSNAME", processName);
+                    cmd.Parameters.AddWithValue("@STARTTIME", startTime);
+
+                    var result = cmd.ExecuteNonQuery(); // 실행 성공 1, 실패 0
+
+                    if (result > 0 )
+                    {
+                        MessageBox.Show("프로세스 가동 시작하였습니다.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("프로세스 가동 실패했습니다. 관리자에게 문의하세요.");
+                    }
+
                 }
+
             }
             catch (Exception ex)
             {
-
-            }
-            finally
-            {
-                Connect.Close();
+                MessageBox.Show($"예외발생 : {ex.Message}");
             }
         }
 
@@ -327,7 +355,7 @@ namespace testestestsettest
             {
                 MessageBox.Show("계획 입력시간이 틀렸습니다.");
                 return;
-            }            
+            }
 
             SetDataToDb();
         }
@@ -336,7 +364,7 @@ namespace testestestsettest
 
         private void ProcessDetail_Load(object sender, EventArgs e)
         {
-            InitControlsFromDb();            
+            InitControlsFromDb();
         }
 
         #region DB처리 영역 
