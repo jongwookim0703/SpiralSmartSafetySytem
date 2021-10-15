@@ -67,80 +67,72 @@ namespace testestestsettest
                 grid.Columns["점검시간"].HeaderText = "점검시간";
                 grid.Columns["담당자"].HeaderText = "담당자";
 
+                grid.Columns[0].Width = 80;
+                grid.Columns[1].Width = 80;
+                grid.Columns[2].Width = 60;
+                grid.Columns[3].Width = 105;
+                grid.Columns[4].Width = 80;
+                grid.Columns[5].Width = 60;
+                grid.Columns[6].Width = 80;
+                grid.Columns[7].Width = 105;
+                grid.Columns[8].Width = 80;
+                grid.Columns[9].Width = 80;
+                grid.Columns[10].Width = 80;
+                grid.Columns[11].Width = 80;
 
                 #endregion
 
                 #region grid1
-                Connect = new SqlConnection(strConn);
-                    Connect.Open();
 
-                    if (Connect.State != System.Data.ConnectionState.Open)
-                    {
-                        MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
-                        return;
-                    }
+                SqlCommand cmd1 = new SqlCommand("USP_ProcessRank", Connect);
+                cmd1.CommandType = CommandType.StoredProcedure;
 
-                    SqlCommand cmd1 = new SqlCommand("USP_ProcessRank", Connect);
-                    cmd1.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adapter1 = new SqlDataAdapter(cmd1);
+                DataTable dtTemp1 = new DataTable();
+                adapter1.Fill(dtTemp1);
 
-                    SqlDataAdapter adapter1 = new SqlDataAdapter(cmd1);
-                    DataTable dtTemp1 = new DataTable();
-                    adapter.Fill(dtTemp1);
+                if (dtTemp1.Rows.Count == 0)
+                {
+                    grid1.DataSource = null;
+                    MessageBox.Show("조건에 일치하는 데이터가 없습니다.");
+                    return;
+                }
 
-                    if (dtTemp1.Rows.Count == 0)
-                    {
-                        grid1.DataSource = null;
-                        MessageBox.Show("조건에 일치하는 데이터가 없습니다.");
-                        return;
-                    }
-                        grid1.DataSource = dtTemp1;
-                        grid1.Columns["프로세스"].HeaderText = "프로세스";
-                        //grid1.Columns["누적가동시간"].HeaderText = "누적가동시간";
-                        grid1.Columns["점검시간"].HeaderText = "점검시간";
-                    #endregion
+                grid1.DataSource = dtTemp1;
+                grid1.Columns["프로세스"].HeaderText = "프로세스";
+                grid1.Columns["누적가동시간"].HeaderText = "누적가동시간";
+                grid1.Columns["점검시간"].HeaderText = "점검시간";
 
-                    #region grid2
-                    Connect = new SqlConnection(strConn);
-                    Connect.Open();
+                grid1.Columns[0].Width = 80;
+                grid1.Columns[1].Width = 105;
+                grid1.Columns[2].Width = 80;
 
-                    if (Connect.State != System.Data.ConnectionState.Open)
-                    {
-                        MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
-                        return;
-                    }
+                #endregion
 
-                    Connect = new SqlConnection(strConn);
-                    Connect.Open();
+                #region grid2
 
-                    if (Connect.State != System.Data.ConnectionState.Open)
-                    {
-                        MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
-                        return;
-                    }
+                SqlCommand cmd2 = new SqlCommand("USP_HazardRank", Connect);
+                cmd2.CommandType = CommandType.StoredProcedure;
 
-                    SqlCommand cmd2 = new SqlCommand("USP_HazardRank", Connect);
-                    cmd2.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
+                DataTable dtTemp2 = new DataTable();
+                adapter2.Fill(dtTemp2);
 
-                    SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
-                    DataTable dtTemp2 = new DataTable();
-                    adapter.Fill(dtTemp2);
+                if (dtTemp2.Rows.Count == 0)
+                {
+                    grid2.DataSource = null;
+                    MessageBox.Show("조건에 일치하는 데이터가 없습니다.");
+                    return;
+                }
 
-                    if (dtTemp2.Rows.Count == 0)
-                    {
-                        grid.DataSource = null;
-                        MessageBox.Show("조건에 일치하는 데이터가 없습니다.");
-                        return;
-                    }
+                grid2.DataSource = dtTemp2;
+                
+                grid2.Columns["중단여부"].HeaderText = "중단여부";
+                grid2.Columns["위험"].HeaderText = "위험";
+                grid2.Columns["위험상태"].HeaderText = "위험상태";
+                grid2.Columns["점검시간"].HeaderText = "점검시간";
 
-                    grid2.DataSource = dtTemp2;
-                    
-
-                        grid2.Columns["중단여부"].HeaderText = "중단여부";
-                        grid2.Columns["위험"].HeaderText = "위험";
-                        grid2.Columns["위험상태"].HeaderText = "위험상태";
-                        grid2.Columns["점검시간"].HeaderText = "점검시간";
-
-                    #endregion
+                #endregion
 
 
             }
