@@ -125,7 +125,7 @@ namespace testestestsettest
         {
             //5_1 수신한 message를 json parsing
             var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴 
-            var < 변수명 > = currentDatas["led12"];
+            //var < 변수명 > = currentDatas["led12"];
 
             //5_2 크로스 쓰레드 문제를 해결하기 위한 해법
             if (this.InvokeRequired)
@@ -136,8 +136,8 @@ namespace testestestsettest
             else
             {
                 //받아온 값을 적용시킬 코드 작성
-                this.txtCO.Text = currled1.ToString();
-                this.txtGas.Text = currled1.ToString();
+               /* this.txtCO.Text = currled1.ToString();
+                this.txtGas.Text = currled1.ToString();*/
             }
 
 
