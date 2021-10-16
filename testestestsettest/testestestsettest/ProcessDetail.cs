@@ -66,136 +66,142 @@ namespace testestestsettest
 
         private void btn_stop1_Click(object sender, EventArgs e)
         {
-            try
+            if (chk_re1.Checked == false)
             {
-                #region Flag 처리
-                //Flag(가동 중인 경우 가동이 다시 눌리지 않도록 작성하기 위함)
-                //if (grid1.Rows.Count == 0) return;
-                //string nores = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
-                //if (MessageBox.Show("설비를 가동 하시겠습니까?", "가동", MessageBoxButtons.YesNo)
-                //    == DialogResult.Yes) return;
-                //string Num = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
-                //if (nores == "가동")
-                //{
-                //    Tran.Commit();
-                //    MessageBox.Show("설비가 가동 되었습니다.");
-                //}
-                //else
-                //{
-                //    MessageBox.Show("설비를 가동할 수 없습니다.");
-                //}
-                #endregion
-
-                if (cbo_proces1.SelectedItem == null)
+                try
                 {
-                    MessageBox.Show("프로세스를 먼저 선택하세요.");
-                    return;
-                }
+                    #region Flag 처리
+                    //Flag(가동 중인 경우 가동이 다시 눌리지 않도록 작성하기 위함)
+                    //if (grid1.Rows.Count == 0) return;
+                    //string nores = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
+                    //if (MessageBox.Show("설비를 가동 하시겠습니까?", "가동", MessageBoxButtons.YesNo)
+                    //    == DialogResult.Yes) return;
+                    //string Num = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
+                    //if (nores == "가동")
+                    //{
+                    //    Tran.Commit();
+                    //    MessageBox.Show("설비가 가동 되었습니다.");
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("설비를 가동할 수 없습니다.");
+                    //}
+                    #endregion
 
-                var currProc = (cbo_proces1.SelectedItem as Tb_Process);
-                var processNo = currProc.ProcessNo;
-                var processName = currProc.ProcessName;
-                var endtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
-
-                using (SqlConnection conn = new SqlConnection(Common.DbPath))
-                {
-                    conn.Open(); // DB 오픈
-
+                    if (cbo_proces1.SelectedItem == null)
                     {
-                        var insQuery1 = @"UPDATE TB_PROCESSWORKrec SET ENDTIME = @endtime
+                        MessageBox.Show("프로세스를 먼저 선택하세요.");
+                        return;
+                    }
+
+                    var currProc = (cbo_proces1.SelectedItem as Tb_Process);
+                    var processNo = currProc.ProcessNo;
+                    var processName = currProc.ProcessName;
+                    var endtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+
+                    using (SqlConnection conn = new SqlConnection(Common.DbPath))
+                    {
+                        conn.Open(); // DB 오픈
+
+                        {
+                            var insQuery1 = @"UPDATE TB_PROCESSWORKrec SET ENDTIME = @endtime
                                            where CONVERT(DATE,STARTTIME) = convert(date,GETDATE()) and endtime is null";
-                        SqlCommand cmd1 = new SqlCommand(insQuery1, conn);
+                            SqlCommand cmd1 = new SqlCommand(insQuery1, conn);
 
 
-                        cmd1.Parameters.AddWithValue("@PROCESSNO", processNo);
-                        cmd1.Parameters.AddWithValue("@PROCESSNAME", processName);
-                        cmd1.Parameters.AddWithValue("@ENDTIME", endtime);
+                            cmd1.Parameters.AddWithValue("@PROCESSNO", processNo);
+                            cmd1.Parameters.AddWithValue("@PROCESSNAME", processName);
+                            cmd1.Parameters.AddWithValue("@ENDTIME", endtime);
 
-                        var result1 = cmd1.ExecuteNonQuery(); // 실행 성공 1, 실패 0
+                            var result1 = cmd1.ExecuteNonQuery(); // 실행 성공 1, 실패 0
 
-                        if (result1 > 0)
-                        {
-                            MessageBox.Show("프로세스 정지 하였습니다.");
+                            if (result1 > 0)
+                            {
+                                MessageBox.Show("프로세스 정지 하였습니다.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("프로세스 정지 실패했습니다. 관리자에게 문의하세요.");
+                            }
                         }
-                        else
-                        {
-                            MessageBox.Show("프로세스 정지 실패했습니다. 관리자에게 문의하세요.");
-                        }
+
                     }
 
                 }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"예외발생 : {ex.Message}");
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"예외발생 : {ex.Message}");
+                }
             }
         }
 
         private void btn_work1_Click(object sender, EventArgs e)
         {
-            try
+            if (chk_re1.Checked == false)
             {
-                #region Flag 처리
-                //Flag(가동 중인 경우 가동이 다시 눌리지 않도록 작성하기 위함)
-                //if (grid1.Rows.Count == 0) return;
-                //string nores = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
-                //if (MessageBox.Show("설비를 가동 하시겠습니까?", "가동", MessageBoxButtons.YesNo)
-                //    == DialogResult.Yes) return;
-                //string Num = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
-                //if (nores == "가동")
-                //{
-                //    Tran.Commit();
-                //    MessageBox.Show("설비가 가동 되었습니다.");
-                //}
-                //else
-                //{
-                //    MessageBox.Show("설비를 가동할 수 없습니다.");
-                //}
-                #endregion
-
-                if (cbo_proces1.SelectedItem == null)
+                try
                 {
-                    MessageBox.Show("프로세스를 먼저 선택하세요.");
-                    return;
-                }
+                    #region Flag 처리
+                    //Flag(가동 중인 경우 가동이 다시 눌리지 않도록 작성하기 위함)
+                    //if (grid1.Rows.Count == 0) return;
+                    //string nores = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
+                    //if (MessageBox.Show("설비를 가동 하시겠습니까?", "가동", MessageBoxButtons.YesNo)
+                    //    == DialogResult.Yes) return;
+                    //string Num = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
+                    //if (nores == "가동")
+                    //{
+                    //    Tran.Commit();
+                    //    MessageBox.Show("설비가 가동 되었습니다.");
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("설비를 가동할 수 없습니다.");
+                    //}
+                    #endregion
 
-                var currProc = (cbo_proces1.SelectedItem as Tb_Process);
-                var processNo = currProc.ProcessNo;
-                var processName = currProc.ProcessName;
-                var startTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    if (cbo_proces1.SelectedItem == null)
+                    {
+                        MessageBox.Show("프로세스를 먼저 선택하세요.");
+                        return;
+                    }
 
-                using (SqlConnection conn = new SqlConnection(Common.DbPath))
-                {
-                    conn.Open(); // DB 오픈
+                    var currProc = (cbo_proces1.SelectedItem as Tb_Process);
+                    var processNo = currProc.ProcessNo;
+                    var processName = currProc.ProcessName;
+                    var startTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-                    var insQuery = @"INSERT INTO TB_PROCESSWORKrec (PROCESSNO,  PROCESSNAME,  STARTTIME)
+                    using (SqlConnection conn = new SqlConnection(Common.DbPath))
+                    {
+                        conn.Open(); // DB 오픈
+
+                        var insQuery = @"INSERT INTO TB_PROCESSWORKrec (PROCESSNO,  PROCESSNAME,  STARTTIME)
                                      VALUES (@PROCESSNO, @PROCESSNAME, @STARTTIME) ";
-                    SqlCommand cmd = new SqlCommand(insQuery, conn);
+                        SqlCommand cmd = new SqlCommand(insQuery, conn);
 
 
-                    cmd.Parameters.AddWithValue("@PROCESSNO", processNo);
-                    cmd.Parameters.AddWithValue("@PROCESSNAME", processName);
-                    cmd.Parameters.AddWithValue("@STARTTIME", startTime);
+                        cmd.Parameters.AddWithValue("@PROCESSNO", processNo);
+                        cmd.Parameters.AddWithValue("@PROCESSNAME", processName);
+                        cmd.Parameters.AddWithValue("@STARTTIME", startTime);
 
-                    var result = cmd.ExecuteNonQuery(); // 실행 성공 1, 실패 0
+                        var result = cmd.ExecuteNonQuery(); // 실행 성공 1, 실패 0
 
-                    if (result > 0 )
-                    {
-                        MessageBox.Show("프로세스 가동 시작하였습니다.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("프로세스 가동 실패했습니다. 관리자에게 문의하세요.");
+                        if (result > 0)
+                        {
+                            MessageBox.Show("프로세스 가동 시작하였습니다.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("프로세스 가동 실패했습니다. 관리자에게 문의하세요.");
+                        }
+
                     }
 
                 }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"예외발생 : {ex.Message}");
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"예외발생 : {ex.Message}");
+                }
             }
         }
 
