@@ -42,7 +42,6 @@ namespace testestestsettest
             this.label8 = new System.Windows.Forms.Label();
             this.btnDetail4 = new System.Windows.Forms.Button();
             this.vlc4 = new Vlc.DotNet.Forms.VlcControl();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.vlc3 = new Vlc.DotNet.Forms.VlcControl();
             this.label7 = new System.Windows.Forms.Label();
@@ -50,6 +49,7 @@ namespace testestestsettest
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnDetail2 = new System.Windows.Forms.Button();
             this.vlc2 = new Vlc.DotNet.Forms.VlcControl();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.vlc1 = new Vlc.DotNet.Forms.VlcControl();
@@ -71,16 +71,16 @@ namespace testestestsettest
             // 
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.groupBox5);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1167, 581);
+            this.groupBox1.Size = new System.Drawing.Size(1255, 805);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "`";
             // 
             // panel1
             // 
@@ -89,9 +89,9 @@ namespace testestestsettest
             this.panel1.Controls.Add(this.txtGas);
             this.panel1.Controls.Add(this.txtCO);
             this.panel1.Controls.Add(this.grid1);
-            this.panel1.Location = new System.Drawing.Point(846, 39);
+            this.panel1.Location = new System.Drawing.Point(934, 38);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(309, 536);
+            this.panel1.Size = new System.Drawing.Size(309, 761);
             this.panel1.TabIndex = 10;
             // 
             // label2
@@ -130,11 +130,11 @@ namespace testestestsettest
             // 
             this.grid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.grid1.Location = new System.Drawing.Point(0, 109);
+            this.grid1.Location = new System.Drawing.Point(0, 138);
             this.grid1.Name = "grid1";
             this.grid1.RowHeadersWidth = 51;
             this.grid1.RowTemplate.Height = 29;
-            this.grid1.Size = new System.Drawing.Size(309, 427);
+            this.grid1.Size = new System.Drawing.Size(309, 623);
             this.grid1.TabIndex = 0;
             // 
             // groupBox5
@@ -142,16 +142,16 @@ namespace testestestsettest
             this.groupBox5.Controls.Add(this.label8);
             this.groupBox5.Controls.Add(this.btnDetail4);
             this.groupBox5.Controls.Add(this.vlc4);
-            this.groupBox5.Location = new System.Drawing.Point(435, 304);
+            this.groupBox5.Location = new System.Drawing.Point(478, 421);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(405, 273);
+            this.groupBox5.Size = new System.Drawing.Size(450, 378);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(169, -2);
+            this.label8.Location = new System.Drawing.Point(183, -2);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 20);
             this.label8.TabIndex = 14;
@@ -164,9 +164,9 @@ namespace testestestsettest
             this.btnDetail4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetail4.Font = new System.Drawing.Font("맑은 고딕", 5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnDetail4.ForeColor = System.Drawing.Color.Black;
-            this.btnDetail4.Location = new System.Drawing.Point(183, 244);
+            this.btnDetail4.Location = new System.Drawing.Point(183, 333);
             this.btnDetail4.Name = "btnDetail4";
-            this.btnDetail4.Size = new System.Drawing.Size(50, 20);
+            this.btnDetail4.Size = new System.Drawing.Size(77, 39);
             this.btnDetail4.TabIndex = 3;
             this.btnDetail4.Tag = "4";
             this.btnDetail4.Text = "detail";
@@ -178,7 +178,7 @@ namespace testestestsettest
             this.vlc4.BackColor = System.Drawing.Color.Black;
             this.vlc4.Location = new System.Drawing.Point(6, 26);
             this.vlc4.Name = "vlc4";
-            this.vlc4.Size = new System.Drawing.Size(384, 216);
+            this.vlc4.Size = new System.Drawing.Size(438, 300);
             this.vlc4.Spu = -1;
             this.vlc4.TabIndex = 3;
             this.vlc4.Tag = "4";
@@ -187,23 +187,14 @@ namespace testestestsettest
             this.vlc4.VlcMediaplayerOptions = null;
             this.vlc4.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc4_VlcLibDirectoryNeeded);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(604, 23);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 20);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "프로세스2";
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.vlc3);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.btnDetail3);
-            this.groupBox4.Location = new System.Drawing.Point(12, 304);
+            this.groupBox4.Location = new System.Drawing.Point(12, 421);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(405, 273);
+            this.groupBox4.Size = new System.Drawing.Size(450, 378);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             // 
@@ -212,7 +203,7 @@ namespace testestestsettest
             this.vlc3.BackColor = System.Drawing.Color.Black;
             this.vlc3.Location = new System.Drawing.Point(6, 26);
             this.vlc3.Name = "vlc3";
-            this.vlc3.Size = new System.Drawing.Size(384, 216);
+            this.vlc3.Size = new System.Drawing.Size(438, 300);
             this.vlc3.Spu = -1;
             this.vlc3.TabIndex = 2;
             this.vlc3.Tag = "3";
@@ -224,7 +215,7 @@ namespace testestestsettest
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(154, -2);
+            this.label7.Location = new System.Drawing.Point(179, -2);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 20);
             this.label7.TabIndex = 13;
@@ -237,9 +228,9 @@ namespace testestestsettest
             this.btnDetail3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetail3.Font = new System.Drawing.Font("맑은 고딕", 5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnDetail3.ForeColor = System.Drawing.Color.Black;
-            this.btnDetail3.Location = new System.Drawing.Point(165, 244);
+            this.btnDetail3.Location = new System.Drawing.Point(179, 332);
             this.btnDetail3.Name = "btnDetail3";
-            this.btnDetail3.Size = new System.Drawing.Size(50, 20);
+            this.btnDetail3.Size = new System.Drawing.Size(77, 39);
             this.btnDetail3.TabIndex = 2;
             this.btnDetail3.Tag = "3";
             this.btnDetail3.Text = "detail";
@@ -250,9 +241,10 @@ namespace testestestsettest
             // 
             this.groupBox3.Controls.Add(this.btnDetail2);
             this.groupBox3.Controls.Add(this.vlc2);
-            this.groupBox3.Location = new System.Drawing.Point(435, 26);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Location = new System.Drawing.Point(478, 26);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(405, 273);
+            this.groupBox3.Size = new System.Drawing.Size(450, 378);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             // 
@@ -263,9 +255,9 @@ namespace testestestsettest
             this.btnDetail2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetail2.Font = new System.Drawing.Font("맑은 고딕", 5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnDetail2.ForeColor = System.Drawing.Color.Black;
-            this.btnDetail2.Location = new System.Drawing.Point(183, 244);
+            this.btnDetail2.Location = new System.Drawing.Point(183, 333);
             this.btnDetail2.Name = "btnDetail2";
-            this.btnDetail2.Size = new System.Drawing.Size(50, 20);
+            this.btnDetail2.Size = new System.Drawing.Size(77, 39);
             this.btnDetail2.TabIndex = 1;
             this.btnDetail2.Tag = "2";
             this.btnDetail2.Text = "detail";
@@ -277,7 +269,7 @@ namespace testestestsettest
             this.vlc2.BackColor = System.Drawing.Color.Black;
             this.vlc2.Location = new System.Drawing.Point(6, 26);
             this.vlc2.Name = "vlc2";
-            this.vlc2.Size = new System.Drawing.Size(384, 216);
+            this.vlc2.Size = new System.Drawing.Size(438, 300);
             this.vlc2.Spu = -1;
             this.vlc2.TabIndex = 1;
             this.vlc2.Tag = "2";
@@ -286,6 +278,15 @@ namespace testestestsettest
             this.vlc2.VlcMediaplayerOptions = null;
             this.vlc2.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc2_VlcLibDirectoryNeeded);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(183, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 20);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "프로세스2";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label5);
@@ -293,14 +294,14 @@ namespace testestestsettest
             this.groupBox2.Controls.Add(this.btnDetail1);
             this.groupBox2.Location = new System.Drawing.Point(12, 26);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(405, 273);
+            this.groupBox2.Size = new System.Drawing.Size(450, 378);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(154, -3);
+            this.label5.Location = new System.Drawing.Point(179, -3);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 20);
             this.label5.TabIndex = 11;
@@ -311,7 +312,7 @@ namespace testestestsettest
             this.vlc1.BackColor = System.Drawing.Color.Black;
             this.vlc1.Location = new System.Drawing.Point(6, 26);
             this.vlc1.Name = "vlc1";
-            this.vlc1.Size = new System.Drawing.Size(384, 216);
+            this.vlc1.Size = new System.Drawing.Size(438, 300);
             this.vlc1.Spu = -1;
             this.vlc1.TabIndex = 0;
             this.vlc1.Tag = "1";
@@ -327,9 +328,9 @@ namespace testestestsettest
             this.btnDetail1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetail1.Font = new System.Drawing.Font("맑은 고딕", 5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnDetail1.ForeColor = System.Drawing.Color.Black;
-            this.btnDetail1.Location = new System.Drawing.Point(165, 244);
+            this.btnDetail1.Location = new System.Drawing.Point(179, 333);
             this.btnDetail1.Name = "btnDetail1";
-            this.btnDetail1.Size = new System.Drawing.Size(50, 20);
+            this.btnDetail1.Size = new System.Drawing.Size(77, 39);
             this.btnDetail1.TabIndex = 0;
             this.btnDetail1.Tag = "1";
             this.btnDetail1.Text = "detail";
@@ -341,14 +342,13 @@ namespace testestestsettest
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1167, 598);
+            this.ClientSize = new System.Drawing.Size(1255, 817);
             this.Controls.Add(this.groupBox1);
             this.Name = "ProcessSafety";
             this.Text = "ProcessSafety";
             this.Load += new System.EventHandler(this.ProcessSafety_Load);
             this.VisibleChanged += new System.EventHandler(this.ProcessSafety_VisibleChanged);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).EndInit();
@@ -359,6 +359,7 @@ namespace testestestsettest
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vlc3)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vlc2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

@@ -102,59 +102,58 @@ namespace testestestsettest
                 Connect.Close();    //DB 연결 끊어주기
             }
 
-            //mqtt 연결
-            try
-            {
-                IPAddress hostIP;
+            ////mqtt 연결
+            //try
+            //{
+            //    IPAddress hostIP;
 
-                hostIP = IPAddress.Parse("192.168.0.10");
-                client = new MqttClient(hostIP);
-                client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
+            //    hostIP = IPAddress.Parse("192.168.0.10");
+            //    client = new MqttClient(hostIP);
+            //    client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
 
-                client.Connect("192.168.0.18");//라즈베리파이 ip
-                client.Subscribe(new string[] { "common" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
-            }
-            catch (Exception ex)
-            {
+            //    client.Connect("192.168.0.18");//라즈베리파이 ip
+            //    client.Subscribe(new string[] { "common" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
+            //}
+            //catch (Exception ex)
+            //{
 
-            }
-
-        }
-
-        private void UpdateText(string message)
-        {
-            //5_1 수신한 message를 json parsing
-            var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴 
-            var < 변수명 > = currentDatas["led12"];
-
-            //5_2 크로스 쓰레드 문제를 해결하기 위한 해법
-            if (this.InvokeRequired)
-            {
-                UpdateDataCallback b = new UpdateDataCallback(UpdateText);
-                this.Invoke(b, new object[] { message });
-            }
-            else
-            {
-                //받아온 값을 적용시킬 코드 작성
-                this.txtCO.Text = currled1.ToString();
-                this.txtGas.Text = currled1.ToString();
-            }
-
+            //}
 
         }
 
-        private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
-        {
-            try
-            {
-                var message = Encoding.UTF8.GetString(e.Message);
-                UpdateText(message);        // 메세지 발생시 값 변경
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("[ERROR] " + ex.Message);
-            }
-        }
+        //private void UpdateText(string message)
+        //{
+        //    //5_1 수신한 message를 json parsing
+        //    var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴 
+        //    var < 변수명 > = currentDatas["led12"];
+
+        //    //5_2 크로스 쓰레드 문제를 해결하기 위한 해법
+        //    if (this.InvokeRequired)
+        //    {
+        //        UpdateDataCallback b = new UpdateDataCallback(UpdateText);
+        //        this.Invoke(b, new object[] { message });
+        //    }
+        //    else
+        //    {
+        //        //받아온 값을 적용시킬 코드 작성
+        //        this.txtCO.Text = currled1.ToString();
+        //        this.txtGas.Text = currled1.ToString();
+        //    }
+
+        //}
+
+        //private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+        //{
+        //    try
+        //    {
+        //        var message = Encoding.UTF8.GetString(e.Message);
+        //        UpdateText(message);        // 메세지 발생시 값 변경
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("[ERROR] " + ex.Message);
+        //    }
+        //}
 
         private void button1_Click(object sender, EventArgs e)
         {
