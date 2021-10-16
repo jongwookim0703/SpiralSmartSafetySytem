@@ -15,16 +15,20 @@ namespace testestestsettest
     public partial class Record : Form
     {
         private System.Data.SqlClient.SqlConnection Connect = null;
-        string strConn = "Data Source=hangaramit.iptime.org; Initial Catalog=AppDev;User ID=spa;Password=spiral_0904";
+        string strConn = "Data Source=hangaramit.iptime.org; Initial Catalog=SpiralDB;User ID=spa;Password=spiral_0904";
 
         public Record()
         {
             InitializeComponent();
         }
+
         private void Record_Load(object sender, EventArgs e)
         {
+            grid.DefaultCellStyle.ForeColor = Color.Black;
+
             try
             {
+                #region Maingrid
                 Connect = new SqlConnection(strConn);
                 Connect.Open();
 
@@ -34,27 +38,101 @@ namespace testestestsettest
                     return;
                 }
 
-                SqlDataAdapter adapter = new SqlDataAdapter("", Connect);
-                DataTable dtTemp = new DataTable();
-                adapter.Fill(dtTemp);
+                SqlCommand cmd3 = new SqlCommand("USP_RECORD_Main", Connect);
+                cmd3.CommandType = CommandType.StoredProcedure;
 
-                if (dtTemp.Rows.Count == 0)
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd3);
+                DataTable dtTemp3 = new DataTable();
+                adapter.Fill(dtTemp3);
+
+                if (dtTemp3.Rows.Count == 0)
                 {
                     grid.DataSource = null;
+                    MessageBox.Show("조건에 일치하는 데이터가 없습니다.");
                     return;
                 }
 
-                grid.DataSource = dtTemp;
+                grid.DataSource = dtTemp3;
 
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
+                grid.Columns["기록시간"].HeaderText = "기록시간";
+                grid.Columns["프로세스"].HeaderText = "프로세스";
+                grid.Columns["중단여부"].HeaderText = "중단여부";
+                grid.Columns["위험"].HeaderText = "위험";
+                grid.Columns["위험상태"].HeaderText = "위험상태";
+                grid.Columns["계획가동시간"].HeaderText = "계획가동시간";
+                grid.Columns["가동시간"].HeaderText = "가동시간";
+                grid.Columns["중단율"].HeaderText = "중단율";
+                grid.Columns["점검시간"].HeaderText = "점검시간";
+                grid.Columns["담당자"].HeaderText = "담당자";
+
+                grid.Columns[0].Width = 80;
+                grid.Columns[1].Width = 80;
+                grid.Columns[2].Width = 80;
+                grid.Columns[3].Width = 60;
+                grid.Columns[4].Width = 80;
+                grid.Columns[5].Width = 105;
+                grid.Columns[6].Width = 80;
+                grid.Columns[7].Width = 80;
+                grid.Columns[8].Width = 80;
+                grid.Columns[9].Width = 80;
+
+                #endregion
+
+                #region grid1
+
+                SqlCommand cmd1 = new SqlCommand("USP_ProcessRank", Connect);
+                cmd1.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter adapter1 = new SqlDataAdapter(cmd1);
+                DataTable dtTemp1 = new DataTable();
+                adapter1.Fill(dtTemp1);
+
+                if (dtTemp1.Rows.Count == 0)
+                {
+                    grid1.DataSource = null;
+                    MessageBox.Show("조건에 일치하는 데이터가 없습니다.");
+                    return;
+                }
+
+                grid1.DataSource = dtTemp1;
+                grid1.Columns["프로세스"].HeaderText = "프로세스";
+                grid1.Columns["누적가동시간"].HeaderText = "누적가동시간";
+                grid1.Columns["점검시간"].HeaderText = "점검시간";
+
+                grid1.Columns[0].Width = 80;
+                grid1.Columns[1].Width = 105;
+                grid1.Columns[2].Width = 80;
+
+                #endregion
+
+                #region grid2
+
+                SqlCommand cmd2 = new SqlCommand("USP_HazardRank", Connect);
+                cmd2.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
+                DataTable dtTemp2 = new DataTable();
+                adapter2.Fill(dtTemp2);
+
+                if (dtTemp2.Rows.Count == 0)
+                {
+                    grid2.DataSource = null;
+                    MessageBox.Show("조건에 일치하는 데이터가 없습니다.");
+                    return;
+                }
+
+                grid2.DataSource = dtTemp2;
+
+                grid2.Columns["위험"].HeaderText = "위험";
+                grid2.Columns["위험상태"].HeaderText = "위험상태";
+                grid2.Columns["점검시간"].HeaderText = "점검시간";
+
+                grid1.Columns[0].Width = 60;
+                grid1.Columns[1].Width = 80;
+                grid1.Columns[2].Width = 80;
+
+
+                #endregion
             }
             catch (Exception ex)
             {
@@ -69,6 +147,12 @@ namespace testestestsettest
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            if (cboProcess.SelectedIndex < 0 || comboBox1.SelectedIndex < 0)
+            {
+                MessageBox.Show("조건을 선택하세요");
+                return;
+            }
+
             try
             {
                 Connect = new SqlConnection(strConn);
@@ -80,36 +164,79 @@ namespace testestestsettest
                     return;
                 }
 
-                SqlDataAdapter adapter = new SqlDataAdapter("", Connect);
+                var procesName = cboProcess.SelectedItem as string;
+                var startDate = dateTimePicker2.Value.ToString("yyyy-MM-dd");
+                var endDate = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+                var hazard = (comboBox1.SelectedItem as string).Split(' ')[0];
+
+                procesName.Split(' ');
+                hazard.Split(' ');
+
+                #region Main Grid
+
+                SqlCommand cmd = new SqlCommand("USP_RECORD", Connect);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@PROCESSNAME", procesName[0]);
+                cmd.Parameters.AddWithValue("@STARTTIME", startDate);
+                cmd.Parameters.AddWithValue("@ENDTIME", endDate);
+                cmd.Parameters.AddWithValue("@HAZARAD", hazard[0]);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dtTemp = new DataTable();
                 adapter.Fill(dtTemp);
 
                 if (dtTemp.Rows.Count == 0)
                 {
                     grid.DataSource = null;
+                    MessageBox.Show("조건에 일치하는 데이터가 없습니다.");
                     return;
                 }
-
+                    
                 grid.DataSource = dtTemp;
 
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
-                grid.Columns[""].HeaderText = "";
+                grid.Columns["기록시간"].HeaderText = "기록시간";
+                grid.Columns["프로세스"].HeaderText = "프로세스";
+                grid.Columns["중단여부"].HeaderText = "중단여부";
+                grid.Columns["위험"].HeaderText = "위험";
+                grid.Columns["위험상태"].HeaderText = "위험상태";
+                grid.Columns["계획가동시간"].HeaderText = "계획가동시간";
+                grid.Columns["가동시간"].HeaderText = "가동시간";
+                grid.Columns["중단율"].HeaderText = "중단율";
+                grid.Columns["점검시간"].HeaderText = "점검시간";
+                grid.Columns["담당자"].HeaderText = "담당자";
+
+                grid.Columns[0].Width = 80;
+                grid.Columns[1].Width = 80;
+                grid.Columns[2].Width = 80;
+                grid.Columns[3].Width = 60;
+                grid.Columns[4].Width = 80;
+                grid.Columns[5].Width = 105;
+                grid.Columns[6].Width = 80;
+                grid.Columns[7].Width = 80;
+                grid.Columns[8].Width = 80;
+                grid.Columns[9].Width = 80;
+                #endregion
+
+
             }
+
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+
             finally
             {
                 Connect.Close();    //DB 연결 끊어주기
             }
         }
+
+        private void Record_Shown(object sender, EventArgs e)
+        {
+            cboProcess.SelectedIndex = comboBox1.SelectedIndex = 0;
+        }
     }
+
 }

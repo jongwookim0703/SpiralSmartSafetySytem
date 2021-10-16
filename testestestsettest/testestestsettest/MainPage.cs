@@ -70,11 +70,6 @@ namespace testestestsettest
             }*/
 
         }
-        
-        private string auth = ""; // 찾아온 타입을 입력한다. 
-
-        private SqlConnection connect = new SqlConnection();
-
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -82,12 +77,39 @@ namespace testestestsettest
             //FirstPage.Instance.Gridbinding();
         }
 
+        private void tssPage_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem temp = sender as ToolStripMenuItem;
+            string FormName = temp.Tag.ToString();
+
+            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
+            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
+            Form ShowForm = (Form)Activator.CreateInstance(typeForm);
+
+            for (int i = 0; i < myTabControl1.TabPages.Count; i++)
+            {
+                if (myTabControl1.TabPages[i].Name == FormName.ToString())
+                {
+                    myTabControl1.SelectedTab = myTabControl1.TabPages[i];
+                    return;
+                }
+                else
+                {
+                    if(myTabControl1.TabPages[i].Name != "FirstPage")
+                    {
+                        myTabControl1.TabPages[i].Dispose();
+
+                    }
+                }
+            }
+
+            myTabControl1.AddForm(ShowForm);
+        }
+
         private void tssFirstPage_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem TempTss = new ToolStripMenuItem();
-            TempTss = (ToolStripMenuItem)sender;
-
-            string FormName = TempTss.Tag.ToString();
+            ToolStripMenuItem temp = sender as ToolStripMenuItem;
+            string FormName = temp.Tag.ToString();
 
             Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
             Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
@@ -136,7 +158,7 @@ namespace testestestsettest
             {
                 IPAddress hostIP;
 
-                hostIP = IPAddress.Parse("192.168.0.10");
+                hostIP = IPAddress.Parse("127.0.0.1");
                 client = new MqttClient(hostIP);
                 client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
 
@@ -170,7 +192,14 @@ namespace testestestsettest
                     myTabControl1.AddForm(ShowForm);
                     return;
                 }
-                
+                else
+                {
+                    if (myTabControl1.TabPages[i].Name != "FirstPage")
+                    {
+                        myTabControl1.TabPages[i].Dispose();
+
+                    }
+                }
             }
 
             myTabControl1.AddForm(ShowForm);
@@ -179,10 +208,12 @@ namespace testestestsettest
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            
             this.Close();
+            client.Disconnect();
         }
 
-        private void btnDetail_Click(object sender, EventArgs e)
+        private void btnSafety_Click(object sender, EventArgs e)
         {
             obj = this;
 
@@ -206,7 +237,7 @@ namespace testestestsettest
             }
 
             myTabControl1.AddForm(ShowForm);
-            
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -214,7 +245,36 @@ namespace testestestsettest
             //열려있는 화면이 있는지 확인
             if (myTabControl1.TabPages.Count == 0) return;
             //선택된 tab page 닫기
-            myTabControl1.SelectedTab.Dispose();
+            if (myTabControl1.SelectedTab.Name != "FirstPage")
+            {
+                myTabControl1.SelectedTab.Dispose();
+            }
+        }
+
+        private void tssRecord_Click(object sender, EventArgs e)
+        {
+            obj = this;
+
+            string FormName = "Record";
+
+            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
+            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
+            Form ShowForm = (Form)Activator.CreateInstance(typeForm);
+
+            for (int i = 0; i < myTabControl1.TabPages.Count; i++)
+            {
+                if (myTabControl1.TabPages[i].Name == FormName.ToString())
+                {
+                    myTabControl1.SelectedTab = myTabControl1.TabPages[i];
+                    return;
+                }
+                else
+                {
+                    myTabControl1.TabPages[i].Dispose();
+                }
+            }
+
+            myTabControl1.AddForm(ShowForm);
         }
 
         #region Mqtt
@@ -234,7 +294,8 @@ namespace testestestsettest
         private void UpdateLabel(string message)
         {
             var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴
-            var currled1 = currentDatas["led12"]; 
+            var currled1 = currentDatas["led12"];
+
             //string currled1 = [currentDatas["led12"], currentDatas["led12"], currentDatas["led12"], currentDatas["led12"]];
             if (panel1.InvokeRequired)
             {

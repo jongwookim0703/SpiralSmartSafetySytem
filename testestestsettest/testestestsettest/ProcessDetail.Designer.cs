@@ -81,14 +81,14 @@ namespace testestestsettest
             this.grid1.Name = "grid1";
             this.grid1.RowHeadersWidth = 51;
             this.grid1.RowTemplate.Height = 25;
-            this.grid1.Size = new System.Drawing.Size(291, 97);
+            this.grid1.Size = new System.Drawing.Size(536, 232);
             this.grid1.TabIndex = 1;
             // 
             // btn_detail1
             // 
             this.btn_detail1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_detail1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_detail1.Location = new System.Drawing.Point(42, 537);
+            this.btn_detail1.Location = new System.Drawing.Point(49, 747);
             this.btn_detail1.Margin = new System.Windows.Forms.Padding(4);
             this.btn_detail1.Name = "btn_detail1";
             this.btn_detail1.Size = new System.Drawing.Size(93, 45);
@@ -131,11 +131,11 @@ namespace testestestsettest
             this.groupBox1.Controls.Add(this.cbo_proces1);
             this.groupBox1.Controls.Add(this.LblProcessName);
             this.groupBox1.Controls.Add(this.panel4);
-            this.groupBox1.Location = new System.Drawing.Point(42, 29);
+            this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(971, 81);
+            this.groupBox1.Size = new System.Drawing.Size(1227, 97);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -144,7 +144,7 @@ namespace testestestsettest
             // 
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(648, 47);
+            this.panel3.Location = new System.Drawing.Point(872, 55);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(37, 27);
@@ -165,7 +165,7 @@ namespace testestestsettest
             // 
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(699, 47);
+            this.panel2.Location = new System.Drawing.Point(923, 55);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(48, 27);
@@ -187,7 +187,7 @@ namespace testestestsettest
             this.panel1.BackgroundImage = global::testestestsettest.Properties.Resources.green;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(593, 47);
+            this.panel1.Location = new System.Drawing.Point(817, 55);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(48, 27);
@@ -207,7 +207,7 @@ namespace testestestsettest
             // cbo_proces1
             // 
             this.cbo_proces1.FormattingEnabled = true;
-            this.cbo_proces1.Location = new System.Drawing.Point(771, 25);
+            this.cbo_proces1.Location = new System.Drawing.Point(995, 25);
             this.cbo_proces1.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_proces1.Name = "cbo_proces1";
             this.cbo_proces1.Size = new System.Drawing.Size(187, 28);
@@ -218,7 +218,7 @@ namespace testestestsettest
             // LblProcessName
             // 
             this.LblProcessName.AutoSize = true;
-            this.LblProcessName.Location = new System.Drawing.Point(338, 36);
+            this.LblProcessName.Location = new System.Drawing.Point(543, 36);
             this.LblProcessName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblProcessName.Name = "LblProcessName";
             this.LblProcessName.Size = new System.Drawing.Size(77, 20);
@@ -230,7 +230,7 @@ namespace testestestsettest
             this.panel4.BackgroundImage = global::testestestsettest.Properties.Resources.panel_gray_;
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(586, 7);
+            this.panel4.Location = new System.Drawing.Point(810, 15);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(165, 33);
@@ -252,7 +252,7 @@ namespace testestestsettest
             this.groupBox2.Controls.Add(this.btn_work1);
             this.groupBox2.Controls.Add(this.chk_re1);
             this.groupBox2.Controls.Add(this.panel6);
-            this.groupBox2.Location = new System.Drawing.Point(669, 508);
+            this.groupBox2.Location = new System.Drawing.Point(897, 720);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
@@ -288,21 +288,21 @@ namespace testestestsettest
             this.groupBox3.Controls.Add(this.txt_start);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(42, 119);
+            this.groupBox3.Location = new System.Drawing.Point(13, 119);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(971, 71);
+            this.groupBox3.Size = new System.Drawing.Size(1227, 71);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
             // 
             // btn_plan
             // 
-            this.btn_plan.Location = new System.Drawing.Point(833, 31);
+            this.btn_plan.Location = new System.Drawing.Point(1048, 22);
             this.btn_plan.Margin = new System.Windows.Forms.Padding(4);
             this.btn_plan.Name = "btn_plan";
-            this.btn_plan.Size = new System.Drawing.Size(129, 31);
+            this.btn_plan.Size = new System.Drawing.Size(129, 39);
             this.btn_plan.TabIndex = 4;
             this.btn_plan.Text = "계획 등록";
             this.btn_plan.UseVisualStyleBackColor = true;
@@ -310,10 +310,10 @@ namespace testestestsettest
             // 
             // txt_end
             // 
-            this.txt_end.Location = new System.Drawing.Point(516, 27);
+            this.txt_end.Location = new System.Drawing.Point(736, 27);
             this.txt_end.Margin = new System.Windows.Forms.Padding(4);
             this.txt_end.Name = "txt_end";
-            this.txt_end.Size = new System.Drawing.Size(165, 27);
+            this.txt_end.Size = new System.Drawing.Size(279, 27);
             this.txt_end.TabIndex = 3;
             // 
             // txt_start
@@ -321,13 +321,13 @@ namespace testestestsettest
             this.txt_start.Location = new System.Drawing.Point(165, 27);
             this.txt_start.Margin = new System.Windows.Forms.Padding(4);
             this.txt_start.Name = "txt_start";
-            this.txt_start.Size = new System.Drawing.Size(175, 27);
+            this.txt_start.Size = new System.Drawing.Size(306, 27);
             this.txt_start.TabIndex = 2;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(360, 31);
+            this.label7.Location = new System.Drawing.Point(580, 31);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(144, 20);
@@ -347,10 +347,10 @@ namespace testestestsettest
             // vlcControl
             // 
             this.vlcControl.BackColor = System.Drawing.Color.Black;
-            this.vlcControl.Location = new System.Drawing.Point(42, 197);
+            this.vlcControl.Location = new System.Drawing.Point(14, 197);
             this.vlcControl.Margin = new System.Windows.Forms.Padding(4);
             this.vlcControl.Name = "vlcControl";
-            this.vlcControl.Size = new System.Drawing.Size(685, 303);
+            this.vlcControl.Size = new System.Drawing.Size(680, 510);
             this.vlcControl.Spu = -1;
             this.vlcControl.TabIndex = 10;
             this.vlcControl.Text = "vlcControl1";
@@ -362,12 +362,12 @@ namespace testestestsettest
             // 
             this.grid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid2.Location = new System.Drawing.Point(3, 124);
+            this.grid2.Location = new System.Drawing.Point(3, 259);
             this.grid2.Margin = new System.Windows.Forms.Padding(4);
             this.grid2.Name = "grid2";
             this.grid2.RowHeadersWidth = 51;
             this.grid2.RowTemplate.Height = 25;
-            this.grid2.Size = new System.Drawing.Size(291, 176);
+            this.grid2.Size = new System.Drawing.Size(536, 254);
             this.grid2.TabIndex = 12;
             // 
             // groupBox4
@@ -375,9 +375,9 @@ namespace testestestsettest
             this.groupBox4.Controls.Add(this.grid2);
             this.groupBox4.Controls.Add(this.splitter1);
             this.groupBox4.Controls.Add(this.grid1);
-            this.groupBox4.Location = new System.Drawing.Point(734, 197);
+            this.groupBox4.Location = new System.Drawing.Point(701, 197);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(297, 303);
+            this.groupBox4.Size = new System.Drawing.Size(542, 516);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -385,9 +385,9 @@ namespace testestestsettest
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitter1.Location = new System.Drawing.Point(3, 120);
+            this.splitter1.Location = new System.Drawing.Point(3, 255);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(291, 4);
+            this.splitter1.Size = new System.Drawing.Size(536, 4);
             this.splitter1.TabIndex = 13;
             this.splitter1.TabStop = false;
             // 
@@ -395,7 +395,7 @@ namespace testestestsettest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 641);
+            this.ClientSize = new System.Drawing.Size(1255, 817);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.vlcControl);
             this.Controls.Add(this.btn_detail1);

@@ -108,12 +108,7 @@ namespace testestestsettest
 
         private void FirstPage_Load(object sender, EventArgs e)
         {
-            //Gridbinding();
-        }
-
-        private void lb_process1_TextChanged(object sender, EventArgs e)
-        {
-            //db에서 받아오기
+            Gridbinding();
         }
 
         private void vlc1_VlcLibDirectoryNeeded(object sender, Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs e)
@@ -156,6 +151,7 @@ namespace testestestsettest
             e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
         }
 
+        #region Gridbind
         public void Gridbinding()
         {
             try
@@ -171,7 +167,37 @@ namespace testestestsettest
                     return;
                 }
                 //select querry 변경예정
-                var selQuery = @"";
+                var selQuery = @"SELECT A.PROCESSNAME													AS PROCESSNAME
+                                 	   ,A.MAKER															AS MAKER
+                                 	   ,CONCAT(B.PROCESSTIME,'분')										AS PROCESSTIME
+                                 	   ,CONCAT(C.SUMTIME,'분')											AS SUMTIME
+                                 	   ,CONCAT(100-(100 * C.SUMTIME / B.PROCESSTIME),'%')           	AS STOPRATE
+                                 	   ,C.CHECKTIME														AS CHECKTIME
+                                 	   ,C.HAZARDNO														AS HAZARDNO
+                                 FROM TB_PROCESS AS A 
+                                 	  LEFT JOIN
+                                 	 (SELECT PROCESSNO,PROCESSNAME,DATEDIFF(MI,PSTARTTIME, PENDTIME) AS PROCESSTIME
+                                 	  FROM   TB_PLANrec
+                                 	  WHERE  CONVERT(DATE,PSTARTTIME) = CONVERT(DATE,GETDATE())) AS B 			
+                                 	  ON A.PROCESSNO = B.PROCESSNO
+                                 	  LEFT JOIN
+                                 	 (SELECT P.PROCESSNO,
+                                 	 		 CASE WHEN MAX(Q.ENDTIME) IS NULL THEN NULL 
+                                 	 		 	 WHEN MAX(STARTTIME) < MAX(Q.ENDTIME) THEN CONCAT(CONVERT(CHAR(8),MAX(Q.ENDTIME),8),' - ')
+                                 	 		 	 ELSE CONCAT(CONVERT(CHAR(8),MAX(Q.ENDTIME),8),' - ',CONVERT(CHAR(8),MAX(STARTTIME),8)) 
+                                 	 		 END AS CHECKTIME,
+                                 	 		 SUM(DATEDIFF(MI,P.STARTTIME,P.ENDTIME)) AS SUMTIME,
+                                 	 		 Q.HAZARDNO
+                                 	  FROM   TB_PROCESSWORKrec AS P 
+                                 	 		 LEFT JOIN 
+                                 	 	    (SELECT PROCESSNO, MAX(ENDTIME) AS ENDTIME,HAZARDNO
+                                 	 	     FROM TB_PROCESSWORKrec
+                                 	 	     WHERE HAZARDNO IS NOT NULL AND CONVERT(DATE,STARTTIME) = CONVERT(DATE,GETDATE())
+                                 	 	     GROUP BY PROCESSNO,HAZARDNO) AS Q
+                                 	 		 ON P.PROCESSNO = Q.PROCESSNO
+                                 	  WHERE  CONVERT(DATE,STARTTIME) = CONVERT(DATE,GETDATE())		
+                                 	  GROUP BY P.PROCESSNO,Q.HAZARDNO) AS C
+                                 	  ON B.PROCESSNO = C.PROCESSNO";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(selQuery, Connect);
                 DataTable dtTemp = new DataTable();
@@ -185,35 +211,33 @@ namespace testestestsettest
                 grid.DataSource = dtTemp;   //데이터 그리드 뷰에 데이터 테이블 등록
 
                 //그리드뷰의 헤더 명칭 선언
-                grid.Columns["PROCESSNAME"].HeaderText = "프로세스 명";
-                grid.Columns["MAKER      "].HeaderText = "담당자";
-                grid.Columns["PROCESSTIME"].HeaderText = "계획가동시간";
-                grid.Columns["SUMTIME    "].HeaderText = "누적가동시간";
-                grid.Columns["STOPRATE   "].HeaderText = "중단율";
-                grid.Columns["CHECKTIME  "].HeaderText = "최근 점검시간";
-                grid.Columns["CHECKER    "].HeaderText = "점검자";
-                grid.Columns["HAZARDNO   "].HeaderText = "위험이력번호";
+                grid.Columns[0].HeaderText = "프로세스 명";
+                grid.Columns[1].HeaderText = "담당자";
+                grid.Columns[2].HeaderText = "계획가동시간";
+                grid.Columns[3].HeaderText = "누적가동시간";
+                grid.Columns[4].HeaderText = "중단율";
+                grid.Columns[5].HeaderText = "최근 점검시간";
+                grid.Columns[6].HeaderText = "위험이력번호";
 
                 // 그리드 뷰의 폭 지정
-                grid.Columns[0].Width = 70;
-                grid.Columns[1].Width = 70;
-                grid.Columns[2].Width = 70;
-                grid.Columns[3].Width = 100;
-                grid.Columns[4].Width = 100;
-                grid.Columns[5].Width = 100;
-                grid.Columns[6].Width = 100;
-                grid.Columns[7].Width = 100;
+                grid.Columns[0].Width = 120;
+                grid.Columns[1].Width = 90;
+                grid.Columns[2].Width = 130;
+                grid.Columns[3].Width = 130;
+                grid.Columns[4].Width = 90;
+                grid.Columns[5].Width = 140;
+                grid.Columns[6].Width = 130;
 
 
                 //컬럼의 수정 여부를 지정 한다
-                grid.Columns["PROCESSNAME"].ReadOnly = true;
-                grid.Columns["MAKER      "].ReadOnly = true;
-                grid.Columns["PROCESSTIME"].ReadOnly = true;
-                grid.Columns["SUMTIME    "].ReadOnly = true;
-                grid.Columns["STOPRATE   "].ReadOnly = true;
-                grid.Columns["CHECKTIME  "].ReadOnly = true;
-                grid.Columns["CHECKER    "].ReadOnly = true;
-                grid.Columns["HAZARDNO   "].ReadOnly = true;
+                grid.Columns[0].ReadOnly = true;
+                grid.Columns[1].ReadOnly = true;
+                grid.Columns[2].ReadOnly = true;
+                grid.Columns[3].ReadOnly = true;
+                grid.Columns[4].ReadOnly = true;
+                grid.Columns[5].ReadOnly = true;
+                grid.Columns[6].ReadOnly = true;
+
             }
             catch (Exception ex)
             {
@@ -224,5 +248,6 @@ namespace testestestsettest
                 Connect.Close();    //DB 연결 끊어주기
             }
         }
+        #endregion Gridbind
     }
 }
