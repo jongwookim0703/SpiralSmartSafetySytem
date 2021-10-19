@@ -33,6 +33,7 @@ namespace testestestsettest
             this.grid = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_list = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -89,6 +90,7 @@ namespace testestestsettest
             // groupBox2
             // 
             this.groupBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox2.BackgroundImage")));
+            this.groupBox2.Controls.Add(this.btn_list);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
@@ -105,10 +107,23 @@ namespace testestestsettest
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             // 
+            // btn_list
+            // 
+            this.btn_list.AccessibleDescription = "";
+            this.btn_list.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_list.BackgroundImage")));
+            this.btn_list.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_list.Location = new System.Drawing.Point(835, 23);
+            this.btn_list.Name = "btn_list";
+            this.btn_list.Size = new System.Drawing.Size(47, 28);
+            this.btn_list.TabIndex = 12;
+            this.btn_list.Text = "전체";
+            this.btn_list.UseVisualStyleBackColor = true;
+            this.btn_list.Click += new System.EventHandler(this.btn_list_Click);
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(267, 27);
+            this.label9.Location = new System.Drawing.Point(232, 26);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 15);
             this.label9.TabIndex = 11;
@@ -118,16 +133,17 @@ namespace testestestsettest
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
+            "선택",
             "접근 금지 ",
             "화재 위험"});
-            this.comboBox1.Location = new System.Drawing.Point(304, 22);
+            this.comboBox1.Location = new System.Drawing.Point(269, 21);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(140, 23);
             this.comboBox1.TabIndex = 10;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(718, 21);
+            this.dateTimePicker1.Location = new System.Drawing.Point(660, 22);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(164, 23);
             this.dateTimePicker1.TabIndex = 0;
@@ -153,7 +169,7 @@ namespace testestestsettest
             this.groupBox5.Size = new System.Drawing.Size(453, 193);
             this.groupBox5.TabIndex = 22;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "위험 누적 (전체 기간)";
+            this.groupBox5.Text = "위험별 누적 점검시간";
             // 
             // grid2
             // 
@@ -177,7 +193,7 @@ namespace testestestsettest
             this.groupBox4.Size = new System.Drawing.Size(456, 193);
             this.groupBox4.TabIndex = 21;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "프로세스 누적 기록 (전체 기간)";
+            this.groupBox4.Text = "전체 프로세스 누적 기록";
             // 
             // grid1
             // 
@@ -195,7 +211,7 @@ namespace testestestsettest
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(697, 27);
+            this.label4.Location = new System.Drawing.Point(639, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 15);
             this.label4.TabIndex = 8;
@@ -204,7 +220,7 @@ namespace testestestsettest
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(486, 25);
+            this.label3.Location = new System.Drawing.Point(428, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 15);
             this.label3.TabIndex = 7;
@@ -213,7 +229,7 @@ namespace testestestsettest
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 27);
+            this.label1.Location = new System.Drawing.Point(12, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 5;
@@ -228,7 +244,7 @@ namespace testestestsettest
             "프로세스2",
             "프로세스3",
             "프로세스4"});
-            this.cboProcess.Location = new System.Drawing.Point(97, 21);
+            this.cboProcess.Location = new System.Drawing.Point(73, 21);
             this.cboProcess.Name = "cboProcess";
             this.cboProcess.Size = new System.Drawing.Size(140, 23);
             this.cboProcess.TabIndex = 4;
@@ -237,7 +253,7 @@ namespace testestestsettest
             // 
             this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSearch.Location = new System.Drawing.Point(888, 18);
+            this.btnSearch.Location = new System.Drawing.Point(888, 23);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(47, 28);
             this.btnSearch.TabIndex = 2;
@@ -247,7 +263,7 @@ namespace testestestsettest
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(527, 21);
+            this.dateTimePicker2.Location = new System.Drawing.Point(469, 22);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(164, 23);
             this.dateTimePicker2.TabIndex = 1;
@@ -299,5 +315,6 @@ namespace testestestsettest
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView grid2;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btn_list;
     }
 }

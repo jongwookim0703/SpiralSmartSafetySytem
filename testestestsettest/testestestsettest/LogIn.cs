@@ -43,7 +43,7 @@ namespace testestestsettest
                 string sPassWord = txtPassword.Text;
 
                 // 기존의 비밀 번호 찾기.
-                SqlDataAdapter Adapter = new SqlDataAdapter("SELECT PWD, ID FROM TB_USER WHERE ID = '" + sLogInId + "'", Connect);
+                SqlDataAdapter Adapter = new SqlDataAdapter("SELECT ID, PWD,USERNAME ,POSITION FROM TB_USER WHERE ID = '" + sLogInId + "'", Connect);
                 DataTable DtTemp = new DataTable();
                 Adapter.Fill(DtTemp);
 
@@ -73,8 +73,16 @@ namespace testestestsettest
                 }
                 else
                 {
-                    this.Tag = DtTemp.Rows[0]["ID"].ToString(); // 유저 명을 메인화면으로 보냄
-                    this.Close();
+                    if (DtTemp.Rows[0]["POSITION"].ToString()=="관리자" )
+                    {
+                        this.Tag = DtTemp.Rows[0]["USERNAME"].ToString(); // 유저 명을 메인화면으로 보냄
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("해당사용자는 접근 권한이 없습니다. 관리자 번호 (010-9999-9999): " );
+                    }
+                    
                 }
             }
             catch (Exception ex)

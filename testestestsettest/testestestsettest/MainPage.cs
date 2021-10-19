@@ -57,7 +57,7 @@ namespace testestestsettest
             InitializeComponent();
 
 
-            /*//login form 호출
+            //login form 호출
             LogIn Login = new LogIn();
             Login.ShowDialog();
 
@@ -67,7 +67,7 @@ namespace testestestsettest
                 Application.ExitThread();
                 Application.Exit();
                 System.Environment.Exit(0);
-            }*/
+            }
 
         }
 
