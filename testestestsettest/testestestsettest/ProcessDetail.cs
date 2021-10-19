@@ -34,11 +34,11 @@ namespace testestestsettest
         private string RtspUrl3 = "http://archive.org/download/SampleMpeg4_201307/sample_mpeg4.mp4";
         private string RtspUrl4 = "http://assets.appcelerator.com.s3.amazonaws.com/video/media.m4v";
         // 데이터베이스 관리권한
-
+        
         // 데이터베이스 명령전달
 
         // 접속 주소
-
+        //mqtt참고
         MqttClient client;
         delegate void UpdateLabelCallback(string message);
 
