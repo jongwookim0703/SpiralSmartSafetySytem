@@ -75,7 +75,7 @@ namespace testestestsettest
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1113, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1255, 30);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -172,9 +172,9 @@ namespace testestestsettest
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.tssTimer});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 628);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 851);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1113, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1255, 26);
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -192,19 +192,19 @@ namespace testestestsettest
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(348, 20);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(395, 20);
             this.toolStripStatusLabel2.Spring = true;
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(348, 20);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(395, 20);
             this.toolStripStatusLabel3.Spring = true;
             // 
             // tssTimer
             // 
             this.tssTimer.Name = "tssTimer";
-            this.tssTimer.Size = new System.Drawing.Size(348, 20);
+            this.tssTimer.Size = new System.Drawing.Size(395, 20);
             this.tssTimer.Spring = true;
             // 
             // timer1
@@ -226,7 +226,7 @@ namespace testestestsettest
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1113, 36);
+            this.panel1.Size = new System.Drawing.Size(1255, 36);
             this.panel1.TabIndex = 15;
             // 
             // btnExit
@@ -311,7 +311,7 @@ namespace testestestsettest
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 66);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1113, 562);
+            this.groupBox1.Size = new System.Drawing.Size(1255, 785);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             // 
@@ -322,14 +322,14 @@ namespace testestestsettest
             this.myTabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.myTabControl1.Name = "myTabControl1";
             this.myTabControl1.SelectedIndex = 0;
-            this.myTabControl1.Size = new System.Drawing.Size(1107, 536);
+            this.myTabControl1.Size = new System.Drawing.Size(1249, 759);
             this.myTabControl1.TabIndex = 19;
             // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 654);
+            this.ClientSize = new System.Drawing.Size(1255, 877);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
