@@ -15,6 +15,13 @@ using System.Reflection;
 using System.IO;
 using System.Linq.Expressions;
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Net;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
+
+
 namespace testestestsettest
 {
     public partial class ProcessDetail : Form
@@ -31,6 +38,10 @@ namespace testestestsettest
         // 데이터베이스 명령전달
 
         // 접속 주소
+
+        MqttClient client;
+        delegate void UpdateLabelCallback(string message);
+
         public ProcessDetail()
         {
             InitializeComponent();
@@ -62,6 +73,36 @@ namespace testestestsettest
 
             }
             MainPage.Instance.BTNButton.Visible = true;
+        }
+        private void UpdateLabel(string message)
+        {
+            var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴
+            var currled1 = currentDatas["led12"];
+
+            //string currled1 = [currentDatas["led12"], currentDatas["led12"], currentDatas["led12"], currentDatas["led12"]];
+            if (panel1.InvokeRequired)
+            {
+                UpdateLabelCallback lb = new UpdateLabelCallback(UpdateLabel);
+                this.Invoke(lb, new object[] { message });
+            }
+            else
+            {
+                this.label2.Text = currled1.ToString();
+                //this.label2.Text = currled1[0].ToString();
+            }
+        }
+
+        private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+        {
+            try
+            {
+                var message = Encoding.UTF8.GetString(e.Message);
+                UpdateLabel(message);        // 메세지 발생시 값 변경
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("[ERROR] " + ex.Message);
+            }
         }
 
         private void btn_stop1_Click(object sender, EventArgs e)
@@ -126,6 +167,22 @@ namespace testestestsettest
                             }
                         }
 
+                    }
+                    //mqtt 연결
+                    try
+                    {
+                        IPAddress hostIP;
+
+                        hostIP = IPAddress.Parse("127.0.0.1");
+                        client = new MqttClient(hostIP);
+                        client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
+
+                        client.Connect("192.168.0.10");//서버 통신 할 라즈베리파이 ip
+                        client.Subscribe(new string[] { "common" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
                     }
 
                 }
@@ -303,10 +360,10 @@ namespace testestestsettest
                         return;
                     }
                     //SELECT QUARRY로 GRID에 띄울 쿼리문을 작성한다.(2개)
-                    var selQuery1 = @"SELECT PSTARTTIME, PENDTIME FROM TB_PLANrec 
+                    var selQuery1 = @"SELECT PSTARTTIME AS 계획시작시간, PENDTIME AS 계획종료시간 FROM TB_PLANrec 
 	                                          WHERE PROCESSNO = @PROCESSNO 
 		                                      ORDER BY PROCESSNAME";
-                    var selQuery2 = @"SELECT NO, STARTTIME, ENDTIME, HAZARDNO FROM TB_PROCESSWORKrec 
+                    var selQuery2 = @"SELECT NO, STARTTIME AS 시작시간, ENDTIME AS 죵료시간, HAZARDNO AS 위험번호 FROM TB_PROCESSWORKrec 
 	                                          WHERE PROCESSNO = @PROCESSNO 
 		                                      ORDER BY PROCESSNAME";
 
