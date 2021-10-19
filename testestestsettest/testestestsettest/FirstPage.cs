@@ -103,8 +103,6 @@ namespace testestestsettest
         }
 
         private SqlConnection Connect = null; // 접속 정보 객체 명명
-        //접속 주소
-        private string strConn = Common.DbPath;
 
         private void FirstPage_Load(object sender, EventArgs e)
         {

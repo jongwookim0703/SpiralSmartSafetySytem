@@ -57,7 +57,7 @@ namespace testestestsettest
             InitializeComponent();
 
 
-            /*//login form 호출
+            //login form 호출
             LogIn Login = new LogIn();
             Login.ShowDialog();
 
@@ -67,14 +67,14 @@ namespace testestestsettest
                 Application.ExitThread();
                 Application.Exit();
                 System.Environment.Exit(0);
-            }*/
+            }
 
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             tssTimer.Text = DateTime.Now.ToString();//breaktime 걸면 1초마다 break 발생
-            //FirstPage.Instance.Gridbinding();
+            FirstPage.Instance.Gridbinding();
         }
 
         private void tssPage_Click(object sender, EventArgs e)
@@ -163,7 +163,7 @@ namespace testestestsettest
                 client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
 
                 client.Connect("192.168.0.10");//서버 통신 할 라즈베리파이 ip
-                client.Subscribe(new string[] { "common" },new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
+                client.Subscribe(new string[] { "main/led" },new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
             }
             catch (Exception ex)
             {
@@ -294,7 +294,9 @@ namespace testestestsettest
         private void UpdateLabel(string message)
         {
             var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴
-            var currled1 = currentDatas["led12"];
+            var currR = currentDatas["red"];
+            var currY = currentDatas["yellow"];
+            var currG = currentDatas["green"];
 
             //string currled1 = [currentDatas["led12"], currentDatas["led12"], currentDatas["led12"], currentDatas["led12"]];
             if (panel1.InvokeRequired)
@@ -304,7 +306,9 @@ namespace testestestsettest
             }
             else
             {
-                this.label2.Text = currled1.ToString();
+                this.label2.Text = currG.ToString();
+                this.label3.Text = currY.ToString();
+                this.label4.Text = currR.ToString();
                 //this.label2.Text = currled1[0].ToString();
             }
         }

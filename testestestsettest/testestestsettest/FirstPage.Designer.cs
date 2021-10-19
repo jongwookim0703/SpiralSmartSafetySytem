@@ -71,7 +71,7 @@ namespace testestestsettest
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1113, 163);
+            this.groupBox2.Size = new System.Drawing.Size(1273, 163);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -83,7 +83,7 @@ namespace testestestsettest
             this.grid.Name = "grid";
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 29;
-            this.grid.Size = new System.Drawing.Size(1107, 137);
+            this.grid.Size = new System.Drawing.Size(1267, 137);
             this.grid.TabIndex = 0;
             // 
             // groupBox3
@@ -96,7 +96,7 @@ namespace testestestsettest
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(0, 163);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1113, 342);
+            this.groupBox3.Size = new System.Drawing.Size(1273, 701);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             // 
@@ -109,7 +109,7 @@ namespace testestestsettest
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox7.Location = new System.Drawing.Point(837, 23);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(273, 316);
+            this.groupBox7.Size = new System.Drawing.Size(433, 675);
             this.groupBox7.TabIndex = 9;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "프로세스4";
@@ -166,7 +166,7 @@ namespace testestestsettest
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox5.Location = new System.Drawing.Point(555, 23);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(282, 316);
+            this.groupBox5.Size = new System.Drawing.Size(282, 675);
             this.groupBox5.TabIndex = 8;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "프로세스3";
@@ -223,7 +223,7 @@ namespace testestestsettest
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox4.Location = new System.Drawing.Point(277, 23);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(278, 316);
+            this.groupBox4.Size = new System.Drawing.Size(278, 675);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "프로세스2";
@@ -280,7 +280,7 @@ namespace testestestsettest
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox6.Location = new System.Drawing.Point(3, 23);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(274, 316);
+            this.groupBox6.Size = new System.Drawing.Size(274, 675);
             this.groupBox6.TabIndex = 6;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "프로세스1";
@@ -332,7 +332,7 @@ namespace testestestsettest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 505);
+            this.ClientSize = new System.Drawing.Size(1273, 864);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
