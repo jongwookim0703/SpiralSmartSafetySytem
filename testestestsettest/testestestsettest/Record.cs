@@ -22,10 +22,8 @@ namespace testestestsettest
             InitializeComponent();
         }
 
-        private void Record_Load(object sender, EventArgs e)
+        public void Gridbinding()
         {
-            grid.DefaultCellStyle.ForeColor = Color.Black;
-
             try
             {
                 #region Maingrid
@@ -39,6 +37,7 @@ namespace testestestsettest
                 }
 
                 #region Main Grid
+
 
                 SqlCommand cmd = new SqlCommand("USP_RECORD_Main", Connect);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -63,8 +62,8 @@ namespace testestestsettest
                 grid.Columns["위험상태"].HeaderText = "위험상태";
                 grid.Columns["계획가동시간"].HeaderText = "계획가동시간";
                 grid.Columns["가동시간"].HeaderText = "가동시간";
-                grid.Columns["중단율"].HeaderText = "중단율";
                 grid.Columns["점검시간"].HeaderText = "점검시간";
+                grid.Columns["중단율"].HeaderText = "중단율";
                 grid.Columns["담당자"].HeaderText = "담당자";
 
                 grid.Columns[0].Width = 100;
@@ -128,16 +127,20 @@ namespace testestestsettest
 
                 grid2.DataSource = dtTemp2;
 
-                grid2.Columns["위험"].HeaderText = "위험";
-                grid2.Columns["위험상태"].HeaderText = "위험상태";
-                grid2.Columns["점검시간"].HeaderText = "점검시간";
+                grid2.Columns["NAME"].HeaderText = "위험";
+                grid2.Columns["STATE"].HeaderText = "위험상태";
+                grid2.Columns["위험별점검시간"].HeaderText = "위험별점검시간";
+                grid2.Columns["위험별중단율"].HeaderText = "위험별중단율";
 
-                grid2.Columns[0].Width = 100;
-                grid2.Columns[1].Width = 105;
-                grid2.Columns[2].Width = 100;
+                grid2.Columns[0].Width = 90;
+                grid2.Columns[1].Width = 90;
+                grid2.Columns[2].Width = 120;
+                grid2.Columns[3].Width = 110;
+
 
                 #endregion
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -146,12 +149,24 @@ namespace testestestsettest
             {
                 Connect.Close();    //DB 연결 끊어주기
             }
+        }
 
+        private void Record_Load(object sender, EventArgs e)
+        {
+            grid.DefaultCellStyle.ForeColor = Color.Black;
+            Gridbinding();
+        }
+
+        private void btn_list_Click(object sender, EventArgs e)
+        {
+            Gridbinding();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (cboProcess.SelectedIndex < 0 || comboBox1.SelectedIndex < 0)
+            Gridbinding();
+
+            if (cboProcess.SelectedIndex < 0 && comboBox1.SelectedIndex < 0)
             {
                 MessageBox.Show("조건을 선택하세요");
                 return;
@@ -177,7 +192,7 @@ namespace testestestsettest
 
                 SqlCommand cmd3 = new SqlCommand("USP_RECORD", Connect);
                 cmd3.CommandType = CommandType.StoredProcedure;
-                       
+
                 cmd3.Parameters.AddWithValue("@PROCESSNAME", procesName);
                 cmd3.Parameters.AddWithValue("@STARTTIME", startDate);
                 cmd3.Parameters.AddWithValue("@ENDTIME", endDate);
@@ -193,7 +208,7 @@ namespace testestestsettest
                     MessageBox.Show("조건에 일치하는 데이터가 없습니다.");
                     return;
                 }
-                    
+
                 grid.DataSource = dtTemp3;
 
                 grid.Columns["기록시간"].HeaderText = "기록시간";
@@ -203,8 +218,8 @@ namespace testestestsettest
                 grid.Columns["위험상태"].HeaderText = "위험상태";
                 grid.Columns["계획가동시간"].HeaderText = "계획가동시간";
                 grid.Columns["가동시간"].HeaderText = "가동시간";
-                grid.Columns["중단율"].HeaderText = "중단율";
                 grid.Columns["점검시간"].HeaderText = "점검시간";
+                grid.Columns["중단율"].HeaderText = "중단율";
                 grid.Columns["담당자"].HeaderText = "담당자";
 
                 grid.Columns[0].Width = 100;
@@ -223,7 +238,7 @@ namespace testestestsettest
 
                 SqlCommand cmd4 = new SqlCommand("USP_ProcessRank", Connect);
                 cmd4.CommandType = CommandType.StoredProcedure;
-                       
+
                 cmd4.Parameters.AddWithValue("@STARTTIME", startDate);
                 cmd4.Parameters.AddWithValue("@ENDTIME", endDate);
 
@@ -258,8 +273,10 @@ namespace testestestsettest
                 SqlCommand cmd2 = new SqlCommand("USP_HazardRank", Connect);
                 cmd2.CommandType = CommandType.StoredProcedure;
 
+                cmd2.Parameters.AddWithValue("@PROCESSNAME", procesName);
                 cmd2.Parameters.AddWithValue("@STARTTIME", startDate);
                 cmd2.Parameters.AddWithValue("@ENDTIME", endDate);
+                cmd2.Parameters.AddWithValue("@HAZARAD", hazard[0]);
 
                 SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
                 DataTable dtTemp2 = new DataTable();
@@ -274,13 +291,15 @@ namespace testestestsettest
 
                 grid2.DataSource = dtTemp2;
 
-                grid2.Columns["위험"].HeaderText = "위험";
-                grid2.Columns["위험상태"].HeaderText = "위험상태";
-                grid2.Columns["점검시간"].HeaderText = "점검시간";
+                grid2.Columns["NAME"].HeaderText = "위험";
+                grid2.Columns["STATE"].HeaderText = "위험상태";
+                grid2.Columns["위험별점검시간"].HeaderText = "위험별점검시간";
+                grid2.Columns["위험별중단율"].HeaderText = "위험별중단율";
 
-                grid2.Columns[0].Width = 100;
-                grid2.Columns[1].Width = 105;
-                grid2.Columns[2].Width = 100;
+                grid2.Columns[0].Width = 90;
+                grid2.Columns[1].Width = 90;
+                grid2.Columns[2].Width = 120;
+                grid2.Columns[3].Width = 110;
                 #endregion
             }
 
@@ -301,6 +320,5 @@ namespace testestestsettest
             cboProcess.SelectedIndex = comboBox1.SelectedIndex = 0;
         }
     }
-
 }
 #endregion
