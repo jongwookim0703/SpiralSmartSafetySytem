@@ -26,27 +26,29 @@ namespace testestestsettest
 {
     public partial class ProcessDetail : Form
     {
-        // 접속 정보 객체 명명
+        #region 객체사용(DB, 영상정보), mqtt 클라이언트
+        // 접속 정보 객체&t상태
         private SqlConnection Connect = null;
 
+        // 영상 정보 객체(주소)
         private string RtspUrl1 = "http://archive.org/download/SampleMpeg4_201307/sample_mpeg4.mp4";
         private string RtspUrl2 = "http://assets.appcelerator.com.s3.amazonaws.com/video/media.m4v";
         private string RtspUrl3 = "http://archive.org/download/SampleMpeg4_201307/sample_mpeg4.mp4";
         private string RtspUrl4 = "http://assets.appcelerator.com.s3.amazonaws.com/video/media.m4v";
-        // 데이터베이스 관리권한
-        
-        // 데이터베이스 명령전달
 
-        // 접속 주소
-        //mqtt참고
+        //mqtt 클라이언트 선언 & 충돌해결용 CallBack
         MqttClient client;
         delegate void UpdateLabelCallback(string message);
+        #endregion
 
+        #region 디자이너 Method 지원
         public ProcessDetail()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region 상세보기 Button
         private void btn_detail1_Click(object sender, EventArgs e)
         {
 
@@ -74,24 +76,116 @@ namespace testestestsettest
             }
             MainPage.Instance.BTNButton.Visible = true;
         }
+        #endregion
+
+        #region Mqtt 클래스, 변수, 초기값, 초기화 설정
+        public class StatusLed //LED색상 상태 클래스 선언
+        {
+            //색상변수 선언
+            public string Green;
+            public string Yellow;
+            public string Red;
+        }
+
+        //LED색상 상태 클래스 초기화
+        private StatusLed statusLed = new StatusLed();
+
+        //value count 초기값 설정
+        private int RedCount = 0;
+        private int GreenCount = 0;
+        private int YellowCount = 0;
+        #endregion
+
+        #region Mqtt 신호등 수신용(LED)
         private void UpdateLabel(string message)
         {
             var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴
-            var currled1 = currentDatas["led12"];
+            var currled1 = currentDatas["led"]; // 받는 거 처리 추가
+
+            var key1 = "led"; // 문자열 분리 키와 값으로 분리 추가
+            var value1 = "1";
 
             //string currled1 = [currentDatas["led12"], currentDatas["led12"], currentDatas["led12"], currentDatas["led12"]];
-            if (panel1.InvokeRequired)
-            {
-                UpdateLabelCallback lb = new UpdateLabelCallback(UpdateLabel);
-                this.Invoke(lb, new object[] { message });
-            }
-            else
-            {
-                this.label2.Text = currled1.ToString();
-                //this.label2.Text = currled1[0].ToString();
-            }
-        }
 
+            #region 프로세스 별 LED 자료 당 value count(value 값을 더해줌)
+            switch (key1)
+            {                
+                //프로세스 1 LED
+                case "led1_G":
+                    if (value1 == "1")
+                        GreenCount++;
+                    break;
+                case "led1_Y":
+                    if (value1 == "1")
+                        YellowCount++;
+                    break;
+                case "led1_R":
+                    if (value1 == "1")
+                        RedCount++;
+                    break;
+                //프로세스 2 LED
+                case "led2_G":
+                    if (value1 == "1")
+                        GreenCount++;
+                    break;
+                case "led2_Y":
+                    if (value1 == "1")
+                        YellowCount++;
+                    break;
+                case "led2_R":
+                    if (value1 == "1")
+                        RedCount++;
+                    break;
+                //프로세스 3 LED
+                case "led3_G":
+                    if (value1 == "1")
+                        GreenCount++;
+                    break;
+                case "led3_Y":
+                    if (value1 == "1")
+                        YellowCount++;
+                    break;
+                case "led3_R":
+                    if (value1 == "1")
+                        RedCount++;
+                    break;
+                //프로세스 4 LED
+                case "led4_G":
+                    if (value1 == "1")
+                        GreenCount++;
+                    break;
+                case "led4_Y":
+                    if (value1 == "1")
+                        YellowCount++;
+                    break;
+                case "led4_R":
+                    if (value1 == "1")
+                        RedCount++;
+                    break;                
+            }
+            #endregion
+
+            #region 라벨 별 value count결과값 변환
+            // 스레드 UI스레드 분리처리(reciever와 충돌방지)
+            LblGreen.BeginInvoke(new Action(() =>
+            {
+                LblGreen.Text = GreenCount.ToString();
+            }));
+
+            LblYellow.BeginInvoke(new Action(() =>
+            {
+                LblYellow.Text = YellowCount.ToString();
+            }));
+
+            LblRed.BeginInvoke(new Action(() =>
+            {
+                LblRed.Text = RedCount.ToString();
+            }));
+            #endregion
+        }
+        #endregion
+
+        #region Mqtt 퍼블리셔리씨버
         private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             try
@@ -103,49 +197,39 @@ namespace testestestsettest
             {
                 MessageBox.Show("[ERROR] " + ex.Message);
             }
-        }
+        }        
+        #endregion
 
+        #region 정지 Button
         private void btn_stop1_Click(object sender, EventArgs e)
         {
             if (chk_re1.Checked == false)
             {
                 try
                 {
-                    #region Flag 처리
-                    //Flag(가동 중인 경우 가동이 다시 눌리지 않도록 작성하기 위함)
-                    //if (grid1.Rows.Count == 0) return;
-                    //string nores = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
-                    //if (MessageBox.Show("설비를 가동 하시겠습니까?", "가동", MessageBoxButtons.YesNo)
-                    //    == DialogResult.Yes) return;
-                    //string Num = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
-                    //if (nores == "가동")
-                    //{
-                    //    Tran.Commit();
-                    //    MessageBox.Show("설비가 가동 되었습니다.");
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("설비를 가동할 수 없습니다.");
-                    //}
-                    #endregion
-
+                    #region ComboBox 선택안한 경우에 대한 예외처리
                     if (cbo_proces1.SelectedItem == null)
                     {
                         MessageBox.Show("프로세스를 먼저 선택하세요.");
                         return;
                     }
+                    #endregion
 
+                    #region ComboBox 선택에 따른 변수선언
                     var currProc = (cbo_proces1.SelectedItem as Tb_Process);
                     var processNo = currProc.ProcessNo;
                     var processName = currProc.ProcessName;
                     var endtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    #endregion
 
-
+                    #region DB 접속 
                     using (SqlConnection conn = new SqlConnection(Common.DbPath))
                     {
                         conn.Open(); // DB 오픈
 
                         {
+                            #region DB접속&Parameter설정
+                            // DB접속쿼리
                             var insQuery1 = @"UPDATE TB_PROCESSWORKrec SET ENDTIME = @endtime
                                            where CONVERT(DATE,STARTTIME) = convert(date,GETDATE()) and endtime is null";
                             SqlCommand cmd1 = new SqlCommand(insQuery1, conn);
@@ -155,83 +239,86 @@ namespace testestestsettest
                             cmd1.Parameters.AddWithValue("@PROCESSNAME", processName);
                             cmd1.Parameters.AddWithValue("@ENDTIME", endtime);
 
-                            var result1 = cmd1.ExecuteNonQuery(); // 실행 성공 1, 실패 0
 
+                            var result1 = cmd1.ExecuteNonQuery();
+                            #endregion
+
+
+                            #region 정지 Button 클릭
                             if (result1 > 0)
                             {
                                 MessageBox.Show("프로세스 정지 하였습니다.");
+
+                                try
+                                {
+                                    var currtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                                    string pubData = "{ \n" +
+                                                         "   \"dev_addr\" : \"4002\", \n" +
+                                                         $"   \"currtime\" : \"{currtime}\" , \n" +
+                                                         "   \"code\" : \"pump\", \n" +
+                                                         "   \"value\" : \"1\", \n" +
+                                                         "   \"sensor\" : \"0\" \n" +
+                                                         "}";
+
+                                    client.Publish($"common", Encoding.UTF8.GetBytes(pubData), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show($"접속 오류 { ex.Message}");
+                                }
                             }
                             else
                             {
                                 MessageBox.Show("프로세스 정지 실패했습니다. 관리자에게 문의하세요.");
                             }
+                            #endregion
                         }
 
                     }
-                    //mqtt 연결
-                    try
-                    {
-                        IPAddress hostIP;
+                    #endregion
 
-                        hostIP = IPAddress.Parse("127.0.0.1");
-                        client = new MqttClient(hostIP);
-                        client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
-
-                        client.Connect("192.168.0.10");//서버 통신 할 라즈베리파이 ip
-                        client.Subscribe(new string[] { "common" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
 
                 }
+                #region 예외처리
                 catch (Exception ex)
                 {
                     MessageBox.Show($"예외발생 : {ex.Message}");
                 }
+                #endregion
             }
         }
+        #endregion
 
+        #region 가동 Button
         private void btn_work1_Click(object sender, EventArgs e)
         {
             if (chk_re1.Checked == false)
             {
                 try
                 {
-                    #region Flag 처리
-                    //Flag(가동 중인 경우 가동이 다시 눌리지 않도록 작성하기 위함)
-                    //if (grid1.Rows.Count == 0) return;
-                    //string nores = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
-                    //if (MessageBox.Show("설비를 가동 하시겠습니까?", "가동", MessageBoxButtons.YesNo)
-                    //    == DialogResult.Yes) return;
-                    //string Num = grid1.CurrentRow.Cells["ONOFFFLAG"].Value.ToString();
-                    //if (nores == "가동")
-                    //{
-                    //    Tran.Commit();
-                    //    MessageBox.Show("설비가 가동 되었습니다.");
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("설비를 가동할 수 없습니다.");
-                    //}
-                    #endregion
-
+                    #region ComboBox 선택안한 경우에 대한 예외처리
                     if (cbo_proces1.SelectedItem == null)
                     {
                         MessageBox.Show("프로세스를 먼저 선택하세요.");
                         return;
                     }
+                    #endregion
 
+                    #region ComboBox 선택에 따른 변수선언
                     var currProc = (cbo_proces1.SelectedItem as Tb_Process);
                     var processNo = currProc.ProcessNo;
                     var processName = currProc.ProcessName;
                     var startTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    #endregion
 
+                    #region DB 접속
                     using (SqlConnection conn = new SqlConnection(Common.DbPath))
-                    {
+                    {                        
                         conn.Open(); // DB 오픈
-
+                        
+                        #region DB접속&Parameter설정
+                        
+                        // DB접속쿼리
                         var insQuery = @"INSERT INTO TB_PROCESSWORKrec (PROCESSNO,  PROCESSNAME,  STARTTIME)
                                      VALUES (@PROCESSNO, @PROCESSNAME, @STARTTIME) ";
                         SqlCommand cmd = new SqlCommand(insQuery, conn);
@@ -241,27 +328,60 @@ namespace testestestsettest
                         cmd.Parameters.AddWithValue("@PROCESSNAME", processName);
                         cmd.Parameters.AddWithValue("@STARTTIME", startTime);
 
-                        var result = cmd.ExecuteNonQuery(); // 실행 성공 1, 실패 0
+                        // 실행 성공 1, 실패 0
+                        var result = cmd.ExecuteNonQuery();
+                        #endregion
 
+                        #region 가동 Button 클릭
                         if (result > 0)
                         {
                             MessageBox.Show("프로세스 가동 시작하였습니다.");
+                            try
+                            {
+                                var currtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                                string pubData = "{ \n" +
+                                                     "   \"dev_addr\" : \"4002\", \n" +
+                                                     $"   \"currtime\" : \"{currtime}\" , \n" +
+                                                     "   \"code\" : \"pump\", \n" +
+                                                     "   \"value\" : \"1\", \n" +
+                                                     "   \"sensor\" : \"0\" \n" +
+                                                     "}";
+
+                                client.Publish($"common", Encoding.UTF8.GetBytes(pubData), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"접속 오류 { ex.Message}");
+                            }
                         }
                         else
                         {
                             MessageBox.Show("프로세스 가동 실패했습니다. 관리자에게 문의하세요.");
                         }
+                        #endregion
 
                     }
+                    #endregion
 
                 }
+                #region 예외처리
                 catch (Exception ex)
                 {
                     MessageBox.Show($"예외발생 : {ex.Message}");
                 }
+                #endregion
             }
         }
+        #endregion
 
+        #region ComboBox 선택(프로세스 변경)에 대한 변수 선언
+        private void ProcessDetail_Shown(object sender, EventArgs e)
+        {
+            cbo_proces1.SelectedIndex = cbo_proces1.FindString($"프로세스{Common.ProcessNo}");
+        }
+        #endregion
+
+        #region ComboBox 선택 시(프로세스 변경 시) 연동
         private void cbo_proces1_SelectedIndexChanged(object sender, EventArgs e)
         {
             #region 주석
@@ -405,10 +525,13 @@ namespace testestestsettest
                 Connect.Close();    //DB 연결 끊어주기
             }
         }
+        #endregion
 
+        #region 계획등록 Button
         private void btn_plan_Click(object sender, EventArgs e)
         {
-            // 1. 입력 검증 - 숫자가 아닌값이 들어오면 팅겨냄
+            // 예외처리
+            // 입력 검증 - 숫자가 아닌값이 들어오면 팅겨냄
             try
             {
                 var pstarttime = DateTime.Parse(txt_start.Text);
@@ -422,13 +545,40 @@ namespace testestestsettest
 
             SetDataToDb();
         }
+        #endregion
 
+        #region DataBinding 설정(타입 지정 후 변수명 선언) <공역>
+        // TB_Process에 대한 데이터바인딩
         private BindingList<Tb_Process> Processes;
+        #endregion
 
+        #region DataBinding 로드(선언된 함수에 대한 초기화 후 mqtt연결)
         private void ProcessDetail_Load(object sender, EventArgs e)
         {
             InitControlsFromDb();
+
+            #region Mqtt 연결
+            try
+            {
+                IPAddress hostIP;
+
+                hostIP = IPAddress.Parse("192.168.0.11");
+                client = new MqttClient(hostIP);
+                client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
+
+                //서버 통신 할 라즈베리파이 ip
+                client.Connect("192.168.0.11");
+
+                // 구독할 topic명 = common
+                client.Subscribe(new string[] { "common" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            #endregion
         }
+        #endregion
 
         #region DB처리 영역 
         private void SetDataToDb()
@@ -501,6 +651,7 @@ namespace testestestsettest
 
         #endregion
 
+        #region VlcControler 함수(타입 지정, 변수선언, 함수에 대한 초기화)
         private void vlcControl_VlcLibDirectoryNeeded(object sender, Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs e)
         {
             var currentAssembly = Assembly.GetEntryAssembly();
@@ -508,10 +659,11 @@ namespace testestestsettest
 
             e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
         }
+        #endregion
+    }
 
-        private void ProcessDetail_Shown(object sender, EventArgs e)
-        {
-            cbo_proces1.SelectedIndex = cbo_proces1.FindString($"프로세스{Common.ProcessNo}");
-        }
+    public class moter
+    {
+
     }
 }

@@ -19,7 +19,7 @@ namespace testestestsettest
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LogIn());
 
-            Application.Run(new MainPage());
+            Application.Run(new ProcessDetail());
             
         }
     }

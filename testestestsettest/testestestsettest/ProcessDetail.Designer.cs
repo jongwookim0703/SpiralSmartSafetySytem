@@ -35,11 +35,11 @@ namespace testestestsettest
             this.btn_work1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LblYellow = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.LblRed = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.LblGreen = new System.Windows.Forms.Label();
             this.cbo_proces1 = new System.Windows.Forms.ComboBox();
             this.LblProcessName = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -143,66 +143,66 @@ namespace testestestsettest
             // panel3
             // 
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.LblYellow);
             this.panel3.Location = new System.Drawing.Point(872, 55);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(37, 27);
             this.panel3.TabIndex = 13;
             // 
-            // label3
+            // LblYellow
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(9, 4);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 20);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "0";
+            this.LblYellow.AutoSize = true;
+            this.LblYellow.BackColor = System.Drawing.Color.Transparent;
+            this.LblYellow.Location = new System.Drawing.Point(9, 4);
+            this.LblYellow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblYellow.Name = "LblYellow";
+            this.LblYellow.Size = new System.Drawing.Size(17, 20);
+            this.LblYellow.TabIndex = 14;
+            this.LblYellow.Text = "0";
             // 
             // panel2
             // 
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.LblRed);
             this.panel2.Location = new System.Drawing.Point(923, 55);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(48, 27);
             this.panel2.TabIndex = 12;
             // 
-            // label5
+            // LblRed
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(15, 4);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 20);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "0";
+            this.LblRed.AutoSize = true;
+            this.LblRed.BackColor = System.Drawing.Color.Transparent;
+            this.LblRed.Location = new System.Drawing.Point(15, 4);
+            this.LblRed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblRed.Name = "LblRed";
+            this.LblRed.Size = new System.Drawing.Size(17, 20);
+            this.LblRed.TabIndex = 16;
+            this.LblRed.Text = "0";
             // 
             // panel1
             // 
             this.panel1.BackgroundImage = global::testestestsettest.Properties.Resources.green;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.LblGreen);
             this.panel1.Location = new System.Drawing.Point(817, 55);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(48, 27);
             this.panel1.TabIndex = 11;
             // 
-            // label4
+            // LblGreen
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(14, 4);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 20);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "0";
+            this.LblGreen.AutoSize = true;
+            this.LblGreen.BackColor = System.Drawing.Color.Transparent;
+            this.LblGreen.Location = new System.Drawing.Point(14, 4);
+            this.LblGreen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblGreen.Name = "LblGreen";
+            this.LblGreen.Size = new System.Drawing.Size(17, 20);
+            this.LblGreen.TabIndex = 15;
+            this.LblGreen.Text = "0";
             // 
             // cbo_proces1
             // 
@@ -245,7 +245,7 @@ namespace testestestsettest
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(144, 20);
             this.label2.TabIndex = 4;
-            this.label2.Text = "공적 누적 알림 횟수";
+            this.label2.Text = "공정 누적 알림 횟수";
             // 
             // groupBox2
             // 
@@ -459,5 +459,8 @@ namespace testestestsettest
         private System.Windows.Forms.DataGridView grid2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.Label LblGreen;
+        private System.Windows.Forms.Label LblYellow;
+        private System.Windows.Forms.Label LblRed;
     }
 }
