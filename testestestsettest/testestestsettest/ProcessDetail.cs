@@ -100,10 +100,27 @@ namespace testestestsettest
         private void UpdateLabel(string message)
         {
             var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴
-            var currled1 = currentDatas["led"]; // 받는 거 처리 추가
-
-            var key1 = "led"; // 문자열 분리 키와 값으로 분리 추가
+            string key1 = "";
             var value1 = "1";
+            if (currentDatas.ContainsKey("led1"))
+            {
+                key1 = $"led1_{currentDatas["led1"]}";
+            }
+
+            if (currentDatas.ContainsKey("led2"))
+            {
+                key1 = $"led2_{currentDatas["led2"]}";
+            }
+
+            if (currentDatas.ContainsKey("led3"))
+            {
+                key1 = $"led3_{currentDatas["led3"]}";
+            }
+
+            if (currentDatas.ContainsKey("led4"))
+            {
+                key1 = $"led4_{currentDatas["led4"]}";
+            }
 
             //string currled1 = [currentDatas["led12"], currentDatas["led12"], currentDatas["led12"], currentDatas["led12"]];
 
@@ -186,7 +203,7 @@ namespace testestestsettest
         #endregion
 
         #region Mqtt 퍼블리셔리씨버
-        private void Client_MqttMsgPublishReceived2(object sender, MqttMsgPublishEventArgs e)
+        private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             try
             {
@@ -254,100 +271,10 @@ namespace testestestsettest
                                 {
                                     var currtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                                     string pubData = "{ \n" +
-                                                         "   \"dev_addr\" : \"4002\", \n" +
-                                                         $"   \"currtime\" : \"{currtime}\" , \n" +
-                                                         "   \"code\" : \"pump\", \n" +
-                                                         "   \"value\" : \"1\", \n" +
-                                                         "   \"sensor\" : \"0\" \n" +
-                                                         "}";
+                                                  $"   \"motor{processNo}\" : \"N\" \n" +
+                                                  "}";
 
-                                    client.Publish($"common", Encoding.UTF8.GetBytes(pubData), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show($"접속 오류 { ex.Message}");
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("프로세스 정지 실패했습니다. 관리자에게 문의하세요.");
-                            }
-                            #endregion
-                        }
-
-                    }
-                    #endregion
-
-
-                }
-                #region 예외처리
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"예외발생 : {ex.Message}");
-                }
-                #endregion
-            }
-            #endregion
-
-            #region 비정상적인 상황에서의 가동정지(Check Box Check)
-            if (chk_re1.Checked == true)
-            {
-                try
-                {
-                    #region ComboBox 선택안한 경우에 대한 예외처리
-                    if (cbo_proces1.SelectedItem == null)
-                    {
-                        MessageBox.Show("프로세스를 먼저 선택하세요.");
-                        return;
-                    }
-                    #endregion
-
-                    #region ComboBox 선택에 따른 변수선언
-                    var currProc = (cbo_proces1.SelectedItem as Tb_Process);
-                    var processNo = currProc.ProcessNo;
-                    var processName = currProc.ProcessName;
-                    var endtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    #endregion
-
-                    #region DB 접속 
-                    using (SqlConnection conn = new SqlConnection(Common.DbPath))
-                    {
-                        conn.Open(); // DB 오픈
-
-                        {
-                            #region DB접속&Parameter설정
-                            // DB접속쿼리
-                            var insQuery1 = @"UPDATE TB_PROCESSWORKrec SET ENDTIME = @endtime
-                                           where CONVERT(DATE,STARTTIME) = convert(date,GETDATE()) and endtime is null";
-                            SqlCommand cmd1 = new SqlCommand(insQuery1, conn);
-
-
-                            cmd1.Parameters.AddWithValue("@PROCESSNO", processNo);
-                            cmd1.Parameters.AddWithValue("@PROCESSNAME", processName);
-                            cmd1.Parameters.AddWithValue("@ENDTIME", endtime);
-
-
-                            var result1 = cmd1.ExecuteNonQuery();
-                            #endregion
-
-
-                            #region 정지 Button 클릭
-                            if (result1 > 0)
-                            {
-                                MessageBox.Show("프로세스 정지 하였습니다.");
-
-                                try
-                                {
-                                    var currtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                                    string pubData = "{ \n" +
-                                                         "   \"dev_addr\" : \"4002\", \n" +
-                                                         $"   \"currtime\" : \"{currtime}\" , \n" +
-                                                         "   \"code\" : \"pump\", \n" +
-                                                         "   \"value\" : \"1\", \n" +
-                                                         "   \"sensor\" : \"0\" \n" +
-                                                         "}";
-
-                                    client.Publish($"common", Encoding.UTF8.GetBytes(pubData), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+                                    Common.Client.Publish($"main/motor{processNo}", Encoding.UTF8.GetBytes(pubData), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
                                 }
                                 catch (Exception ex)
                                 {
@@ -429,14 +356,10 @@ namespace testestestsettest
                             {
                                 var currtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                                 string pubData = "{ \n" +
-                                                     "   \"dev_addr\" : \"4002\", \n" +
-                                                     $"   \"currtime\" : \"{currtime}\" , \n" +
-                                                     "   \"code\" : \"pump\", \n" +
-                                                     "   \"value\" : \"1\", \n" +
-                                                     "   \"sensor\" : \"0\" \n" +
-                                                     "}";
+                                                  $"   \"motor{processNo}\" : \"Y\" \n" +
+                                                  "}";
 
-                                client.Publish($"common", Encoding.UTF8.GetBytes(pubData), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+                                Common.Client.Publish($"main/motor{processNo}", Encoding.UTF8.GetBytes(pubData), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
                             }
                             catch (Exception ex)
                             {
@@ -511,14 +434,10 @@ namespace testestestsettest
                             {
                                 var currtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                                 string pubData = "{ \n" +
-                                                     "   \"dev_addr\" : \"4002\", \n" +
-                                                     $"   \"currtime\" : \"{currtime}\" , \n" +
-                                                     "   \"code\" : \"pump\", \n" +
-                                                     "   \"value\" : \"1\", \n" +
-                                                     "   \"sensor\" : \"0\" \n" +
-                                                     "}";
+                                                  $"   \"motor{processNo}\" : \"Y\" \n" +
+                                                  "}";
 
-                                client.Publish($"common", Encoding.UTF8.GetBytes(pubData), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+                                Common.Client.Publish($"main/motor{processNo}", Encoding.UTF8.GetBytes(pubData), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
                             }
                             catch (Exception ex)
                             {
@@ -732,16 +651,13 @@ namespace testestestsettest
             #region Mqtt 연결
             try
             {
-                IPAddress hostIP;
-
-                hostIP = IPAddress.Parse("192.168.0.23");
-                Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived2;
+                Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
 
                 //서버 통신 할 라즈베리파이 ip
-                client.Connect("192.168.0.23");
+                Common.Client.Connect("192.168.0.23");
 
                 // 구독할 topic명 = common
-                client.Subscribe(new string[] { "main/led/#" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
+                Common.Client.Subscribe(new string[] { "main/#" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
             }
             catch (Exception ex)
             {

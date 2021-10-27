@@ -165,11 +165,11 @@ namespace testestestsettest
 
                 hostIP = IPAddress.Parse("192.168.0.23");
                 Common.Client = new MqttClient(hostIP);
-                Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived1;
+                Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
                 Common.Client.MqttMsgSubscribed += Client_MqttMsgSubscribed;
 
                 Common.Client.Connect("192.168.0.23");//서버 통신 할 라즈베리파이 ip
-                Common.Client.Subscribe(new string[] { "main/led/#" },
+                Common.Client.Subscribe(new string[] { "main/#" },
                     new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
 
                 /*client.Subscribe(new string[] { "main/led/#" },
@@ -225,7 +225,7 @@ namespace testestestsettest
         {
             
             this.Close();
-            client.Disconnect();
+            Common.Client.Disconnect();
         }
 
         private void btnSafety_Click(object sender, EventArgs e)
@@ -293,7 +293,7 @@ namespace testestestsettest
         }
 
         #region Mqtt
-        private void Client_MqttMsgPublishReceived1(object sender, MqttMsgPublishEventArgs e)
+        private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             try
             {

@@ -33,10 +33,9 @@ namespace testestestsettest
         string? CurrentDirectory;
 
         //MQtt 라즈베리파이
-        MqttClient client;
-        string clientId;
         delegate void UpdateDataCallback(string message);
-
+        private string co_sub = "";
+        private string gas_sub = "";
 
         public ProcessSafety()
         {
@@ -102,58 +101,63 @@ namespace testestestsettest
                 Connect.Close();    //DB 연결 끊어주기
             }
 
-            ////mqtt 연결
-            //try
-            //{
-            //    IPAddress hostIP;
+            //mqtt 연결
+            /*try
+            {
+                Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived3;
 
-            //    hostIP = IPAddress.Parse("192.168.0.10");
-            //    client = new MqttClient(hostIP);
-            //    client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
-
-            //    client.Connect("192.168.0.18");//라즈베리파이 ip
-            //    client.Subscribe(new string[] { "common" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
-            //}
-            //catch (Exception ex)
-            //{
-
-            //}
+                Common.Client.Connect("192.168.0.23");//서버 통신 할 라즈베리파이 ip
+                Common.Client.Subscribe(new string[] { "main/#" },
+                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }*/
 
         }
 
-        //private void UpdateText(string message)
-        //{
-        //    //5_1 수신한 message를 json parsing
-        //    var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴 
-        //    var < 변수명 > = currentDatas["led12"];
+        #region Mqtt
+        private void Client_MqttMsgPublishReceived3(object sender, MqttMsgPublishEventArgs e)
+        {
+            try
+            {
+                var message = Encoding.UTF8.GetString(e.Message);
+                UpdateText(message);        // 메세지 발생시 값 변경
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("[ERROR] " + ex.Message);
+            }
+        }
 
-        //    //5_2 크로스 쓰레드 문제를 해결하기 위한 해법
-        //    if (this.InvokeRequired)
-        //    {
-        //        UpdateDataCallback b = new UpdateDataCallback(UpdateText);
-        //        this.Invoke(b, new object[] { message });
-        //    }
-        //    else
-        //    {
-        //        //받아온 값을 적용시킬 코드 작성
-        //        this.txtCO.Text = currled1.ToString();
-        //        this.txtGas.Text = currled1.ToString();
-        //    }
+        private void UpdateText(string message)
+        {
+            var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴
 
-        //}
+            if (currentDatas.ContainsKey("co"))
+            {
+                co_sub = currentDatas["co"];
+            }
 
-        //private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
-        //{
-        //    try
-        //    {
-        //        var message = Encoding.UTF8.GetString(e.Message);
-        //        UpdateText(message);        // 메세지 발생시 값 변경
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("[ERROR] " + ex.Message);
-        //    }
-        //}
+            if (currentDatas.ContainsKey("gas"))
+            {
+                gas_sub = currentDatas["gas"];
+            }
+
+            if (panel1.InvokeRequired)
+            {
+                UpdateDataCallback lb = new UpdateDataCallback(UpdateText);
+                this.Invoke(lb, new object[] { message });
+            }
+            else
+            {
+                txtCO.Text = co_sub;
+                txtGas.Text = gas_sub;
+            }
+        }
+
+        #endregion Mqtt
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -323,95 +327,6 @@ namespace testestestsettest
             //vlc4.Play(new Uri(RtspUrl));
         }
 
-        // 라즈베리파이 센서연결 참고
-        //using System;
-        //using System.Collections.Generic;
-        //using System.Linq;
-        //using System.Text;
-        //using System.Threading;
-        //using System.Threading.Tasks;
-        //using System.Diagnostics;
-        //using Windows.Devices.Gpio;
-
-        //namespace RaspberryPi
-        //    {
-        //        class UcSensor
-        //        {
-        //            GpioController gpio = GpioController.GetDefault();
-
-        //            GpioPin TriggerPin;
-        //            GpioPin EchoPin;
-
-        //            //Contructor
-        //            public UcSensor(int TriggerPin, int EchoPin)
-        //            {
-        //                //Setting up gpio pin's
-        //                this.TriggerPin = gpio.OpenPin(TriggerPin);
-        //                this.EchoPin = gpio.OpenPin(EchoPin);
-
-        //                this.TriggerPin.SetDriveMode(GpioPinDriveMode.Output);
-        //                this.EchoPin.SetDriveMode(GpioPinDriveMode.Input);
-
-        //                this.TriggerPin.Write(GpioPinValue.Low);
-        //            }
-
-        //            public double GetDistance()
-        //            {
-        //                ManualResetEvent mre = new ManualResetEvent(false);
-        //                mre.WaitOne(500);
-
-        //                //Send pulse
-        //                this.TriggerPin.Write(GpioPinValue.High);
-        //                mre.WaitOne(TimeSpan.FromMilliseconds(0.01));
-        //                this.TriggerPin.Write(GpioPinValue.Low);
-
-        //                //Recieve pusle
-        //                while (this.EchoPin.Read() == GpioPinValue.Low)
-        //                {
-        //                }
-        //                DateTime start = DateTime.Now;
-
-        //                while (this.EchoPin.Read() == GpioPinValue.High)
-        //                {
-        //                }
-        //                DateTime stop = DateTime.Now;
-
-        //                //Calculating distance
-        //                double timeBetween = (stop - start).TotalSeconds;
-        //                double distance = timeBetween * 17000;
-
-        //                return distance;
-        //            }
-        //public double GetDistance()
-        //            {
-        //                ManualResetEvent mre = new ManualResetEvent(false);
-        //                mre.WaitOne(500);
-
-        //                //Send pulse
-        //                this.TriggerPin.Write(GpioPinValue.High);
-        //                mre.WaitOne(TimeSpan.FromMilliseconds(0.01));
-        //                this.TriggerPin.Write(GpioPinValue.Low);
-
-        //                //Recieve pusle
-        //                while (this.EchoPin.Read() == GpioPinValue.Low)
-        //                {
-        //                }
-        //                DateTime start = DateTime.Now;
-
-        //                while (this.EchoPin.Read() == GpioPinValue.High)
-        //                {
-        //                }
-        //                DateTime stop = DateTime.Now;
-
-        //                //Calculating distance
-        //                double timeBetween = (stop - start).TotalSeconds;
-        //                double distance = timeBetween * 17000;
-
-        //                return distance;
-        //            }
-
-        //        }
-        //    }
 
 
     }
