@@ -734,15 +734,15 @@ namespace testestestsettest
             {
                 IPAddress hostIP;
 
-                hostIP = IPAddress.Parse("192.168.0.11");
+                hostIP = IPAddress.Parse("192.168.0.23");
                 client = new MqttClient(hostIP);
                 client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
 
                 //서버 통신 할 라즈베리파이 ip
-                client.Connect("192.168.0.11");
+                client.Connect("192.168.0.23");
 
                 // 구독할 topic명 = common
-                client.Subscribe(new string[] { "common" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
+                client.Subscribe(new string[] { "main/led/#" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
             }
             catch (Exception ex)
             {
