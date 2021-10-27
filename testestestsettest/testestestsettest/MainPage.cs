@@ -21,6 +21,9 @@ namespace testestestsettest
     public partial class MainPage : Form
     {
         static MainPage obj;
+        private int led1_G = 0, led2_G = 0, led3_G = 0, led4_G = 0;
+        private int led1_Y = 0, led2_Y = 0, led3_Y = 0, led4_Y = 0;
+        private int led1_R = 0, led2_R = 0, led3_R = 0, led4_R = 0;
 
         //Mqtt 라즈베리파이
         MqttClient client;
@@ -153,22 +156,34 @@ namespace testestestsettest
 
             myTabControl1.AddForm(ShowForm);
 
+
+            
             //mqtt 연결
             try
             {
                 IPAddress hostIP;
 
-                hostIP = IPAddress.Parse("127.0.0.1");
-                client = new MqttClient(hostIP);
-                client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
+                hostIP = IPAddress.Parse("192.168.0.23");
+                Common.Client = new MqttClient(hostIP);
+                Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
+                Common.Client.MqttMsgSubscribed += Client_MqttMsgSubscribed;
 
-                client.Connect("192.168.0.10");//서버 통신 할 라즈베리파이 ip
-                client.Subscribe(new string[] { "main/led" },new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
+                Common.Client.Connect("192.168.0.23");//서버 통신 할 라즈베리파이 ip
+                Common.Client.Subscribe(new string[] { "main/led/led1", "main/led/led2" },
+                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE, MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
+
+                /*client.Subscribe(new string[] { "main/led/#" },
+                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common*/
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void Client_MqttMsgSubscribed(object sender, MqttMsgSubscribedEventArgs e)
+        {
+            Debug.WriteLine(e.ToString());
         }
 
         private void tssProcess_Click(object sender, EventArgs e)
@@ -283,6 +298,7 @@ namespace testestestsettest
             try
             {
                 var message = Encoding.UTF8.GetString(e.Message);
+                Debug.WriteLine($"MES: {message}");
                 UpdateLabel(message);        // 메세지 발생시 값 변경
             }
             catch (Exception ex)
@@ -294,10 +310,120 @@ namespace testestestsettest
         private void UpdateLabel(string message)
         {
             var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴
-            var currR = currentDatas["red"];
-            var currY = currentDatas["yellow"];
-            var currG = currentDatas["green"];
 
+            #region led 값 저장
+            if (currentDatas.ContainsKey("led1"))
+            {
+                if (currentDatas["led1"] == "G")
+                {
+                    led1_G = 1;
+                    led1_Y = 0;
+                    led1_R = 0;
+                }
+                else if (currentDatas["led1"] == "Y")
+                {
+                    led1_G = 0;
+                    led1_Y = 1;
+                    led1_R = 0;
+                }
+                else if (currentDatas["led1"] == "R")
+                {
+                    led1_G = 0;
+                    led1_Y = 0;
+                    led1_R = 1;
+                }
+                else
+                {
+                    led1_G = 0;
+                    led1_Y = 0;
+                    led1_R = 0;
+                }
+            }
+
+            if (currentDatas.ContainsKey("led2"))
+            {
+                if (currentDatas["led2"] == "G")
+                {
+                    led2_G = 1;
+                    led2_Y = 0;
+                    led2_R = 0;
+                }
+                else if (currentDatas["led2"] == "Y")
+                {
+                    led2_G = 0;
+                    led2_Y = 1;
+                    led2_R = 0;
+                }
+                else if (currentDatas["led2"] == "R")
+                {
+                    led2_G = 0;
+                    led2_Y = 0;
+                    led2_R = 1;
+                }
+                else
+                {
+                    led2_G = 0;
+                    led2_Y = 0;
+                    led2_R = 0;
+                }
+            }
+
+            if (currentDatas.ContainsKey("led3"))
+            {
+                if (currentDatas["led3"] == "G")
+                {
+                    led3_G = 1;
+                    led3_Y = 0;
+                    led3_R = 0;
+                }
+                else if (currentDatas["led3"] == "Y")
+                {
+                    led3_G = 0;
+                    led3_Y = 1;
+                    led3_R = 0;
+                }
+                else if (currentDatas["led3"] == "R")
+                {
+                    led3_G = 0;
+                    led3_Y = 0;
+                    led3_R = 1;
+                }
+                else
+                {
+                    led3_G = 0;
+                    led3_Y = 0;
+                    led3_R = 0;
+                }
+            }
+
+            if (currentDatas.ContainsKey("led4"))
+            {
+                if (currentDatas["led4"] == "G")
+                {
+                    led4_G = 1;
+                    led4_Y = 0;
+                    led4_R = 0;
+                }
+                else if (currentDatas["led4"] == "Y")
+                {
+                    led4_G = 0;
+                    led4_Y = 1;
+                    led4_R = 0;
+                }
+                else if (currentDatas["led4"] == "R")
+                {
+                    led4_G = 0;
+                    led4_Y = 0;
+                    led4_R = 1;
+                }
+                else
+                {
+                    led4_G = 0;
+                    led4_Y = 0;
+                    led4_R = 0;
+                }
+            }
+            #endregion led 값 저장
             //string currled1 = [currentDatas["led12"], currentDatas["led12"], currentDatas["led12"], currentDatas["led12"]];
             if (panel1.InvokeRequired)
             {
@@ -306,10 +432,9 @@ namespace testestestsettest
             }
             else
             {
-                this.label2.Text = currG.ToString();
-                this.label3.Text = currY.ToString();
-                this.label4.Text = currR.ToString();
-                //this.label2.Text = currled1[0].ToString();
+                this.label2.Text = Convert.ToString(led1_G + led2_G + led3_G + led4_G);
+                this.label3.Text = Convert.ToString(led1_Y + led2_Y + led3_Y + led4_Y);
+                this.label4.Text = Convert.ToString(led1_R + led2_R + led3_R + led4_R);
             }
         }
 

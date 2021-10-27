@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using uPLibrary.Networking.M2Mqtt;
 
 namespace testestestsettest
 {
@@ -13,6 +14,8 @@ namespace testestestsettest
         public static string DbPath = "Data Source=hangaramit.iptime.org; Initial Catalog=SpiralDB;User ID=spa;Password=spiral_0904";
 
         public static int ProcessNo = 0;
+
+        public static MqttClient Client;
     }
 }
 
