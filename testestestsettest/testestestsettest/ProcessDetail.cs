@@ -203,6 +203,7 @@ namespace testestestsettest
         #region 정지 Button
         private void btn_stop1_Click(object sender, EventArgs e)
         {
+            #region 정상적인 가동정지(Check Box Non Check)
             if (chk_re1.Checked == false)
             {
                 try
@@ -286,12 +287,100 @@ namespace testestestsettest
                 }
                 #endregion
             }
+            #endregion
+
+            #region 비정상적인 상황에서의 가동정지(Check Box Check)
+            if (chk_re1.Checked == true)
+            {
+                try
+                {
+                    #region ComboBox 선택안한 경우에 대한 예외처리
+                    if (cbo_proces1.SelectedItem == null)
+                    {
+                        MessageBox.Show("프로세스를 먼저 선택하세요.");
+                        return;
+                    }
+                    #endregion
+
+                    #region ComboBox 선택에 따른 변수선언
+                    var currProc = (cbo_proces1.SelectedItem as Tb_Process);
+                    var processNo = currProc.ProcessNo;
+                    var processName = currProc.ProcessName;
+                    var endtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    #endregion
+
+                    #region DB 접속 
+                    using (SqlConnection conn = new SqlConnection(Common.DbPath))
+                    {
+                        conn.Open(); // DB 오픈
+
+                        {
+                            #region DB접속&Parameter설정
+                            // DB접속쿼리
+                            var insQuery1 = @"UPDATE TB_PROCESSWORKrec SET ENDTIME = @endtime
+                                           where CONVERT(DATE,STARTTIME) = convert(date,GETDATE()) and endtime is null";
+                            SqlCommand cmd1 = new SqlCommand(insQuery1, conn);
+
+
+                            cmd1.Parameters.AddWithValue("@PROCESSNO", processNo);
+                            cmd1.Parameters.AddWithValue("@PROCESSNAME", processName);
+                            cmd1.Parameters.AddWithValue("@ENDTIME", endtime);
+
+
+                            var result1 = cmd1.ExecuteNonQuery();
+                            #endregion
+
+
+                            #region 정지 Button 클릭
+                            if (result1 > 0)
+                            {
+                                MessageBox.Show("프로세스 정지 하였습니다.");
+
+                                try
+                                {
+                                    var currtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                                    string pubData = "{ \n" +
+                                                         "   \"dev_addr\" : \"4002\", \n" +
+                                                         $"   \"currtime\" : \"{currtime}\" , \n" +
+                                                         "   \"code\" : \"pump\", \n" +
+                                                         "   \"value\" : \"1\", \n" +
+                                                         "   \"sensor\" : \"0\" \n" +
+                                                         "}";
+
+                                    client.Publish($"common", Encoding.UTF8.GetBytes(pubData), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show($"접속 오류 { ex.Message}");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("프로세스 정지 실패했습니다. 관리자에게 문의하세요.");
+                            }
+                            #endregion
+                        }
+
+                    }
+                    #endregion
+
+
+                }
+                #region 예외처리
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"예외발생 : {ex.Message}");
+                }
+                #endregion
+            }
+            #endregion
         }
         #endregion
 
         #region 가동 Button
         private void btn_work1_Click(object sender, EventArgs e)
         {
+            #region 정상적인 가동시작(Check Box Non check)
             if (chk_re1.Checked == false)
             {
                 try
@@ -371,6 +460,89 @@ namespace testestestsettest
                 }
                 #endregion
             }
+            #endregion
+
+            #region 비정상적인 상황 종료 후 (재)가동시작(Check Box check)
+            if (chk_re1.Checked == true)
+            {
+                try
+                {
+                    #region ComboBox 선택안한 경우에 대한 예외처리
+                    if (cbo_proces1.SelectedItem == null)
+                    {
+                        MessageBox.Show("프로세스를 먼저 선택하세요.");
+                        return;
+                    }
+                    #endregion
+
+                    #region ComboBox 선택에 따른 변수선언
+                    var currProc = (cbo_proces1.SelectedItem as Tb_Process);
+                    var processNo = currProc.ProcessNo;
+                    var processName = currProc.ProcessName;
+                    var startTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    #endregion
+
+                    #region DB 접속
+                    using (SqlConnection conn = new SqlConnection(Common.DbPath))
+                    {
+                        conn.Open(); // DB 오픈
+
+                        #region DB접속&Parameter설정
+
+                        // DB접속쿼리
+                        var insQuery = @"INSERT INTO TB_PROCESSWORKrec (PROCESSNO,  PROCESSNAME,  STARTTIME)
+                                     VALUES (@PROCESSNO, @PROCESSNAME, @STARTTIME) ";
+                        SqlCommand cmd = new SqlCommand(insQuery, conn);
+
+
+                        cmd.Parameters.AddWithValue("@PROCESSNO", processNo);
+                        cmd.Parameters.AddWithValue("@PROCESSNAME", processName);
+                        cmd.Parameters.AddWithValue("@STARTTIME", startTime);
+
+                        // 실행 성공 1, 실패 0
+                        var result = cmd.ExecuteNonQuery();
+                        #endregion
+
+                        #region 가동 Button 클릭
+                        if (result > 0)
+                        {
+                            MessageBox.Show("프로세스 가동 시작하였습니다.");
+                            try
+                            {
+                                var currtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                                string pubData = "{ \n" +
+                                                     "   \"dev_addr\" : \"4002\", \n" +
+                                                     $"   \"currtime\" : \"{currtime}\" , \n" +
+                                                     "   \"code\" : \"pump\", \n" +
+                                                     "   \"value\" : \"1\", \n" +
+                                                     "   \"sensor\" : \"0\" \n" +
+                                                     "}";
+
+                                client.Publish($"common", Encoding.UTF8.GetBytes(pubData), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"접속 오류 { ex.Message}");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("프로세스 가동 실패했습니다. 관리자에게 문의하세요.");
+                        }
+                        #endregion
+
+                    }
+                    #endregion
+
+                }
+                #region 예외처리
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"예외발생 : {ex.Message}");
+                }
+                #endregion
+            }
+            #endregion
         }
         #endregion
 
