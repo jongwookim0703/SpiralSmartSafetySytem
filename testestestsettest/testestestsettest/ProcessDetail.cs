@@ -186,7 +186,7 @@ namespace testestestsettest
         #endregion
 
         #region Mqtt 퍼블리셔리씨버
-        private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+        private void Client_MqttMsgPublishReceived2(object sender, MqttMsgPublishEventArgs e)
         {
             try
             {
@@ -735,8 +735,7 @@ namespace testestestsettest
                 IPAddress hostIP;
 
                 hostIP = IPAddress.Parse("192.168.0.23");
-                client = new MqttClient(hostIP);
-                client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
+                Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived2;
 
                 //서버 통신 할 라즈베리파이 ip
                 client.Connect("192.168.0.23");

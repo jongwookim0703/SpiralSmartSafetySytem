@@ -165,12 +165,12 @@ namespace testestestsettest
 
                 hostIP = IPAddress.Parse("192.168.0.23");
                 Common.Client = new MqttClient(hostIP);
-                Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
+                Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived1;
                 Common.Client.MqttMsgSubscribed += Client_MqttMsgSubscribed;
 
                 Common.Client.Connect("192.168.0.23");//서버 통신 할 라즈베리파이 ip
-                Common.Client.Subscribe(new string[] { "main/led/led1", "main/led/led2" },
-                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE, MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
+                Common.Client.Subscribe(new string[] { "main/led/#" },
+                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
 
                 /*client.Subscribe(new string[] { "main/led/#" },
                     new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common*/
@@ -293,12 +293,11 @@ namespace testestestsettest
         }
 
         #region Mqtt
-        private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+        private void Client_MqttMsgPublishReceived1(object sender, MqttMsgPublishEventArgs e)
         {
             try
             {
                 var message = Encoding.UTF8.GetString(e.Message);
-                Debug.WriteLine($"MES: {message}");
                 UpdateLabel(message);        // 메세지 발생시 값 변경
             }
             catch (Exception ex)
