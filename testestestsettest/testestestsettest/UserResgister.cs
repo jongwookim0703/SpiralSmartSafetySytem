@@ -119,6 +119,7 @@ namespace testestestsettest
 
                     if (chkid != null) {
                         MessageBox.Show("아이디가 중복되었습니다.");
+                        txtID.Text = "";
                         return;
                     }                    
 
@@ -147,13 +148,28 @@ namespace testestestsettest
 
                     var result = cmd.ExecuteNonQuery();
 
+
+
                     if (result > 0)
                     {
                         MessageBox.Show("사용자가 등록되었습니다.");
+                        txtID.Text = "";
+                        txtPassword.Text = "";
+                        txtName.Text = "";
+                        cboPosition.SelectedItem = "";
+                        txtFinger.Text = "";
+
+
                     }
                     else
                     {
                         MessageBox.Show("사용자 등록에 실패했습니다.");
+                        txtID.Text = "";
+                        txtPassword.Text = "";
+                        txtName.Text = "";
+                        cboPosition.SelectedItem = "";
+                        txtFinger.Text = "";
+
                     }
                 }
             }
@@ -174,7 +190,6 @@ namespace testestestsettest
             var id = txtID.Text;
             var pass = txtPassword.Text;
             var name = txtName.Text;
-            var position = cboPosition.SelectedItem == null ? "" : cboPosition.SelectedItem.ToString();
             var finger = txtFinger.Text;
 
             try
@@ -192,32 +207,25 @@ namespace testestestsettest
 
                     if (chkid != null)
                     {
-                        MessageBox.Show("아이디가 중복되었습니다.");
-                        return;
-                    }
+                        var delquery1 = @"DELETE FROM [dbo].[TB_USER]
+                                           WHERE [ID]=@ID
+                                             AND [PWD]=@PWD
+                                             AND [USERNAME]=@USERNAME
+                                             AND [FINGERIN]=@FINGERIN";
 
-                    var delquery = @"DELETE FROM [dbo].[TB_USER] WHERE 
-                                        [ID]=@ID
-                                       ,[PWD]=@PWD
-                                       ,[USERNAME]=@USERNAME
-                                       ,[FINGERIN]=@FINGERIN";
-
-                    var cmd1 = new SqlCommand(delquery, conn);
-                    cmd1.Parameters.AddWithValue("@ID", id);
-                    cmd1.Parameters.AddWithValue("@PWD", pass);
-                    cmd1.Parameters.AddWithValue("@USERNAME", name);
-                    cmd1.Parameters.AddWithValue("@FINGERIN", finger);
+                        var cmd1 = new SqlCommand(delquery1, conn);
+                        cmd1.Parameters.AddWithValue("@ID", id);
+                        cmd1.Parameters.AddWithValue("@PWD", pass);
+                        cmd1.Parameters.AddWithValue("@USERNAME", name);
+                        cmd1.Parameters.AddWithValue("@FINGERIN", finger);
 
 
-                    var result = cmd1.ExecuteNonQuery();
+                        var result = cmd1.ExecuteNonQuery();
 
-                    if (result > 0)
-                    {
-                        MessageBox.Show("사용자가 등록되었습니다.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("사용자 등록에 실패했습니다.");
+                        if (result < 1 )
+                        {
+                            MessageBox.Show("사용자가 삭제되었습니다.");
+                        }
                     }
                 }
             }
@@ -226,7 +234,6 @@ namespace testestestsettest
                 MessageBox.Show($"DB처리 오류 : {ex.Message}");
             }
         }
-         
 
         private void button1_Click(object sender, EventArgs e) //지문 센서 확인버튼
         {
@@ -242,5 +249,4 @@ namespace testestestsettest
         public string position;
         public string name;
     }
-
 }
