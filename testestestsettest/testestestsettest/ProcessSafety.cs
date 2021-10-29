@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -16,8 +17,7 @@ using Newtonsoft.Json;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 using System.Net;
-
-
+using System.Diagnostics;
 
 namespace testestestsettest
 {
@@ -28,9 +28,13 @@ namespace testestestsettest
         private string strConn = "Data Source=61.105.9.203; Initial Catalog=AppDev;User ID=spa;Password=spiral_0904";
         private string RtspUrl1 = "http://192.168.0.2:8091";
         private string RtspUrl2 = "http://192.168.0.2:8092";
+        private SerialPort mySerial;
 
         Assembly? CurrentAssembly;
         string? CurrentDirectory;
+
+
+
 
         //MQtt 라즈베리파이
         delegate void UpdateDataCallback(string message);
@@ -44,10 +48,23 @@ namespace testestestsettest
 
             InitializeComponent();
             //serialPort1.Open();
+            mySerial = new SerialPort();
         }
 
         private void ProcessSafety_Load(object sender, EventArgs e)
         {
+            #region 아두이노 송신
+            mySerial = new SerialPort();
+            mySerial.PortName = "COM3";
+            mySerial.BaudRate = 9600;
+            mySerial.DataBits = 8;
+            mySerial.DataReceived += MySerial_DataReceived;
+            mySerial.Open();
+
+            //MessageBox.Show($"{mySerial.IsOpen}");
+            #endregion
+
+
             // ProcessNo, HAZARDNAME, HAZARDSTATE, MAKEDATE FROM TB_HAZARD
             try
             {
@@ -104,16 +121,47 @@ namespace testestestsettest
             //mqtt 연결
             try
             {
-                Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived3;
+                //Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived3;
 
-                Common.Client.Subscribe(new string[] { "main/env/#" },
-                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
+                /*Common.Client.Subscribe(new string[] { "main/env/#" },
+                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common*/
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        private void MySerial_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            // 시리얼통신 하나 스레드 / UI스레드 
+            string in_data = mySerial.ReadLine();
+            Debug.WriteLine(in_data);
+            Thread.Sleep(1000); // 1초동안 딜레이
+            var split_val = in_data.Replace("\r", "").Split(':');
+
+            if (txtCO.InvokeRequired)
+            {
+                // 작업쓰레드인 경우
+                txtCO.BeginInvoke(new Action(() => txtCO.Text = split_val[0]));
+            }
+            else
+            {
+                // UI 쓰레드인 경우
+                txtCO.Text = split_val[0];
+            }
+
+            if (txtGas.InvokeRequired)
+            {
+                // 작업쓰레드인 경우
+                txtGas.BeginInvoke(new Action(() => txtGas.Text = split_val[1]));
+            }
+            else
+            {
+                // UI 쓰레드인 경우
+                txtGas.Text = split_val[1];
+            }
         }
 
         #region Mqtt
