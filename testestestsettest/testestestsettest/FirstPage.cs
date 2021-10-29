@@ -60,6 +60,8 @@ namespace testestestsettest
         private string RtspUrl3 = "https://www.youtube.com/watch?v=Nh27WsNdymo&list=PLotqbLTnmf4L8knQeE4Ylw92jJc0Md2AR&index=36&t=713s";
         private string RtspUrl4 = "https://www.youtube.com/watch?v=Nh27WsNdymo&list=PLotqbLTnmf4L8knQeE4Ylw92jJc0Md2AR&index=36&t=713s";
 
+        delegate void UpdateLabelCallback(string message);
+
         public FirstPage()
         {
             InitializeComponent();
