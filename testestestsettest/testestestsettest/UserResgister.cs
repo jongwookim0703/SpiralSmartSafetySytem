@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,32 +19,6 @@ namespace testestestsettest
             InitializeComponent();
             //    serialPort1.Open();
         }
-
-            //private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
-            //{
-            //    if (serialPort1.IsOpen)
-            //    {
-            //        byte[] recv = new byte[1];
-            //        serialPort1.Read(recv, 0, 1);
-
-            //        txtFinger.Text = recv[0].ToString();
-            //        if (inforegister_info.ContainsKey((int)recv[0]))
-            //        {
-            //            //등록된 정보가 있을경우
-            //            txtID.Text              = inforegister_info[recv[0]].id;
-            //            txtPassword.Text = inforegister_info[recv[0]].password;
-            //            txtName.Text       = inforegister_info[recv[0]].name;
-            //            cboPosition.Text  = inforegister_info[recv[0]].position;
-
-            //        }
-            //        else
-            //        {
-            //            txtID.Text = "";
-            //            txtPassword.Text = "";
-            //            txtName.Text = "";
-            //            cboPosition.Text = "";
-            //        }
- 
 
         Dictionary<int, inforegister> inforegister_info = new Dictionary<int, inforegister>();
         private void button2_Click_1(object sender, EventArgs e)
@@ -117,14 +92,148 @@ namespace testestestsettest
 
         private void button2_Click(object sender, EventArgs e) //등록
         {
+            if (string.IsNullOrEmpty(txtID.Text) || string.IsNullOrEmpty(txtPassword.Text))
+            {
+                MessageBox.Show("필수값을 입력하세요");
+                return;
+            }
 
+            var id = txtID.Text;
+            var pass = txtPassword.Text;
+            var name = txtName.Text;
+            var position = cboPosition.SelectedItem == null ? "" : cboPosition.SelectedItem.ToString();
+            var finger = txtFinger.Text;
+
+            try
+            {
+                using (var conn = new SqlConnection(Common.DbPath))
+                {
+                    conn.Open();
+
+                    var chkquery = @"SELECT ID FROM TB_USER WHERE ID = @ID";
+
+                    var chkcmd = new SqlCommand(chkquery, conn);
+                    chkcmd.Parameters.AddWithValue("@ID", id);
+
+                    var chkid = chkcmd.ExecuteScalar();
+
+                    if (chkid != null) {
+                        MessageBox.Show("아이디가 중복되었습니다.");
+                        txtID.Text = "";
+                        return;
+                    }                    
+
+                    var query = @"INSERT INTO [dbo].[TB_USER]
+                                       ([ID]
+                                       ,[PWD]
+                                       ,[USERNAME]
+                                       ,[ENTRYDATE]
+                                       ,[FINGERIN]
+                                       ,[POSITION])
+                                 VALUES
+                                       (@ID
+                                       ,@PWD
+                                       ,@USERNAME
+                                       ,@ENTRYDATE
+                                       ,@FINGERIN
+                                       ,@POSITION)";
+
+                    var cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@ID", id);
+                    cmd.Parameters.AddWithValue("@PWD", pass);
+                    cmd.Parameters.AddWithValue("@USERNAME", name);
+                    cmd.Parameters.AddWithValue("@ENTRYDATE", DateTime.Now.ToString("yyyy-MM-dd"));
+                    cmd.Parameters.AddWithValue("@FINGERIN", finger);
+                    cmd.Parameters.AddWithValue("@POSITION", position);
+
+                    var result = cmd.ExecuteNonQuery();
+
+
+
+                    if (result > 0)
+                    {
+                        MessageBox.Show("사용자가 등록되었습니다.");
+                        txtID.Text = "";
+                        txtPassword.Text = "";
+                        txtName.Text = "";
+                        cboPosition.SelectedItem = "";
+                        txtFinger.Text = "";
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("사용자 등록에 실패했습니다.");
+                        txtID.Text = "";
+                        txtPassword.Text = "";
+                        txtName.Text = "";
+                        cboPosition.SelectedItem = "";
+                        txtFinger.Text = "";
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"DB처리 오류 : {ex.Message}");
+            }
         }
 
         private void button3_Click(object sender, EventArgs e) //삭제
         {
+            if (string.IsNullOrEmpty(txtID.Text) || string.IsNullOrEmpty(txtPassword.Text))
+            {
+                MessageBox.Show("필수값을 입력하세요");
+                return;
+            }
 
+            var id = txtID.Text;
+            var pass = txtPassword.Text;
+            var name = txtName.Text;
+            var finger = txtFinger.Text;
+
+            try
+            {
+                using (var conn = new SqlConnection(Common.DbPath))
+                {
+                    conn.Open();
+
+                    var chkquery = @"SELECT ID FROM TB_USER WHERE ID = @ID";
+
+                    var chkcmd = new SqlCommand(chkquery, conn);
+                    chkcmd.Parameters.AddWithValue("@ID", id);
+
+                    var chkid = chkcmd.ExecuteScalar();
+
+                    if (chkid != null)
+                    {
+                        var delquery1 = @"DELETE FROM [dbo].[TB_USER]
+                                           WHERE [ID]=@ID
+                                             AND [PWD]=@PWD
+                                             AND [USERNAME]=@USERNAME
+                                             AND [FINGERIN]=@FINGERIN";
+
+                        var cmd1 = new SqlCommand(delquery1, conn);
+                        cmd1.Parameters.AddWithValue("@ID", id);
+                        cmd1.Parameters.AddWithValue("@PWD", pass);
+                        cmd1.Parameters.AddWithValue("@USERNAME", name);
+                        cmd1.Parameters.AddWithValue("@FINGERIN", finger);
+
+
+                        var result = cmd1.ExecuteNonQuery();
+
+                        if (result < 1 )
+                        {
+                            MessageBox.Show("사용자가 삭제되었습니다.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"DB처리 오류 : {ex.Message}");
+            }
         }
-         
 
         private void button1_Click(object sender, EventArgs e) //지문 센서 확인버튼
         {
@@ -140,5 +249,4 @@ namespace testestestsettest
         public string position;
         public string name;
     }
-
 }
