@@ -21,6 +21,8 @@ namespace testestestsettest
     public partial class MainPage : Form
     {
         static MainPage obj;
+
+        //Mqtt에서 받아올 led값 저장 할 변수 선언
         private int led1_G = 0, led2_G = 0, led3_G = 0, led4_G = 0;
         private int led1_Y = 0, led2_Y = 0, led3_Y = 0, led4_Y = 0;
         private int led1_R = 0, led2_R = 0, led3_R = 0, led4_R = 0;
@@ -162,17 +164,22 @@ namespace testestestsettest
             try
             {
                 IPAddress hostIP;
-
+                //Main에서만 1회 선언
                 hostIP = IPAddress.Parse("192.168.0.23");
                 Common.Client = new MqttClient(hostIP);
+
+                //Mqtt에서 publish되는 메세지 받는 함수 추가
                 Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
                 Common.Client.MqttMsgSubscribed += Client_MqttMsgSubscribed;
 
+                //Mian에서 1회 선언
                 Common.Client.Connect("192.168.0.23");//서버 통신 할 라즈베리파이 ip
+
+                //MQtt서버에서 읽어올 Topic선언
                 Common.Client.Subscribe(new string[] { "main/#" },
                     new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
 
-                /*client.Subscribe(new string[] { "main/led/#" },
+                /*Common.Client.Subscribe(new string[] { "main/led/#" },
                     new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common*/
             }
             catch (Exception ex)
@@ -298,7 +305,7 @@ namespace testestestsettest
             try
             {
                 var message = Encoding.UTF8.GetString(e.Message);
-                UpdateLabel(message);        // 메세지 발생시 값 변경
+                UpdateLabel(message);        // 메세지 받아올때 실행될 함수
             }
             catch (Exception ex)
             {
@@ -306,13 +313,17 @@ namespace testestestsettest
             }
         }
 
+        //led 값을 받아와 lable값 을 변경하는 함수
         private void UpdateLabel(string message)
         {
+            //Mqtt서버에서 전송된 Json메세지를 Dictionary형태로 받아온다.
             var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴
 
             #region led 값 저장
+            //led1이라는 키를 가지고 있는 경우
             if (currentDatas.ContainsKey("led1"))
             {
+                //led1키값에 대해 value값이 G이면
                 if (currentDatas["led1"] == "G")
                 {
                     led1_G = 1;
@@ -423,7 +434,7 @@ namespace testestestsettest
                 }
             }
             #endregion led 값 저장
-            //string currled1 = [currentDatas["led12"], currentDatas["led12"], currentDatas["led12"], currentDatas["led12"]];
+
             if (panel1.InvokeRequired)
             {
                 UpdateLabelCallback lb = new UpdateLabelCallback(UpdateLabel);
@@ -431,6 +442,7 @@ namespace testestestsettest
             }
             else
             {
+                //label값 변경
                 this.label2.Text = Convert.ToString(led1_G + led2_G + led3_G + led4_G);
                 this.label3.Text = Convert.ToString(led1_Y + led2_Y + led3_Y + led4_Y);
                 this.label4.Text = Convert.ToString(led1_R + led2_R + led3_R + led4_R);

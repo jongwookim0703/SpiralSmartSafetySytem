@@ -654,10 +654,8 @@ namespace testestestsettest
                 Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
 
                 //서버 통신 할 라즈베리파이 ip
-                Common.Client.Connect("192.168.0.23");
-
                 // 구독할 topic명 = common
-                Common.Client.Subscribe(new string[] { "main/#" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
+                Common.Client.Subscribe(new string[] { "main/led/#" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
             }
             catch (Exception ex)
             {

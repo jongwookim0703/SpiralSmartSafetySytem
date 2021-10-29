@@ -102,18 +102,17 @@ namespace testestestsettest
             }
 
             //mqtt 연결
-            /*try
+            try
             {
                 Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived3;
 
-                Common.Client.Connect("192.168.0.23");//서버 통신 할 라즈베리파이 ip
-                Common.Client.Subscribe(new string[] { "main/#" },
+                Common.Client.Subscribe(new string[] { "main/env/#" },
                     new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }*/
+            }
 
         }
 
