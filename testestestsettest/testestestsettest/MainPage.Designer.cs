@@ -75,7 +75,7 @@ namespace testestestsettest
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1255, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1282, 30);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -172,9 +172,9 @@ namespace testestestsettest
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.tssTimer});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 851);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 927);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1255, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1282, 26);
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -192,19 +192,19 @@ namespace testestestsettest
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(395, 20);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(404, 20);
             this.toolStripStatusLabel2.Spring = true;
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(395, 20);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(404, 20);
             this.toolStripStatusLabel3.Spring = true;
             // 
             // tssTimer
             // 
             this.tssTimer.Name = "tssTimer";
-            this.tssTimer.Size = new System.Drawing.Size(395, 20);
+            this.tssTimer.Size = new System.Drawing.Size(404, 20);
             this.tssTimer.Spring = true;
             // 
             // timer1
@@ -226,12 +226,12 @@ namespace testestestsettest
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1255, 36);
+            this.panel1.Size = new System.Drawing.Size(1282, 36);
             this.panel1.TabIndex = 15;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(1007, 3);
+            this.btnExit.Location = new System.Drawing.Point(1159, 3);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(94, 29);
             this.btnExit.TabIndex = 7;
@@ -241,7 +241,7 @@ namespace testestestsettest
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(895, 3);
+            this.btnClose.Location = new System.Drawing.Point(1047, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(94, 29);
             this.btnClose.TabIndex = 6;
@@ -272,34 +272,45 @@ namespace testestestsettest
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(237, 11);
+            this.label4.BackColor = System.Drawing.Color.Red;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label4.Location = new System.Drawing.Point(185, 7);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 20);
+            this.label4.Size = new System.Drawing.Size(20, 22);
             this.label4.TabIndex = 3;
             this.label4.Text = "0";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(183, 11);
+            this.label3.BackColor = System.Drawing.Color.Yellow;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(157, 7);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 20);
+            this.label3.Size = new System.Drawing.Size(20, 22);
             this.label3.TabIndex = 2;
             this.label3.Text = "0";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(129, 11);
+            this.label2.BackColor = System.Drawing.Color.Green;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(129, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 20);
+            this.label2.Size = new System.Drawing.Size(20, 22);
             this.label2.TabIndex = 1;
             this.label2.Text = "0";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 11);
+            this.label1.Location = new System.Drawing.Point(13, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 20);
             this.label1.TabIndex = 0;
@@ -311,7 +322,7 @@ namespace testestestsettest
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 66);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1255, 785);
+            this.groupBox1.Size = new System.Drawing.Size(1282, 861);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             // 
@@ -322,14 +333,14 @@ namespace testestestsettest
             this.myTabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.myTabControl1.Name = "myTabControl1";
             this.myTabControl1.SelectedIndex = 0;
-            this.myTabControl1.Size = new System.Drawing.Size(1249, 759);
+            this.myTabControl1.Size = new System.Drawing.Size(1276, 835);
             this.myTabControl1.TabIndex = 19;
             // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1255, 877);
+            this.ClientSize = new System.Drawing.Size(1282, 953);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);

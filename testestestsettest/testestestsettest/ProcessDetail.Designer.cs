@@ -138,7 +138,6 @@ namespace testestestsettest
             this.groupBox1.Size = new System.Drawing.Size(1227, 98);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // panel3
             // 
@@ -295,7 +294,6 @@ namespace testestestsettest
             this.groupBox3.Size = new System.Drawing.Size(1227, 71);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
             // 
             // btn_plan
             // 
@@ -380,7 +378,6 @@ namespace testestestsettest
             this.groupBox4.Size = new System.Drawing.Size(542, 516);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "groupBox4";
             // 
             // splitter1
             // 
@@ -402,6 +399,7 @@ namespace testestestsettest
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ProcessDetail";
             this.Text = "ProcessDetail";

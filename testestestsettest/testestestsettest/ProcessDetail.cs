@@ -97,7 +97,7 @@ namespace testestestsettest
         #endregion
 
         #region Mqtt 신호등 수신용(LED)
-        private void UpdateLabel(string message)
+        private void UpdateLabels(string message)
         {
             var currentDatas = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);//발행된 json 을 딕셔너리로 받아옴
             string key1 = "";
@@ -208,7 +208,7 @@ namespace testestestsettest
             try
             {
                 var message = Encoding.UTF8.GetString(e.Message);
-                UpdateLabel(message);        // 메세지 발생시 값 변경
+                UpdateLabels(message);        // 메세지 발생시 값 변경
             }
             catch (Exception ex)
             {
@@ -249,7 +249,7 @@ namespace testestestsettest
                             #region DB접속&Parameter설정
                             // DB접속쿼리
                             var insQuery1 = @"UPDATE TB_PROCESSWORKrec SET ENDTIME = @endtime
-                                           where CONVERT(DATE,STARTTIME) = convert(date,GETDATE()) and endtime is null";
+                                           where CONVERT(DATE,STARTTIME) = convert(date,GETDATE()) and endtime is null and PROCESSNO = @PROCESSNO ";
                             SqlCommand cmd1 = new SqlCommand(insQuery1, conn);
 
 
@@ -682,7 +682,6 @@ namespace testestestsettest
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@PROCESSNO", temp.ProcessNo);
                 cmd.Parameters.AddWithValue("@PROCESSNAME", temp.ProcessName);
-                cmd.Parameters.AddWithValue("@MAKER", "SYSTEM");
                 cmd.Parameters.AddWithValue("@PSTARTTIME", txt_start.Text);
                 cmd.Parameters.AddWithValue("@PENDTIME", txt_end.Text);
 

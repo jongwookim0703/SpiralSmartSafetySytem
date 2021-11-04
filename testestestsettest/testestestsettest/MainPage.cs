@@ -74,6 +74,33 @@ namespace testestestsettest
                 System.Environment.Exit(0);
             }
 
+            //mqtt 연결
+            try
+            {
+                IPAddress hostIP;
+                //Main에서만 1회 선언
+                hostIP = IPAddress.Parse("192.168.0.23");
+                Common.Client = new MqttClient(hostIP);
+
+                //Mqtt에서 publish되는 메세지 받는 함수 추가
+                Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
+                Common.Client.MqttMsgSubscribed += Client_MqttMsgSubscribed;
+
+                //Mian에서 1회 선언
+                Common.Client.Connect("192.168.0.23");//서버 통신 할 라즈베리파이 ip
+
+                //MQtt서버에서 읽어올 Topic선언
+                Common.Client.Subscribe(new string[] { "main/#" },
+                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
+
+                /*Common.Client.Subscribe(new string[] { "main/led/#" },
+                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common*/
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -160,7 +187,7 @@ namespace testestestsettest
 
 
             
-            //mqtt 연결
+            /*//mqtt 연결
             try
             {
                 IPAddress hostIP;
@@ -179,13 +206,13 @@ namespace testestestsettest
                 Common.Client.Subscribe(new string[] { "main/#" },
                     new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
 
-                /*Common.Client.Subscribe(new string[] { "main/led/#" },
-                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common*/
+                *//*Common.Client.Subscribe(new string[] { "main/led/#" },
+                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common*//*
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
+            }*/
         }
 
         private void Client_MqttMsgSubscribed(object sender, MqttMsgSubscribedEventArgs e)
@@ -435,18 +462,20 @@ namespace testestestsettest
             }
             #endregion led 값 저장
 
-            if (panel1.InvokeRequired)
+            label2.BeginInvoke(new Action(() =>
             {
-                UpdateLabelCallback lb = new UpdateLabelCallback(UpdateLabel);
-                this.Invoke(lb, new object[] { message });
-            }
-            else
+                label2.Text = Convert.ToString(led1_G + led2_G + led3_G + led4_G);
+            }));
+
+            label3.BeginInvoke(new Action(() =>
             {
-                //label값 변경
-                this.label2.Text = Convert.ToString(led1_G + led2_G + led3_G + led4_G);
-                this.label3.Text = Convert.ToString(led1_Y + led2_Y + led3_Y + led4_Y);
-                this.label4.Text = Convert.ToString(led1_R + led2_R + led3_R + led4_R);
-            }
+                label3.Text = Convert.ToString(led1_Y + led2_Y + led3_Y + led4_Y);
+            }));
+
+            label4.BeginInvoke(new Action(() =>
+            {
+                label4.Text = Convert.ToString(led1_R + led2_R + led3_R + led4_R);
+            }));
         }
 
         #endregion Mqtt

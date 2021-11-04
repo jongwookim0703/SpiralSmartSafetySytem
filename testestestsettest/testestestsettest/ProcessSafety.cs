@@ -28,6 +28,8 @@ namespace testestestsettest
         private string strConn = "Data Source=61.105.9.203; Initial Catalog=AppDev;User ID=spa;Password=spiral_0904";
         private string RtspUrl1 = "http://192.168.0.2:8091";
         private string RtspUrl2 = "http://192.168.0.2:8092";
+        private string RtspUrl3 = "http://192.168.0.2:8093";
+        private string RtspUrl4 = "http://192.168.0.2:8094";
         private SerialPort mySerial;
 
         Assembly? CurrentAssembly;
