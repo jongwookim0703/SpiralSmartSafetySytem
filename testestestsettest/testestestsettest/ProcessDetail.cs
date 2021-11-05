@@ -216,7 +216,7 @@ namespace testestestsettest
             }
             catch (Exception ex)
             {
-                MessageBox.Show("[ERROR] " + ex.Message);
+                //MessageBox.Show("[ERROR] " + ex.Message);
             }
         }        
         #endregion

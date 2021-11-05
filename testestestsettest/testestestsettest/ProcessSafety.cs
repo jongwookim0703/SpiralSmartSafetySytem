@@ -61,7 +61,7 @@ namespace testestestsettest
             mySerial.BaudRate = 9600;
             mySerial.DataBits = 8;
             mySerial.DataReceived += MySerial_DataReceived;
-            //mySerial.Open();
+            mySerial.Open();
 
             //MessageBox.Show($"{mySerial.IsOpen}");
             #endregion

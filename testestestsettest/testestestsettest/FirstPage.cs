@@ -56,7 +56,8 @@ namespace testestestsettest
             get { return vlc4; }
             set { vlc4 = value; }
         }
-
+        
+        
         private string RtspUrl1 = "http://192.168.0.19:8091";
         private string RtspUrl2 = "http://192.168.0.19:8092";
         private string RtspUrl3 = "http://192.168.0.19:8093";
@@ -128,7 +129,7 @@ namespace testestestsettest
 
                 //서버 통신 할 라즈베리파이 ip
                 // 구독할 topic명 = common
-                //Common.Client.Subscribe(new string[] { "main/state/#" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
+                Common.Client.Subscribe(new string[] { "main/state/#" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
             }
             catch (Exception ex)
             {
@@ -284,7 +285,7 @@ namespace testestestsettest
             }
             catch (Exception ex)
             {
-                MessageBox.Show("[ERROR] " + ex.Message);
+                //MessageBox.Show("[ERROR] " + ex.Message);
             }
         }
 
@@ -612,85 +613,33 @@ namespace testestestsettest
             #endregion process4
 
             #region label change
-            label6.BeginInvoke(new Action(() =>
+            if (groupBox3.InvokeRequired)
             {
+                UpdateLabelCallback lb = new UpdateLabelCallback(UpdateWarn);
+                this.Invoke(lb, new object[] { message });
+            }
+            else
+            {
+                //label값
                 label6.Text = Convert.ToString(warn1);
-            }));
-
-            label8.BeginInvoke(new Action(() =>
-            {
                 label8.Text = Convert.ToString(warn2);
-            }));
-
-            label10.BeginInvoke(new Action(() =>
-            {
                 label10.Text = Convert.ToString(warn3);
-            }));
-
-            label12.BeginInvoke(new Action(() =>
-            {
                 label12.Text = Convert.ToString(warn4);
-            }));
-
-            lb_process1.BeginInvoke(new Action(() =>
-            {
                 lb_process1.Text = disttxt1;
-            }));
-
-            lb_process2.BeginInvoke(new Action(() =>
-            {
                 lb_process2.Text = disttxt2;
-            }));
-
-            lb_process3.BeginInvoke(new Action(() =>
-            {
                 lb_process3.Text = disttxt3;
-            }));
-
-            lb_process4.BeginInvoke(new Action(() =>
-            {
                 lb_process4.Text = disttxt4;
-            }));
-
-            lb_process5.BeginInvoke(new Action(() =>
-            {
                 lb_process5.Text = firetxt1;
-            }));
-
-            lb_process6.BeginInvoke(new Action(() =>
-            {
                 lb_process6.Text = firetxt2;
-            }));
-
-            lb_process7.BeginInvoke(new Action(() =>
-            {
                 lb_process7.Text = firetxt3;
-            }));
-
-            lb_process8.BeginInvoke(new Action(() =>
-            {
                 lb_process8.Text = firetxt4;
-            }));
-            #endregion label change
-
-            #region groupbox color change
-            groupBox6.BeginInvoke(new Action(() =>
-            {
                 groupBox6.BackColor = color1;
-            }));
-            groupBox4.BeginInvoke(new Action(() =>
-            {
                 groupBox4.BackColor = color2;
-            }));
-            groupBox5.BeginInvoke(new Action(() =>
-            {
                 groupBox5.BackColor = color3;
-            }));
-            groupBox7.BeginInvoke(new Action(() =>
-            {
                 groupBox7.BackColor = color4;
-            }));
-            #endregion groupbox color change
+
+            }
+            #endregion label change
         }
 
         private Color WarnColor(string warnstate)

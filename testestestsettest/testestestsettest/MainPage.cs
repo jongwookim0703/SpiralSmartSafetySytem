@@ -310,7 +310,7 @@ namespace testestestsettest
             }
             catch (Exception ex)
             {
-                MessageBox.Show("[ERROR] " + ex.Message);
+                //MessageBox.Show("[ERROR] " + ex.Message);
             }
         }
 
@@ -435,8 +435,19 @@ namespace testestestsettest
                 }
             }
             #endregion led 값 저장
-
-            label2.BeginInvoke(new Action(() =>
+            if (panel1.InvokeRequired)
+            {
+                UpdateLabelCallback lb = new UpdateLabelCallback(UpdateLabel);
+                this.Invoke(lb, new object[] { message });
+            }
+            else
+            {
+                //label값 변경
+                this.label2.Text = Convert.ToString(led1_G + led2_G + led3_G + led4_G);
+                this.label3.Text = Convert.ToString(led1_Y + led2_Y + led3_Y + led4_Y);
+                this.label4.Text = Convert.ToString(led1_R + led2_R + led3_R + led4_R);
+            }
+            /*    label2.BeginInvoke(new Action(() =>
             {
                 label2.Text = Convert.ToString(led1_G + led2_G + led3_G + led4_G);
             }));
@@ -449,7 +460,7 @@ namespace testestestsettest
             label4.BeginInvoke(new Action(() =>
             {
                 label4.Text = Convert.ToString(led1_R + led2_R + led3_R + led4_R);
-            }));
+            }));*/
         }
 
         #endregion Mqtt
