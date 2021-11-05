@@ -493,7 +493,7 @@ namespace testestestsettest
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FirstPage";
-            this.Text = "FirstPage";
+            this.Text = "MAIN";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FirstPage_Load);
             this.VisibleChanged += new System.EventHandler(this.FirstPage_VisibleChanged);

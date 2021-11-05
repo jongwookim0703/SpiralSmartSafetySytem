@@ -345,7 +345,7 @@ namespace testestestsettest
             this.ClientSize = new System.Drawing.Size(1255, 817);
             this.Controls.Add(this.groupBox1);
             this.Name = "ProcessSafety";
-            this.Text = "ProcessSafety";
+            this.Text = "환경 모니터링";
             this.Load += new System.EventHandler(this.ProcessSafety_Load);
             this.VisibleChanged += new System.EventHandler(this.ProcessSafety_VisibleChanged);
             this.groupBox1.ResumeLayout(false);

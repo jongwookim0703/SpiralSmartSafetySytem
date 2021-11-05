@@ -32,7 +32,6 @@ namespace testestestsettest
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tssMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tssFirstPage = new System.Windows.Forms.ToolStripMenuItem();
             this.tssProcess1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tssProcess2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tssProcess3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,7 +81,6 @@ namespace testestestsettest
             // tssMenuItem1
             // 
             this.tssMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tssFirstPage,
             this.tssProcess1,
             this.tssProcess2,
             this.tssProcess3,
@@ -91,18 +89,10 @@ namespace testestestsettest
             this.tssMenuItem1.Size = new System.Drawing.Size(123, 24);
             this.tssMenuItem1.Text = "전체 공정 관리";
             // 
-            // tssFirstPage
-            // 
-            this.tssFirstPage.Name = "tssFirstPage";
-            this.tssFirstPage.Size = new System.Drawing.Size(160, 26);
-            this.tssFirstPage.Tag = "FirstPage";
-            this.tssFirstPage.Text = "메인화면";
-            this.tssFirstPage.Click += new System.EventHandler(this.tssPage_Click);
-            // 
             // tssProcess1
             // 
             this.tssProcess1.Name = "tssProcess1";
-            this.tssProcess1.Size = new System.Drawing.Size(160, 26);
+            this.tssProcess1.Size = new System.Drawing.Size(224, 26);
             this.tssProcess1.Tag = "1";
             this.tssProcess1.Text = "프로세스1";
             this.tssProcess1.Click += new System.EventHandler(this.tssProcess_Click);
@@ -110,7 +100,7 @@ namespace testestestsettest
             // tssProcess2
             // 
             this.tssProcess2.Name = "tssProcess2";
-            this.tssProcess2.Size = new System.Drawing.Size(160, 26);
+            this.tssProcess2.Size = new System.Drawing.Size(224, 26);
             this.tssProcess2.Tag = "2";
             this.tssProcess2.Text = "프로세스2";
             this.tssProcess2.Click += new System.EventHandler(this.tssProcess_Click);
@@ -118,7 +108,7 @@ namespace testestestsettest
             // tssProcess3
             // 
             this.tssProcess3.Name = "tssProcess3";
-            this.tssProcess3.Size = new System.Drawing.Size(160, 26);
+            this.tssProcess3.Size = new System.Drawing.Size(224, 26);
             this.tssProcess3.Tag = "3";
             this.tssProcess3.Text = "프로세스3";
             this.tssProcess3.Click += new System.EventHandler(this.tssProcess_Click);
@@ -126,7 +116,7 @@ namespace testestestsettest
             // tssProcess4
             // 
             this.tssProcess4.Name = "tssProcess4";
-            this.tssProcess4.Size = new System.Drawing.Size(160, 26);
+            this.tssProcess4.Size = new System.Drawing.Size(224, 26);
             this.tssProcess4.Tag = "4";
             this.tssProcess4.Text = "프로세스4";
             this.tssProcess4.Click += new System.EventHandler(this.tssProcess_Click);
@@ -241,11 +231,12 @@ namespace testestestsettest
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1047, 3);
+            this.btnClose.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClose.Location = new System.Drawing.Point(1101, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(94, 29);
+            this.btnClose.Size = new System.Drawing.Size(40, 29);
             this.btnClose.TabIndex = 6;
-            this.btnClose.Text = "close";
+            this.btnClose.Text = "⇐";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -348,7 +339,7 @@ namespace testestestsettest
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainPage";
-            this.Text = ".";
+            this.Text = "스마트 안전 모니터링";
             this.Load += new System.EventHandler(this.MainPage_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -389,7 +380,6 @@ namespace testestestsettest
         private System.Windows.Forms.ToolStripMenuItem tssProcess2;
         private System.Windows.Forms.ToolStripMenuItem tssProcess3;
         private System.Windows.Forms.ToolStripMenuItem tssProcess4;
-        private System.Windows.Forms.ToolStripMenuItem tssFirstPage;
         private System.Windows.Forms.ToolStripMenuItem tssSafety;
         private System.Windows.Forms.ToolStripMenuItem tssRecord;
     }

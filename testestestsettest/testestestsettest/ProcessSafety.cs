@@ -218,7 +218,7 @@ namespace testestestsettest
             Button temp = sender as Button;
             Common.ProcessNo = int.Parse(temp.Tag.ToString()); //프로세스 넘버 결정
 
-            MessageBox.Show("상세보기로 이동합니다");
+            MessageBox.Show("프로세스 관리로 이동합니다");
             //ProcessDetail processDetail = new ProcessDetail();
             //processDetail.ShowDialog();
             if (!MainPage.Instance.tabContainer.Controls.ContainsKey("ProcessDetail"))
@@ -236,6 +236,10 @@ namespace testestestsettest
                     {
                         MainPage.Instance.tabContainer.SelectedTab = MainPage.Instance.tabContainer.TabPages[i];
                         return;
+                    }
+                    else
+                    {
+                        MainPage.Instance.tabContainer.TabPages[i].Dispose();
                     }
                 }
 

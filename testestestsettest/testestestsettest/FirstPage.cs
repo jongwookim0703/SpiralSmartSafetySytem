@@ -75,8 +75,6 @@ namespace testestestsettest
 
         }
 
-        
-
         private void btn_process_Click(object sender, EventArgs e)
         {
             vlc1.Stop();
@@ -104,7 +102,11 @@ namespace testestestsettest
                         MainPage.Instance.tabContainer.AddForm(ShowForm);
                         return;
                     }
-                    
+                    else
+                    {
+                        MainPage.Instance.tabContainer.TabPages[i].Dispose();
+                    }
+
                 }
                 MainPage.Instance.tabContainer.AddForm(ShowForm);
 
@@ -333,19 +335,19 @@ namespace testestestsettest
                 
             }
 
-            if (currentDatas.ContainsKey("fire1"))
+            if (currentDatas.ContainsKey("flame1"))
             {
                 if (warnstate1 != "D")
                 {
                     if (warnstate1 != "W" )
                     {
-                        warnstate1 = currentDatas["fire1"];
+                        warnstate1 = currentDatas["flame1"];
                     }
                 }
 
                 if (firetxt1 != "")
                 {
-                    if (currentDatas["fire1"] == "D")
+                    if (currentDatas["flame1"] == "D")
                     {
                         firetxt1 = " 화재 위험 ";
                     }
@@ -360,7 +362,7 @@ namespace testestestsettest
                 }
                 else
                 {
-                    if (currentDatas["fire1"] == "D")
+                    if (currentDatas["flame1"] == "D")
                     {
                         warn1 += 1;
                         firetxt1 = " 화재 위험 ";
@@ -412,19 +414,19 @@ namespace testestestsettest
 
             }
 
-            if (currentDatas.ContainsKey("fire2"))
+            if (currentDatas.ContainsKey("flame2"))
             {
                 if (warnstate2 != "D")
                 {
                     if (warnstate2 != "W")
                     {
-                        warnstate2 = currentDatas["fire2"];
+                        warnstate2 = currentDatas["flame2"];
                     }
                 }
 
                 if (firetxt2 != "")
                 {
-                    if (currentDatas["fire2"] == "D")
+                    if (currentDatas["flame2"] == "D")
                     {
                         firetxt2 = " 화재 위험 ";
                     }
@@ -439,7 +441,7 @@ namespace testestestsettest
                 }
                 else
                 {
-                    if (currentDatas["fire2"] == "D")
+                    if (currentDatas["flame2"] == "D")
                     {
                         warn2 += 1;
                         firetxt2 = " 화재 위험 ";
@@ -491,19 +493,19 @@ namespace testestestsettest
                 color3 = WarnColor(warnstate3);
 
             }
-            if (currentDatas.ContainsKey("fire3"))
+            if (currentDatas.ContainsKey("flame3"))
             {
                 if (warnstate3 != "D")
                 {
                     if (warnstate3 != "W")
                     {
-                        warnstate3 = currentDatas["fire3"];
+                        warnstate3 = currentDatas["flame3"];
                     }
                 }
 
                 if (firetxt3 != "")
                 {
-                    if (currentDatas["fire3"] == "D")
+                    if (currentDatas["flame3"] == "D")
                     {
                         firetxt3 = " 화재 위험 ";
                     }
@@ -518,7 +520,7 @@ namespace testestestsettest
                 }
                 else
                 {
-                    if (currentDatas["fire3"] == "D")
+                    if (currentDatas["flame3"] == "D")
                     {
                         warn3 += 1;
                         firetxt3 = " 화재 위험 ";
@@ -570,20 +572,20 @@ namespace testestestsettest
 
             }
 
-            if (currentDatas.ContainsKey("fire4"))
+            if (currentDatas.ContainsKey("flame4"))
             {
                 if (warnstate4 != "D")
                 {
                     if (warnstate4 != "W")
                     {
-                        warnstate4 = currentDatas["fire4"];
+                        warnstate4 = currentDatas["flame4"];
                     }
 
                 }
 
                 if (firetxt4 != "")
                 {
-                    if (currentDatas["fire4"] == "D")
+                    if (currentDatas["flame4"] == "D")
                     {
                         firetxt4 = " 화재 위험 ";
                     }
@@ -598,7 +600,7 @@ namespace testestestsettest
                 }
                 else
                 {
-                    if (currentDatas["fire4"] == "D")
+                    if (currentDatas["flame4"] == "D")
                     {
                         warn4 += 1;
                         firetxt4 = " 화재 위험 ";

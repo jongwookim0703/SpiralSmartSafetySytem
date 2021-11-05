@@ -141,65 +141,75 @@ namespace testestestsettest
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.Yellow;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.LblYellow);
-            this.panel3.Location = new System.Drawing.Point(872, 55);
+            this.panel3.Location = new System.Drawing.Point(865, 49);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(37, 27);
+            this.panel3.Size = new System.Drawing.Size(48, 43);
             this.panel3.TabIndex = 13;
             // 
             // LblYellow
             // 
             this.LblYellow.AutoSize = true;
-            this.LblYellow.BackColor = System.Drawing.Color.Transparent;
-            this.LblYellow.Location = new System.Drawing.Point(9, 4);
+            this.LblYellow.BackColor = System.Drawing.Color.Yellow;
+            this.LblYellow.Font = new System.Drawing.Font("맑은 고딕", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblYellow.Location = new System.Drawing.Point(5, -4);
             this.LblYellow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblYellow.Name = "LblYellow";
-            this.LblYellow.Size = new System.Drawing.Size(17, 20);
+            this.LblYellow.Size = new System.Drawing.Size(40, 46);
             this.LblYellow.TabIndex = 14;
             this.LblYellow.Text = "0";
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.Red;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.LblRed);
-            this.panel2.Location = new System.Drawing.Point(923, 55);
+            this.panel2.Location = new System.Drawing.Point(912, 49);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(48, 27);
+            this.panel2.Size = new System.Drawing.Size(48, 43);
             this.panel2.TabIndex = 12;
             // 
             // LblRed
             // 
             this.LblRed.AutoSize = true;
-            this.LblRed.BackColor = System.Drawing.Color.Transparent;
-            this.LblRed.Location = new System.Drawing.Point(15, 4);
+            this.LblRed.BackColor = System.Drawing.Color.Red;
+            this.LblRed.Font = new System.Drawing.Font("맑은 고딕", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblRed.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.LblRed.Location = new System.Drawing.Point(6, -4);
             this.LblRed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblRed.Name = "LblRed";
-            this.LblRed.Size = new System.Drawing.Size(17, 20);
+            this.LblRed.Size = new System.Drawing.Size(40, 46);
             this.LblRed.TabIndex = 16;
             this.LblRed.Text = "0";
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::testestestsettest.Properties.Resources.green;
+            this.panel1.BackColor = System.Drawing.Color.Green;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.LblGreen);
-            this.panel1.Location = new System.Drawing.Point(817, 55);
+            this.panel1.Location = new System.Drawing.Point(820, 49);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(48, 27);
+            this.panel1.Size = new System.Drawing.Size(48, 43);
             this.panel1.TabIndex = 11;
             // 
             // LblGreen
             // 
             this.LblGreen.AutoSize = true;
-            this.LblGreen.BackColor = System.Drawing.Color.Transparent;
-            this.LblGreen.Location = new System.Drawing.Point(14, 4);
+            this.LblGreen.BackColor = System.Drawing.Color.Green;
+            this.LblGreen.Font = new System.Drawing.Font("맑은 고딕", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblGreen.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.LblGreen.Location = new System.Drawing.Point(5, -4);
             this.LblGreen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblGreen.Name = "LblGreen";
-            this.LblGreen.Size = new System.Drawing.Size(17, 20);
+            this.LblGreen.Size = new System.Drawing.Size(40, 46);
             this.LblGreen.TabIndex = 15;
             this.LblGreen.Text = "0";
             // 
@@ -226,7 +236,6 @@ namespace testestestsettest
             // 
             // panel4
             // 
-            this.panel4.BackgroundImage = global::testestestsettest.Properties.Resources.panel_gray_;
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel4.Controls.Add(this.label2);
             this.panel4.Location = new System.Drawing.Point(810, 15);
@@ -239,10 +248,11 @@ namespace testestestsettest
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(4, 7);
+            this.label2.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(0, 6);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 20);
+            this.label2.Size = new System.Drawing.Size(164, 23);
             this.label2.TabIndex = 4;
             this.label2.Text = "공정 누적 알림 횟수";
             // 
@@ -401,7 +411,7 @@ namespace testestestsettest
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ProcessDetail";
-            this.Text = "ProcessDetail";
+            this.Text = "프로세스 관리";
             this.Load += new System.EventHandler(this.ProcessDetail_Load);
             this.Shown += new System.EventHandler(this.ProcessDetail_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).EndInit();

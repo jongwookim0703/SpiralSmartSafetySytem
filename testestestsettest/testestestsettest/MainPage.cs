@@ -127,41 +127,19 @@ namespace testestestsettest
                 }
                 else
                 {
-                    if(myTabControl1.TabPages[i].Name != "FirstPage")
+                    myTabControl1.TabPages[i].Dispose();
+                    /*if (myTabControl1.TabPages[i].Name != "FirstPage")
                     {
                         myTabControl1.TabPages[i].Dispose();
 
-                    }
+                    }*/
                 }
             }
 
             myTabControl1.AddForm(ShowForm);
         }
 
-        private void tssFirstPage_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem temp = sender as ToolStripMenuItem;
-            string FormName = temp.Tag.ToString();
-
-            Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL"); // firstpage 폼이 들어가야함. 
-            Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true); // firstpage 폼의 네임스페이스가 들어가야함. 
-            Form ShowForm = (Form)Activator.CreateInstance(typeForm);
-
-            for (int i = 0; i < myTabControl1.TabPages.Count; i++)
-            {
-                if (myTabControl1.TabPages[i].Name == FormName.ToString())
-                {
-                    myTabControl1.SelectedTab = myTabControl1.TabPages[i];
-                    return;
-                }
-                else
-                {
-                    myTabControl1.TabPages[i].Dispose();
-                }
-            }
-            
-            myTabControl1.AddForm(ShowForm);
-        }
+        
 
         private void MainPage_Load(object sender, EventArgs e)
         {
@@ -185,34 +163,6 @@ namespace testestestsettest
 
             myTabControl1.AddForm(ShowForm);
 
-
-            
-            /*//mqtt 연결
-            try
-            {
-                IPAddress hostIP;
-                //Main에서만 1회 선언
-                hostIP = IPAddress.Parse("192.168.0.23");
-                Common.Client = new MqttClient(hostIP);
-
-                //Mqtt에서 publish되는 메세지 받는 함수 추가
-                Common.Client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
-                Common.Client.MqttMsgSubscribed += Client_MqttMsgSubscribed;
-
-                //Mian에서 1회 선언
-                Common.Client.Connect("192.168.0.23");//서버 통신 할 라즈베리파이 ip
-
-                //MQtt서버에서 읽어올 Topic선언
-                Common.Client.Subscribe(new string[] { "main/#" },
-                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common
-
-                *//*Common.Client.Subscribe(new string[] { "main/led/#" },
-                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // 구독할 topic명 = common*//*
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }*/
         }
 
         private void Client_MqttMsgSubscribed(object sender, MqttMsgSubscribedEventArgs e)
@@ -243,11 +193,12 @@ namespace testestestsettest
                 }
                 else
                 {
-                    if (myTabControl1.TabPages[i].Name != "FirstPage")
+                    myTabControl1.TabPages[i].Dispose();
+                    /*if (myTabControl1.TabPages[i].Name != "FirstPage")
                     {
                         myTabControl1.TabPages[i].Dispose();
 
-                    }
+                    }*/
                 }
             }
 
@@ -297,11 +248,33 @@ namespace testestestsettest
             if (myTabControl1.SelectedTab.Name != "FirstPage")
             {
                 myTabControl1.SelectedTab.Dispose();
+                obj = this;
+
+                string FormName = "FirstPage";
+
+                Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "testestestsettest.DLL");
+                Type typeForm = assemb.GetType("testestestsettest." + FormName.ToString(), true);
+                Form ShowForm = (Form)Activator.CreateInstance(typeForm);
+
+                for (int i = 0; i < myTabControl1.TabPages.Count; i++)
+                {
+                    if (myTabControl1.TabPages[i].Name == FormName.ToString())
+                    {
+                        myTabControl1.SelectedTab = myTabControl1.TabPages[i];
+                        return;
+                    }
+
+                }
+
+                myTabControl1.AddForm(ShowForm);
             }
+                        
         }
 
         private void tssRecord_Click(object sender, EventArgs e)
         {
+
+
             obj = this;
 
             string FormName = "Record";
@@ -325,6 +298,7 @@ namespace testestestsettest
 
             myTabControl1.AddForm(ShowForm);
         }
+
 
         #region Mqtt
         private void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)

@@ -65,7 +65,7 @@ namespace testestestsettest
             this.grid.ColumnHeadersHeight = 29;
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Location = new System.Drawing.Point(6, 27);
-            this.grid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grid.Margin = new System.Windows.Forms.Padding(4);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersWidth = 51;
@@ -103,9 +103,9 @@ namespace testestestsettest
             this.groupBox2.Controls.Add(this.btnSearch);
             this.groupBox2.Controls.Add(this.dateTimePicker2);
             this.groupBox2.Location = new System.Drawing.Point(15, 16);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(1221, 369);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
@@ -116,7 +116,7 @@ namespace testestestsettest
             this.btn_list.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_list.BackgroundImage")));
             this.btn_list.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_list.Location = new System.Drawing.Point(1074, 31);
-            this.btn_list.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_list.Margin = new System.Windows.Forms.Padding(4);
             this.btn_list.Name = "btn_list";
             this.btn_list.Size = new System.Drawing.Size(60, 37);
             this.btn_list.TabIndex = 12;
@@ -142,7 +142,7 @@ namespace testestestsettest
             "접근 금지 ",
             "화재 위험"});
             this.comboBox1.Location = new System.Drawing.Point(346, 28);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(179, 28);
             this.comboBox1.TabIndex = 10;
@@ -150,7 +150,7 @@ namespace testestestsettest
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(849, 29);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(210, 27);
             this.dateTimePicker1.TabIndex = 0;
@@ -162,9 +162,9 @@ namespace testestestsettest
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Location = new System.Drawing.Point(10, 67);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(1203, 295);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
@@ -173,9 +173,9 @@ namespace testestestsettest
             // 
             this.groupBox5.Controls.Add(this.grid2);
             this.groupBox5.Location = new System.Drawing.Point(609, 29);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.groupBox5.Size = new System.Drawing.Size(582, 257);
             this.groupBox5.TabIndex = 22;
@@ -189,7 +189,7 @@ namespace testestestsettest
             this.grid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid2.Location = new System.Drawing.Point(4, 24);
-            this.grid2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grid2.Margin = new System.Windows.Forms.Padding(4);
             this.grid2.Name = "grid2";
             this.grid2.ReadOnly = true;
             this.grid2.RowHeadersWidth = 51;
@@ -201,9 +201,9 @@ namespace testestestsettest
             // 
             this.groupBox4.Controls.Add(this.grid1);
             this.groupBox4.Location = new System.Drawing.Point(15, 29);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.groupBox4.Size = new System.Drawing.Size(586, 257);
             this.groupBox4.TabIndex = 21;
@@ -217,7 +217,7 @@ namespace testestestsettest
             this.grid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid1.Location = new System.Drawing.Point(4, 24);
-            this.grid1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grid1.Margin = new System.Windows.Forms.Padding(4);
             this.grid1.Name = "grid1";
             this.grid1.ReadOnly = true;
             this.grid1.RowHeadersWidth = 51;
@@ -265,7 +265,7 @@ namespace testestestsettest
             "프로세스3",
             "프로세스4"});
             this.cboProcess.Location = new System.Drawing.Point(94, 28);
-            this.cboProcess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboProcess.Margin = new System.Windows.Forms.Padding(4);
             this.cboProcess.Name = "cboProcess";
             this.cboProcess.Size = new System.Drawing.Size(179, 28);
             this.cboProcess.TabIndex = 4;
@@ -275,7 +275,7 @@ namespace testestestsettest
             this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSearch.Location = new System.Drawing.Point(1142, 31);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(60, 37);
             this.btnSearch.TabIndex = 2;
@@ -286,7 +286,7 @@ namespace testestestsettest
             // dateTimePicker2
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(603, 29);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(210, 27);
             this.dateTimePicker2.TabIndex = 1;
@@ -303,9 +303,9 @@ namespace testestestsettest
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Record";
-            this.Text = "Record";
+            this.Text = "이력 관리";
             this.Load += new System.EventHandler(this.Record_Load);
             this.Shown += new System.EventHandler(this.Record_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();

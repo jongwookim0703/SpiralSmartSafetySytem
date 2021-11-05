@@ -52,7 +52,7 @@ namespace testestestsettest
         private void btn_detail1_Click(object sender, EventArgs e)
         {
 
-            MessageBox.Show("상세보기로 이동합니다");
+            MessageBox.Show("이력관리로 이동합니다");
 
             if (!MainPage.Instance.tabContainer.Controls.ContainsKey("Record"))
             {
@@ -69,6 +69,10 @@ namespace testestestsettest
                     {
                         MainPage.Instance.tabContainer.SelectedTab = MainPage.Instance.tabContainer.TabPages[i];
                         return;
+                    }
+                    else
+                    {
+                        MainPage.Instance.tabContainer.TabPages[i].Dispose();
                     }
                 }
                 MainPage.Instance.tabContainer.AddForm(ShowForm);
