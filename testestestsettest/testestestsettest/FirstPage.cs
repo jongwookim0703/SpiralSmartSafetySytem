@@ -57,10 +57,10 @@ namespace testestestsettest
             set { vlc4 = value; }
         }
 
-        private string RtspUrl1 = "https://www.youtube.com/watch?v=Nh27WsNdymo&list=PLotqbLTnmf4L8knQeE4Ylw92jJc0Md2AR&index=36&t=713s";
-        private string RtspUrl2 = "https://www.youtube.com/watch?v=Nh27WsNdymo&list=PLotqbLTnmf4L8knQeE4Ylw92jJc0Md2AR&index=36&t=713s";
-        private string RtspUrl3 = "https://www.youtube.com/watch?v=Nh27WsNdymo&list=PLotqbLTnmf4L8knQeE4Ylw92jJc0Md2AR&index=36&t=713s";
-        private string RtspUrl4 = "https://www.youtube.com/watch?v=Nh27WsNdymo&list=PLotqbLTnmf4L8knQeE4Ylw92jJc0Md2AR&index=36&t=713s";
+        private string RtspUrl1 = "http://192.168.0.19:8091";
+        private string RtspUrl2 = "http://192.168.0.19:8092";
+        private string RtspUrl3 = "http://192.168.0.19:8093";
+        private string RtspUrl4 = "http://192.168.0.19:8094";
 
         delegate void UpdateLabelCallback(string message);
         private int warn1 = 0, warn2 = 0, warn3 = 0, warn4 = 0;

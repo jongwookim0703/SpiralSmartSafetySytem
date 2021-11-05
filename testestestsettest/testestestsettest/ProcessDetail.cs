@@ -31,10 +31,10 @@ namespace testestestsettest
         private SqlConnection Connect = null;
 
         // 영상 정보 객체(주소)
-        private string RtspUrl1 = "http://archive.org/download/SampleMpeg4_201307/sample_mpeg4.mp4";
-        private string RtspUrl2 = "http://assets.appcelerator.com.s3.amazonaws.com/video/media.m4v";
-        private string RtspUrl3 = "http://archive.org/download/SampleMpeg4_201307/sample_mpeg4.mp4";
-        private string RtspUrl4 = "http://assets.appcelerator.com.s3.amazonaws.com/video/media.m4v";
+        private string RtspUrl1 = "http://192.168.0.19:8091";
+        private string RtspUrl2 = "http://192.168.0.19:8092";
+        private string RtspUrl3 = "http://192.168.0.19:8093";
+        private string RtspUrl4 = "http://192.168.0.19:8094";
 
         //mqtt 클라이언트 선언 & 충돌해결용 CallBack
         MqttClient client;
@@ -574,7 +574,7 @@ namespace testestestsettest
                     var selQuery1 = @"SELECT PSTARTTIME AS 계획시작시간, PENDTIME AS 계획종료시간 FROM TB_PLANrec 
 	                                          WHERE PROCESSNO = @PROCESSNO 
 		                                      ORDER BY PROCESSNAME";
-                    var selQuery2 = @"SELECT NO, STARTTIME AS 시작시간, ENDTIME AS 죵료시간, HAZARDNO AS 위험번호 FROM TB_PROCESSWORKrec 
+                    var selQuery2 = @"SELECT NO, STARTTIME AS 시작시간, ENDTIME AS 종료시간, HAZARDNO AS 위험번호 FROM TB_PROCESSWORKrec 
 	                                          WHERE PROCESSNO = @PROCESSNO 
 		                                      ORDER BY PROCESSNAME";
 
@@ -591,7 +591,8 @@ namespace testestestsettest
                         return;
                     }
                     grid1.DataSource = dtTemp1;   //데이터 그리드 뷰에 데이터 테이블 등록
-
+                    grid1.Columns[0].Width = 200;
+                    grid1.Columns[1].Width = 200;
 
                     adapter2.SelectCommand.Parameters.AddWithValue("@PROCESSNO", ProcessNo);
                     DataTable dtTemp2 = new DataTable();
@@ -603,7 +604,10 @@ namespace testestestsettest
                         return;
                     }
                     grid2.DataSource = dtTemp2;
-
+                    grid2.Columns[0].Width = 45;
+                    grid2.Columns[1].Width = 173;
+                    grid2.Columns[2].Width = 173;
+                    grid2.Columns[3].Width = 120;
 
                 }
             }

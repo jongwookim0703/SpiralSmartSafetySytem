@@ -182,7 +182,7 @@ namespace testestestsettest
             this.vlc4.Spu = -1;
             this.vlc4.TabIndex = 3;
             this.vlc4.Tag = "4";
-            this.vlc4.Text = "vlcControl3";
+            this.vlc4.Text = "vlcControl4";
             this.vlc4.VlcLibDirectory = null;
             this.vlc4.VlcMediaplayerOptions = null;
             this.vlc4.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc4_VlcLibDirectoryNeeded);
@@ -207,7 +207,7 @@ namespace testestestsettest
             this.vlc3.Spu = -1;
             this.vlc3.TabIndex = 2;
             this.vlc3.Tag = "3";
-            this.vlc3.Text = "vlcControl2";
+            this.vlc3.Text = "vlcControl3";
             this.vlc3.VlcLibDirectory = null;
             this.vlc3.VlcMediaplayerOptions = null;
             this.vlc3.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.vlc3_VlcLibDirectoryNeeded);

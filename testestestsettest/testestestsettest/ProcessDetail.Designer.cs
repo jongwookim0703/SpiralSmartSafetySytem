@@ -258,7 +258,6 @@ namespace testestestsettest
             this.groupBox2.Size = new System.Drawing.Size(345, 84);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
             // 
             // chk_re1
             // 

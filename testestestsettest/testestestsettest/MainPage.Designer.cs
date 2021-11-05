@@ -348,7 +348,7 @@ namespace testestestsettest
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainPage";
-            this.Text = "MainForm";
+            this.Text = ".";
             this.Load += new System.EventHandler(this.MainPage_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

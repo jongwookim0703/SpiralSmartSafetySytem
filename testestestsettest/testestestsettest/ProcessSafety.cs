@@ -26,10 +26,10 @@ namespace testestestsettest
     {
         private System.Data.SqlClient.SqlConnection Connect = null;
         private string strConn = "Data Source=61.105.9.203; Initial Catalog=AppDev;User ID=spa;Password=spiral_0904";
-        private string RtspUrl1 = "http://192.168.0.2:8091";
-        private string RtspUrl2 = "http://192.168.0.2:8092";
-        private string RtspUrl3 = "http://192.168.0.2:8093";
-        private string RtspUrl4 = "http://192.168.0.2:8094";
+        private string RtspUrl1 = "http://192.168.0.19:8091";
+        private string RtspUrl2 = "http://192.168.0.19:8092";
+        private string RtspUrl3 = "http://192.168.0.19:8093";
+        private string RtspUrl4 = "http://192.168.0.19:8094";
         private SerialPort mySerial;
 
         Assembly? CurrentAssembly;
@@ -61,7 +61,7 @@ namespace testestestsettest
             mySerial.BaudRate = 9600;
             mySerial.DataBits = 8;
             mySerial.DataReceived += MySerial_DataReceived;
-            mySerial.Open();
+            //mySerial.Open();
 
             //MessageBox.Show($"{mySerial.IsOpen}");
             #endregion
@@ -372,8 +372,8 @@ namespace testestestsettest
         {
             vlc1.Play(new Uri(RtspUrl1));
             vlc2.Play(new Uri(RtspUrl2));
-            //vlc3.Play(new Uri(RtspUrl));
-            //vlc4.Play(new Uri(RtspUrl));
+            vlc3.Play(new Uri(RtspUrl3));
+            vlc4.Play(new Uri(RtspUrl4));
         }
 
 
